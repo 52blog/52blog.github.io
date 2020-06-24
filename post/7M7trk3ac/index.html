@@ -8,7 +8,7 @@
 <meta name="keywords" content="Whitehat个人博客">
 <meta name="description" content="">
 <meta name="theme-color" content="#000">
-<title>Whitehat</title>
+<title>GM指令解释（键盘 Ctrl+F 筛选关键字) | Whitehat</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1593027381088">
 <link rel="stylesheet" href="/media/css/gemini.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
@@ -38,6 +38,8 @@
 
 
 
+  <meta name="description" content="GM指令解释（键盘 Ctrl+F 筛选关键字)" />
+  <meta name="keywords" content="" />
 </head>
 
 <body>
@@ -141,10 +143,25 @@
   <div class="main-continer">
     
     <div
-      class="section-layout  gemini">
+      class="section-layout gemini ">
       <div class="section-layout-wrapper">
-        <div id="sidebarMeta" class="sidebar">
-    
+        
+
+<div class="sidebar">
+  
+    <div class="sidebar-box box-shadow-wrapper bg-color right-motion" id="sidebar">
+      
+        <div class="post-list-sidebar">
+          <div class="sidebar-title">
+            <span id="tocSideBar" class="sidebar-title-item sidebar-title-active language" data-lan="index">文章目录</span>
+            <span id="metaSideBar" class="sidebar-title-item language" data-lan="preview">站点概览</span>
+          </div>
+        </div>
+      
+      <div class="sidebar-body gemini" id="sidebar_body">
+        
+          
+            
 <div class="sidebar-wrapper box-shadow-wrapper bg-color">
   <div class="sidebar-item">
     <img class="site-author-image right-motion" src="/images/avatar.png"/>
@@ -202,84 +219,418 @@
 
 
 </div>
+          
+        
+      </div>
+    </div>
+  
 </div>
 <script>
-  let sidebarMeta = document.querySelector('#sidebarMeta');
-  let scheme = 'gemini';
-  let sidebarWrapper = document.querySelector('.sidebar-wrapper');
-  if (sidebarMeta && (scheme === 'pisces' || scheme === 'gemini')) {
-    document.addEventListener('scroll', function(e) {
-      if (document.scrollingElement.scrollTop > parseInt(sidebarMeta.style.marginTop) + 10) {
-        sidebarWrapper.classList.add('home-sidebar-fixed')
-      } else {
-        sidebarWrapper.classList.remove('home-sidebar-fixed')
+  const SIDEBAR_TITLE_ACTIVE = 'sidebar-title-active';
+  const SIDEBAR_BODY_ACTIVE = 'sidebar-body-active';
+  const SLIDE_UP_IN = 'slide-up-in';
+
+  let sidebar = document.querySelector('#sidebar'),
+  tocSideBar = document.querySelector('#tocSideBar'),
+  metaSideBar = document.querySelector('#metaSideBar'),
+  postToc = document.querySelector('#post_toc'),
+  postSiteMeta = document.querySelector('#post_side_meta'),
+  sidebarTitle = document.querySelector('.sidebar-title'),
+  sidebarBody = document.querySelector('#sidebar_body');
+
+  tocSideBar && tocSideBar.addEventListener('click', (e) => {
+    toggleSidebar(e);
+  });
+
+  metaSideBar && metaSideBar.addEventListener('click', (e) => {
+    toggleSidebar(e);
+  });
+
+  function toggleSidebar(e) {
+    let currentTitle = document.querySelector("."+SIDEBAR_TITLE_ACTIVE);
+    if (currentTitle == e.srcElement) {
+      return ;
+    }
+    let current, showElement, hideElement;
+    if (e.srcElement == metaSideBar) {
+      showElement = postSiteMeta;
+      hideElement = postToc;
+    } else if (e.srcElement == tocSideBar){
+      showElement = postToc;
+      hideElement = postSiteMeta;
+    }
+    currentTitle.classList.remove(SIDEBAR_TITLE_ACTIVE);
+    e.srcElement.classList.add(SIDEBAR_TITLE_ACTIVE);
+
+    window.Velocity(hideElement, 'stop');
+    window.Velocity(hideElement, 'transition.slideUpOut', {
+      display: 'none',
+      duration: 200,
+      complete: function () {
+        window.Velocity(showElement, 'transition.slideDownIn', {
+          duration: 200
+        });
       }
-    });
+    })
+    hideElement.classList.remove(SIDEBAR_BODY_ACTIVE);
+    showElement.classList.add(SIDEBAR_BODY_ACTIVE);
   }
-  </script>
+
+  postToc && postToc.addEventListener('transitionend', function() {
+    this.classList.remove(SLIDE_UP_IN);
+  });
+
+  if (sidebarBody) {
+    if (sidebarBody.classList.contains('pisces') || sidebarBody.classList.contains('gemini')) {
+      let hasFix = false;
+      let scrollEl = document.querySelector('.main-continer');
+      let limitTop = document.querySelector('#nav_ul').children.length * 42 + 162;
+      window.addEventListener('scroll', function(e) {
+        if (document.scrollingElement.scrollTop >= limitTop) {
+          if (!hasFix) {
+            sidebar.classList.add('sidebar-fixed');
+            hasFix = true;
+          }
+        } else {
+          if (hasFix) {
+            sidebar.classList.remove('sidebar-fixed');
+            hasFix = false;
+          }
+        }
+      });
+    }
+  }
+  
+</script>
         <div class="section-box box-shadow-wrapper">
-          <section class="section tags-section bg-color posts-expand">
-            <div class="tags-box">
-  <div class="tag-cloud-title language" data-lan="cloud-tags" data-count="0">
-    目前共计 0 个标签
-  </div>
-  <div class="tag-cloud-list" id="tags">
+          <div class="section bg-color post post-page">
+            <header class="post-header">
+  <h1 class="post-title">
+    <a class="post-title-link" href="https://52wow.github.io/post/7M7trk3ac/">
+      GM指令解释（键盘 Ctrl+F 筛选关键字)
+    </a>
+  </h1>
+  <div class="post-meta">
+    
+    <span class="meta-item pc-show">
+      <i class="fa fa-calendar-o"></i>
+      <span class="language" data-lan="publish">发布于</span>
+      <span>2020-06-25</span>
+      <span class="post-meta-divider pc-show">|</span>
+    </span>
+    
+    <span class="meta-item">
+      <i class="fa fa-clock-o"></i>
+      <span>27<span class="language" data-lan="minute">分钟</span></span>
+    </span>
+    <span class="meta-item">
+      <span class="post-meta-divider">|</span>
+      <i class="fa fa-file-word-o"></i>
+      <span>6466<span class="pc-show language" data-lan="words">字数</span></span>
+    </span>
+    
+    
+    
+    <span id="/post/7M7trk3ac/" data-flag-title="GM指令解释（键盘 Ctrl+F 筛选关键字)" class="meta-item pc-show leancloud_visitors">
+      <span class="post-meta-divider">|</span>
+      <i class="fa fa-eye"></i>
+      <span><span class="language" data-lan="view">浏览量</span>：<span class="leancloud-visitors-count"></span></span>
+    </span>
     
   </div>
+</header>
+            <div class="post-body next-md-body" id="post_body">
+              <p>命令	GM等级	语法及表述	<br>
+.acct	0	语法： .acct    显示你的帐号权限级别。	<br>
+.addgrave	3	语法:  .addgrave   添加一个墓地	<br>
+.additem	1	语法： .additem #itemid [#物品总数] 或者 .additem 0 #物品总数 $物品名字    添加指定数量的id为#itemid的物品到你所选择角色的背包里. 如果	<br>
+#物品数量 省略, 那只添加一个物品.    第二种语法可以添加 精确的物品名字为 $itemname 的物品.	<br>
+.additemset	1	语法： .additemset #itemsetid    添加套装编号为 #itemsetid 的套装物品到你或者你所选择角色的背包里. 将会添加所有itemset相同的物品.	<br>
+.addmove	3	语法： .addmove #creature_guid [#等待时间]    添加你当前的位置为Guid等于#creature_guid生物的路径点. 等待时间非必须.	<br>
+.announce	3	语法： .announce $需要广播的消息    广播 $需要广播的消息 给所有在线的玩家.	<br>
+.aura	1	语法: .aura #spellid    为目标添加ID为 #spellid 的光环.	<br>
+.ban	3	语法： ban &lt;account|ip|character&gt; $NameOrIp $bantime $reason    封禁相应IP、账号或角色,如果玩家在线,则先踢下线.  $bantime: 封禁时间值，也可以用类似&quot;4d20h3s&quot;表达.	<br>
+.baninfo	3	语法： baninfo &lt;account|ip|character&gt;    查看某一封禁的详细信息	<br>
+.bank	1	语法： .bank    显示你的银行的详细目录。	<br>
+.banlist	3	语法： banlist &lt;account|ip|character&gt; $NameOrIp    按要求显示封禁列表	<br>
+.cast	3	语法: .cast #spellid      向目标施放一个#spellid的魔法，没有目标则向你施放	<br>
+.cast back	3	语法: .cast back #spellid    使目标向你的人物施放一个#spellid代表的魔法	<br>
+.cast self	3	语法: .cast self #spellid    使目标向他自己施放一个#spellid代表的魔法	<br>
+.cast target	3	语法: .cast target #spellid      使目标向他的目标施放一个#spellid代表的魔法	<br>
+.commands	0	语法： .commands    显示你的帐号可以使用的命令.	<br>
+.cooldown	3	语法: .cooldown [#spell_id]    立即使目标的一个#spellid代表的魔法冷却，无目标则为你自己	<br>
+.damage	3	语法: .damage <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>d</mi><mi>a</mi><mi>m</mi><mi>a</mi><mi>g</mi><msub><mi>e</mi><mi>a</mi></msub><mi>m</mi><mi>o</mi><mi>u</mi><mi>n</mi><mi>t</mi><mo>[</mo></mrow><annotation encoding="application/x-tex">damage_amount [</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">d</span><span class="mord mathdefault">a</span><span class="mord mathdefault">m</span><span class="mord mathdefault">a</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mord"><span class="mord mathdefault">e</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">a</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathdefault">m</span><span class="mord mathdefault">o</span><span class="mord mathdefault">u</span><span class="mord mathdefault">n</span><span class="mord mathdefault">t</span><span class="mopen">[</span></span></span></span>school [<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi><mi>p</mi><mi>e</mi><mi>l</mi><mi>l</mi><mi>i</mi><mi>d</mi><mo>]</mo><mo>]</mo><mi mathvariant="normal">对</mi><mi mathvariant="normal">目</mi><mi mathvariant="normal">标</mi><mi mathvariant="normal">造</mi><mi mathvariant="normal">成</mi><mi mathvariant="normal">伤</mi><mi mathvariant="normal">害</mi><mi mathvariant="normal">数</mi><mi mathvariant="normal">为</mi></mrow><annotation encoding="application/x-tex">spellid]]    对目标造成伤害数为</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">s</span><span class="mord mathdefault">p</span><span class="mord mathdefault">e</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">i</span><span class="mord mathdefault">d</span><span class="mclose">]</span><span class="mclose">]</span><span class="mord cjk_fallback">对</span><span class="mord cjk_fallback">目</span><span class="mord cjk_fallback">标</span><span class="mord cjk_fallback">造</span><span class="mord cjk_fallback">成</span><span class="mord cjk_fallback">伤</span><span class="mord cjk_fallback">害</span><span class="mord cjk_fallback">数</span><span class="mord cjk_fallback">为</span></span></span></span>damage_amount， <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi><mi>c</mi><mi>h</mi><mi>o</mi><mi>o</mi><mi>l</mi><mi mathvariant="normal">为</mi><mi mathvariant="normal">伤</mi><mi mathvariant="normal">害</mi><mi mathvariant="normal">类</mi><mi mathvariant="normal">型</mi><mi mathvariant="normal">，</mi></mrow><annotation encoding="application/x-tex">school为伤害类型，</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">s</span><span class="mord mathdefault">c</span><span class="mord mathdefault">h</span><span class="mord mathdefault">o</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord cjk_fallback">为</span><span class="mord cjk_fallback">伤</span><span class="mord cjk_fallback">害</span><span class="mord cjk_fallback">类</span><span class="mord cjk_fallback">型</span><span class="mord cjk_fallback">，</span></span></span></span>spellid为造成伤害的魔法 或技能ID，可多选，省略则为普通伤害	<br>
+.debug anim	2	语法: .debug anim #emoteid    使你施放一个#emoteid代表的动作表情	<br>
+.debug getvalue	3	语法: .debug getvalue #field #isInt    获取目标的#field 值，无目标则为你自己。如果输出为 整数则#isInt 取值 1 	<br>
+.debug playsound	1	语法: .debug playsound #soundid   播放#soundid代表的声音，该声音只为你播放，其他玩家无法听到。 警告：客户端可能存在5000多种声音……	<br>
+.debug setvalue	3	语法: .debug setvalue #field #value #isInt   设定目标的#field 值，无目标则为你自己。如果设定为 整数则#isInt 取值 1。	<br>
+.debug standstate	2	语法: .debug standstate #emoteid   将你的角色站立时的表情动作改为 #emoteid所指.	<br>
+.debug update	3	语法: .debug update #field #value   更新目标的 #field 值为 #value.  如果省略#value则显示 #field的内容.	<br>
+.delticket	3	语法： .delticket all    .delticket #num     .delticket $character_name    all：将删除服务器上所有的ticket, $character_name 将删除该角色名的所有ticket, #num 将删除ID为 #num 的ticket.	<br>
+.demorph	1	语法： .demorph    恢复使用变形效果变形的角色.	<br>
+.die	1	语法： .die    杀死你所选择角色或生物. 如果没选择对象,将杀死你.	<br>
+.dismount	0	语法： .dismount    如果你有骑坐骑,将下马.	<br>
+.distance	3	语法： .distance    显示你的角色到你选定生物的距离.	<br>
+.explorecheat	1	语法： .explorecheat #标记    显示或者隐藏你所选择玩家的所有的 探索地图. 如果没有选择玩家将会显示或隐藏你的 探索地图.    使用标记 1 来显示,使用标记 0 来隐藏.	<br>
+.gm	1	语法: .gm on/off    启用、禁用 GM 模式	<br>
+.gm list	0	语法: .gm list  显示在线GM列表	<br>
+.gm visible	1	语法: .gm visible on/off    使GM是否对玩家可见	<br>
+.go creature	2	语法: .go creature #creature_guid    传送你到#creature_guid代表的生物位置.    .gocreature #creature_name  传送你到名为#creature_name	<br>
+的生物未位置   .gocreature id #creature_id  传送你到 #creature_id为模板的生物位置，如果不止一个，则传送到最早刷出的生物身边	<br>
+.go graveyard	2	语法: .go graveyard #graveyardId     传送你到#graveyardId 所代表的墓地。	<br>
+.go grid	1	语法: .go grid #gridX #gridY [#mapId]    传送你到 #mapId所代表的地图、#gridX #gridY所构成的网格的中心，省略#mapId 则为当前地图.	<br>
+.go object	1	语法: .go object #object_guid    传送你到 #object_guid所代表的物体位置	<br>
+.go trigger	2	语法: .go trigger #trigger_id    传送你到 #trigger_id所代表的传送门.如果传送门正在运作将传送你到该传送门的目的地	<br>
+.go xy	1	语法: .go xy #x #y [#mapid]    传送你到地图id为#mapid 、坐标为(#x,#y) 的地平面或水平面上，省略 #mapid则为当前地图	<br>
+.go xyz	1	语法: .go xyz #x #y #z [#mapid]    传送你到地图id为#mapid 、坐标为(#x,#y,#z)的 地平面或水平面上，省略 #mapid则为当前地图	<br>
+.go zonexy	1	语法: .go zonexy #x #y [#zone]   传送你到区域id为#zone 、坐标为(#x,#y) 地平面或水平面上，省略#zone则为当前区域，可以用 .lookup area $namepart查询相应#zone	<br>
+.gobject add	2	语法: .gobject add #id <spawntimeSecs>   从物体末班中添加一个 #id代表的物体到当前世界位置.    Spawntimesecs为刷新时间，非必须.    注意: 此为.gameobject的翻版	<br>
+.gobject delete	2	语法: .gobject delete #go_guid   删除当前世界中 #go_guid所代表的物体	<br>
+.gobject move	2	语法: .gobject move #goguid [#x #y #z]    移动#goguid代表的物体到 (#x,#y,#z)的坐标位置 ，省略坐标则为你的当前位置	<br>
+.gobject near 	3	语法: .gobject near  [#distance]    列出与玩家距离#distance 的所有物体，包括物体guidID and 坐标. 省略 #distance则为默认值10	<br>
+.gobject target	2	语法: .gobject target [#go_id|#go_name_part]   锁定 以 #go_id 为模板或名字包含 #go_name_part 所刷出的最近的物体，省略#go_id 和 #go_name_part则锁定最近的一个物体.	<br>
+.gobject turn	2	语法: .gobject turn #goguid    设定 #goguid 所代表的物体朝向为当前你的朝向	<br>
+.goname	1	语法： .goname <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>c</mi><mi>h</mi><mi>a</mi><mi>r</mi><mi>a</mi><mi>c</mi><mi>t</mi><mi>e</mi><mi>r</mi><mi>n</mi><mi>a</mi><mi>m</mi><mi>e</mi><mi mathvariant="normal">传</mi><mi mathvariant="normal">送</mi><mi mathvariant="normal">到</mi><mi mathvariant="normal">角</mi><mi mathvariant="normal">色</mi><mi mathvariant="normal">名</mi><mi mathvariant="normal">为</mi></mrow><annotation encoding="application/x-tex">charactername    传送到角色名为</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">c</span><span class="mord mathdefault">h</span><span class="mord mathdefault">a</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">a</span><span class="mord mathdefault">c</span><span class="mord mathdefault">t</span><span class="mord mathdefault">e</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">n</span><span class="mord mathdefault">a</span><span class="mord mathdefault">m</span><span class="mord mathdefault">e</span><span class="mord cjk_fallback">传</span><span class="mord cjk_fallback">送</span><span class="mord cjk_fallback">到</span><span class="mord cjk_fallback">角</span><span class="mord cjk_fallback">色</span><span class="mord cjk_fallback">名</span><span class="mord cjk_fallback">为</span></span></span></span>charactername的玩家那. 用角色名或者点击玩家的头像,例如 组队时候的头像.	<br>
+.gps	1	语法： .gps    显示你所选择角色或生物的位置信息. 位置信息包括 X轴, Y轴, Z轴, 和朝向, MapId and ZoneId	<br>
+.guid	3	语法： .guid    显示你所选择角色的GUID.	<br>
+.guild create	2	语法: .guild create $GuildLeaderName $GuildName  创建一个以 $GuildName 为名的公会，会长为 $GuildLeaderName.	<br>
+.guild delete	2	语法: .guild delete <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>G</mi><mi>u</mi><mi>i</mi><mi>l</mi><mi>d</mi><mi>N</mi><mi>a</mi><mi>m</mi><mi>e</mi><mi mathvariant="normal">删</mi><mi mathvariant="normal">除</mi><mi mathvariant="normal">名</mi><mi mathvariant="normal">为</mi></mrow><annotation encoding="application/x-tex">GuildName   删除名为</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">G</span><span class="mord mathdefault">u</span><span class="mord mathdefault">i</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">d</span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mord mathdefault">a</span><span class="mord mathdefault">m</span><span class="mord mathdefault">e</span><span class="mord cjk_fallback">删</span><span class="mord cjk_fallback">除</span><span class="mord cjk_fallback">名</span><span class="mord cjk_fallback">为</span></span></span></span>GuildName的公会.	<br>
+.guild invite	2	语法: .guild invite $CharacterName <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>G</mi><mi>u</mi><mi>i</mi><mi>l</mi><mi>d</mi><mi>N</mi><mi>a</mi><mi>m</mi><mi>e</mi><mi mathvariant="normal">添</mi><mi mathvariant="normal">加</mi><mi mathvariant="normal">名</mi><mi mathvariant="normal">为</mi></mrow><annotation encoding="application/x-tex">GuildName   添加名为</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">G</span><span class="mord mathdefault">u</span><span class="mord mathdefault">i</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">d</span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mord mathdefault">a</span><span class="mord mathdefault">m</span><span class="mord mathdefault">e</span><span class="mord cjk_fallback">添</span><span class="mord cjk_fallback">加</span><span class="mord cjk_fallback">名</span><span class="mord cjk_fallback">为</span></span></span></span>CharacterName的角色进入公会 $GuildName.	<br>
+.guild rank	2	语法: .guild rank <span class='katex-error' title='ParseError: KaTeX parse error: Expected &#039;EOF&#039;, got &#039;#&#039; at position 15: CharacterName #̲Rank    设定角色'>CharacterName #Rank    设定角色</span>CharacterName 的公会等级为 #Rank 	<br>
+.guild uninvite	2	语法: .guild uninvite $CharacterName    从公会中将角色 $CharacterName移除	<br>
+.help	0	语法： .help $command    显示 $command 命令的使用方法介绍.	<br>
+.hidearea	3	语法： .hidearea #areaid    隐藏你所选择角色的地图区域ID 为 #areaid 的地图区域. 如果没有选择角色,将隐藏你的.	<br>
+.honor add	2	语法: .honor add $amount    增加目标玩家今天所获得的荣誉值 $amount	<br>
+.honor addkill	2	语法: .honor addkill   添加目标为你今天的PVP荣誉来源 (只有对方是玩家伙种族领袖是你才会获得荣誉)	<br>
+.honor update	2	语法: .honor update    在目标玩家昨天荣誉值基础上更新今天的荣誉值数据 ，并重置目标玩家今天的荣誉值	<br>
+.hover	1	语法： .hover #flag    允许或禁止你的角色的悬空模式.    使用 #flag等于 1 允许悬空, 使用 #flag等于 0 禁止悬空.	<br>
+.idleshutdown	3	语法： .idleshutdown #delay|cancel    如果当前服务器上没有玩家,则在#delay秒后关闭服务器,如果使用的是cancel则取消关闭服务器.	<br>
+.info	0	语法： .info    显示连接的在服务器上的所有玩家数量.	<br>
+.itemmove	3	语法： .itemmove #sourceslotid #destinationslotid    移动物品栏为#sourceslotid 的物品到物品栏为 #destinationslotid 的地方.    尚未实现	<br>
+.kick	3	语法： .kick <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>c</mi><mi>h</mi><mi>a</mi><mi>r</mi><mi>a</mi><mi>c</mi><mi>t</mi><mi>e</mi><mi>r</mi><mi>n</mi><mi>a</mi><mi>m</mi><mi>e</mi><mi mathvariant="normal">将</mi><mi mathvariant="normal">角</mi><mi mathvariant="normal">色</mi><mi mathvariant="normal">名</mi><mi mathvariant="normal">为</mi></mrow><annotation encoding="application/x-tex">charactername    将角色名为</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">c</span><span class="mord mathdefault">h</span><span class="mord mathdefault">a</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">a</span><span class="mord mathdefault">c</span><span class="mord mathdefault">t</span><span class="mord mathdefault">e</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">n</span><span class="mord mathdefault">a</span><span class="mord mathdefault">m</span><span class="mord mathdefault">e</span><span class="mord cjk_fallback">将</span><span class="mord cjk_fallback">角</span><span class="mord cjk_fallback">色</span><span class="mord cjk_fallback">名</span><span class="mord cjk_fallback">为</span></span></span></span>charactername的玩家从服务器上踢下线.	<br>
+.learn	3	语法： .learn #spellID    给你所选择的角色学习ID为 #spellID的魔法.     只有GM可以使用     .learn all 来学习所有GM默认的魔法,     .learn all_lang 	<br>
+来学习所有语言,     and .learn all_myclass 来学习自己职业的所有可用魔法(选择其他角色将被忽略).	<br>
+.learn all	3	语法: .learn all    学习所有可能对管理员有用的魔法、技能	<br>
+.learn all_crafts	2	语法: .learn crafts   学习所有专业和卷轴配方.	<br>
+.learn all_default	1	语法: .learn all_default [<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>p</mi><mi>l</mi><mi>a</mi><mi>y</mi><mi>e</mi><mi>r</mi><mi>n</mi><mi>a</mi><mi>m</mi><mi>e</mi><mo>]</mo><mi mathvariant="normal">让</mi><mi mathvariant="normal">名</mi><mi mathvariant="normal">为</mi></mrow><annotation encoding="application/x-tex">playername]   让名为</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">p</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">a</span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mord mathdefault">e</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">n</span><span class="mord mathdefault">a</span><span class="mord mathdefault">m</span><span class="mord mathdefault">e</span><span class="mclose">]</span><span class="mord cjk_fallback">让</span><span class="mord cjk_fallback">名</span><span class="mord cjk_fallback">为</span></span></span></span>playername 的玩家学会其职业和种族的全部魔法技能，以及通过完成任务所学会的魔法技能	<br>
+.learn all_gm	2	语法: .learn all_gm    学习GM的所有默认魔法技能	<br>
+.learn all_lang	1	语法: .learn all_lang    学习所有语言	<br>
+.learn all_myclass	3	语法: .learn all_myclass    学习所有本职业的魔法技能和天赋	<br>
+.learn all_myspells	3	语法: .learn all_myspells    学习本职业的所有魔法和技能（天赋和天赋技能除外）	<br>
+.learn all_mytalents	3	语法: .learn all_mytalents    学习本职业所有天赋和天赋技能	<br>
+.levelup	1	语法： .levelup #numberoflevels    增加里所选择角色的等级 #numberoflevels,人物的最高等级不要超过255. 如果 #numberoflevels 省略, 等级将增加1级. 如果没有选择的角色,将增加你自己的等级.	<br>
+.linkgrave	3	语法： .linkgrave #graveyard_id [alliance或horde]    为所有阵营的玩家(或者 alliance为联盟/horde为部落的灵魂)链接当前Zone的墓地到墓地ID为	<br>
+#graveyard_id的墓地.如果墓地到被链接的地区(zone)最近,并且接受该阵营,则玩家死后灵魂将被传送到该墓地. 只能增加单一墓地在一个地图上并且该地图上没有被链接的墓地(或者打算链接的地图).	<br>
+.list creature	3	语法: .list creature #creature_id [#max_count]    列出以 #creature_id为模板的所有生物，包括guid和坐标。输出数最大为#max_count c 省略#max_count，则默认最大为10个.	<br>
+.list item	3	语法: .list item #item_id [#max_count]    列出所有角色银行、邮箱、包裹、拍卖行中以 #item_id 为模板的所有物品。列出它们的guid、物主guid、物主账号和名字。 输出最大数为 #max_count.省略 #max_count则为默认最大值10.	<br>
+.list object	3	语法: .list object #gameobject_id [#max_count]   列出以 #gameobject_id 为模板的所有物体. 包括guid和相对玩家的坐标. 列出的最大数为#max_count. 省略#max_count则为默认最大值10	<br>
+.loadscripts	3	语法： .loadscripts $scriptlibraryname    在服务器正在运行时候你改变了脚本库,用该命令卸载当前脚本,并载入脚本库名为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi><mi>c</mi><mi>r</mi><mi>i</mi><mi>p</mi><mi>t</mi><mi>l</mi><mi>i</mi><mi>b</mi><mi>r</mi><mi>a</mi><mi>r</mi><mi>y</mi><mi>n</mi><mi>a</mi><mi>m</mi><mi>e</mi><mi mathvariant="normal">的</mi><mi mathvariant="normal">脚</mi><mi mathvariant="normal">本</mi><mi mathvariant="normal">库</mi><mi mathvariant="normal">或</mi><mi mathvariant="normal">如</mi><mi mathvariant="normal">果</mi><mi mathvariant="normal">省</mi><mi mathvariant="normal">略</mi></mrow><annotation encoding="application/x-tex">scriptlibraryname的脚本库 或 如果省略</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">s</span><span class="mord mathdefault">c</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">i</span><span class="mord mathdefault">p</span><span class="mord mathdefault">t</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">i</span><span class="mord mathdefault">b</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">a</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mord mathdefault">n</span><span class="mord mathdefault">a</span><span class="mord mathdefault">m</span><span class="mord mathdefault">e</span><span class="mord cjk_fallback">的</span><span class="mord cjk_fallback">脚</span><span class="mord cjk_fallback">本</span><span class="mord cjk_fallback">库</span><span class="mord cjk_fallback">或</span><span class="mord cjk_fallback">如</span><span class="mord cjk_fallback">果</span><span class="mord cjk_fallback">省</span><span class="mord cjk_fallback">略</span></span></span></span>scriptlibraryname 将只卸载当前脚本库.	<br>
+.lockaccount	0	语法: .lockaccount [on|off]    开启/关闭让所有账号只能用当前IP登录服务器	<br>
+.lookup area	1	语法: .lookup area $namepart   查询名字中包含 $namepart的地域名字, 将返回所有符合条件的地域ID	<br>
+.lookup creature	3	语法: .lookup creature $namepart    查询名字中包含 $namepart的生物,将返回所有符合条件的生物ID	<br>
+.lookup faction	3	语法: .lookup faction <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi><mi>a</mi><mi>m</mi><mi>e</mi><mi mathvariant="normal">查</mi><mi mathvariant="normal">询</mi><mi mathvariant="normal">以</mi></mrow><annotation encoding="application/x-tex">name   查询以</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span><span class="mord mathdefault">a</span><span class="mord mathdefault">m</span><span class="mord mathdefault">e</span><span class="mord cjk_fallback">查</span><span class="mord cjk_fallback">询</span><span class="mord cjk_fallback">以</span></span></span></span>name.为名的阵营ID	<br>
+.lookup item	3	语法: .lookup item <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi><mi>t</mi><mi>e</mi><mi>m</mi><mi>n</mi><mi>a</mi><mi>m</mi><mi>e</mi><mi mathvariant="normal">查</mi><mi mathvariant="normal">询</mi><mi mathvariant="normal">以</mi></mrow><annotation encoding="application/x-tex">itemname    查询以</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span><span class="mord mathdefault">t</span><span class="mord mathdefault">e</span><span class="mord mathdefault">m</span><span class="mord mathdefault">n</span><span class="mord mathdefault">a</span><span class="mord mathdefault">m</span><span class="mord mathdefault">e</span><span class="mord cjk_fallback">查</span><span class="mord cjk_fallback">询</span><span class="mord cjk_fallback">以</span></span></span></span>itemname 为名的物品ID	<br>
+.lookup itemset	3	语法: .lookup itemset $itemname    查询以 $itemname名称为其一的套装的所有装备代码	<br>
+.lookup object	3	语法: .lookup object <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>o</mi><mi>b</mi><mi>j</mi><mi>n</mi><mi>a</mi><mi>m</mi><mi>e</mi><mi mathvariant="normal">查</mi><mi mathvariant="normal">询</mi><mi mathvariant="normal">名</mi><mi mathvariant="normal">字</mi><mi mathvariant="normal">中</mi><mi mathvariant="normal">包</mi><mi mathvariant="normal">含</mi></mrow><annotation encoding="application/x-tex">objname    查询名字中包含</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">o</span><span class="mord mathdefault">b</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mord mathdefault">n</span><span class="mord mathdefault">a</span><span class="mord mathdefault">m</span><span class="mord mathdefault">e</span><span class="mord cjk_fallback">查</span><span class="mord cjk_fallback">询</span><span class="mord cjk_fallback">名</span><span class="mord cjk_fallback">字</span><span class="mord cjk_fallback">中</span><span class="mord cjk_fallback">包</span><span class="mord cjk_fallback">含</span></span></span></span>objname的物体ID,将返回所有符合条件的ID	<br>
+.lookup quest	3	语法: .lookup quest <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi><mi>a</mi><mi>m</mi><mi>e</mi><mi>p</mi><mi>a</mi><mi>r</mi><mi>t</mi><mi mathvariant="normal">查</mi><mi mathvariant="normal">询</mi><mi mathvariant="normal">名</mi><mi mathvariant="normal">字</mi><mi mathvariant="normal">中</mi><mi mathvariant="normal">包</mi><mi mathvariant="normal">含</mi></mrow><annotation encoding="application/x-tex">namepart    查询名字中包含</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.80952em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">n</span><span class="mord mathdefault">a</span><span class="mord mathdefault">m</span><span class="mord mathdefault">e</span><span class="mord mathdefault">p</span><span class="mord mathdefault">a</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">t</span><span class="mord cjk_fallback">查</span><span class="mord cjk_fallback">询</span><span class="mord cjk_fallback">名</span><span class="mord cjk_fallback">字</span><span class="mord cjk_fallback">中</span><span class="mord cjk_fallback">包</span><span class="mord cjk_fallback">含</span></span></span></span>namepart的任务ID, 将返回所有符合条件的ID	<br>
+.lookup skill	3	语法: .lookup skill $$namepart    查询名字中包含$namepart的商业技能ID, 将返回所有符合条件的ID	<br>
+.lookup spell	3	语法: .lookup spell <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi><mi>a</mi><mi>m</mi><mi>e</mi><mi>p</mi><mi>a</mi><mi>r</mi><mi>t</mi><mi mathvariant="normal">查</mi><mi mathvariant="normal">询</mi><mi mathvariant="normal">名</mi><mi mathvariant="normal">字</mi><mi mathvariant="normal">中</mi><mi mathvariant="normal">包</mi><mi mathvariant="normal">含</mi></mrow><annotation encoding="application/x-tex">namepart    查询名字中包含</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.80952em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">n</span><span class="mord mathdefault">a</span><span class="mord mathdefault">m</span><span class="mord mathdefault">e</span><span class="mord mathdefault">p</span><span class="mord mathdefault">a</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">t</span><span class="mord cjk_fallback">查</span><span class="mord cjk_fallback">询</span><span class="mord cjk_fallback">名</span><span class="mord cjk_fallback">字</span><span class="mord cjk_fallback">中</span><span class="mord cjk_fallback">包</span><span class="mord cjk_fallback">含</span></span></span></span>namepart的职业技能法术ID, 将返回所有符合条件的ID	<br>
+.lookup tele	1	语法: .lookup tele <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi><mi>u</mi><mi>b</mi><mi>s</mi><mi>t</mi><mi>r</mi><mi>i</mi><mi>n</mi><mi>g</mi><mi mathvariant="normal">查</mi><mi mathvariant="normal">询</mi><mi mathvariant="normal">到</mi></mrow><annotation encoding="application/x-tex">substring    查询到</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">s</span><span class="mord mathdefault">u</span><span class="mord mathdefault">b</span><span class="mord mathdefault">s</span><span class="mord mathdefault">t</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">i</span><span class="mord mathdefault">n</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mord cjk_fallback">查</span><span class="mord cjk_fallback">询</span><span class="mord cjk_fallback">到</span></span></span></span>substring的 .tele 命令	<br>
+.maxskill	1	用法： .maxskill    把你选择角色的所有技能的当前值设置为最大.	<br>
+.Mod32Value	3	语法： .Mod32Value #field #value    添加值 #value 到你的角色的 #field.	<br>
+.modify arena	3	语法: .modify arena #value    设定目标竞技点数为#value (取值0-999999).	<br>
+.modify aspeed	1	语法： .modify aspeed #speed    修改你所选择角色的所有的速度包括 向前跑 游泳 后退. 如果没有选择玩家,将修改你的速度.     #speed 必须在0到50范围内.	<br>
+.modify bit	1	语法： .modify bit #field #bit    修改你选择角色的#field的bit值为#bit. 如果没有选择玩家,将修改你自己.	<br>
+.modify bwalk	1	语法： .modify bwalk #speed    修改你所选择玩家的后退速度. 如果没有选择玩家,将改变你自己的速度.     #speed 必须在0到50范围内.	<br>
+.modify drunk	1	语法: .modify drunk #value    设定目标醉酒等级#value (0..100). 0 为移除醉酒状态, 100是最高	<br>
+.modify energy	1	语法： .modify energy #energy    修改你所选择玩家的能量值. 如果没有选择玩家,将改变你自己的能量.	<br>
+.modify faction	1	语法： .modify faction #factionid #flagid #npcflagid #dynamicflagid    修改你所选择生物的阵营为#factionid ,flagid为#flagid. 不用多说,显示所选择生物的faction和flags.	<br>
+.modify honor	1	语法:  .modify honor <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi><mi>m</mi><mi>o</mi><mi>u</mi><mi>n</mi><mi>t</mi><mi mathvariant="normal">增</mi><mi mathvariant="normal">加</mi><mi mathvariant="normal">目</mi><mi mathvariant="normal">标</mi><mi mathvariant="normal">的</mi><mi mathvariant="normal">荣</mi><mi mathvariant="normal">誉</mi><mi mathvariant="normal">值</mi></mrow><annotation encoding="application/x-tex">amount    增加目标的荣誉值</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.61508em;vertical-align:0em;"></span><span class="mord mathdefault">a</span><span class="mord mathdefault">m</span><span class="mord mathdefault">o</span><span class="mord mathdefault">u</span><span class="mord mathdefault">n</span><span class="mord mathdefault">t</span><span class="mord cjk_fallback">增</span><span class="mord cjk_fallback">加</span><span class="mord cjk_fallback">目</span><span class="mord cjk_fallback">标</span><span class="mord cjk_fallback">的</span><span class="mord cjk_fallback">荣</span><span class="mord cjk_fallback">誉</span><span class="mord cjk_fallback">值</span></span></span></span>amount	<br>
+.modify hp	1	语法： .modify hp #newhp    修改所选择玩家的血量. 如果没有选择玩家, 将修改你的血量.	<br>
+.modify mana	1	语法： .modify mana #newmana    修改所选择玩家的魔法值. 如果没有选择玩家, 将修改你的魔法值.	<br>
+.modify money	1	语法：    .modify money #money    .money #money    增加或者减少你选择玩家的钱,如果没选择玩家,则为自己.     #gold为负数时是减少钱.	<br>
+.modify morph	2	语法:  .modify morph #displayid    改变你的模型为 #displayid.	<br>
+.modify mount	1	语法:  .modify mount #id #speed    使目标骑上 #id 所代表的生物，并设定速度为 #speed.	<br>
+.modify rage	1	语法： .modify rage #newrage    修改所选择玩家的怒气值. 如果没有选择玩家, 将修改你的怒气值.	<br>
+.modify rep	2	语法:  .modify rep #repId (#repvalue | $rankname [#delta])    设定目标玩家在 #repId 所指阵营的声望值为#repvalue 或声望阶段为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>r</mi><mi>e</mi><mi>p</mi><mi>r</mi><mi>a</mi><mi>n</mi><mi>k</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">如</mi><mi mathvariant="normal">果</mi><mi mathvariant="normal">用</mi></mrow><annotation encoding="application/x-tex">reprank. 	
+		如果用</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">e</span><span class="mord mathdefault">p</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">a</span><span class="mord mathdefault">n</span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mord">.</span><span class="mord cjk_fallback">如</span><span class="mord cjk_fallback">果</span><span class="mord cjk_fallback">用</span></span></span></span>rankname指明声望阶段，则修改后声望值为达到该阶段的最小值。你可以用 .pinfo rep  命令列出所有已知声望阵营的ID，或使用 .lookup faction $name  命令查询指定阵营的ID。	<br>
+.modify scale	1	语法： .modify scale #size    修改所选择生物的大小	<br>
+.modify speed	1	语法： .modify speed #speed    修改玩家向前跑步的速度. 如果没有选择玩家, 将修改你的速度.     #speed必须在范围0到50以内.	<br>
+.modify spell	1	语法： .modify spell    修改spell 	<br>
+.modify swim	1	语法： .modify swim #speed    修改所选择玩家的游泳速度. 如果没有选择玩家, 将修改你的游泳速度.     #speed 必须在0到50范围内.	<br>
+.modify titles	3	语法:  .modify titles #mask    .titles #mask   从#mask表选择、修改玩家头衔  #mask=0 禁用头衔选择列表	<br>
+.movegens	3	语法:  .movegens    显示目标的移动触发机制	<br>
+.mute	1	语法:  .mute $playerName $timeInMinutes   对玩家 $playerName 禁言 $timeInMinutes 分钟	<br>
+.namego	3	语法： .namego <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>c</mi><mi>h</mi><mi>a</mi><mi>r</mi><mi>a</mi><mi>c</mi><mi>t</mi><mi>e</mi><mi>r</mi><mi>n</mi><mi>a</mi><mi>m</mi><mi>e</mi><mi mathvariant="normal">把</mi><mi mathvariant="normal">角</mi><mi mathvariant="normal">色</mi><mi mathvariant="normal">名</mi><mi mathvariant="normal">为</mi></mrow><annotation encoding="application/x-tex">charactername    把角色名为</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">c</span><span class="mord mathdefault">h</span><span class="mord mathdefault">a</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">a</span><span class="mord mathdefault">c</span><span class="mord mathdefault">t</span><span class="mord mathdefault">e</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">n</span><span class="mord mathdefault">a</span><span class="mord mathdefault">m</span><span class="mord mathdefault">e</span><span class="mord cjk_fallback">把</span><span class="mord cjk_fallback">角</span><span class="mord cjk_fallback">色</span><span class="mord cjk_fallback">名</span><span class="mord cjk_fallback">为</span></span></span></span>charactername的玩家传送到你身边. 用角色名或者点击玩家的头像,例如 组队时候的头像.	<br>
+.neargrave	3	语法： .neargrave [alliance|horde]    查找链接到该区域(zone)的最近的墓地 (或者使用alliance查找联盟阵营或horde查找部落阵营).	<br>
+.notify	1	语法: .notify $MessageToBroadcast    向所有在线玩家屏幕上发送滚动信息	<br>
+.npc add	2	语法: .npc add #creatureid    刷出一个以#creatureid为模板的生物	<br>
+.npc additem	2	语法: .npc additem #itemId &lt;#maxcount&gt;&lt;#incrtime&gt;&lt;#extendedcost&gt;   向被选商人的售卖列表中添加一个ID为#itemid 的物品. #maxcount：	<br>
+最大库存。 #incrtime：补充时间间隔。  #extendedcost：卖价	<br>
+.npc addweapon	3	Not yet implemented.	<br>
+.npc allowmove	3	语法: .npc allowmove    启用/禁用目标生物的移动	<br>
+.npc changelevel	2	语法: .npc changelevel #level    改变所选npc的等级 #level介于1~63	<br>
+.npc delete	2	语法: .npc delete   删除所选生物	<br>
+.npc delitem	2	语法: .npc delitem #itemId    从被选商人的收买列表中移除一个 #itemId 代表的物品	<br>
+.npc factionid	2	语法: .npc factionid #factionid    改变所选生物的阵营为 #factionid 所指阵营	<br>
+.npc flag	2	语法: .npc flag #npcflag    设定所选NPC的标签和对应模板的标签为 #npcflag. 该标签会在服务器重启后应用于所有以该模板刷出的 NPC 。	<br>
+.npc info	3	语法: .npc info    列出被选NPC的详细描述。 包括： - GUID, Faction, NPC flags, Entry ID, Model ID,    - Level,    - Health (current/maximum),   	<br>
+- Field flags, dynamic flags, faction template,     - 位置信息    -  creature type 	<br>
+.npc move	2	语法: .npc move [#creature_guid]    移动目标生物到你的位置	<br>
+.npc name	2	语法: .npc name $name    改变所选生物或角色的名字为 $name.   该命令已禁止。	<br>
+.npc playemote	3	语法: .npc playemote #emoteid    使所选生物做 #emoteid 所指的表情动作	<br>
+.npc setmodel	2	语法: .npc setmodel #displayid   改变所选生物的模型为 #displayid 所指的模型.	<br>
+.npc setmovetype	2	语法: .npc setmovetype [#creature_guid] stay/random/way [NODEL]    设定#creature_guid所指生物的移动方式为 stay/random/way 并将其移动	<br>
+到刷新点（如果他还活着的话）。 若不使用NODEL参数，该生物的任何已存在的路径点将被删除. 如果该生物已死亡，则该移动方式会在其下次刷新时生效.如果你想保留路径点的话请使用NODEL参数	<br>
+.npc spawndist	2	语法: .npc spawndist #dist    调整所选生物的刷新距离为#dist	<br>
+.npc spawntime	2	语法: .npc spawntime #time     调整所选生物的刷新时间#time.	<br>
+.npc subname	2	语法: .npc subname $Name    改变所选生物的subname为 $Name.    该命令已禁止	<br>
+.npc textemote	3	语法: .npc textemote #emoteid    使所选生物做 #emoteid 所指的文本表述.	<br>
+.npc whisper	1	语法: .npc whisper #playerguid #text    使所选NPC向玩家 #playerguid 低语#text 	<br>
+.password	0	语法: .password $old_password $new_password <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi><mi>e</mi><msub><mi>w</mi><mi>p</mi></msub><mi>a</mi><mi>s</mi><mi>s</mi><mi>w</mi><mi>o</mi><mi>r</mi><mi>d</mi><mi mathvariant="normal">更</mi><mi mathvariant="normal">改</mi><mi mathvariant="normal">你</mi><mi mathvariant="normal">账</mi><mi mathvariant="normal">号</mi><mi mathvariant="normal">的</mi><mi mathvariant="normal">密</mi><mi mathvariant="normal">码</mi><mi mathvariant="normal">.</mi><mi>p</mi><mi>i</mi><mi>n</mi><mi>f</mi><mi>o</mi><mn>3</mn><mi mathvariant="normal">语</mi><mi mathvariant="normal">法</mi><mi mathvariant="normal">：</mi><mi mathvariant="normal">.</mi><mi>p</mi><mi>i</mi><mi>n</mi><mi>f</mi><mi>o</mi><mo>[</mo></mrow><annotation encoding="application/x-tex">new_password    更改你账号的密码	
+.pinfo	3	语法： .pinfo [</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.036108em;vertical-align:-0.286108em;"></span><span class="mord mathdefault">n</span><span class="mord mathdefault">e</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.15139200000000003em;"><span style="top:-2.5500000000000003em;margin-left:-0.02691em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">p</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mord mathdefault">a</span><span class="mord mathdefault">s</span><span class="mord mathdefault">s</span><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">d</span><span class="mord cjk_fallback">更</span><span class="mord cjk_fallback">改</span><span class="mord cjk_fallback">你</span><span class="mord cjk_fallback">账</span><span class="mord cjk_fallback">号</span><span class="mord cjk_fallback">的</span><span class="mord cjk_fallback">密</span><span class="mord cjk_fallback">码</span><span class="mord">.</span><span class="mord mathdefault">p</span><span class="mord mathdefault">i</span><span class="mord mathdefault">n</span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord mathdefault">o</span><span class="mord">3</span><span class="mord cjk_fallback">语</span><span class="mord cjk_fallback">法</span><span class="mord cjk_fallback">：</span><span class="mord">.</span><span class="mord mathdefault">p</span><span class="mord mathdefault">i</span><span class="mord mathdefault">n</span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord mathdefault">o</span><span class="mopen">[</span></span></span></span>player_name]    显示你所选择玩家的帐号信息,或者如果使用了<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>p</mi><mi>l</mi><mi>a</mi><mi>y</mi><mi>e</mi><msub><mi>r</mi><mi>n</mi></msub><mi>a</mi><mi>m</mi><mi>e</mi><mi mathvariant="normal">则</mi><mi mathvariant="normal">显</mi><mi mathvariant="normal">示</mi><mi mathvariant="normal">玩</mi><mi mathvariant="normal">家</mi><mi mathvariant="normal">名</mi><mi mathvariant="normal">字</mi><mi mathvariant="normal">为</mi></mrow><annotation encoding="application/x-tex">player_name则显示 玩家名字为</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">p</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">a</span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mord mathdefault">e</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.02778em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathdefault">a</span><span class="mord mathdefault">m</span><span class="mord mathdefault">e</span><span class="mord cjk_fallback">则</span><span class="mord cjk_fallback">显</span><span class="mord cjk_fallback">示</span><span class="mord cjk_fallback">玩</span><span class="mord cjk_fallback">家</span><span class="mord cjk_fallback">名</span><span class="mord cjk_fallback">字</span><span class="mord cjk_fallback">为</span></span></span></span>player_name的玩家的帐号信息.	<br>
+.plimit	3	语法: .plimit [#num|-1|-2|-3|reset|player|moderator|gamemaster|administrator]   无参数则显示当前玩家总数和登录服务器的安全等级, 	<br>
+$num &gt; 0则为设置显示玩家总数 $num &lt; 0 则为安全限制级别 或安全等级名  reset： 添加player limit到config文件中	<br>
+.quest add	3	语法: .quest add #quest_id   添加1个任务ID为#quest_id的任务到目标玩家任务日志里. 如果该任务是物品触发的则不能用该命令添加,要用.additem制造这个物品,然后再接任务.	<br>
+.quest remove	3	语法: .quest remove #quest_id    设置目标玩家任务为未完成或未激活，并从任务日志中移除	<br>
+.recall	1	语法： .recall $place    传送你到世界的学多个城镇. <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>p</mi><mi>l</mi><mi>a</mi><mi>c</mi><mi>e</mi><mi mathvariant="normal">定</mi><mi mathvariant="normal">义</mi><mi mathvariant="normal">了</mi><mi mathvariant="normal">目</mi><mi mathvariant="normal">标</mi><mi mathvariant="normal">的</mi><mi mathvariant="normal">位</mi><mi mathvariant="normal">置</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">可</mi><mi mathvariant="normal">用</mi><mi mathvariant="normal">的</mi></mrow><annotation encoding="application/x-tex">place 定义了目标的位置.    可用的</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">p</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">a</span><span class="mord mathdefault">c</span><span class="mord mathdefault">e</span><span class="mord cjk_fallback">定</span><span class="mord cjk_fallback">义</span><span class="mord cjk_fallback">了</span><span class="mord cjk_fallback">目</span><span class="mord cjk_fallback">标</span><span class="mord cjk_fallback">的</span><span class="mord cjk_fallback">位</span><span class="mord cjk_fallback">置</span><span class="mord">.</span><span class="mord cjk_fallback">可</span><span class="mord cjk_fallback">用</span><span class="mord cjk_fallback">的</span></span></span></span>places包含: sunr, thun, cross, ogri, neth, thel, storm, iron, under,和 darr.	<br>
+.reload	3	语法: .reload 表名    重新加载表<code>表名</code> 如果重加载支持添加表并能正确被加载.	<br>
+.reload all	3	语法: .reload all    重新载入所有表格，如果某个表格支持重载添加，则它会被安全重载	<br>
+.reload all_area	3	语法: .reload all_area    重新载入 areatrigger_* （地区传送）表， 如果此表支持重载添加，则此表会被安全重载.	<br>
+.reload all_loot	3	语法: .reload all_loot    重新载入 <em><em>loot_template（掉落）表. 这些表可以在服务器启动以后再载入.	<br>
+.reload all_quest	3	语法: .reload all_quest   重新载入所有任务相关表格，如果这些表支持重载添加，则这些表会被安全重载.	<br>
+.reload all_spell	3	语法: .reload all    重新载入所有 spell</em></em>（技能魔法相关）表， 如果这些表支持重载添加，则这些表会被安全重载	<br>
+.reset all	3	语法: .reset all spells    语法: .reset all talents    需要每个已存在角色在下次登录时重置所有魔法技能和天赋	<br>
+.reset honor	3	语法:  .reset honor [Playername]     重置目标玩家的荣誉点	<br>
+.reset level	3	语法:  .reset level [Playername]     重置目标玩家的等级为1级，并重置所有技能魔法和属性状态，任何已装备的高等级物品将会丢失.	<br>
+.reset spells	3	语法:  .reset spells [Playername]    从魔法（技能）书中移除所有非应有的魔法技能. Playername可以为离线玩家的角色名字	<br>
+.reset stats	3	语法:  .reset stats [Playername]      重新计算目标玩家的所有属性状态为当前等级的应有值	<br>
+.reset talents	3	语法:  .reset talents [Playername]     移除目标玩家的所有天赋 Playername 可以为离线玩家的角色名字.	<br>
+.respawn	1	语法:  .respawn    立即刷新附近的所有生物.	<br>
+.revive	1	语法： .revive   复活目标玩家. 如果没有选择玩家, 则复活你自己.	<br>
+.save	0	语法： .save    保存玩家角色.	<br>
+.saveall	3	语法： .saveall    保存游戏里的所有角色信息.	<br>
+.security	3	语法： .security <span class='katex-error' title='ParseError: KaTeX parse error: Expected &#039;EOF&#039;, got &#039;#&#039; at position 6: name #̲level    设置玩家名字…'>name #level    设置玩家名字为</span>name的GM等级到#level.    #level 必须在0到5的范围内.	<br>
+.sendmail	1	语法: .sendmail #playername #subject #text   向目标玩家发送一封信。 注意：主题不能有空格	<br>
+.setskill	3	语法: .setskill #skill #level [#max]    设置目标玩家的以#skill所代表的当前技能的值为 #level ， #max ：为技能最大值，省略 #max 则为当前等级的最大值。无目标则为你自己。	<br>
+.showarea	3	语法： .showarea #areaid    显现地区ID(area)为 #areaid的地区的 探索地图,如果没有选择角色,将为你显现.	<br>
+.showhonor	0	语法： .showhonor    显示你的的荣誉级别.	<br>
+.shutdown	3	语法： .shutdown #delay|stop    如果使用#delay(秒)则在#delay秒后关闭服务器,如果使用#stop 则停止关闭服务器.	<br>
+.start	0	语法： .start    传送你的角色到你的出生地.	<br>
+.taxicheat	1	语法: .taxicheat on/off    Temporary grant access or remove to all taxi routes for the selected character. If no character is selected, 	<br>
+hide or reveal all routes to you.    Visited taxi nodes sill accessible after removing access.	<br>
+.tele	1	语法: .tele #location    传送玩家到一个给定的地点	<br>
+.tele add	3	语法: .tele add $name    将当前地点添加到 .tele 命令列表中，即增加 .tele $name  的命令，用于传送到当前位置	<br>
+.tele del	3	语法: .tele del $name    移除一个 .tele $name 的 .tele 命令	<br>
+.tele group	1	语法: .tele group#location    Teleport a selected player and his group members to a given location.	<br>
+.tele name	1	语法: .tele name #playername #location    传送玩家 #playername 到给定的位置 #location	<br>
+.ticket	3	语法： .ticket on       .ticket off      .ticket #num      .ticket $character_name    on或者off 直接为GM显示或者不显示ticket, <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>c</mi><mi>h</mi><mi>a</mi><mi>r</mi><mi>a</mi><mi>c</mi><mi>t</mi><mi>e</mi><msub><mi>r</mi><mi>n</mi></msub><mi>a</mi><mi>m</mi><mi>e</mi><mi mathvariant="normal">只</mi><mi mathvariant="normal">显</mi><mi mathvariant="normal">示</mi><mi mathvariant="normal">角</mi><mi mathvariant="normal">色</mi><mi mathvariant="normal">名</mi><mi mathvariant="normal">为</mi></mrow><annotation encoding="application/x-tex">character_name 	
+		只显示角色名为</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord mathdefault">c</span><span class="mord mathdefault">h</span><span class="mord mathdefault">a</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">a</span><span class="mord mathdefault">c</span><span class="mord mathdefault">t</span><span class="mord mathdefault">e</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.02778em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathdefault">a</span><span class="mord mathdefault">m</span><span class="mord mathdefault">e</span><span class="mord cjk_fallback">只</span><span class="mord cjk_fallback">显</span><span class="mord cjk_fallback">示</span><span class="mord cjk_fallback">角</span><span class="mord cjk_fallback">色</span><span class="mord cjk_fallback">名</span><span class="mord cjk_fallback">为</span></span></span></span>character_name玩家的ticket, #num 显示num为 #num的ticket.	<br>
+.transport	3	尚未实现。	<br>
+.unaura	3	语法: .unaura #spellid   移除目标身上#spellid 所指的光环	<br>
+.unban	3	语法 ： unban &lt;account|ip|character&gt; $NameOrIp    取消账号或IP的封禁	<br>
+.unlearn	3	语法： .unlearn #startspell #endspell    遗忘你所选择角色的魔法ID从 #startspell 到 #endspell范围内的所有魔法. 如果没有提供#endspell, 则只遗忘id为 #startspell的魔法.	<br>
+.unmute	1	语法: .unmute $playerName    取消对玩家 $playerName的禁言.	<br>
+.wchange	3	语法： .wchange #weathertype #status    设置当前的天气为 #weathertype, 天气状况 #status.    #weathertype 等于1为下雨, 2为下雪, 以及 3为沙尘暴. #status 等于0为禁止天气, 已经 1 为允许.	<br>
+.whispers	3	用法： .whispers on|off    允许/禁止 Gm接受其他玩家的悄悄话. 默认时候使用mangosd.conf的设置.	<br>
+.wp	2	使用WP命令:    每个路径命令都有自己的描述	<br>
+.wp add	2	语法: .wp add [#creature_guid] 为#creature_guid所指生物增加一个路径点，省略#creature_guid 则必须选定一个生物	<br>
+.wp export	3	语法: .wp export [#creature_guid] <span class='katex-error' title='ParseError: KaTeX parse error: Expected &#039;EOF&#039;, got &#039;#&#039; at position 12: filename  将#̲creature_guid所指…'>filename  将#creature_guid所指生物的路径 输出到文件</span>filename中，省略#creature_guid 则必须选定一个生物	<br>
+.wp import	3	语法: .wp import <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mi>i</mi><mi>l</mi><mi>e</mi><mi>n</mi><mi>a</mi><mi>m</mi><mi>e</mi><mi mathvariant="normal">为</mi><mi mathvariant="normal">所</mi><mi mathvariant="normal">选</mi><mi mathvariant="normal">目</mi><mi mathvariant="normal">标</mi><mi mathvariant="normal">生</mi><mi mathvariant="normal">物</mi><mi mathvariant="normal">导</mi><mi mathvariant="normal">入</mi><mi mathvariant="normal">名</mi><mi mathvariant="normal">为</mi></mrow><annotation encoding="application/x-tex">filename  为所选目标生物导入名为</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord mathdefault">i</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">e</span><span class="mord mathdefault">n</span><span class="mord mathdefault">a</span><span class="mord mathdefault">m</span><span class="mord mathdefault">e</span><span class="mord cjk_fallback">为</span><span class="mord cjk_fallback">所</span><span class="mord cjk_fallback">选</span><span class="mord cjk_fallback">目</span><span class="mord cjk_fallback">标</span><span class="mord cjk_fallback">生</span><span class="mord cjk_fallback">物</span><span class="mord cjk_fallback">导</span><span class="mord cjk_fallback">入</span><span class="mord cjk_fallback">名</span><span class="mord cjk_fallback">为</span></span></span></span>filename的路径文件	<br>
+.wp modify	2	语法: .wp modify [#creature_guid or Select a Creature] add :添加一个确定的路径点  visual：路径点可见  waittime $time：等候时间    emote ID：动作表情   	<br>
+spell ID：魔法技能    text1| text2| text3| text4| text5 <text>：文本    model1 ID：模型1    model2  ID：模型2   move：移动到玩家位置    del：删除    每次只允许用一个参数	<br>
+.wp show	2	语法: .wp show [#creature_guid or Select a Creature] on：开启   first：首个路径点   last：最后一个路径点  off：关闭   info：路径点信息  你必须先开启路径显示，然后选择一个可见路径点，才能使用 info参数显示详细信息</p>
+
+            </div>
+            
+            
+              <div class="post-footer">
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+      <strong class="language" data-lan="author">本文作者：</strong>
+      Whitehat
+    </li>
+    <li class="post-copyright-link">
+      <strong class="language" data-lan="link">本文链接：</strong>
+      <a href="https://52wow.github.io/post/7M7trk3ac/" title="GM指令解释（键盘 Ctrl+F 筛选关键字)">https://52wow.github.io/post/7M7trk3ac/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong class="language" data-lan="copyright">版权声明： </strong>
+      本博客所有文章除特别声明外，均采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i> BY-NC-SA</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+  <div class="tags">
+    
+  </div>
+  <div class="nav">
+    <div class="nav-prev">
+      
+        <i class="fa fa-chevron-left"></i>
+        <a class="nav-pc-next" title="GM技能大全（键盘 Ctrl+F 筛选关键字)" href="https://52wow.github.io/post/8VuQQrNKP/">GM技能大全（键盘 Ctrl+F 筛选关键字)</a class="nav-pc-next">
+        <a class="nav-mobile-prev" title="GM技能大全（键盘 Ctrl+F 筛选关键字)" href="https://52wow.github.io/post/8VuQQrNKP/">上一篇</a>
+      
+    </div>
+    <div class="nav-next">
+      
+        <a class="nav-pc-next" title="SQL数据库表单目录（键盘 Ctrl+F 筛选关键字)" href="https://52wow.github.io/post/YKKgmpcb9/">SQL数据库表单目录（键盘 Ctrl+F 筛选关键字)</a>
+        <a class="nav-mobile-next" title="SQL数据库表单目录（键盘 Ctrl+F 筛选关键字)" href="https://52wow.github.io/post/YKKgmpcb9/">下一篇</a>
+        <i class="fa fa-chevron-right"></i>
+      
+    </div>
+  </div>
 </div>
+            
+            
+  <script src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script>
+<div id="vcomments" style="padding: 10px 0px 0px 0px"></div>
+
+<style>
+  .v .veditor {
+    min-height: 10rem;
+    background-image: url('');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: right;
+    background-color: rgba(255, 255, 255, 0);
+    resize: none;
+  }
+
+  .v .vwrap {
+    border: 1px solid #000 !important;
+  }
+
+  .v .vbtn {
+    padding: .4rem 1.2rem !important;
+    border-color: #fff !important;
+    background-color: #49b1f5 !important;
+    color: #fff !important;
+    font-size: .7rem !important;
+  }
+
+  .v .vcards .vcard .vh .vmeta .vat {
+    padding: 0 .8rem !important;
+    border: 1px solid #00c4b6 !important;
+    border-radius: 5px !important;
+    color: #00c4b6 !important;
+  }
+</style>
 <script>
-
-  let fontStart = 12, fontEnd = 30, colorStart = '#666', colorEnd = '#000';
-  let tags = document.querySelector('#tags').children;
-  let counts = [];
-  for(let i = 0; i < tags.length; i++) {
-    counts.push(tags[i].rel);
-  }
-  let lowest = Math.min.apply(null,counts), highest = Math.max.apply(null,counts);;
-  let range = highest - lowest;
-  if (range === 0) {
-    range = 1;
-  }
-  let fontIncr, colorIncr;
-  fontIncr = (fontEnd - fontStart) / range;
-  
-  let sColorArr = toRGB(colorStart), eColorArr = toRGB(colorEnd);
-
-  for(let i = 0; i < tags.length; i++) {
-    let disCount = tags[i].rel - lowest;
-    let fontSize = fontStart + disCount * fontIncr;
-    let style = 'font-size: ' + fontSize + 'px;';
-    let arr = [];
-    for(let c = 0; c < sColorArr.length; c++) {
-      if (disCount === 0) {
-        disCount = 1;
-      }
-      let val = (sColorArr[c] - eColorArr[c]) / range * disCount;
-      if (val >= 100) {
-        val = eColorArr[c];
-      } else if (val <= 0) {
-        val = sColorArr[c];
-      }
-      arr[c] = Math.floor(val);
-    }
-    style += 'color: ' + toHex(arr);
-    tags[i].style = style;
-  }
-
-  function toRGB(code) {
-    if (code.length === 4) {
-      code = code.replace(/(\w)(\w)(\w)/gi, "\$1\$1\$2\$2\$3\$3");
-    }
-    var hex = /(\w{2})(\w{2})(\w{2})/.exec(code);
-    return [parseInt(hex[1], 16), parseInt(hex[2], 16), parseInt(hex[3], 16)];
-  }
-
-  function toHex(ary) {
-    return "#" + ((1 << 24) + (ary[0] << 16) + (ary[1] << 8) + ary[2]).toString(16).slice(1);
-  }
-
+  new Valine({
+    el: '#vcomments',
+    appId: '',
+    appKey: '',
+    avatar: '',
+    placeholder: '',
+    pageSize: '',
+    lang: 'zh-cn',
+    enableQQ: 'true' === 'true',
+    visitor: 'true' === 'true',
+    highlight: 'true' === 'true',
+    avatarForce: 'true' === 'false',
+  });
 </script>
-          </section>
+
+          </div>
         </div>
       </div>
     </div>
@@ -473,6 +824,253 @@
   }
 
 </script>
+    <div class="light-box" id="light_box"></div>
+<script>
+  let imgs = document.querySelectorAll('.post-body img');
+  let lightBox = document.querySelector('#light_box');
+  lightBox.addEventListener('mousedown', (e) => {
+    e.preventDefault()
+  })
+  lightBox.addEventListener('mousewheel', (e) => {
+    e.preventDefault()
+  })
+  let width = window.innerWidth * 0.8;
+  lightBox.onclick = () => {
+    let img = lightBox.querySelector('img');
+    lightBox.style = '';
+    img && img.remove();
+  }
+  imgs.forEach(item => {
+    item.onclick = function (e) {
+      let lightImg = document.createElement('img');
+      lightImg.src = this.src;
+      lightBox.style = `height: 100%; opacity: 1; background-color: rgba(0, 0, 0, 0.5);cursor: zoom-out;`;
+      lightImg.style = `width: ${width}px;border-radius: 2px;`;
+      lightImg.onclick = function () {
+        lightBox.style = '';
+        this.remove();
+      }
+      lightBox.append(lightImg);
+    }
+  })
+</script>
+    <div class="reward-mask" style="display: none;">
+  <div class="reward-relative">
+    <span class="close" aria-hidden="true">x</span>
+    <div class="reward-body">
+      <h2>感谢您的支持，我会继续努力的!</h2>
+      <div class="reward-img-box">
+        <div style="position: relative; width: 140px; height: 140px;">
+          
+          
+          
+        </div>
+      </div>
+      <p class="reward-word">扫码打赏，你说多少就多少</p>
+      <p class="reward-tip">打开微信扫一扫，即可进行扫码打赏哦</p>
+    </div>
+    <div class="bottom">
+      
+      
+    </div>
+  </div>
+</div>
+<style>
+  .reward-mask {
+    position: fixed;
+    z-index: 99999;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #00000054;
+  }
+
+  .reward-relative {
+    position: relative;
+    width: 480px;
+    text-align: center;
+    margin: 0 auto;
+    border-radius: 5px;
+    background-color: #fff;
+    top: 50%;
+    margin-top: -205px;
+  }
+
+  .reward-relative .close {
+    position: absolute;
+    right: 10px;
+    font-weight: normal;
+    font-size: 16px;
+    color: #929292;
+  }
+
+  .reward-body {
+    padding: 40px 20px 20px;
+  }
+
+  .bottom {
+    display: flex;
+  }
+
+  .reward-btn {
+    text-align: center;
+  }
+
+  .reward-btn-text {
+    display: inline-block;
+    cursor: pointer;
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    border-radius: 50%;
+    background-color: #ff9734;
+    color: #FFF;
+    margin-top: 20px;
+  }
+
+  .pay-text {
+    margin-top: 10px;
+    padding: 10px;
+    flex: 1;
+    transition: all .2s linear;
+  }
+
+  .pay-text:hover {
+    background-color: #a5a5a536;
+  }
+
+  .reward-body h2 {
+    padding-top: 10px;
+    text-align: center;
+    color: #a3a3a3;
+    font-size: 16px;
+    font-weight: normal;
+    margin: 0 0 20px;
+  }
+
+  .reward-body h2:after,
+  .reward-body h2:before {
+    font-family: Arial, Helvetica, sans-serif;
+    background: 0 0;
+    width: 0;
+    height: 0;
+    font-style: normal;
+    color: #eee;
+    font-size: 80px;
+    position: absolute;
+    top: 20px;
+  }
+
+  .reward-body h2:before {
+    content: '\201c';
+    left: 50px;
+  }
+
+  .reward-body h2:after {
+    content: '\201d';
+    right: 80px;
+  }
+
+  .reward-img-box {
+    display: inline-block;
+    padding: 10px;
+    border: 6px solid #ea5f00;
+    margin: 0 auto;
+    border-radius: 3px;
+    position: relative;
+  }
+
+  .reward-img {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+  }
+
+  @media (max-width: 767px) {
+    .reward-relative {
+      height: 100%;
+      top: 0px;
+      margin-top: 0;
+      width: auto;
+    }
+
+    .reward-relative .bottom {
+      flex-direction: column;
+    }
+
+    .reward-relative .pay-text {
+      width: 80%;
+      margin: 5px auto;
+      border: 1px solid silver;
+      padding: 6px;
+      border-radius: 4px;
+    }
+
+    .reward-body h2:after {
+      right: 40px;
+    }
+
+    .reward-body h2:after,
+    .reward-body h2:before {
+      font-size: 60px;
+    }
+
+    .reward-body h2:before {
+      left: 20px;
+    }
+  }
+</style>
+<script>
+  !function () {
+    var mask = document.querySelector('.reward-mask');
+    let close = document.querySelector('.reward-relative .close');
+    let rewardBtn = document.querySelector('.reward-btn');
+
+    let zfb = document.querySelector('#zfb'),
+      wx = document.querySelector('#wx'),
+      zfbBtn = document.querySelector('#zfbBtn'),
+      wxBtn = document.querySelector('#wxBtn');
+
+    if (zfbBtn && wxBtn) {
+      zfbBtn.addEventListener('click', () => {
+        window.Velocity(zfb, 'transition.slideLeftIn', {
+          duration: 400
+        });
+        window.Velocity(wx, 'transition.slideRightOut', {
+          display: 'none',
+          duration: 400
+        });
+      });
+
+      wxBtn.addEventListener('click', () => {
+        window.Velocity(wx, 'transition.slideRightIn', {
+          duration: 400
+        });
+        window.Velocity(zfb, 'transition.slideLeftOut', {
+          display: 'none',
+          duration: 400
+        });
+      });
+    }
+
+    rewardBtn.addEventListener('click', (e) => {
+      window.Velocity(mask, 'transition.slideDownIn', {
+        duration: 400
+      })
+    });
+
+    close.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.Velocity(mask, 'transition.slideUpOut', {
+        duration: 400
+      })
+    })
+  }()
+</script>
+
   </div>
 </body>
 
@@ -22253,7 +22851,6 @@ DEBUG模式测试FWQ&lt;br&gt;
 
 
 <script src="/media/js/mouse/love.js"></script>
-
 
 
 </html>

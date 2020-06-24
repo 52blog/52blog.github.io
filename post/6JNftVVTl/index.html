@@ -8,7 +8,7 @@
 <meta name="keywords" content="Whitehat个人博客">
 <meta name="description" content="">
 <meta name="theme-color" content="#000">
-<title>Whitehat</title>
+<title>每个DBC详细解释（键盘 Ctrl+F 筛选关键字) | Whitehat</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1593027381088">
 <link rel="stylesheet" href="/media/css/gemini.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
@@ -38,6 +38,8 @@
 
 
 
+  <meta name="description" content="每个DBC详细解释（键盘 Ctrl+F 筛选关键字)" />
+  <meta name="keywords" content="" />
 </head>
 
 <body>
@@ -141,10 +143,25 @@
   <div class="main-continer">
     
     <div
-      class="section-layout  gemini">
+      class="section-layout gemini ">
       <div class="section-layout-wrapper">
-        <div id="sidebarMeta" class="sidebar">
-    
+        
+
+<div class="sidebar">
+  
+    <div class="sidebar-box box-shadow-wrapper bg-color right-motion" id="sidebar">
+      
+        <div class="post-list-sidebar">
+          <div class="sidebar-title">
+            <span id="tocSideBar" class="sidebar-title-item sidebar-title-active language" data-lan="index">文章目录</span>
+            <span id="metaSideBar" class="sidebar-title-item language" data-lan="preview">站点概览</span>
+          </div>
+        </div>
+      
+      <div class="sidebar-body gemini" id="sidebar_body">
+        
+          
+            
 <div class="sidebar-wrapper box-shadow-wrapper bg-color">
   <div class="sidebar-item">
     <img class="site-author-image right-motion" src="/images/avatar.png"/>
@@ -202,84 +219,4099 @@
 
 
 </div>
+          
+        
+      </div>
+    </div>
+  
 </div>
 <script>
-  let sidebarMeta = document.querySelector('#sidebarMeta');
-  let scheme = 'gemini';
-  let sidebarWrapper = document.querySelector('.sidebar-wrapper');
-  if (sidebarMeta && (scheme === 'pisces' || scheme === 'gemini')) {
-    document.addEventListener('scroll', function(e) {
-      if (document.scrollingElement.scrollTop > parseInt(sidebarMeta.style.marginTop) + 10) {
-        sidebarWrapper.classList.add('home-sidebar-fixed')
-      } else {
-        sidebarWrapper.classList.remove('home-sidebar-fixed')
+  const SIDEBAR_TITLE_ACTIVE = 'sidebar-title-active';
+  const SIDEBAR_BODY_ACTIVE = 'sidebar-body-active';
+  const SLIDE_UP_IN = 'slide-up-in';
+
+  let sidebar = document.querySelector('#sidebar'),
+  tocSideBar = document.querySelector('#tocSideBar'),
+  metaSideBar = document.querySelector('#metaSideBar'),
+  postToc = document.querySelector('#post_toc'),
+  postSiteMeta = document.querySelector('#post_side_meta'),
+  sidebarTitle = document.querySelector('.sidebar-title'),
+  sidebarBody = document.querySelector('#sidebar_body');
+
+  tocSideBar && tocSideBar.addEventListener('click', (e) => {
+    toggleSidebar(e);
+  });
+
+  metaSideBar && metaSideBar.addEventListener('click', (e) => {
+    toggleSidebar(e);
+  });
+
+  function toggleSidebar(e) {
+    let currentTitle = document.querySelector("."+SIDEBAR_TITLE_ACTIVE);
+    if (currentTitle == e.srcElement) {
+      return ;
+    }
+    let current, showElement, hideElement;
+    if (e.srcElement == metaSideBar) {
+      showElement = postSiteMeta;
+      hideElement = postToc;
+    } else if (e.srcElement == tocSideBar){
+      showElement = postToc;
+      hideElement = postSiteMeta;
+    }
+    currentTitle.classList.remove(SIDEBAR_TITLE_ACTIVE);
+    e.srcElement.classList.add(SIDEBAR_TITLE_ACTIVE);
+
+    window.Velocity(hideElement, 'stop');
+    window.Velocity(hideElement, 'transition.slideUpOut', {
+      display: 'none',
+      duration: 200,
+      complete: function () {
+        window.Velocity(showElement, 'transition.slideDownIn', {
+          duration: 200
+        });
       }
-    });
+    })
+    hideElement.classList.remove(SIDEBAR_BODY_ACTIVE);
+    showElement.classList.add(SIDEBAR_BODY_ACTIVE);
   }
-  </script>
+
+  postToc && postToc.addEventListener('transitionend', function() {
+    this.classList.remove(SLIDE_UP_IN);
+  });
+
+  if (sidebarBody) {
+    if (sidebarBody.classList.contains('pisces') || sidebarBody.classList.contains('gemini')) {
+      let hasFix = false;
+      let scrollEl = document.querySelector('.main-continer');
+      let limitTop = document.querySelector('#nav_ul').children.length * 42 + 162;
+      window.addEventListener('scroll', function(e) {
+        if (document.scrollingElement.scrollTop >= limitTop) {
+          if (!hasFix) {
+            sidebar.classList.add('sidebar-fixed');
+            hasFix = true;
+          }
+        } else {
+          if (hasFix) {
+            sidebar.classList.remove('sidebar-fixed');
+            hasFix = false;
+          }
+        }
+      });
+    }
+  }
+  
+</script>
         <div class="section-box box-shadow-wrapper">
-          <section class="section tags-section bg-color posts-expand">
-            <div class="tags-box">
-  <div class="tag-cloud-title language" data-lan="cloud-tags" data-count="0">
-    目前共计 0 个标签
-  </div>
-  <div class="tag-cloud-list" id="tags">
+          <div class="section bg-color post post-page">
+            <header class="post-header">
+  <h1 class="post-title">
+    <a class="post-title-link" href="https://52wow.github.io/post/6JNftVVTl/">
+      每个DBC详细解释（键盘 Ctrl+F 筛选关键字)
+    </a>
+  </h1>
+  <div class="post-meta">
+    
+    <span class="meta-item">
+      <i class="fa fa-thumb-tack"></i>
+      <span class="language" data-lan="top">置顶</span>
+      <span class="post-meta-divider">|</span>
+    </span>
+    
+    <span class="meta-item pc-show">
+      <i class="fa fa-calendar-o"></i>
+      <span class="language" data-lan="publish">发布于</span>
+      <span>2020-06-25</span>
+      <span class="post-meta-divider pc-show">|</span>
+    </span>
+    
+    <span class="meta-item">
+      <i class="fa fa-clock-o"></i>
+      <span>62<span class="language" data-lan="minute">分钟</span></span>
+    </span>
+    <span class="meta-item">
+      <span class="post-meta-divider">|</span>
+      <i class="fa fa-file-word-o"></i>
+      <span>15990<span class="pc-show language" data-lan="words">字数</span></span>
+    </span>
+    
+    
+    
+    <span id="/post/6JNftVVTl/" data-flag-title="每个DBC详细解释（键盘 Ctrl+F 筛选关键字)" class="meta-item pc-show leancloud_visitors">
+      <span class="post-meta-divider">|</span>
+      <i class="fa fa-eye"></i>
+      <span><span class="language" data-lan="view">浏览量</span>：<span class="leancloud-visitors-count"></span></span>
+    </span>
     
   </div>
+</header>
+            <div class="post-body next-md-body" id="post_body">
+              <pre><code>Achievement.dbc
+
+Achievement.dbc成就dbc，包含所有的成就。
+
+列字段详细说明
+
+1编号成就编号
+
+2阵营0-部落，1-联盟，-1-双方
+
+3地图只有设置跟地区相关的成就时才使用，否则为-1
+
+4前一个如果这个成就属于一个系列，这里就是前一个成就的编号，否则为0
+
+5-20名称成就的名称
+
+21未知貌似总为0xFF01FE
+
+22-37描述如果描述为空，说明这不是一个成就，而是统计选项的一部分
+
+38未知貌似总为16712190，极少情况下是16712188
+
+39分类成就分类编号，参考Achievement_Category.dbc
+
+40点数0，5，10，15，20，25，30，50
+
+41组中的次序最小值是1
+
+42标识取值范围0-768，256-每个服务器只有一个玩家能获得此成就，768-每个服务器只有一个团队能获得此成就
+
+43技能图标显示的图标
+
+44-59奖励
+
+47奖金额外的奖励文本
+
+60未知
+
+61要求得到此成就需要满足的要求。例如成就要求你获得25个徽章，那这里就是25
+
+62引用的成就引用的成就，包括所有完成的标准
+
+Achievement_Category.dbc详解
+
+Achievement_Category.dbc详解成就分类表
+
+列字段详细说明
+
+1编号成就分类编号
+
+2上级编号上级成就分类编号，如果没有则为-1
+
+7名称分类的名称
+
+19名称标识貌似总为0xFF01FE
+
+20界面次序
+
+Achievement_Criteria.dbc详解
+
+Achievement_Criteria.dbc详解获得成就所需的标准
+
+列字段详细说明
+
+1编号标准编号
+
+2成就标准指向的成就
+
+3类型标准的类型，定义了以下的行
+
+4要求编号主要要求
+
+5数量主要要求的数量
+
+6开始事件附加要求一的类型
+
+7开始要求附加要求一的值
+
+8失败事件附加要求二的类型
+
+9失败要求附加要求二的值
+
+10-25描述标准的描述
+
+26未知主要是16712190,但并非总是如此
+
+27标识显示的标识，1-显示进度条
+
+28开始事件时间
+
+29要求编号时间
+
+30计时器时间但规定的百分比时间（秒）内完成任务
+
+31界面次序
+
+其中，第三行所代表的类型如下所示（4-9行，未列出的都为0）：
+
+类型值类型说明第四行第五行第六行第七行
+
+0击杀生物，也用于玩家死亡生物编号击杀数量
+
+1战场胜利地图编号胜利次数
+
+5达到等级未使用等级
+
+7达到专业等级专业编号（SkillLine.dbc）专业等级
+
+8完成成就成就编号
+
+9完成任务数量未使用完成的所有任务数量
+
+10当天完成的日常任务数量未使用日常任务数量
+
+11完成的地区任务数量地区编号任务数量
+
+13造成的伤害
+
+14完成的日常任务数量未使用任务数量
+
+15完成的战场次数
+
+16地图上死亡地图编号
+
+18地下城死亡人数限制
+
+19完成团本组队数量（5.10.25）
+
+20被生物杀死生物编号
+
+24高处跌落未死未使用跌落高度
+
+26死亡原因参考EnvironmentalDamage.dbc
+
+27完成任务任务编号任务数量
+
+28被法术击中
+
+69被法术击中2法术编号法术数量
+
+29施法
+
+110施法2法术编号施法次数
+
+30战场占领物体未知，42-占领标识占领次数
+
+31区域内可得到荣誉值的击杀区域编号，参考AreaTable.dbc击杀数量
+
+32竞技场胜利
+
+33参加竞技场地图编号
+
+34学习法术法术编号，参考spell.dbc
+
+36拥有物品
+
+37竞技场胜率未使用数量标识，4-连续
+
+38最高队伍比率队伍类型（2，3，5）
+
+39达到的队伍比率队伍类型（2，3，5）队伍比率
+
+40学习专业等级专业编号，参考SkillLine.dbc专业等级，1-新手，2-熟练，3-专家，4-工匠，5-大师，6-专家级大师
+
+41使用物品
+
+42掉落物品
+
+43探索区域参考WorldMapOverlay.dbc
+
+44自身军衔军衔，参考CharTitle.dbc
+
+45购买银行包格未使用包格数量
+
+46获取声望阵营，参考Faction.dbc声望总数，42000-崇拜
+
+47获取崇拜声望未使用崇拜声望数量
+
+48参观理发店次数未使用参观次数
+
+49装备史诗级物品物品装备位置
+
+50掉落时需求的roll点次数
+
+51掉落时贪婪的roll点次数roll点值数量
+
+52HK职业职业编号，参考ChrClasses.dbc数量
+
+53HK种族种族编号，参考ChrRaces.dbc数量
+
+54做动作动作编号，参考Emotes.dbc动作数量，一般有特殊的目标或要求
+
+55治疗结束
+
+56获取击杀次数未使用次数标识，3-战场治疗地图编号
+
+57装备物品物品编号物品数量
+
+62任务奖励的金钱
+
+67掉落金钱未使用掉落的金钱数
+
+68使用物体物体编号使用次数
+
+70特殊PVP击杀未使用击杀次数
+
+72鱼群鱼群编号掉落数量
+
+75学习专业技能参考SkillLine.dbc技能数量
+
+76决斗胜利未使用胜利次数
+
+96最高能量能量类型，0-法力，1-怒气，3-能量，6-符文能量
+
+97最高状态状态类型，4-精神，3-智力，2-耐力，1-敏捷，0-力量
+
+98最高法术能量技能族，参考SkillLine.dbc或Resistances.dbc
+
+100最高评价评价类型
+
+109掉落类型掉落类型，3-钓鱼，2-捡包，4-魅惑掉落类型数量
+
+112学习专业参考SkillLine.dbc技能数量
+
+113获取带荣誉的击杀未使用击杀数量
+
+114接受的召唤未使用1，统计
+
+115达到的成就点数未使用（也许仅仅用在诺森德）未使用
+
+119随机地下城玩家数量未使用玩家数量
+
+AnimationData.dbc详解
+
+AnimationData.dbc详解模型动画定义
+
+列字段详细说明
+
+1编号动画编号，必须是唯一的
+
+2名称动画的描述性名称
+
+3武器标识32-动画中显示武器，16和4-动画隐藏武器
+
+4本体标识某些类别的标识
+
+5标识
+
+6前一个本文件中，前一个动画的编号
+
+7行为编号相同编号的模型行为
+
+8行为层0-正常，3-飞
+
+AreaGroup.dbc详解
+
+AreaGroup.dbc详解用来储存在characters_glyph表中使用的地形编号
+
+列字段详细说明
+
+1编号区域编号，参考AreaTable.dbc
+
+2编号1AreaTable.dbc中的区域列表
+
+3编号2
+
+4编号3
+
+5编号4
+
+6编号5
+
+7编号6
+
+8更多编号如果上面6个编号不够用，这里可以使用更多编号
+
+AreaPOI.dbc详解
+
+AreaPOI.dbc详解包含在overheadmap上显示的兴趣点（包含战场地图），兴趣点包括文本、图标、定位和其他杂项
+
+列名称详细说明
+
+1编号
+
+2-12图标
+
+13x兴趣点x坐标
+
+14y兴趣点y坐标
+
+15z兴趣点z坐标
+
+16地图编号表明是哪个地图的兴趣点，参考map.dbc
+
+17值1
+
+18区域编号参考AreaTable.dbc
+
+19-34名称兴趣点名称
+
+35名称标识貌似总为16712190
+
+36-51名称2副名称
+
+52名称标识2貌似总为0xFF01FC，如果有副名称时，一般为0xFF01FE
+
+53世界状态
+
+54值2
+
+AreaTable.dbc详解
+
+AreaTable.dbc详解包含地区和区域列表，地区编号、名称、地图编号、区域编号都包含在内
+
+列名称详细说明
+
+1编号地区区域
+
+2地图编号地图或大陆
+
+3地区编号0-地区编号，其他代表区域
+
+4探索标识
+
+5标识
+
+6-10未使用
+
+11区域等级
+
+12-27区域名称
+
+28标识貌似总为0xFF01FE
+
+29队伍
+
+30-33水域各种液体覆盖
+
+34未知一般都是-500，偶尔-5000
+
+35未知
+
+AreaTrigger.dbc详解
+
+AreaTrigger.dbc详解区域触发器信息
+
+列字段详细说明
+
+1编号
+
+2指向的地图编号参考map.dbc
+
+3x区域x坐标
+
+4y区域y坐标
+
+5z区域z坐标
+
+6半径貌似是以xyz坐标为中心的盒子的码数大小
+
+7box_x盒子长度，通常为0，但并不总是如此
+
+8box_y盒子宽度，通常为0，但并不总是如此
+
+9box_z盒子高度，通常为0，但并不总是如此
+
+10box_orientation盒子朝向，通常为0，但并不总是如此
+
+AttackAnimKits.dbc详解
+
+AttackAnimKits.dbc详解攻击动画包
+
+列字段详细说明
+
+1编号
+
+2动画大多数时间里未发生战斗时的动画，参考AnimationData.dbc
+
+3类型参考AttackAnimtypes.dbc
+
+4标识（001，010，100）
+
+5未知只有当类型是OffH_时，这里才是true
+
+AttackAnimTypes.dbc详解
+
+AttackAnimTypes.dbc详解攻击动画类型
+
+列字段详细说明
+
+1编号
+
+2名称攻击动画的名称
+
+AuctionHouse.dbc详解
+
+AuctionHouse.dbc详解拍卖行
+
+列字段详细说明
+
+1编号
+
+2阵营当前拍卖行所属的阵营
+
+3拍卖行费用你最终收益中拍卖行的提成
+
+4税收卖价的百分比
+
+5-20名称拍卖行名称
+
+21标识一般都是16712190
+
+BankBagSlotPrices.dbc详解
+
+BankBagSlotPrices.dbc详解银行箱格售价
+
+列字段详细说明
+
+1编号对应第几个箱格位置
+
+2价格售价，单位是铜
+
+BannedAddOns.dbc详解
+
+BannedAddOns.dbc详解禁用插件
+
+列字段详细说明
+
+1编号
+
+2-5名称MD5
+
+6-9版本MD5
+
+10时间戳
+
+11标识
+
+BarberShopStyle.dbc详解
+
+BarberShopStyle.dbc详解定义理发店的样式选项
+
+列字段详细说明
+
+1编号
+
+2类型0-发型，1-头发颜色，2-胡须
+
+3-18名称发型名称
+
+19名称标识一般都是16712190
+
+20-35未知名称总为空
+
+36未知标识
+
+37费用倍率1或者0.75
+
+38种族参考ChrRaces.dbc
+
+39性别0-男，1-女
+
+40发型编号发型或胡须的编号
+
+BattlemasterList.dbc详解
+
+BattlemasterList.dbc详解PVP区域的战场军官列表
+
+列字段详细说明
+
+1编号
+
+2-9地图编号参考map.dbc
+
+10地图类型3-战场，4-竞技场
+
+11能否加入队伍0-否，1-是
+
+12-27名称
+
+28名称标识一般都是16712190
+
+29最大队伍人数用来检测队伍的队列
+
+30节日世界状态
+
+31最小等级
+
+32等级也许是最大等级
+
+CharSections.dbc详解
+
+CharSections.dbc详解定义不同类型的角色变化所用的纹理贴图，例如头发，胡子，基础皮肤等等
+
+列字段详细说明
+
+1编号
+
+2种族参考ChrRaces.dbc
+
+3性别0-男，1-女
+
+4通常类型
+
+5-7纹理路径
+
+8标识1-玩家，4-死亡骑士
+
+9类型0-皮肤，1-脸部，2-胡子，3-头发，4-内衣
+
+10颜色
+
+CharStartOutfit.dbc详解
+
+CharStartOutfit.dbc详解玩家出生时得到的物品，貌似服务端有相同的数据表实现这个功能
+
+列字段详细说明
+
+1编号
+
+2种族参考ChrRaces.dbc
+
+3职业参考ChrClasses.dbc
+
+4性别0-男，1-女
+
+5未使用
+
+6-29物品编号参考item_template表的entry字段
+
+30-53物品模型编号服务端不需要
+
+54-77物品库存服务端不需要
+
+CharTitles.dbc详解
+
+CharTitles.dbc详解PVP等级或者其他头衔
+
+列字段详细说明
+
+1编号头衔的编号
+
+2标识客户端不使用，也许是服务端使用的
+
+3-18头衔名称男性角色使用
+
+19未使用
+
+20-35头衔名称女性角色使用
+
+36未使用
+
+37头衔排列编号在游戏中的头衔下拉菜单里使用，最大不能超过186
+
+ChatChannels.dbc详解
+
+ChatChannels.dbc详解聊天频道
+
+列字段详细说明
+
+1编号
+
+2标识
+
+4-19模式
+
+20标识一般都是16712190
+
+21-36名称频道名称
+
+37标识一般都是16712190
+
+ChrClasses.dbc详解
+
+ChrClasses.dbc详解主角职业
+
+列字段详细说明
+
+1职业编号
+
+2未知1-猎人、萨满和潜行者，9-死亡骑士，0-其他职业
+
+3能量类型0-法力，1-怒气，2-集中值，3-能量，4-快乐度，5-符文
+
+4-5未使用
+
+6-21未使用貌似总为0xFF01FF
+
+22-37名称女性使用名称
+
+38未使用貌似总为0xFF01EC
+
+39-54名称中性角色使用
+
+55未使用貌似总为0xFF01EC
+
+56名称英文
+
+57技能族
+
+58标识
+
+59动画开场动画，165-死骑，0-其他
+
+60要求说明0-wow，1-TBC，2-Wotlk
+
+ChrRaces.dbc详解
+
+ChrRaces.dbc详解角色种族
+
+列字段详细说明
+
+1种族编号
+
+2标识
+
+3阵营阵营编号，参考Faction.dbc
+
+4未使用
+
+5模型男性使用
+
+6模型女性使用
+
+7未使用
+
+8队伍编号7-联盟，1-部落
+
+9-12未使用
+
+13电影序列参考CinematicSequences.dbc的编号
+
+14阵营0-联盟，1-部落
+
+15-30名称
+
+31未使用貌似总为0xFF01FF
+
+32-47名称女性角色使用
+
+48标识未使用，貌似总为0xFF01EC
+
+49-64名称中性角色使用
+
+65标识未使用，貌似总为0xFF01EC
+
+66-68未使用
+
+69扩展0-原种族，1-TBC增加
+
+CinematicSequences.dbc详解
+
+CinematicSequences.dbc详解模型摄像机动画
+
+列字段详细说明
+
+1编号
+
+2声音编号总为0
+
+3摄像机动画参考CinematicCamera.dbc的编号
+
+4-10未知总为0
+
+CreatureDisplayInfo.dbc详解
+
+CreatureDisplayInfo.dbc详解定义贴图、尺寸、模型以及其他显示生物的内容
+
+列字段详细说明
+
+1编号
+
+2模型编号
+
+3声音编号可以在CreatureModelData.dbc中设置
+
+4扩展显示编号
+
+5模型尺寸
+
+6模型透明度0（透明）至255（不透明）
+
+7-9贴图纹理变化
+
+10纵向纹理
+
+11尺寸级
+
+12血液编号
+
+13npc声音编号与npc互动时的声音
+
+14粒子颜色0或者大于281
+
+15生物图集数据
+
+16目标特效包旋翼机、发射器、火箭坐骑和攻城车等使用
+
+CreatureDisplayInfoExtra.dbc详解
+
+CreatureDisplayInfoExtra.dbc详解定义生物的某些特性
+
+列字段详细说明
+
+1编号
+
+2种族
+
+3性别0-男，1-女
+
+4皮肤颜色
+
+5脸型
+
+6发型参考CharHairGeosets.dbc
+
+7发型样式参考CharSections.dbc，当GeneralType=3时使用哪个贴图
+
+8胡须
+
+9头盔显示编号以下列定义npc的显示装备外形
+
+10肩甲显示编号
+
+11衬衣显示编号
+
+12胸甲显示编号
+
+13腰带显示编号
+
+14腿甲显示编号
+
+15脚部显示编号
+
+16护腕显示编号
+
+17手套显示编号
+
+18战袍显示编号
+
+19披风显示编号
+
+20可装备可装备其他物品
+
+21贴图模型上的纹理。非标准的拉丁词，如果是日耳曼语变音则不加载
+
+CreatureFamily.dbc详解
+
+CreatureFamily.dbc详解生物家族分类
+
+列字段详细说明
+
+1编号
+
+2最小尺寸
+
+3最小尺寸等级
+
+4最大尺寸
+
+5最大尺寸等级
+
+6-7技能线
+
+8宠物食物分类
+
+9宠物天赋类型
+
+10分类枚举
+
+11-26名称各国语言版本
+
+27标识
+
+28图标文件客户端mpq文件中Interface\Icons\Ability_打头的文件
+
+CreatureModelData.dbc详解
+
+CreatureModelData.dbc详解生物模型数据
+
+列字段详细说明
+
+1编号
+
+2标识
+
+3模型路径.MDX格式的模型路径
+
+4未使用
+
+5模型尺寸
+
+6-14未知
+
+15碰撞盒宽度模型碰撞盒体积，必须大于0.41670012920929
+
+16碰撞盒高度
+
+17坐骑高度用来计算单位坐上坐骑后的碰撞盒数据
+
+18-28未知
+
+CreatureSpellData.dbc详解
+
+CreatureSpellData.dbc详解定义生物被猎人捕获为宠物后所拥有的技能信息
+
+列字段详细说明
+
+1编号
+
+2-5技能编号参考spell.dbc
+
+6-9可用性
+
+CreatureType.dbc详解
+
+CreatureType.dbc详解生物类型
+
+列字段详细说明
+
+1编号
+
+2-17名称
+
+18标识一般都为16712190
+
+19无经验1-小动物、非战斗宠物和气体云雾，0-其他
+
+CurrencyTypes.dbc详解
+
+CurrencyTypes.dbc详解货币类型，列出不在清单上而是在角色界面选项卡上的货币类型
+
+列字段详细说明
+
+1编号
+
+2物品编号参考item_template表的entry字段
+
+3分类
+
+4位掩码角色已知货币类型的次序
+
+DestructibleModelData.dbc详解
+
+DestructibleModelData.dbc详解破坏模型数据
+
+列字段详细说明
+
+1编号
+
+2-3未知
+
+4损坏的显示编号
+
+5-7未知
+
+8摧毁的显示编号
+
+9-11未知
+
+12重建的显示编号
+
+13-15未知
+
+16冒烟的显示编号
+
+17-19未知
+
+DungeonEncounter.dbc详解
+
+DungeonEncounter.dbc详解地下城挑战（boss）
+
+列字段详细说明
+
+1编号不重复
+
+2地图编号参考map.dbc
+
+3难度副本模式
+
+4未知
+
+5挑战索引地下城boss的索引
+
+6-21挑战名称boss的名称
+
+22名称标识
+
+23未知
+
+DurabilityCosts.dbc详解
+
+DurabilityCosts.dbc详解物品耐久度修理时的花费
+
+列字段详细说明
+
+1物品等级
+
+2-29倍率
+
+DurabilityQuality.dbc详解
+
+DurabilityQuality.dbc详解耐久度
+
+列字段详细说明
+
+1编号
+
+2质量倍率也许是指物品每失去一点耐久度所造成的伤害
+
+Emotes.dbc详解
+
+Emotes.dbc详解动作
+
+列字段详细说明
+
+1编号
+
+2名称内部名称（代码里使用）
+
+3动画参考AnimationData.dbc
+
+4标识可能是生物表中的unit_flags字段
+
+5动作类型0，1，2，取决于动作怎么表现
+
+6站立状态
+
+7声音编号参考soundEntries.dbc
+
+EmotesText.dbc详解
+
+EmotesText.dbc详解动作文字
+
+列字段详细说明
+
+1编号
+
+2动作动画表演时做的动作
+
+3-16文字编号各个动作文字的编号
+
+Faction.dbc详解
+
+Faction.dbc详解阵营
+
+列字段详细说明
+
+1编号
+
+2声望表声望的索引
+
+3-6基础声望种族
+
+7-10技术声望职业
+
+11-14基础声望值
+
+15-18声望标识
+
+19队伍上级阵营
+
+20获取溢出倍率阵营获取声望的溢出倍率
+
+21输出溢出倍率阵营输出声望的溢出倍率
+
+22获取溢出最大等级阵营获取声望溢出的最高等级
+
+23未知
+
+24-39名称
+
+40标识
+
+41-56描述各国语言描述
+
+57标识
+
+FactionTemplate.dbc详解
+
+FactionTemplate.dbc详解阵营模版
+
+列字段详细说明
+
+1编号
+
+2阵营
+
+3标识
+
+4阵营组
+
+5同伴组
+
+6敌对组
+
+7-9敌对阵营敌对（最大阵营关系）
+
+10-14伙伴阵营伙伴（最大阵营关系）
+
+GameObjectDisplayInfo.dbc详解
+
+GameObjectDisplayInfo.dbc详解包含所有类型的模型信息，模型一般是.MDX文件
+
+列字段详细说明
+
+1显示编号
+
+2文件名
+
+3正常参考SoundEntries.dbc
+
+4打开参考SoundEntries.dbc
+
+5掉落参考SoundEntries.dbc
+
+6关闭参考SoundEntries.dbc
+
+7摧毁参考SoundEntries.dbc
+
+8已打开参考SoundEntries.dbc
+
+9自定义0参考SoundEntries.dbc
+
+10自定义1参考SoundEntries.dbc
+
+11自定义2参考SoundEntries.dbc
+
+12自定义3参考SoundEntries.dbc
+
+13-18模型盒数据绑定的模型盒数据
+
+19目标特效包参考ObjectEffectPackage.dbc，只用在冰冠堡垒的飞艇上面
+
+GameObjectDisplayInfo.dbc详解
+
+GameObjectDisplayInfo.dbc详解包含所有类型的模型信息，模型一般是.MDX文件
+
+列字段详细说明
+
+1显示编号
+
+2文件名
+
+3正常参考SoundEntries.dbc
+
+4打开参考SoundEntries.dbc
+
+5掉落参考SoundEntries.dbc
+
+6关闭参考SoundEntries.dbc
+
+7摧毁参考SoundEntries.dbc
+
+8已打开参考SoundEntries.dbc
+
+9自定义0参考SoundEntries.dbc
+
+10自定义1参考SoundEntries.dbc
+
+11自定义2参考SoundEntries.dbc
+
+12自定义3参考SoundEntries.dbc
+
+13-18模型盒数据绑定的模型盒数据
+
+19目标特效包参考ObjectEffectPackage.dbc，只用在冰冠堡垒的飞艇上面
+
+GemProperties.dbc详解
+
+GemProperties.dbc详解珠宝属性
+
+列字段详细说明
+
+1编号
+
+2效果参考spellitemenchantement.dbc
+
+5颜色颜色组合，1-原石，2-红色，4-黄色，8-蓝色
+
+GlyphProperties.dbc详解
+
+GlyphProperties.dbc详解雕文属性
+
+列字段详细说明
+
+1编号
+
+2技能编号参考Spell.dbc
+
+3类型标识0-主要，1-次要
+
+4雕文图标编号参考SpellIcon.dbc
+
+GlyphSlot.dbc详解
+
+GlyphSlot.dbc详解雕文插槽
+
+列字段详细说明
+
+1编号
+
+2类型标识
+
+3次序
+
+GtBarberShopCostBase.dbc详解
+
+GtBarberShopCostBase.dbc详解理发店费用
+
+列字段详细说明
+
+1费用理发店费用，单位是铜
+
+GtChanceToMeleeCrit.dbc详解
+
+GtChanceToMeleeCrit.dbc详解近战暴击率
+
+列字段详细说明
+
+1比例百分比
+
+GtChanceToMeleeCritBase.dbc详解
+
+GtChanceToMeleeCritBase.dbc详解基础近战暴击概率
+
+列字段详细说明
+
+1基础
+
+GtChanceToSpellCrit.dbc详解
+
+GtChanceToSpellCrit.dbc详解法术暴击率
+
+列字段详细说明
+
+1比例百分比
+
+GtChanceToSpellCritBase.dbc详解
+
+GtChanceToSpellCritBase.dbc详解基础法术暴击率
+
+列字段详细说明
+
+1基础
+
+GtCombatRatings.dbc详解
+
+GtCombatRatings.dbc详解战斗概率
+
+列字段详细说明
+
+1比例百分比
+
+GtNPCManaCostScaler.dbc详解
+
+GtNPCManaCostScaler.dbc详解npc法力消耗计数器
+
+列字段详细说明
+
+1比例百分比
+
+GtOCTClassCombatRatingScalar.dbc详解
+
+GtOCTClassCombatRatingScalar.dbc详解OCT职业作战等级
+
+列字段详细说明
+
+1比例百分比
+
+GtOCTRegenHP.dbc详解
+
+GtOCTRegenHP.dbc详解OCT血量回复
+
+列字段详细说明
+
+1比例百分比
+
+GtRegenHPPerSpt.dbc详解
+
+GtRegenHPPerSpt.dbc详解
+
+列字段详细说明
+
+1比例百分比
+
+GtRegenMPPerSpt.dbc详解
+
+GtRegenMPPerSpt.dbc详解
+
+列字段详细说明
+
+1比例百分比
+
+Holidays.dbc详解
+
+Holidays.dbc详解节日
+
+列字段详细说明
+
+1编号
+
+2-11持续时间
+
+12-37日期unix时间，从2000年一月一日开始
+
+38区域游戏内区域
+
+39环需要更多研究，只用于调用武器事件
+
+40-49日历标识
+
+50节日名称编号参考HolidayNames.dbc
+
+51节日描述编号参考HolidayDescriptions.dbc
+
+52贴图文件名称
+
+53优先
+
+54日历过滤类型-1-钓鱼比赛，0-未知，1-暗月马戏团，2-每年的节日
+
+55标识0-暗月马戏团、钓鱼比赛，1-重置
+
+Item.dbc详解
+
+Item.dbc详解物品
+
+列字段详细说明
+
+1编号
+
+2分类
+
+3子分类一些物品有奇怪的子分类
+
+4声音重写子分类-1到20，一般是-1
+
+5材料-1到8
+
+6显示编号
+
+7装备槽类型确定物品怎么装备，详情看下表所示
+
+8鞘0到4，主要是0
+
+装备槽类型表，如下所示：
+
+编号槽类型
+
+0无
+
+1头部
+
+2颈部
+
+3肩膀
+
+4衬衣
+
+5胸部
+
+6腰部
+
+7裤子
+
+8脚
+
+9手腕
+
+10手套
+
+11手指
+
+12饰品
+
+13单手
+
+14副手（盾）
+
+15弓
+
+16后背
+
+17双手
+
+18袋子
+
+19徽章
+
+20战袍
+
+21主手
+
+22副手
+
+23书
+
+24弹药
+
+25投掷武器
+
+26枪
+
+ItemBagFamily.dbc详解
+
+ItemBagFamily.dbc详解物品包裹分类
+
+列字段详细说明
+
+1编号
+
+2-17各国语言名称
+
+18名称类型貌似总为16712190
+
+ItemDisplayInfo.dbc详解
+
+ItemDisplayInfo.dbc详解物品显示信息
+
+列字段详细说明
+
+1编号
+
+2-3模型名称左右部分
+
+4-5模型贴图
+
+6装备图标在袋子里物品显示的图标
+
+7-9组
+
+10标识
+
+11法术可视编号
+
+12组声音索引
+
+13-14头盔可视编号男和女
+
+15-16贴图
+
+17-24物品可视编号
+
+25粒子颜色
+
+ItemExtendedCost.dbc详解
+
+ItemExtendedCost.dbc详解物品扩展费用
+
+列字段详细说明
+
+1编号参考item_template表的entry字段
+
+2需要荣誉点数
+
+3需要竞技场点数
+
+4竞技场槽约束最小竞技场点数
+
+5-9需要物品参考item_template表的entry字段
+
+10-15需要物品数量
+
+16需要个人竞技场胜率
+
+ItemLimitCategory.dbc详解
+
+ItemLimitCategory.dbc详解物品限制分类
+
+列字段详细说明
+
+1编号
+
+2-17名称各国语言名称
+
+18名称标识
+
+19最大数量物品能装备的最大数量或者宝石插槽
+
+20模式0-拥有，1-装备
+
+ItemRandomProperties.dbc详解
+
+ItemRandomProperties.dbc详解物品随机属性
+
+列字段详细说明
+
+1编号
+
+2名称内部名称（代码里使用）
+
+3-5附魔
+
+6-7未使用
+
+8-23名称后缀各国语言名称
+
+24名称标识
+
+ItemRandomSuffix.dbc详解
+
+ItemRandomSuffix.dbc详解物品随机后缀
+
+列字段详细说明
+
+1编号
+
+2-17后缀名称各国语言名称
+
+18名称标识
+
+19内部名称代码里使用
+
+20-22附魔编号
+
+23-24未知
+
+25-27配置百分比
+
+28-29未知
+
+ItemSet.dbc详解
+
+ItemSet.dbc详解套装
+
+列字段详细说明
+
+1编号
+
+2-17名称各国语言名称
+
+18标识未使用
+
+19-28物品编号参考item_template表的entry字段
+
+29-35未知都为0
+
+36-43技能编号
+
+44-51触发技能
+
+52需要专业
+
+53需要专业等级
+
+LFGDungeons.dbc详解
+
+LFGDungeons.dbc详解随机地下城
+
+列字段详细说明
+
+1编号
+
+2-18名称各国语言名称
+
+19最小等级
+
+20最大等级
+
+21目标等级
+
+22目标最小等级
+
+23目标最大等级
+
+24地图参考map.dbc
+
+25难度
+
+26标识
+
+27类型
+
+28阵营参与的阵营，-1-所有，0-部落，1-联盟
+
+29图标名称
+
+30扩张
+
+31未知
+
+32队伍类型5-战场，4-世界地区，2-团队，1-5人本
+
+33-48描述
+
+49标识一般为0xFF01FC，少数是0xFF01FE
+
+Light.dbc详解
+
+Light.dbc详解光源控制，包括烟雾、天空颜色、水的颜色以及其他类似的东西
+
+列字段详细说明
+
+1编号
+
+2地图编号参考map.dbc
+
+3xx坐标
+
+4yy坐标
+
+5zz坐标
+
+6衰减开始内径以内不会有其他光线的插值
+
+7衰减结束内径以外到外径以内的范围会有其他光线的插值
+
+8天空和烟雾标准，参考LightParams.dbc
+
+9水域设置
+
+10太阳光参数暴风雨
+
+11其他参数水下风暴
+
+12死亡参数
+
+13未知
+
+14未知
+
+15未知
+
+LiquidType.dbc详解
+
+LiquidType.dbc详解液体属性
+
+列字段详细说明
+
+1编号
+
+2名称
+
+3标识水（1，2，4，8），岩浆（8，16，32，64），软泥（2，64，256），海洋（1，2，4，8，512）
+
+4类型0-水，1-海洋，2-岩浆，3-软泥
+
+5声音编号参考SoundEntries.dbc
+
+6法术编号参考Spell.dbc
+
+7最大黑暗深度只针对软泥和岩浆
+
+8烟雾黑暗强度7，8，9：只有海洋使用
+
+9Amb黑暗强度
+
+10Dir黑暗强度
+
+11光线编号6-软泥，7-岩浆
+
+12粒子尺寸0-软泥，1-水/海洋，4-岩浆
+
+13粒子移动
+
+14粒子槽
+
+15液体材质参考LiquidMaterial.dbc
+
+16-21纹理贴图
+
+22-23颜色
+
+24-41未知
+
+42-45未知
+
+Lock.dbc详解
+
+Lock.dbc详解锁
+
+列字段详细说明
+
+1编号
+
+2-9类型1-lock_properties代表物品编号，2-参考LockType.dbc
+
+10-17索引
+
+18-25专业
+
+26-33动作打开关闭时的动作
+
+MailTemplate.dbc详解
+
+MailTemplate.dbc详解邮件模版
+
+列字段详细说明
+
+1编号
+
+2-17主题
+
+18名称标识
+
+19-34内容邮件的主体内容
+
+Map.dbc详解
+
+Map.dbc详解地图
+
+列表字段详细说明
+
+1编号
+
+2内部名称未使用
+
+3地图类型0-无，1-队伍，2-团队，3-PVP，4-竞技场，&gt;=5-无
+
+4标识战场地图的简单标识
+
+5是否战场1-是，0-不是
+
+6-21名称各国语言名称
+
+22名称标识
+
+23地区指向副本和内陆的普通地区
+
+24-39部落简介PVP地区文字介绍
+
+40文字标识文字标识简介
+
+41-56联盟简介PVP地区文字介绍
+
+57文字标识文字标识简介
+
+58加载屏幕进入地图时显示的加载屏幕，参考LoadingScreens.dbc
+
+59迷你地图图标尺寸
+
+60地图入口入口地图编号
+
+61x坐标入口x坐标
+
+62y坐标入口y坐标
+
+63一天时间覆盖0-奥杜尔，720-勇气竞技场，-1-其他
+
+64附加0-原生地图，1-TBC附加
+
+65未知时间
+
+66最大玩家数量如果没有在MapDifficulty.dbc中显示，则回退
+
+MapDifficulty.dbc详解
+
+MapDifficulty.dbc详解地图难度
+
+列字段详细说明
+
+1编号
+
+2地图编号
+
+3难度如果是竞技场，则为竞技场槽
+
+4-19区域触发文字传送到地图失败时显示的文字（没满足进入要求）
+
+20文字标识
+
+21重置时间
+
+22最大玩家数量
+
+23难度说明
+
+Movie.dbc详解
+
+Movie.dbc详解电影
+
+列字段详细说明
+
+1编号
+
+2文件名称
+
+3未知总为100
+
+NamesProfanity.dbc详解
+
+NamesProfanity.dbc详解禁用的名字，使用正则表达式模式时检查是否允许一个名字命名一个角色
+
+列字段详细说明
+
+1编号
+
+2名字禁用的名字
+
+3语言
+
+NamesReserved.dbc详解
+
+NamesReserved.dbc详解保留的名字。使用正则表达式模式时检查是否允许一个名字命名一个角色
+
+列字段详细说明
+
+1编号
+
+2名字保留的名字
+
+3语言
+
+OverrideSpellData.dbc详解
+
+OverrideSpellData.dbc详解重写技能数据
+
+列字段详细说明
+
+1编号
+
+2-11技能编号
+
+12标识
+
+PowerDisplay.dbc详解
+
+PowerDisplay.dbc详解能量显示
+
+列字段详细说明
+
+1编号
+
+2能量类型
+
+3名称可能定位在globalstrings.lua中的名字
+
+4R
+
+5G
+
+6B
+
+PvpDifficulty.dbc详解
+
+PvpDifficulty.dbc详解PVP难度
+
+列字段详细说明
+
+1编号
+
+2地图编号
+
+3等级段编号
+
+4最小等级
+
+5最大等级
+
+6难度
+
+QuestFactionReward.dbc详解
+
+QuestFactionReward.dbc详解任务奖励阵营声望
+
+列字段详细说明
+
+1编号
+
+2-11任务奖励阵营声望值
+
+QuestSort.dbc详解
+
+QuestSort.dbc详解任务分类，分类也可能用于AreaTable.dbc中的任务区域
+
+列字段详细说明
+
+1编号
+
+2-17分类名称多国语言
+
+18标识
+
+QuestXP.dbc详解
+
+QuestXP.dbc详解任务经验
+
+列字段详细说明
+
+1编号
+
+2-11经验
+
+RandPropPoints.dbc详解
+
+RandPropPoints.dbc详解随机属性点数
+
+列字段详细说明
+
+1编号
+
+2物品等级
+
+3-7史诗级属性点数
+
+8-12精良级属性点数
+
+13-17优秀级属性点数
+
+ScalingStatDistribution.dbc详解
+
+ScalingStatDistribution.dbc详解缩放统计分布
+
+列字段详细说明
+
+1编号
+
+2-11状态模式
+
+12-21调节
+
+22最大等级
+
+ScalingStatValues.dbc详解
+
+ScalingStatValues.dbc详解传家宝缩放数据
+
+列字段详细说明
+
+1编号
+
+2等级
+
+3-6缩放调节缩放统计分布的调节
+
+7-10各等级的护甲
+
+11-16各等级的伤害
+
+17各等级的法术能量
+
+18缩放调节2
+
+19缩放调节3
+
+20各等级的护甲2
+
+SkillLine.dbc详解
+
+SkillLine.dbc详解技能面板类别
+
+列字段详细说明
+
+1编号
+
+2分类
+
+3技能消耗
+
+4-19名称技能名称多国语言版
+
+20标识
+
+21-36描述技能描述多国语言版
+
+37标识
+
+38法术图标
+
+39-54交替动作技能动作多国语言版
+
+55标识
+
+56可以指向比如学会食谱
+
+SkillLineAbility.dbc详解
+
+SkillLineAbility.dbc详解技能面板上的技能熟练度
+
+列字段详细说明
+
+1编号
+
+2技能编号
+
+3法术编号
+
+4种族掩码
+
+5职业掩码
+
+6排除种族
+
+7排除职业
+
+8最小技能等级
+
+9法术取代取代这个技能的法术
+
+10自动学习类型1-学习本专业时学到技能
+
+11最高技能等级技能变成灰色（绿色=（灰色+黄色）/2）
+
+12最低技能等级技能变成黄色（下面是橙色）
+
+13-14角色点数
+
+SkillRaceClassInfo.dbc详解
+
+SkillRaceClassInfo.dbc详解技能种族职业信息
+
+列字段详细说明
+
+1编号
+
+2技能编号参考SkillLine.dbc
+
+3种族掩码参考ChrRaces.dbc
+
+4职业掩码参考ChrClasses.dbc
+
+5标识
+
+6最低等级升级技能的最低等级
+
+7技能等级参考SkillTiers.dbc
+
+8技能消耗类型参考SkillCostsData.dbc
+
+SkillTiers.dbc详解
+
+SkillTiers.dbc详解技能等级
+
+列字段详细说明
+
+1编号
+
+2-17技能递进花费
+
+18-33最大技能
+
+SoundEntries.dbc详解
+
+SoundEntries.dbc详解定义不同事情的声音，比如法术、武器击打、天气和音乐等等
+
+列字段详细说明
+
+1编号
+
+2类型声音类型
+
+3内部名称代码里使用的声音名称
+
+4-13文件名称
+
+14-23未知
+
+24路径声音文件的路径
+
+25音量
+
+26标识
+
+27最小距离
+
+28最远距离关闭声音的最远距离
+
+29未知
+
+30未知
+
+Spell.dbc详解
+
+Spell.dbc详解技能
+
+1m_IDnpc_garments_of_quests
+
+2m_category技能分类
+
+3m_dispelType技能驱散类型参考SpellDisType.dbc
+
+4m_mechanic参考SpellMechanic.dbc
+
+5m_attributes属性，特征
+
+0x00000002需要弹药
+
+0x00000004向下一个摆动
+
+0x00000010击退
+
+0x00000020专业技能
+
+0x00000040被动法术
+
+0x00001000白天技能
+
+0x00002000晚上技能
+
+0x00004000室内技能
+
+0x00008000户外技能
+
+0x00010000不需要姿态的
+
+0x00020000潜行
+
+0x00080000技能伤害依赖施法者等级
+
+0x00100000中止攻击目标。当使用此技能后，不能攻击目标。
+
+0x00200000不能招架躲闪和格挡
+
+0x00400000射击技能
+
+0x00800000施法者死后也能用的技能
+
+0x01000000能骑马使用
+
+0x02000000当BUFF消失或移走召唤生物后激活并开始冷却
+
+0x04000000BUFF
+
+0x08000000坐着使用
+
+0x10000000无法在战斗中使用
+
+0x20000000
+
+0x40000000定身
+
+0x80000000有益BUUF不能被取消的
+
+6m_attributesEx
+
+0x00000001解散宠物，但不能重新召唤
+
+0x00000002运用所有力量只有QS倒地时可用
+
+0x00000004引导目标
+
+0x00000010潜行并快速移动
+
+0x00000020不能打断的潜行
+
+0x00000040引导自己
+
+0x00000080消极的
+
+0x00000100不能用于战斗目标
+
+0x00000200混乱技能
+
+0x00000400施法者不被恐惧
+
+0x00000800BUFF
+
+0x00008000消除免疫BUFF
+
+0x00010000免疫
+
+0x00020000宠物非自动技能
+
+0x00080000仅仅用于目标单位不如牧师干涉
+
+0x00100000要求连击点
+
+0x00400000要求连击点2
+
+0x40000000压制
+
+7m_attributesExB
+
+0x00000002多目标技能需要此标记
+
+0x00000004用于探测和非法术反射
+
+0x00000020自动重复标记
+
+0x00000800出血
+
+0x00002000此标记用于保存物品附魔的技能
+
+0x00020000自动射击
+
+0x00040000仅仅用于复活宠物，
+
+0x00080000不需要姿态
+
+0x00200000盾类减少伤害
+
+0x00800000仅仅魔法专注需要此标记
+
+0x04000000不受免疫类技能的影响
+
+0x20000000技能不暴击
+
+0x40000000技能能引爆即使它已经引爆
+
+0x80000000吃喝BUFF
+
+8m_attributesExC
+
+0x00000008阻止伤害，仅被混乱类型技能伤害
+
+0x00000010仅仅德鲁伊的再生有此标记
+
+0x00000100仅玩家使用
+
+0x00000400需要主手武器
+
+0x00000800战场技能
+
+0x00004000仅仅变形有此标记
+
+0x00008000自动射击投掷
+
+0x00020000安慰动物39758
+
+0x00100000死亡后还能存在
+
+0x00400000需要魔杖
+
+0x01000000需要空手
+
+0x08000000仅灵魂释放有此标记
+
+9m_attributesExD
+
+0x00000040不被偷窃
+
+0x00000100固定伤害
+
+0x00000400盗贼开门需要此标记
+
+0x00010000不可用于竞技场
+
+0x00020000用于竞技场
+
+0x02000000宠物缩放
+
+0x04000000仅仅用于奥特兰
+
+10m_attributesExE
+
+0x00000008恐惧中可用
+
+0x00000020只能用一次
+
+0x00020000恐惧可用
+
+0x00040000困惑中可用
+
+11m_attributesExF
+
+0x00000001仅仅移动技能有此标记
+
+0x00000002仅仅能用于光环
+
+0x00000800不能用于偷袭
+
+123.2.0(0x20-图腾,0x4-圣骑士BUFF,等等…)
+
+13m_shapeshiftMask
+
+15m_shapeshiftExclude姿态
+
+17m_targets目标这个目标指无选定目标时，所对应的目标
+
+18m_targetCreatureType目标类型大多数为0少数为1不懂
+
+19m_requiresSpellFocus
+
+20m_facingCasterFlags。。。标记
+
+21m_casterAuraState施法光环规则
+
+22m_targetAuraState目标光环规则
+
+AuraState：
+
+0NO
+
+1防御
+
+2血量少于20%
+
+3狂暴状态
+
+4冻结的
+
+5审判
+
+7猎人回避
+
+7盗贼潜行状态
+
+10战士成功冲锋
+
+12FAERIE_FIRE
+
+13血量少于35%
+
+14燃烧着的
+
+15迅捷治愈
+
+16致命毒药
+
+17激怒的
+
+18出血的
+
+23血量超过75%
+
+23m_excludeCasterAuraState
+
+24m_excludeTargetAuraState
+
+25m_casterAuraSpell
+
+26m_targetAuraSpell
+
+27m_excludeCasterAuraSpell
+
+28m_excludeTargetAuraSpell
+
+29m_castingTimeIndex施法时间参考SpellCastTimes.dbc
+
+30m_recoveryTimeCD时间毫秒
+
+31m_categoryRecoveryTime技能族冷却时间同一技能的不同等级共享此冷却时间毫秒
+
+32m_interruptFlags打断标记
+
+33m_auraInterruptFlags光环打断标记
+
+34m_channelInterruptFlags引导打断标记
+
+35m_procTypeMask发动类型
+
+0x00000001被攻击者杀死
+
+0x00000002杀死目标在大部分情况下需要有荣誉或者经验值
+
+0x00000004近战攻击成功命中
+
+0x00000008受到近战攻击
+
+0x00000010用近战武器发出技能成功击中
+
+0x00000020受到近战技能攻击
+
+0x00000040远程攻击成功命中
+
+0x00000080受到远程攻击
+
+0x00000100用远程武器发出技能成功命中
+
+0x00000200受到远程技能攻击
+
+0x00000400发出有益法术并命中
+
+0x00000800被有益法术命中
+
+0x00001000发出有害法术并命中
+
+0x00002000被有害法术命中
+
+0x00004000发出有益魔法并命中
+
+0x00008000受到有益魔法命中
+
+0x00010000发出有害魔法并命中
+
+0x00020000受到有害魔法命中
+
+0x00040000发出的周期性技能每一周期都触发
+
+0x00080000受到周期性技能每一周期触发
+
+0x00100000受到任何伤害
+
+0x00200000需要激活
+
+0x01000000死亡
+
+36m_procChance发动几率百分比写30就是30%
+
+37m_procCharges能触发的次数
+
+38m_maxLevel技能最大等级
+
+39m_baseLevel学习此技能需要的等级
+
+40m_spellLevel技能等级
+
+41m_durationIndex持续时间此为索引，参照SpellDuration.dbc，那里是实际值
+
+42m_powerType能量类型0法力1怒气3能量6符文能量
+
+43m_manaCost魔法消耗对应上面的数值除以10
+
+44m_manaCostPerLevel每级消耗魔法值
+
+45m_manaPerSecond每秒消耗魔法值
+
+46m_manaPerSecondPerLeve每级每级每秒消耗魔法值unused
+
+47m_rangeIndex施法距离和SpellRange.dbc相关联，那里是实际值
+
+48m_speed速度
+
+49m_modalNextSpellnotused
+
+50m_cumulativeAura累加光环只有猎人的一些技能此值为75
+
+51-52m_totem施法需要的图腾
+
+53-60m_reagent施法需要的物品
+
+61-68m_reagentCount施法需要的物品数量58对应50
+
+69m_equippedItemClass(value)装备的分类武器2护甲4参考ItemSubClass.dbc
+
+70m_equippedItemSubclass(mask)装备的子类参考ItemSubClassMask.dbc
+
+71m_equippedItemInvTypes(mask)装备的佩戴位置
+
+72-74m_effect技能的三个效果
+
+1全部杀死
+
+2类型伤害
+
+3傀儡
+
+4入口传送
+
+5传送单位
+
+6上buff
+
+7环境伤害
+
+8从目标吸取法力值转移给施法者
+
+9吸血
+
+10治疗
+
+11捆绑
+
+12传送门
+
+13基本仪式
+
+14特殊仪式
+
+15传送门仪式
+
+16完成任务
+
+17使用武器攻击
+
+18复活
+
+19增加额外攻击
+
+20躲避
+
+21逃脱
+
+22招架
+
+23格挡
+
+24创造物品
+
+25武器
+
+26防御
+
+27持续的区域光环
+
+28召唤117=creatureid
+
+29飞跃，跳跃
+
+30加能量
+
+31武器百分比伤害
+
+32触发投射武器
+
+33开锁
+
+34召唤物品
+
+35增加区域光环
+
+36学习技能
+
+37法术防御
+
+38驱散
+
+39语言
+
+40双手武器
+
+41向前跳跃
+
+42向前跳跃2
+
+43传送施法者
+
+44熟练度skill的等级
+
+45增加荣誉
+
+46刷怪
+
+47商业技能
+
+49探测
+
+50召唤(object)
+
+53附魔
+
+54临时附魔
+
+55驯服生物
+
+56召唤宠物
+
+57宠物学习技能
+
+58需要武器
+
+59道具开锁
+
+60精通
+
+61召唤事件
+
+62能量燃烧(燃烧power)
+
+63提高威胁值
+
+64触发技能m_effectTriggerSpell：123-125为技能ID
+
+65申请团队光环
+
+66制造魔法宝石
+
+67治愈最大生命
+
+68中断施法
+
+69吸引注意力
+
+71扒手
+
+72增加视野
+
+74雕纹
+
+75治疗机械类的宝宝
+
+76召唤野外对象
+
+77脚本spell
+
+78攻击
+
+79装死
+
+80增加连击点数
+
+82绑定视野
+
+83决斗
+
+84卡死
+
+85召唤玩家
+
+86激活OBJECT
+
+87攻城伤害
+
+88修理建筑物
+
+89OBJECT转换
+
+90击杀荣誉
+
+93召唤幽灵
+
+94自我复活
+
+95剥皮
+
+96冲撞冲锋,冲向敌人
+
+97同时放置图腾栏中的最多4个指定图腾
+
+98击退
+
+99分解
+
+100醉酒
+
+101喂养宠物
+
+102解散宠物
+
+103提高声望
+
+104-107召唤OBJECT
+
+108驱散MECHANIC
+
+109复活宠物
+
+110收回图腾
+
+113复活
+
+114嘲讽目标
+
+117复活周围队友
+
+118skill熟练度
+
+119给宠物加BUFF
+
+121武器伤害
+
+123上车
+
+124将某人拉向你身边
+
+125修改恐吓百分比
+
+126偷窃有益BUFF
+
+127选矿
+
+128给队友增加BUFF
+
+129给敌人增加BUFF
+
+130威胁转移
+
+133忘掉专业
+
+134击杀荣誉2
+
+135召唤宠物
+
+136治愈百分比
+
+137能量百分比
+
+138向后方跳跃
+
+140强制投掷
+
+142触发技能的值
+
+144向后方跳跃2
+
+147任务失败
+
+151触发技能值2
+
+155泰坦之握
+
+156增加插槽
+
+157创建物品2
+
+158研磨
+
+159宠物改名
+
+161学习第二天赋
+
+162切换天赋
+
+75-77m_effectDieSides伤害浮动值实际值-1
+
+78-80m_effectRealPointsPerLevel每级随任人物等级提高增加的伤害值
+
+81-83m_effectBasePoints(基础伤害1实际伤害下限=基础伤害1+基础伤害2+每级提高伤害值人物不用于光环类技能1don’tmustbeusedinspell/aurasexplicitly,mustbeusedcachedSpell::m_currentBasePoints)
+
+84-86m_effectMechanicMechanic效果
+
+87-89m_implicitTargetA目标类型
+
+90-92m_implicitTargetB
+
+1施法者
+
+2附近的敌人
+
+3附近的队友
+
+4附近队友2
+
+5宠物
+
+6指定敌人*
+
+7ENTRY_SRC
+
+8敌人目标
+
+9家用于旅馆技能
+
+11传送施法者
+
+15ENTRY_SRC
+
+16敌人目标
+
+17数据库中的目的地用于传送技能
+
+18施法者的目的地
+
+18上一个传唤效果
+
+20施法者的仪式
+
+21队友
+
+22SRC_CASTER
+
+23gameobject
+
+24前方锥形的敌人
+
+25任意目标
+
+26GAMEOBJECT_ITEM
+
+27主人
+
+28DYNOBJ_ENEMY
+
+29DYNOBJ_ALLY//onlyforeffect27
+
+30AREA_ALLY_SRC//inTargetBusedonlywithTARGET_SRC_CASTERandinselfcastingrangeinTargetA
+
+31范围内任意目标
+
+32仆人
+
+33PARTY_SRC
+
+34PARTY_DST
+
+35团队
+
+36随机
+
+37团队目标
+
+38附近入口
+
+39钓鱼
+
+40作用于Object
+
+41施法者左前方
+
+42施法者左后方
+
+43施法者右后方
+
+44施法者右前方
+
+45治疗链
+
+46
+
+93-95m_effectRadiusIndex-spellradius.dbc魔法有效距离
+
+96-98m_effectAurabuff光环类型
+
+effectAura：
+
+1绑定视野
+
+2控制比如：魔能机甲控制器
+
+3周期伤害
+
+4傀儡、虚拟物
+
+5迷惑
+
+6诱惑、驯服比如:驯服宠物
+
+7恐惧敌人
+
+8周期性治疗光环
+
+9攻击加速百分比光环
+
+10威胁值百分比
+
+11嘲讽光环
+
+12打晕震晕
+
+13伤害or法术强度提高m_effectMiscValue(117-119)控制类型：1物理,2神圣,4火,8自然,16冰,32暗影,64奥术
+
+14受到的伤害提高m_effectMiscValue(117-119)控制类型：1物理,2神圣,4火,8自然,16冰,32暗影,64奥术
+
+15造成伤害m_effectMiscValue(117-119)控制类型：1物理,2神圣,4火,8自然,16冰,32暗影,64奥术
+
+16潜行
+
+17侦测
+
+18隐形
+
+19侦测隐形
+
+20回复生命百分比
+
+21回复法力百分比
+
+22护甲、抗性提高m_effectMiscValue(117-119)控制类型：1物理护甲,2神圣,4火,8自然,16冰,32暗影,64奥术
+
+23周期性触发spellm_effectTriggerSpell：123-125为技能ID
+
+24周期性回能量m_effectMiscValue(117-119)控制类型：0法力1怒气3能量6符文能量
+
+25安抚、宁静光环（不能攻击和使用物理技能）
+
+26固定、冻结、定身
+
+27沉默
+
+28反射spell
+
+29增加属性m_effectMiscValue(117-119)控制具体属性0力量1敏捷2耐力3智力4精神-1所有属性
+
+30熟练度光环m_effectMiscValue(117-119)增加技能熟练度ID详细类别参见：SkillLine.dbc
+
+31加速PCT
+
+32坐骑加速
+
+33减速
+
+34加HP
+
+35加能量光环m_effectMiscValue(117-119)控制类型：0法力1怒气3能量6符文能量
+
+36变形
+
+37军旗
+
+38状态免疫
+
+39免疫伤害m_effectMiscValue(117-119)控制类型：1物理,2神圣,4火,8自然,16冰,32暗影,64奥术
+
+40伤害免疫光环m_effectMiscValue(117-119)控制类型：1物理,2神圣,4火,8自然,16冰,32暗影,64奥术
+
+41Dispel类驱散并免疫光环m_effectMiscValue(117-119)控制免疫类型：1魔法2诅咒3疾病4中毒5潜行6隐形7全部(魔法+诅咒+疾病+中毒)
+
+42击中时几率触发spellm_effectTriggerSpell：123-125为技能ID
+
+43击中时触发额外伤害m_schoolMask(232)控制伤害类型：1物理,2神圣,4火,8自然,16冰,32暗影,64奥术
+
+44在微缩地图上显示附近所有生物的位置m_effectMiscValue(117-119)控制生物类型：1野兽2龙类3恶魔4元素生物5巨人6亡灵7人形生物8小动物9机械11图腾12非战斗宠物13气体云雾
+
+45寻找宝藏
+
+47招架几率百分比
+
+49躲闪百分比
+
+51格档几率百分比
+
+52暴击几率
+
+53吸血光环
+
+54命中几率
+
+56改变形态m_effectMiscValue(117-119)为生物ID
+
+57魔法暴击几率
+
+58增加游泳速度
+
+59对指定生物造成额外伤害m_effectMiscValue(117-119)控制生物类型：1野兽2龙类3恶魔4元素生物5巨人6亡灵7人形生物8小动物9机械11图腾12非战斗宠物13气体云雾
+
+60平静沉默
+
+61模型倍数
+
+62周期性吸取血量
+
+64周期性魔法吸取
+
+65施法速度
+
+66装死
+
+67缴械
+
+68追踪、锁定目标
+
+69吸收伤害m_effectMiscValue(117-119)控制类型：1物理,2神圣,4火,8自然,16冰,32暗影,64奥术
+
+71魔法暴击m_effectMiscValue(117-119)控制类型：2神圣,4火,8自然,16冰,32暗影,64奥术
+
+72法术能量耗费提高
+
+73法术系能量耗费提高m_effectMiscValue(117-119)控制类型：2神圣,4火,8自然,16冰,32暗影,64奥术
+
+74反射特定系法术光环m_effectMiscValue(117-119)控制类型：2神圣,4火,8自然,16冰,32暗影,64奥术
+
+75语言
+
+76增加视野
+
+77MECHANIC免疫光环m_effectMiscValue(117-119)控制类型：1魅惑2迷惑3缴械4吸引5逃跑6笨拙7定身8平静9沉默10沉睡11诱捕12昏迷13冻结14瘫痪15流血16治疗17变形18放逐19防护20禁锢21骑乘22诱惑23转向24惊骇25无敌26打断27眩晕28发现29无敌30闷棍31激怒
+
+78召唤坐骑
+
+79增加伤害PCTm_effectMiscValue(117-119)控制类型：1物理,2神圣,4火,8自然,16冰,32暗影,64奥术
+
+80STAT百分比m_effectMiscValue(117-119)控制具体属性0力量1敏捷2耐力3智力4精神-1所有属性
+
+81分担伤害
+
+82水下呼吸
+
+84回复生命值
+
+855秒回蓝
+
+86在技能持续时间内杀死目标，并获得经验或者荣誉值就得到物品114为物品ID
+
+87受到所有伤害提高pct
+
+88生命回复速度提高pct
+
+89周期性伤害百分率
+
+91减少警戒范围
+
+92阻止逃跑
+
+93无法被攻击
+
+95幽灵
+
+96转移有害法术
+
+97魔法盾
+
+98天赋skill
+
+99攻击强度提高
+
+101护甲提高(pct)
+
+102对指定生物攻击强度提高m_effectMiscValue(117-119)控制生物类型：1野兽2龙类3恶魔4元素生物5巨人6亡灵7人形生物8小动物9机械11图腾12非战斗宠物13气体云雾
+
+103降低威胁
+
+104水上行走
+
+105降低下落速度
+
+106盘旋停留空中
+
+107修改技能(FLAT)光环
+
+108修改技能(PCT)光环
+
+109增加目标触发触发另一个技能123列为触发的技能ID
+
+110能量回复速度提高PCT
+
+111转移有害攻击
+
+112增加class脚本
+
+115治疗效果提高
+
+116使你在战斗时仍保留PCT的生命值回复速度
+
+117增加免疫MECHANIC几率(MECHANIC)m_effectMiscValue(117-119)控制类型：1魅惑2迷惑3缴械4吸引5逃跑6笨拙7定身8平静9沉默10沉睡11诱捕12昏迷13冻结14瘫痪15流血16治疗17变形18放逐19防护20禁锢21骑乘22诱惑23转向24惊骇25无敌26打断27眩晕28发现29无敌30闷棍31激怒
+
+118治疗效果提高(pct)
+
+120不能被追踪
+
+122副手武器伤害百分比
+
+123法术穿透
+
+124远程攻击强度
+
+125受到近战攻击时承受的伤害减少
+
+126受到近战攻击时承受的伤害减少PCT
+
+127奖励攻击者远程攻击强度
+
+129移动速度提高PCT
+
+130增加坐骑速度
+
+132增长能量百分比
+
+133增加血量百分比
+
+134施法时仍保持法力回复速度
+
+135法术强度提高
+
+136治疗法术效果提高PCT
+
+137属性百分比光环m_effectMiscValue(117-119)控制具体属性：0力量1敏捷2耐力3智力4精神-1所有属性
+
+138攻击速度提高PCT
+
+140远程攻击速度
+
+141远程攻击速度PCT
+
+142由装备得到的护甲值提高PCT
+
+143增加法术抗性m_effectMiscValue(117-119)控制类型：1物理,2神圣,4火,8自然,16冰,32暗影,64奥术
+
+144减少从高处坠落所受的伤害
+
+147增加怪物免疫
+
+149一定几率忽略法术打断
+
+150格挡值提高还是格挡的伤害提高PCT
+
+152增加怪物的发现距离可作用于自身
+
+154降低敌人侦测到你的几率
+
+155增加水下呼吸时间PCT
+
+156声望获取速度提高PCT
+
+158盾牌格档值
+
+159无pvp荣誉
+
+1615秒回血
+
+162法力和血燃烧
+
+163暴击伤害提高
+
+166近战攻击能量百分比
+
+167远程攻击强度百分比
+
+168增加伤害PCT
+
+170DETECT_AMORE
+
+171不叠加的速度
+
+172不叠加的骑马速度
+
+174根据stat的百分比增加伤害m_effectMiscValue(117-119)控制伤害类型：2神圣,4火,8自然,16冰,32暗影,64奥术m_effectMiscValueB(120-122)控制基本属性的类型：0力量1敏捷2耐力3智力4精神-1所有属性
+
+175根据stat百分比提高治疗效果m_effectMiscValue(117-119)控制基本属性的类型：0力量1敏捷2耐力3智力4精神-1所有属性
+
+179更易受到法术伤害
+
+180对指定生物法术强度提高m_effectMiscValue(117-119)控制生物类型：1野兽2龙类3恶魔4元素生物5巨人6亡灵7人形生物8小动物9机械11图腾12非战斗宠物13气体云雾
+
+182根据stat百分比提高护甲值PCTm_effectMiscValue(117-119)=1m_effectMiscValueB(120-122)控制基本属性的类型：0力量1敏捷2耐力3智力4精神-1所有属性
+
+183威胁
+
+184被近战攻击命中的几率提高
+
+185被远程攻击命中的几率提高
+
+186被法术攻击命中的几率提高
+
+187被近战暴击几率提高
+
+188被远程暴击几率提高
+
+189提高技能等级
+
+190增加杀怪获得声望m_effectMiscValue(117-119)控制阵营：IDfromfaction.dbc
+
+191移动速度降低
+
+192减少攻击速度PCT
+
+193攻击间隔延长PCT
+
+194无视伤害减免
+
+196CD延长作用于本技能
+
+197受到暴击几率提高
+
+199命中几率提高PCT
+
+200获得xp提高PCT
+
+201飞行
+
+202忽视躲闪
+
+203受到近战暴击伤害提高
+
+204受到远程暴击伤害提高
+
+205受到法术暴击伤害提高
+
+206增加飞行速度
+
+207坐骑可以飞行
+
+208增加飞行速度
+
+209增加骑马速度
+
+210增加飞行坐骑速度
+
+211修改飞行速度不叠加
+
+212根据stat百分比修改远程攻击强度m_effectMiscValue(117-119)控制基本属性的类型：0力量1敏捷2耐力3智力4精神-1所有属性
+
+213伤害产生怒气值提高PCT
+
+216施法速度提高
+
+218攻击间隔缩短
+
+219每5秒根据stat回复法力值PCTm_effectMiscValue(117-119)控制基本属性的类型：0力量1敏捷2耐力3智力4精神-1所有属性
+
+220根据stat修改招架等级PCT、m_effectMiscValue(117-119)控制基本属性的类型：0力量1敏捷2耐力3智力4精神-1所有属性
+
+221忽略一个敌人，使施法者在有其他目标可以选择的情况下不攻击该目标
+
+225受到伤害时回复生命
+
+227周期性触发技能123列为触发的技能ID
+
+229因范围攻击受到的伤害提高PCT
+
+231步骤性触发技能的值
+
+232Mechanic类技能持续时间修改PCT不叠加
+
+234Mechanic类技能持续时间修改PCT
+
+236冲锋、驾驶、投射
+
+237根据攻击强度修改技能伤害m_effectMiscValue(117-119)控制类型：1物理,2神圣,4火,8自然,16冰,32暗影,64奥术
+
+238根据攻击强度修改技能治疗量
+
+239体型增大
+
+240精准值提高
+
+241向前推进
+
+242使你的法术伤害和治疗效果提高
+
+245受到Dispel类技能持续时间增加
+
+246受到Dispel类技能持续时间增加不可叠加
+
+247镜像
+
+249符文转换
+
+250增加生命值
+
+251降低敌人躲闪几率
+
+253PCT几率格挡掉双倍于你的格挡值的伤害
+
+254解除盾牌
+
+255MECHANIC效果提高PCT
+
+256不需要施法材料
+
+257造成混乱伤害
+
+262忽视AuraState要求
+
+267阻止不利魔法效果
+
+268根据STAT百分比修改攻击强度m_effectMiscValue(117-119)控制基本属性的类型：0力量1敏捷2耐力3智力4精神-1所有属性
+
+269忽视伤害减免效果
+
+271指定技能伤害提高
+
+274不消耗弹药
+
+275不需要姿态施展技能
+
+278解除远程武器
+
+279初始化影像
+
+280忽视护甲值PCT
+
+281获得的荣誉值提高PCT
+
+282基础生命值提高PCT
+
+285根据护甲值修改攻击强度
+
+286指定技能的持续伤害可以暴击
+
+99-101m_effectAuraPeriodBUFF效果时间多少时间内造成的伤害毫秒
+
+102-104m_effectAmplitudebuff发作间隔例如暗言术痛的值3000为即每3秒发作一次毫秒
+
+105-107m_effectChainTargets效果链的目标链接几个就填几啦
+
+108-110m_effectItemType物品代码使用此技能链接的物品比如烟花
+
+111-113m_effectMiscValueeffect的值召唤生物的ID在此列附魔代码也在此列，附魔参考SpellItemEnchantment.dbc
+
+114-116m_effectMiscValueB
+
+117-119m_effectTriggerSpell触发的技能
+
+120-122m_effectPointsPerCombo每连击的效果增加值盗贼的连击点数
+
+123-131EffectSpellClassMask
+
+132-133m_spellVisualID视觉效果参照spellVisual.dbc,只用于客户端
+
+134m_spellIconID技能图标参考SpellIcon.dbc138同
+
+135m_activeIconID使用技能后的图标
+
+141m_name_lang技能名字
+
+205m_manaCostPct耗费魔法百分比
+
+206m_startRecoveryCategory开始恢复冷却时间的类别
+
+207m_startRecoveryTime开始恢复冷却的时间
+
+208m_maxTargetLevel最大目标等级
+
+209SpellFamilyNamem_spellClassSet技能类型设置3法师6牧师11萨满4战士7德鲁伊8盗贼9猎人10QS5术士13试剂15DK17宠物
+
+210-212SpellFamilyFlags
+
+213m_maxTargets最大目标数
+
+214m_defenseType防护类型
+
+215m_preventionType阻止类型1沉默2平静
+
+217-219m_effectChainAmplitude效果连的发生间隔
+
+220m_minFactionIDnotused
+
+221m_minReputationnotused
+
+222m_requiredAuraVisionnotused
+
+223-224m_requiredTotemCategoryID需要图腾类型ID参考TotemCategory.dbc
+
+225m_requiredAreaGroupId需要区域ID
+
+226m_schoolMask伤害类型:1物理,2神圣,4火,8自然,16冰,32暗影,64奥术
+
+227m_runeCostID施法需要的符文ID参考：SpellRuneCost.dbc(2-4符文花费：1血2霜3黑暗;5能量增加）
+
+228m_spellMissileIDnotused
+
+229PowerDisplay.dbc,newin3.1
+
+230-232法伤加成
+
+233spellDescriptionVariableID
+
+234SpellDifficultyId
+
+SpellCastTimes.dbc详解
+
+SpellCastTimes.dbc详解施法时间，单位是毫秒
+
+列字段详细说明
+
+1编号
+
+2施法时间
+
+3每级施法时间
+
+4最少施法时间
+
+SpellCategory.dbc详解
+
+SpellCategory.dbc详解技能分类
+
+列字段详细说明
+
+1编号
+
+2标识编号170是1，351是2，其他都是0
+
+SpellDifficulty.dbc详解
+
+SpellDifficulty.dbc详解法术难度
+
+列字段详细说明
+
+1编号
+
+2-5法术编号副本模式，如果4和5是0，则是普通/英雄模式，否则是10N、25N、10H、25H模式
+
+SpellDuration.dbc详解
+
+SpellDuration.dbc详解法术持续时间，单位毫秒
+
+列字段详细说明
+
+1编号
+
+2基础持续时间
+
+3每级持续时间
+
+4最大持续时间
+
+SpellFocusObject.dbc详解
+
+SpellFocusObject.dbc详解法术焦点对象
+
+列字段详细说明
+
+1编号
+
+2-16名称
+
+17标识
+
+SpellItemEnchantment.dbc详解
+
+SpellItemEnchantment.dbc详解物品附魔
+
+列字段详细说明
+
+1编号
+
+2费用
+
+3-5类型
+
+6-8数量最小点数
+
+9-11数量2最大点数
+
+12-14法术编号若type=5，则代表状态，否则参考spell.dbc
+
+15-30描述各国语言
+
+31描述标识
+
+32光环参考ItemVisuals.dbc
+
+33槽
+
+34珠宝编号
+
+35附魔条件
+
+36需要技能参考SkillLine.dbc
+
+37需要技能等级
+
+38需要等级
+
+SpellItemEnchantmentCondition.dbc详解
+
+SpellItemEnchantmentCondition.dbc详解附魔条件
+
+列字段详细说明
+
+1编号参考SpellItemEnchantment.dbc
+
+2-6颜色
+
+7-11操作对象
+
+12-16比较
+
+17-21比较颜色
+
+22-26值
+
+27-31逻辑
+
+SpellRadius.dbc详情
+
+SpellRadius.dbc详情法术半径
+
+列字段详细说明
+
+1编号
+
+2最小半径
+
+3每级半径
+
+4最大半径
+
+SpellRange.dbc详解
+
+SpellRange.dbc详解法术射程
+
+列字段详细说明
+
+1编号
+
+2最小敌方射程
+
+3最小友方射程
+
+4最大敌方射程
+
+5最大友方射程
+
+6类型
+
+7-23名称未使用
+
+24名称类型未使用
+
+25-40名称2未使用
+
+41字串类型未使用
+
+SpellRuneCost.dbc详解
+
+SpellRuneCost.dbc详解法术符文消耗
+
+列字段详细说明
+
+1编号
+
+2-4符文消耗0-鲜血符文，1-冰霜符文，2-邪恶符文
+
+5符文能量获取
+
+SpellShapeshiftForm.dbc详解
+
+SpellShapeshiftForm.dbc详解法术变身
+
+列字段详细说明
+
+1编号
+
+2按钮位置
+
+3-18名称
+
+19名称标识
+
+20标识
+
+21生物类型
+
+22未知若&lt;=0-人类，其他代表生物类型
+
+23攻击速度
+
+24联盟模型编号
+
+25部落模型编号
+
+26未知
+
+27未知
+
+28-35姿态法术
+
+StableSlotPrices.dbc详解
+
+StableSlotPrices.dbc详解插槽价格
+
+列字段详细说明
+
+1槽
+
+2价格
+
+SummonProperties.dbc详解
+
+SummonProperties.dbc详解召唤属性
+
+列字段详细说明
+
+1编号
+
+2分类0-不能控制，1-守护者，2-宠物，3-可控制，4-坐骑、交通工具
+
+3阵营
+
+4类型
+
+5槽0-6
+
+6标识
+
+Talent.dbc详解
+
+Talent.dbc详解天赋
+
+列字段详细说明
+
+1天赋编号
+
+2天赋选项卡参考TalentTab.dbc中的索引
+
+3行
+
+4列
+
+5-9等级编号
+
+10-13未使用总为0
+
+14取决于Talent.dbc的索引
+
+15-16未使用
+
+17取决于等级
+
+18-19未使用
+
+20需要添加技能书重置天赋树时需要禁用最高天赋等级
+
+21未知总为0
+
+22宠物可用宠物使用的64位掩码，参考CreatureFamily.dbc
+
+TalentTab.dbc详解
+
+TalentTab.dbc详解天赋选项卡
+
+列字段详细说明
+
+1选项卡编号未使用
+
+2-17名称未使用
+
+18标识
+
+19法术图标未使用
+
+20种族掩码仅玩家可用
+
+21职业掩码仅玩家可用
+
+22宠物天赋仅猎人宠物可用
+
+23选项卡页面
+
+24内部名称仅代码内使用
+
+TaxiNodes.dbc详解
+
+TaxiNodes.dbc详解飞行节点，包含飞行节点的名称、位置和坐骑信息，严格用于当点击一个飞行管理员时显示的地图飞行节点信息
+
+列字段详细说明
+
+1编号
+
+2地图编号
+
+3x飞行点x坐标
+
+4y飞行点y坐标
+
+5z飞行点z坐标
+
+6-22名称多国语言版本
+
+23标识
+
+24-25坐骑的生物编号参考数据表creature_template表的entry字段
+
+TaxiPath.dbc详解
+
+TaxiPath.dbc详解包含飞行点工具、船只和飞艇等源、目的地和费用
+
+列字段详细说明
+
+1编号
+
+2源地点最初的交通节点
+
+3目的地目的地交通节点
+
+4费用
+
+TaxiPathNode.dbc详解
+
+TaxiPathNode.dbc详解每个点的飞行轨迹数据
+
+列字段详细说明
+
+1编号
+
+2路径编号节点所在的路径，参考TaxiPath.dbc
+
+3节点索引
+
+4地图编号飞行点所在的地图
+
+5xx坐标
+
+6yy坐标
+
+7zz坐标
+
+8标识
+
+9时间间隔在某个点延迟的时间，单位是秒
+
+10到达事件
+
+11离开事件
+
+TeamContributionPoints.dbc详解
+
+TeamContributionPoints.dbc详解团队贡献点
+
+列字段详细说明
+
+1索引
+
+2值
+
+TotemCategory.dbc详解
+
+TotemCategory.dbc详解图腾分类
+
+列字段详细说明
+
+1编号
+
+2-17名称包括各种东西，不仅仅是图腾
+
+18标识
+
+19分类类型工具所属分类，1-图腾，3-附魔棒
+
+20分类掩码对同一类型的兼容性，兼容不同的图腾，从高级到低级图腾棒
+
+TransportAnimation.dbc详解
+
+TransportAnimation.dbc详解传送动画
+
+列字段详细说明
+
+1编号
+
+2传送索引
+
+3时间
+
+4x
+
+5y
+
+6z
+
+7移动编号参考AnimationData.dbc
+
+TransportRotation.dbc详解
+
+TransportRotation.dbc详解传送周转
+
+列字段详细说明
+
+1编号
+
+2传送索引
+
+3时间
+
+4x
+
+5y
+
+6z
+
+7w
+
+Vehicle.dbc详解
+
+Vehicle.dbc详解交通工具
+
+列字段详细说明
+
+1编号
+
+2标识
+
+3转速
+
+4俯冲速度
+
+5最小俯冲速度
+
+6最大俯冲速度
+
+7-14座位编号
+
+15鼠标偏移距
+
+16相机最小衰减距离尺寸
+
+17相机最大衰减距离尺寸
+
+18相机俯冲偏移
+
+19右方面向限制
+
+20左方面向限制
+
+21msslTrgtTurnLingering这些（含以下）实在不知道是什么意思，所以没翻译
+
+22msslTrgtPitchLingering
+
+23msslTrgtMouseLingering
+
+24msslTrgtEndOpacity
+
+25msslTrgtArcSpeed
+
+26msslTrgtArcRepeat
+
+27msslTrgtArcWidth
+
+28-29msslTrgtImpactRadius
+
+30msslTrgtArcTexture
+
+31msslTrgtImpactTexture
+
+32-33msslTrgtImpactModel
+
+34相机横摆偏移
+
+35用户界面运动类型
+
+36msslTrgtImpactTexRadius
+
+37用户界面位置指示器类型
+
+38能量显示编号
+
+39
+
+40
+
+VehicleSeat.dbc详解
+
+VehicleSeat.dbc详解交通工具座位
+
+列字段详细说明
+
+1编号
+
+2标识
+
+3附件
+
+4附件x坐标偏移
+
+5附件y坐标偏移
+
+6附件z坐标偏移
+
+7进入预延迟
+
+8进入速度
+
+9进入重力
+
+10进入最小持续时间
+
+11进入最大持续时间
+
+12进入最小弧度高度
+
+13进入最大弧度高度
+
+14进入动画开始
+
+15进入动画循环
+
+16乘骑动画开始
+
+17乘骑动画循环
+
+18骑上动画开始
+
+19骑上动画循环
+
+20退出预延迟
+
+21退出速度
+
+22退出重力
+
+23退出最小持续时间
+
+24退出最大持续时间
+
+25退出最小弧度高度
+
+26退出最大弧度高度
+
+27退出动画开始
+
+28退出动画循环
+
+29退出动画结束
+
+30乘客
+
+31乘客俯冲
+
+32乘客翻滚
+
+33乘客附件编号
+
+34交通工具进入动画
+
+35交通工具结束动画
+
+36交通工具骑乘动画循环
+
+37交通工具进入骨骼动画
+
+38交通工具结束骨骼动画
+
+39交通工具骑乘骨骼动画循环
+
+40交通工具进入动画延迟
+
+41交通工具结束动画延迟
+
+42交通工具属性显示
+
+43进入用户界面声音编号
+
+44结束用户界面声音编号
+
+45用户界面皮肤
+
+46标识
+
+47-58
+
+WMOAreaTable.dbc详解
+
+WMOAreaTable.dbc详解归功于客户端加载和缓存这个dbc文件的方式，索引需要按wmo编号来排序，也可能是组编号
+
+列字段详细说明
+
+1编号
+
+2root编号用于rootWMO
+
+3adt编号用于adtWMO
+
+4组编号用于groupWMO
+
+5未知
+
+6未知
+
+7未知
+
+8未知
+
+9未知
+
+10标识用户检测户内还是户外
+
+11区域编号参考AreaTable.dbc
+
+12-27名称各国语言版本
+
+28名称标识貌似总为0xFF01FC
+
+WorldMapArea.dbc详解
+
+WorldMapArea.dbc详解用于创建世界地图上的区域
+
+列字段详细说明
+
+1编号
+
+2地图编号
+
+3区域编号0-忽略
+
+4内部名称代码内使用
+
+5y1
+
+6y2
+
+7x1
+
+8x2
+
+9虚拟地图编号-1-地图编号对应具体地图，其他：地区显示的虚拟地图
+
+10地下城地图编号参考DungeonMap.dbc，重写y1、y2、x1、x2数据
+
+11上级地图编号
+
+WorldMapOverlay.dbc详解
+
+WorldMapOverlay.dbc详解显示世界地图中覆盖的不同区域
+
+列字段详细说明
+
+1编号
+
+2世界地图区域编号
+
+3-6区域表编号
+
+7-8地图点xy坐标
+
+9内部名称
+
+10-17未知
+
+WorldSafeLocs.dbc详解
+
+WorldSafeLocs.dbc详解当你死亡时，灵魂刷新的位置，游戏会计算离你最近的墓地并且把你刷新到那里
+
+列字段详细说明
+
+1编号
+
+2地图编号
+
+3x灵魂刷新点x坐标
+
+4y灵魂刷新点y坐标
+
+5z灵魂刷新点z坐标
+
+6-21名称
+
+22名称标识</code></pre>
+
+            </div>
+            
+            
+              <div class="post-footer">
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+      <strong class="language" data-lan="author">本文作者：</strong>
+      Whitehat
+    </li>
+    <li class="post-copyright-link">
+      <strong class="language" data-lan="link">本文链接：</strong>
+      <a href="https://52wow.github.io/post/6JNftVVTl/" title="每个DBC详细解释（键盘 Ctrl+F 筛选关键字)">https://52wow.github.io/post/6JNftVVTl/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong class="language" data-lan="copyright">版权声明： </strong>
+      本博客所有文章除特别声明外，均采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i> BY-NC-SA</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+  <div class="tags">
+    
+  </div>
+  <div class="nav">
+    <div class="nav-prev">
+      
+    </div>
+    <div class="nav-next">
+      
+        <a class="nav-pc-next" title="数据库表的中文详解（键盘 Ctrl+F 筛选关键字)" href="https://52wow.github.io/post/fgAO8EnVy/">数据库表的中文详解（键盘 Ctrl+F 筛选关键字)</a>
+        <a class="nav-mobile-next" title="数据库表的中文详解（键盘 Ctrl+F 筛选关键字)" href="https://52wow.github.io/post/fgAO8EnVy/">下一篇</a>
+        <i class="fa fa-chevron-right"></i>
+      
+    </div>
+  </div>
 </div>
+            
+            
+  <script src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script>
+<div id="vcomments" style="padding: 10px 0px 0px 0px"></div>
+
+<style>
+  .v .veditor {
+    min-height: 10rem;
+    background-image: url('');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: right;
+    background-color: rgba(255, 255, 255, 0);
+    resize: none;
+  }
+
+  .v .vwrap {
+    border: 1px solid #000 !important;
+  }
+
+  .v .vbtn {
+    padding: .4rem 1.2rem !important;
+    border-color: #fff !important;
+    background-color: #49b1f5 !important;
+    color: #fff !important;
+    font-size: .7rem !important;
+  }
+
+  .v .vcards .vcard .vh .vmeta .vat {
+    padding: 0 .8rem !important;
+    border: 1px solid #00c4b6 !important;
+    border-radius: 5px !important;
+    color: #00c4b6 !important;
+  }
+</style>
 <script>
-
-  let fontStart = 12, fontEnd = 30, colorStart = '#666', colorEnd = '#000';
-  let tags = document.querySelector('#tags').children;
-  let counts = [];
-  for(let i = 0; i < tags.length; i++) {
-    counts.push(tags[i].rel);
-  }
-  let lowest = Math.min.apply(null,counts), highest = Math.max.apply(null,counts);;
-  let range = highest - lowest;
-  if (range === 0) {
-    range = 1;
-  }
-  let fontIncr, colorIncr;
-  fontIncr = (fontEnd - fontStart) / range;
-  
-  let sColorArr = toRGB(colorStart), eColorArr = toRGB(colorEnd);
-
-  for(let i = 0; i < tags.length; i++) {
-    let disCount = tags[i].rel - lowest;
-    let fontSize = fontStart + disCount * fontIncr;
-    let style = 'font-size: ' + fontSize + 'px;';
-    let arr = [];
-    for(let c = 0; c < sColorArr.length; c++) {
-      if (disCount === 0) {
-        disCount = 1;
-      }
-      let val = (sColorArr[c] - eColorArr[c]) / range * disCount;
-      if (val >= 100) {
-        val = eColorArr[c];
-      } else if (val <= 0) {
-        val = sColorArr[c];
-      }
-      arr[c] = Math.floor(val);
-    }
-    style += 'color: ' + toHex(arr);
-    tags[i].style = style;
-  }
-
-  function toRGB(code) {
-    if (code.length === 4) {
-      code = code.replace(/(\w)(\w)(\w)/gi, "\$1\$1\$2\$2\$3\$3");
-    }
-    var hex = /(\w{2})(\w{2})(\w{2})/.exec(code);
-    return [parseInt(hex[1], 16), parseInt(hex[2], 16), parseInt(hex[3], 16)];
-  }
-
-  function toHex(ary) {
-    return "#" + ((1 << 24) + (ary[0] << 16) + (ary[1] << 8) + ary[2]).toString(16).slice(1);
-  }
-
+  new Valine({
+    el: '#vcomments',
+    appId: '',
+    appKey: '',
+    avatar: '',
+    placeholder: '',
+    pageSize: '',
+    lang: 'zh-cn',
+    enableQQ: 'true' === 'true',
+    visitor: 'true' === 'true',
+    highlight: 'true' === 'true',
+    avatarForce: 'true' === 'false',
+  });
 </script>
-          </section>
+
+          </div>
         </div>
       </div>
     </div>
@@ -473,6 +4505,253 @@
   }
 
 </script>
+    <div class="light-box" id="light_box"></div>
+<script>
+  let imgs = document.querySelectorAll('.post-body img');
+  let lightBox = document.querySelector('#light_box');
+  lightBox.addEventListener('mousedown', (e) => {
+    e.preventDefault()
+  })
+  lightBox.addEventListener('mousewheel', (e) => {
+    e.preventDefault()
+  })
+  let width = window.innerWidth * 0.8;
+  lightBox.onclick = () => {
+    let img = lightBox.querySelector('img');
+    lightBox.style = '';
+    img && img.remove();
+  }
+  imgs.forEach(item => {
+    item.onclick = function (e) {
+      let lightImg = document.createElement('img');
+      lightImg.src = this.src;
+      lightBox.style = `height: 100%; opacity: 1; background-color: rgba(0, 0, 0, 0.5);cursor: zoom-out;`;
+      lightImg.style = `width: ${width}px;border-radius: 2px;`;
+      lightImg.onclick = function () {
+        lightBox.style = '';
+        this.remove();
+      }
+      lightBox.append(lightImg);
+    }
+  })
+</script>
+    <div class="reward-mask" style="display: none;">
+  <div class="reward-relative">
+    <span class="close" aria-hidden="true">x</span>
+    <div class="reward-body">
+      <h2>感谢您的支持，我会继续努力的!</h2>
+      <div class="reward-img-box">
+        <div style="position: relative; width: 140px; height: 140px;">
+          
+          
+          
+        </div>
+      </div>
+      <p class="reward-word">扫码打赏，你说多少就多少</p>
+      <p class="reward-tip">打开微信扫一扫，即可进行扫码打赏哦</p>
+    </div>
+    <div class="bottom">
+      
+      
+    </div>
+  </div>
+</div>
+<style>
+  .reward-mask {
+    position: fixed;
+    z-index: 99999;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #00000054;
+  }
+
+  .reward-relative {
+    position: relative;
+    width: 480px;
+    text-align: center;
+    margin: 0 auto;
+    border-radius: 5px;
+    background-color: #fff;
+    top: 50%;
+    margin-top: -205px;
+  }
+
+  .reward-relative .close {
+    position: absolute;
+    right: 10px;
+    font-weight: normal;
+    font-size: 16px;
+    color: #929292;
+  }
+
+  .reward-body {
+    padding: 40px 20px 20px;
+  }
+
+  .bottom {
+    display: flex;
+  }
+
+  .reward-btn {
+    text-align: center;
+  }
+
+  .reward-btn-text {
+    display: inline-block;
+    cursor: pointer;
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    border-radius: 50%;
+    background-color: #ff9734;
+    color: #FFF;
+    margin-top: 20px;
+  }
+
+  .pay-text {
+    margin-top: 10px;
+    padding: 10px;
+    flex: 1;
+    transition: all .2s linear;
+  }
+
+  .pay-text:hover {
+    background-color: #a5a5a536;
+  }
+
+  .reward-body h2 {
+    padding-top: 10px;
+    text-align: center;
+    color: #a3a3a3;
+    font-size: 16px;
+    font-weight: normal;
+    margin: 0 0 20px;
+  }
+
+  .reward-body h2:after,
+  .reward-body h2:before {
+    font-family: Arial, Helvetica, sans-serif;
+    background: 0 0;
+    width: 0;
+    height: 0;
+    font-style: normal;
+    color: #eee;
+    font-size: 80px;
+    position: absolute;
+    top: 20px;
+  }
+
+  .reward-body h2:before {
+    content: '\201c';
+    left: 50px;
+  }
+
+  .reward-body h2:after {
+    content: '\201d';
+    right: 80px;
+  }
+
+  .reward-img-box {
+    display: inline-block;
+    padding: 10px;
+    border: 6px solid #ea5f00;
+    margin: 0 auto;
+    border-radius: 3px;
+    position: relative;
+  }
+
+  .reward-img {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+  }
+
+  @media (max-width: 767px) {
+    .reward-relative {
+      height: 100%;
+      top: 0px;
+      margin-top: 0;
+      width: auto;
+    }
+
+    .reward-relative .bottom {
+      flex-direction: column;
+    }
+
+    .reward-relative .pay-text {
+      width: 80%;
+      margin: 5px auto;
+      border: 1px solid silver;
+      padding: 6px;
+      border-radius: 4px;
+    }
+
+    .reward-body h2:after {
+      right: 40px;
+    }
+
+    .reward-body h2:after,
+    .reward-body h2:before {
+      font-size: 60px;
+    }
+
+    .reward-body h2:before {
+      left: 20px;
+    }
+  }
+</style>
+<script>
+  !function () {
+    var mask = document.querySelector('.reward-mask');
+    let close = document.querySelector('.reward-relative .close');
+    let rewardBtn = document.querySelector('.reward-btn');
+
+    let zfb = document.querySelector('#zfb'),
+      wx = document.querySelector('#wx'),
+      zfbBtn = document.querySelector('#zfbBtn'),
+      wxBtn = document.querySelector('#wxBtn');
+
+    if (zfbBtn && wxBtn) {
+      zfbBtn.addEventListener('click', () => {
+        window.Velocity(zfb, 'transition.slideLeftIn', {
+          duration: 400
+        });
+        window.Velocity(wx, 'transition.slideRightOut', {
+          display: 'none',
+          duration: 400
+        });
+      });
+
+      wxBtn.addEventListener('click', () => {
+        window.Velocity(wx, 'transition.slideRightIn', {
+          duration: 400
+        });
+        window.Velocity(zfb, 'transition.slideLeftOut', {
+          display: 'none',
+          duration: 400
+        });
+      });
+    }
+
+    rewardBtn.addEventListener('click', (e) => {
+      window.Velocity(mask, 'transition.slideDownIn', {
+        duration: 400
+      })
+    });
+
+    close.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.Velocity(mask, 'transition.slideUpOut', {
+        duration: 400
+      })
+    })
+  }()
+</script>
+
   </div>
 </body>
 
@@ -22253,7 +26532,6 @@ DEBUG模式测试FWQ&lt;br&gt;
 
 
 <script src="/media/js/mouse/love.js"></script>
-
 
 
 </html>
