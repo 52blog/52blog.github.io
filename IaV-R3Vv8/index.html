@@ -8,7 +8,7 @@
 <meta name="keywords" content="Whitehat个人博客">
 <meta name="description" content="">
 <meta name="theme-color" content="#000">
-<title>Whitehat</title>
+<title>GM常用命令 | Whitehat</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1593184095798">
 <link rel="stylesheet" href="/media/css/gemini.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
@@ -38,6 +38,8 @@
 
 
 
+  <meta name="description" content="GM常用命令" />
+  <meta name="keywords" content="" />
 </head>
 
 <body>
@@ -157,10 +159,26 @@
   <div class="main-continer">
     
     <div
-      class="section-layout  gemini">
+      class="section-layout gemini ">
       <div class="section-layout-wrapper">
-        <div id="sidebarMeta" class="sidebar">
-    
+        
+
+<div class="sidebar">
+  
+    <div class="sidebar-box box-shadow-wrapper bg-color right-motion" id="sidebar">
+      
+        <div class="post-list-sidebar">
+          <div class="sidebar-title">
+            <span id="tocSideBar" class="sidebar-title-item sidebar-title-active language" data-lan="index">文章目录</span>
+            <span id="metaSideBar" class="sidebar-title-item language" data-lan="preview">站点概览</span>
+          </div>
+        </div>
+      
+      <div class="sidebar-body gemini" id="sidebar_body">
+        
+          
+            <div class="post-side-meta" id="post_side_meta">
+              
 <div class="sidebar-wrapper box-shadow-wrapper bg-color">
   <div class="sidebar-item">
     <img class="site-author-image right-motion" src="/images/avatar.png"/>
@@ -216,84 +234,741 @@
 
 
 </div>
+            </div>
+            <div class="post-toc sidebar-body-active" id="post_toc" style="opacity: 1;">
+              <div class="toc-box right-motion">
+  <div class="toc-wrapper auto-number no_compress"
+    id="toc_wrapper">
+    <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E5%B8%B8%E7%94%A8">常用</a></li>
+<li><a href="#%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9B%B8%E5%85%B3">服务器相关</a></li>
+<li><a href="#%E6%88%98%E5%9C%BA%E7%AB%9E%E6%8A%80%E5%9C%BA%E7%9B%B8%E5%85%B3">战场竞技场相关</a></li>
+<li><a href="#%E4%BC%A0%E9%80%81%E7%9B%B8%E5%85%B3">传送相关</a></li>
+<li><a href="#npc%E7%9B%B8%E5%85%B3">NPC相关</a></li>
+<li><a href="#%E5%91%BD%E4%BB%A4%E7%9B%B8%E5%85%B3">命令相关</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
 </div>
+
 <script>
-  let sidebarMeta = document.querySelector('#sidebarMeta');
-  let scheme = 'gemini';
-  let sidebarWrapper = document.querySelector('.sidebar-wrapper');
-  if (sidebarMeta && (scheme === 'pisces' || scheme === 'gemini')) {
-    document.addEventListener('scroll', function(e) {
-      if (document.scrollingElement.scrollTop > parseInt(sidebarMeta.style.marginTop) + 10) {
-        sidebarWrapper.classList.add('home-sidebar-fixed')
-      } else {
-        sidebarWrapper.classList.remove('home-sidebar-fixed')
+
+  let lastTop = 0, lList = [], hList = [], postBody, lastIndex = -1;
+  let active = 'active-show', activeClass = 'active-current';
+  let tocWrapper = document.querySelector('#toc_wrapper');
+  let tocContent = tocWrapper.children[0];
+  let autoNumber = tocWrapper && tocWrapper.classList.contains('auto-number');
+
+  function addTocNumber(elem, deep) {
+    if (!elem) {
+      return;
+    }
+    let prop = elem.__proto__;
+
+    if (prop === HTMLUListElement.prototype) {
+      for (let i = 0; i < elem.children.length; i++) {
+        addTocNumber(elem.children[i], deep + (i + 1) + '.');
       }
+    } else if (prop === HTMLLIElement.prototype) {
+      // 保存li元素
+      if (elem.children[0] && elem.children[0].__proto__ === HTMLAnchorElement.prototype) {
+        lList.push(elem);
+      }
+      for (let i = 0; i < elem.children.length; i++) {
+        let cur = elem.children[i];
+        if (cur.__proto__ === HTMLAnchorElement.prototype) {
+          if (autoNumber) {
+            cur.text = deep + ' ' + cur.text;
+          }
+        } else if (cur.__proto__ === HTMLUListElement.prototype) {
+          addTocNumber(cur, deep);
+        }
+      }
+    }
+  }
+
+  function removeParentActiveClass() {
+    let parents = tocContent.querySelectorAll('.' + active)
+    parents.forEach(function (elem) {
+      elem.classList.remove(active);
     });
   }
-  </script>
-        <div class="section-box box-shadow-wrapper">
-          <section class="section tags-section bg-color posts-expand">
-            <div class="tags-box">
-  <div class="tag-cloud-title language" data-lan="cloud-tags" data-count="0">
-    目前共计 0 个标签
-  </div>
-  <div class="tag-cloud-list" id="tags">
-    
-  </div>
-</div>
-<script>
 
-  let fontStart = 12, fontEnd = 30, colorStart = '#666', colorEnd = '#000';
-  let tags = document.querySelector('#tags').children;
-  let counts = [];
-  for(let i = 0; i < tags.length; i++) {
-    counts.push(tags[i].rel);
-  }
-  let lowest = Math.min.apply(null,counts), highest = Math.max.apply(null,counts);;
-  let range = highest - lowest;
-  if (range === 0) {
-    range = 1;
-  }
-  let fontIncr, colorIncr;
-  fontIncr = (fontEnd - fontStart) / range;
-  
-  let sColorArr = toRGB(colorStart), eColorArr = toRGB(colorEnd);
-
-  for(let i = 0; i < tags.length; i++) {
-    let disCount = tags[i].rel - lowest;
-    let fontSize = fontStart + disCount * fontIncr;
-    let style = 'font-size: ' + fontSize + 'px;';
-    let arr = [];
-    for(let c = 0; c < sColorArr.length; c++) {
-      if (disCount === 0) {
-        disCount = 1;
-      }
-      let val = (sColorArr[c] - eColorArr[c]) / range * disCount;
-      if (val >= 100) {
-        val = eColorArr[c];
-      } else if (val <= 0) {
-        val = sColorArr[c];
-      }
-      arr[c] = Math.floor(val);
+  function addActiveClass(index) {
+    if (index >= 0 && index < hList.length) {
+      lList[index].classList.add(activeClass);
     }
-    style += 'color: ' + toHex(arr);
-    tags[i].style = style;
   }
 
-  function toRGB(code) {
-    if (code.length === 4) {
-      code = code.replace(/(\w)(\w)(\w)/gi, "\$1\$1\$2\$2\$3\$3");
+  function removeActiveClass(index) {
+    if (index >= 0 && index < hList.length) {
+      lList[index].classList.remove(activeClass);
     }
-    var hex = /(\w{2})(\w{2})(\w{2})/.exec(code);
-    return [parseInt(hex[1], 16), parseInt(hex[2], 16), parseInt(hex[3], 16)];
   }
 
-  function toHex(ary) {
-    return "#" + ((1 << 24) + (ary[0] << 16) + (ary[1] << 8) + ary[2]).toString(16).slice(1);
+  function addActiveLiElemment(elem, parent) {
+    if (!elem || elem === parent) {
+      return;
+    } else {
+      if (elem.__proto__ === HTMLLIElement.prototype) {
+        elem.classList.add(active);
+      }
+      addActiveLiElemment(elem.parentElement, parent);
+    }
   }
+
+  function showToc() {
+    if (tocWrapper) {
+      postBody = document.querySelector('#post_body');
+      for (let i = 0; i < postBody.children.length; i++) {
+        if (postBody.children[i].__proto__ === HTMLHeadingElement.prototype) {
+          hList.push(postBody.children[i]);
+        }
+      }
+      if (tocWrapper.classList.contains('compress')) {
+        tocContent.classList.add('closed');
+      } else if (tocWrapper.classList.contains('no_compress')) {
+        tocContent.classList.add('expanded');
+      } else {
+        if (hList.length > 10) {
+          active = 'active-hidden'
+          tocContent.classList.add('closed');
+        } else {
+          tocContent.classList.add('expanded');
+        }
+      }
+    }
+  }
+
+  (function () {
+    // 处理不是从#一级标题开始目录
+    if (tocContent.children.length === 1 && tocContent.children[0].__proto__ === HTMLLIElement.prototype) {
+      let con = tocContent.children[0].children[0];
+      tocContent.innerHTML = con.innerHTML;
+    }
+    let markdownItTOC = document.querySelector('.markdownIt-TOC');
+    let innerHeight = window.innerHeight;
+    markdownItTOC.style = `max-height: ${innerHeight - 80 > 0 ? innerHeight - 80 : innerHeight}px`
+    addTocNumber(tocContent, '');
+  })();
+
+  document.addEventListener('scroll', function (e) {
+    if (lList.length <= 0) {
+      return;
+    }
+    let scrollTop = document.scrollingElement.scrollTop + 10;
+    let dir;
+
+    if (lastTop - scrollTop > 0) {
+      dir = 'up';
+    } else {
+      dir = 'down';
+    }
+
+    lastTop = scrollTop;
+    if (scrollTop <= 0) {
+      if (lastIndex >= 0 && lastIndex < hList.length) {
+        lList[lastIndex].classList.remove(activeClass);
+      }
+      return;
+    }
+
+    let current = 0, hasFind = false;
+    for (let i = 0; i < hList.length; i++) {
+      if (hList[i].offsetTop > scrollTop) {
+        current = i;
+        hasFind = true;
+        break;
+      }
+    }
+    if (!hasFind && scrollTop > lList[lList.length - 1].offsetTop) {
+      current = hList.length - 1;
+    } else {
+      current--;
+    }
+    if (dir === 'down') {
+      if (current > lastIndex) {
+        addActiveClass(current);
+        removeActiveClass(lastIndex)
+        lastIndex = current;
+        removeParentActiveClass();
+        lList[current] && addActiveLiElemment(lList[current].parentElement, tocContent);
+      }
+    } else {
+      if (current < lastIndex) {
+        addActiveClass(current);
+        removeActiveClass(lastIndex);
+        lastIndex = current;
+        removeParentActiveClass();
+        lList[current] && addActiveLiElemment(lList[current].parentElement, tocContent);
+      }
+    }
+  });
+
+
+  window.addEventListener('load', function () {
+    showToc();
+    document.querySelector('#sidebar').style = 'display: block;';
+    tocWrapper.classList.add('toc-active');
+    setTimeout(function () {
+      if ("createEvent" in document) {
+        let evt = document.createEvent("HTMLEvents");
+        evt.initEvent("scroll", false, true);
+        document.dispatchEvent(evt);
+      }
+      else {
+        document.fireEvent("scroll");
+      }
+    }, 500)
+  })
 
 </script>
-          </section>
+            </div>
+          
+        
+      </div>
+    </div>
+  
+</div>
+<script>
+  const SIDEBAR_TITLE_ACTIVE = 'sidebar-title-active';
+  const SIDEBAR_BODY_ACTIVE = 'sidebar-body-active';
+  const SLIDE_UP_IN = 'slide-up-in';
+
+  let sidebar = document.querySelector('#sidebar'),
+  tocSideBar = document.querySelector('#tocSideBar'),
+  metaSideBar = document.querySelector('#metaSideBar'),
+  postToc = document.querySelector('#post_toc'),
+  postSiteMeta = document.querySelector('#post_side_meta'),
+  sidebarTitle = document.querySelector('.sidebar-title'),
+  sidebarBody = document.querySelector('#sidebar_body');
+
+  tocSideBar && tocSideBar.addEventListener('click', (e) => {
+    toggleSidebar(e);
+  });
+
+  metaSideBar && metaSideBar.addEventListener('click', (e) => {
+    toggleSidebar(e);
+  });
+
+  function toggleSidebar(e) {
+    let currentTitle = document.querySelector("."+SIDEBAR_TITLE_ACTIVE);
+    if (currentTitle == e.srcElement) {
+      return ;
+    }
+    let current, showElement, hideElement;
+    if (e.srcElement == metaSideBar) {
+      showElement = postSiteMeta;
+      hideElement = postToc;
+    } else if (e.srcElement == tocSideBar){
+      showElement = postToc;
+      hideElement = postSiteMeta;
+    }
+    currentTitle.classList.remove(SIDEBAR_TITLE_ACTIVE);
+    e.srcElement.classList.add(SIDEBAR_TITLE_ACTIVE);
+
+    window.Velocity(hideElement, 'stop');
+    window.Velocity(hideElement, 'transition.slideUpOut', {
+      display: 'none',
+      duration: 200,
+      complete: function () {
+        window.Velocity(showElement, 'transition.slideDownIn', {
+          duration: 200
+        });
+      }
+    })
+    hideElement.classList.remove(SIDEBAR_BODY_ACTIVE);
+    showElement.classList.add(SIDEBAR_BODY_ACTIVE);
+  }
+
+  postToc && postToc.addEventListener('transitionend', function() {
+    this.classList.remove(SLIDE_UP_IN);
+  });
+
+  if (sidebarBody) {
+    if (sidebarBody.classList.contains('pisces') || sidebarBody.classList.contains('gemini')) {
+      let hasFix = false;
+      let scrollEl = document.querySelector('.main-continer');
+      let limitTop = document.querySelector('#nav_ul').children.length * 42 + 162;
+      window.addEventListener('scroll', function(e) {
+        if (document.scrollingElement.scrollTop >= limitTop) {
+          if (!hasFix) {
+            sidebar.classList.add('sidebar-fixed');
+            hasFix = true;
+          }
+        } else {
+          if (hasFix) {
+            sidebar.classList.remove('sidebar-fixed');
+            hasFix = false;
+          }
+        }
+      });
+    }
+  }
+  
+</script>
+        <div class="section-box box-shadow-wrapper">
+          <div class="section bg-color post post-page">
+            <header class="post-header">
+  <h1 class="post-title">
+    <a class="post-title-link" href="https://52wow.github.io/IaV-R3Vv8/">
+      GM常用命令
+    </a>
+  </h1>
+  <div class="post-meta">
+    
+    <span class="meta-item">
+      <i class="fa fa-thumb-tack"></i>
+      <span class="language" data-lan="top">置顶</span>
+      <span class="post-meta-divider">|</span>
+    </span>
+    
+    <span class="meta-item pc-show">
+      <i class="fa fa-calendar-o"></i>
+      <span class="language" data-lan="publish">发布于</span>
+      <span>2020-06-26</span>
+      <span class="post-meta-divider pc-show">|</span>
+    </span>
+    
+    <span class="meta-item">
+      <i class="fa fa-clock-o"></i>
+      <span>12<span class="language" data-lan="minute">分钟</span></span>
+    </span>
+    <span class="meta-item">
+      <span class="post-meta-divider">|</span>
+      <i class="fa fa-file-word-o"></i>
+      <span>2682<span class="pc-show language" data-lan="words">字数</span></span>
+    </span>
+    
+    
+    
+    <span id="/IaV-R3Vv8/" data-flag-title="GM常用命令" class="meta-item pc-show leancloud_visitors">
+      <span class="post-meta-divider">|</span>
+      <i class="fa fa-eye"></i>
+      <span><span class="language" data-lan="view">浏览量</span>：<span class="leancloud-visitors-count"></span></span>
+    </span>
+    
+  </div>
+</header>
+            <div class="post-body next-md-body" id="post_body">
+              <h2 id="常用">常用</h2>
+<p>.levelup 1       让目标增加1级<br>
+.reset level     重置等级为1<br>
+.revive          复活玩家<br>
+.appear          移动到目标位置           <br>
+.summon          召唤目标到你的位置<br>
+.quest complete XXX     完成任务 <br>
+.quest add xxx          接任务</p>
+<!-- more -->
+<p>.achievement add        加成就<br>
+.modify money 70000000  加金币<br>
+.setskill 762 300 300 骑术大鸟<br>
+.instance unbind all  清理进度<br>
+.kick xxx             强制玩家下线</p>
+<h2 id="服务器相关">服务器相关</h2>
+<p>.server restart 900 15分钟后服务器重启<br>
+.ser inf        服务器心跳<br>
+.respawn        重置boss<br>
+.npc move       移动npc<br>
+.GM VISIBLE off gm隐身<br>
+.lookup spell xxxx  查看技能<br>
+.announce    发布公告<br>
+.announce 为了保证服务器稳定运行，我们将于15分钟后开始对服务器进行例行维护，维护时间1分钟。</p>
+<h2 id="战场竞技场相关">战场竞技场相关</h2>
+<p>战场日常<br>
+ .Event start 18  奥山<br>
+ .Event start 19  战歌<br>
+ .Event start 20  阿拉希</p>
+<p>.honor add XXXX   加xxx荣誉 <br>
+.reset honor清零荣誉  <br>
+.modify arenapoints 100    加100竞技场分数<br>
+.flusharenapoints 竞技场结算</p>
+<h2 id="传送相关">传送相关</h2>
+<p>.go 16222.1 16252.1 12.5872 1  GM岛        <br>
+.go 16226.1 16403.1 -64.37 1   监狱</p>
+<h2 id="npc相关">NPC相关</h2>
+<p>.npc set spawntime 608000 设置npc刷新时间（毫秒）<br>
+.npc add item      添加物品到npc<br>
+.npc del item      删除物品从npc<br>
+.npc say      npc说</p>
+<h2 id="命令相关">命令相关</h2>
+<p>.reload npc_vendor npc贩卖物品和价格</p>
+<p>.reload npc_trainer 技能学习训练师刷新</p>
+<p>.reload gossip_menu_option npc菜单表刷新</p>
+<p>.reload quest_template 任务表刷新</p>
+<p>.reload command GM命令等级表刷新</p>
+<p>.reload config 系统表刷新（荣誉、声望、经验倍率）</p>
+<p>.reload reference_loot_template 掉率模版表</p>
+<p>.reload gameobject_loot_template 地图物品掉率</p>
+<p>.reload access_requirement 副本开关表刷新</p>
+<p>.reload item_loot_template 背包物品掉率</p>
+<p>.reload creature_loot_template 怪物掉率</p>
+<p>.reload creature_template xxxxx 怪物表xxx指向刷新</p>
+<p>.reload game_graveyard_zone 墓地表刷新</p>
+<p>.gobject add 186859火墙</p>
+<p>.gobject add 194323空气墙</p>
+<p>.instance unbind all 清理CD</p>
+<p>.instance unbind xx ：清理目标单独FB CD</p>
+<p>xx = 地图ID 地图ID 进入副本搜索.gps map:xx 会显示</p>
+<p>.instance unbind xx 1 xx = 地图ID 清理目标单独FB CD 英雄模式</p>
+<p>.npc add item XXX 增加物品到NPC身上</p>
+<p>删除NPC</p>
+<p>.npc del</p>
+<p>隐身</p>
+<p>.gm visible on</p>
+<p>.gm visible off</p>
+<p>.npc inf 提取BOSS信息</p>
+<p>.respawn 重置BOSS</p>
+<p>.npc add xxxx 增加NPC</p>
+<p>.npc add item xxx NPC增加物品</p>
+<p>.gm on 开启GM模式</p>
+<p>.gob near 搜索建筑物ID</p>
+<p>.gob add 建筑物 添加</p>
+<p>.gm off 关闭GM模式</p>
+<p>.levelup 69 .level -10 为目标(或自己) 增加89级，数字自己调， (最好不要超过90 容易出错)</p>
+<p>.modify money 5000000 为目标(或自己) 数字是以铜为单位的，要点下自己人物头像</p>
+<p>.additem # 增加物品代码为#的物品到所选玩家背包</p>
+<p>.additem 23162 36格包包</p>
+<p>.honor add 12312323 增加荣誉</p>
+<p>.damage 数字 直接造成伤害 要打10000 就输入 .damage 10000</p>
+<p>.start 脱离卡死（回城）</p>
+<p>………………封号指令 .b p 角色名 99d 脚本刷金</p>
+<p>.unb p 角色名</p>
+<p>.modify命令：</p>
+<p>.modify money 999999999 为目标(或自己) 数字是以铜为单位的，要点下自己人物头像</p>
+<p>.learn 44140 鱼叉冲浪</p>
+<p>.gm on 开启GM模式</p>
+<p>.gm off 关闭GM模式</p>
+<p>.npc add 600006 增加npc</p>
+<p>.npc add item xxxx 增加物品</p>
+<p>.npc del item xxxx 删除物品</p>
+<p>.ser res 200 重启</p>
+<p>.quest complete 秒任务</p>
+<p>.modify speed 30+速度</p>
+<p>.lookup spell 比如.lookup spell 亡灵意志 找到其代码</p>
+<p>然后用.learn命令 学习</p>
+<p>.gob near 提取 物体ID</p>
+<p>.gob del xxx 删除草药或者矿石</p>
+<p>.mute 禁言</p>
+<p>.quest complete 任务</p>
+<p>.quest add 添加任务</p>
+<p>.learn 40733 无限无敌</p>
+<p>.achievement add 获得成就</p>
+<p>http://db.duowan.com/wow/npc-2198.html 查找NPC代码</p>
+<p>复活</p>
+<p>/g .revive</p>
+<p>.go 16222.1 16252.1 12.5872 1 传送自己到GM岛</p>
+<p>.announce 系统消息</p>
+<p>.modify scale 10 变大变小</p>
+<p>ICC 声望 .modify rep 1156 100000</p>
+<p>.damage 数字 直接造成伤害</p>
+<p>.gps 显示角色或生物的坐标(x,y,z) 地图标号和地区</p>
+<p>.go $x $y $z $mapid 转到对应map的指定坐标(x,y,z)处</p>
+<p>搜索物品 .lookup item</p>
+<p>.reset stats 重置目标所有状态</p>
+<p>传送 .appear xx</p>
+<p>xx = 角色名称</p>
+<p>.summon 拉人</p>
+<p>隐身 .gm visible on/off</p>
+<p>.achievement add 成就</p>
+<p>.learn 44140 鱼叉冲浪</p>
+<p>.modify speed 10</p>
+<p>.ban playeraccount 角色名 99d 违规99天</p>
+<p>.npc info 查找NPC ID</p>
+<p>.account 账号管理</p>
+<p>.account create 创建账号</p>
+<p>.account delete 删除账号</p>
+<p>.account lock 锁定账号</p>
+<p>.account onlinelist 显示在线账号</p>
+<p>.account password 显示账号密码</p>
+<p>.account set addon 设置账号资料片类型</p>
+<p>.account set gmlevel 设置账号GM级别</p>
+<p>.account set password 设置账号密码</p>
+<p>.announce 系统消息</p>
+<p>.aura 为自己添加BUFF</p>
+<p>.ban account 禁封账号</p>
+<p>.ban character 角色</p>
+<p>.ban ip IP地址</p>
+<p>.baninfo account 被封账号信息</p>
+<p>.baninfo character</p>
+<p>.baninfo ip</p>
+<p>.banlist account</p>
+<p>.banlist character</p>
+<p>.banlist ip</p>
+<p>.bank 打开银行</p>
+<p>.cast 施放法术</p>
+<p>.cast back 使目标对你施放法术</p>
+<p>.cast dist 施法距离</p>
+<p>.cast self 对自己施放法术</p>
+<p>.cast target 目标施放法术</p>
+<p>.character customize 使玩家重新设定外观与名字</p>
+<p>.character delete 删除角色</p>
+<p>.character level 角色级别</p>
+<p>.character rename 使玩家重新命名</p>
+<p>.character reputation 角色声望</p>
+<p>.combatstop</p>
+<p>.commands 命令列表</p>
+<p>.cooldown 使法术冷却时间结束</p>
+<p>.damage 造成伤害</p>
+<p>DEBUG模式测试FWQ</p>
+<p>轻易不要尝试</p>
+<p>.debug anim</p>
+<p>.debug arena 调试竞技场</p>
+<p>.debug bg 调试战场可以一个人进入</p>
+<p>.debug getvalue</p>
+<p>.debug Mod32Value</p>
+<p>.debug play cinematic</p>
+<p>.debug play movie</p>
+<p>.debug play sound</p>
+<p>.debug setvalue</p>
+<p>.debug update</p>
+<p>实用功能</p>
+<p>.app 传动到目标玩家身旁</p>
+<p>.gps 显示自己的位置</p>
+<p>.go c xxx xxx代表怪物GUID</p>
+<p>.guid 工会</p>
+<p>.guild create 创建</p>
+<p>.guild delete 删除</p>
+<p>.guild invite 邀请</p>
+<p>.guild rank</p>
+<p>.guild uninvite 踢出</p>
+<p>.lookup area 查找地区</p>
+<p>.lookup creature 生物</p>
+<p>.lookup event 事件</p>
+<p>.lookup faction 阵营</p>
+<p>.lookup item 装备</p>
+<p>.lookup itemset 套装</p>
+<p>.lookup object 物体</p>
+<p>.lookup player account 账号.</p>
+<p>.lookup player email 邮箱</p>
+<p>.lookup player ip</p>
+<p>.lookup quest 任务</p>
+<p>.lookup skill 商业技能</p>
+<p>.lookup spell 法术</p>
+<p>.lookup taxinode</p>
+<p>.lookup tele</p>
+<p>.maxskill 技能熟练度最大</p>
+<p>.modify arena 更改竞技场点数</p>
+<p>.modify speed 调节所有速度</p>
+<p>.modify bit</p>
+<p>.modify bwalk</p>
+<p>.modify drunk</p>
+<p>.modify energy</p>
+<p>.modify faction 阵营</p>
+<p>.modify gender</p>
+<p>.modify honor 荣誉</p>
+<p>.modify hp 血量</p>
+<p>.modify integral</p>
+<p>.modify mana 魔法</p>
+<p>.modify money 金钱</p>
+<p>.modify morph 外观</p>
+<p>.modify mount 坐骑</p>
+<p>.modify phase</p>
+<p>.modify rage 怒气</p>
+<p>.modify rep 声望</p>
+<p>.modify runicpower 符文能量</p>
+<p>.modify scale 大小</p>
+<p>.modify speed 速度</p>
+<p>.modify spell 法术</p>
+<p>.modify standstate</p>
+<p>.modify swim 游泳速度</p>
+<p>.modify titles 头衔</p>
+<p>.modify tp 天赋点</p>
+<p>.npc add 添加NPC</p>
+<p>.npc additem 给NPC添加装备</p>
+<p>.npc addmove</p>
+<p>.npc addweapon</p>
+<p>.npc allowmove</p>
+<p>.npc changelevel</p>
+<p>.npc delete 删除NPC</p>
+<p>.npc delitem 删除NPC 里面的物品</p>
+<p>.npc set factionid 更改NPC 阵营 （红绿名字）</p>
+<p>.npc set flag 更改NPC 属性</p>
+<p>.npc follow 让NPC跟随你</p>
+<p>.npc info NPC信息</p>
+<p>.npc move 使NPC移动到自己当前位置</p>
+<p>.npc name</p>
+<p>.npc playemote</p>
+<p>.npc setdeathstate</p>
+<p>.npc setmodel 改变NPC外观</p>
+<p>.npc setmovetype</p>
+<p>.npc setphase</p>
+<p>.npc spawndist</p>
+<p>.npc spawntime</p>
+<p>.npc subname</p>
+<p>.npc tame 驯服一只野兽作为宠物</p>
+<p>.npc textemote</p>
+<p>.npc unfollow 让NPC停止跟随你</p>
+<p>.npc whisper 使NPC说话</p>
+<p>.quest add 增加任务</p>
+<p>.quest complete 完成任务</p>
+<p>.quest remove 移除任务</p>
+<p>.reload all 重新载入</p>
+<p>.reload all_area 重载所有地图</p>
+<p>.reload all_locales</p>
+<p>.reload all_loot 重载所有LOOT（BOSS掉落）</p>
+<p>.reload all_quest 重载所有任务</p>
+<p>.reload all_spell 重载所有技能</p>
+<p>.reload config 重载所有设置</p>
+<p>.repairitems 修理装备</p>
+<p>.reset achievements 重置成就</p>
+<p>.reset all 重置所有</p>
+<p>.reset honor 重置荣誉</p>
+<p>.reset level 重置级别</p>
+<p>.reset spells 重置法术</p>
+<p>.reset stats 重置属性</p>
+<p>.reset talents 天赋</p>
+<p>.respawn 重新刷新NPC（复活视野内NPC ) （选中单独复活）</p>
+<p>.revive 复活玩家</p>
+<p>.send items 寄送装备</p>
+<p>.send mail 邮件</p>
+<p>.send message 信息</p>
+<p>.send money 金钱</p>
+<p>.unban account 解封账号</p>
+<p>.unban character 解封角色</p>
+<p>.unban ip 解封IP</p>
+<p>服务器命令</p>
+<p>.server corpses</p>
+<p>.server exit 服务器退出</p>
+<p>.server idlerestart</p>
+<p>.server idlerestart cancel</p>
+<p>.server idleshutdown</p>
+<p>.server idleshutdown cancel</p>
+<p>.server info 服务器信息</p>
+<p>.server motd</p>
+<p>.server plimit</p>
+<p>.server restart 服务器重启</p>
+<p>.server restart cancel 取消服务器重启</p>
+<p>.server set loglevel</p>
+<p>.server set motd</p>
+<p>.server shutdown 关机</p>
+<p>.server shutdown cancel 取消关机</p>
+<p>.gm on 开启GM模式 .modify fly # 将目标飞行速度设定为初始速度的#倍（#=0.1-10）</p>
+<p>.gm off 关闭GM模式 .modify aspeed 3 将目标所有速度设定为初始速度的#倍（#=0.1-10）</p>
+<p>.gm visible on/off 使GM是否对玩家可见 .modify scale 3 将目标体积设定为初始状态的#倍（#=0.00-3）</p>
+<p>.revive 复活 需要输入 /g 空格 后输入此命令 .modify mount # 为目标召唤一种坐骑（#=1-69）</p>
+<p>.appear 移动到目标位置。 .modify honor # 增加目标的荣誉点数#（#=1=2147483646）</p>
+<p>.summon 召唤目标到你的位置。 .modify arena # 增加目标的竞技场点数#（#=1=2147483646）</p>
+<p>.allowmove 禁止生物移动 .modify integral # 修改目标的积分为#（#=0-999999）</p>
+<p>.levelup 79升级 .modify drunk # 修改目标的醉酒度为#（#=0-100）</p>
+<p>.revive 复活当前目标,或自己</p>
+<p>.changelevel 数字 可以改变目标生物的等级 .npc命令:</p>
+<p>.delete 将目标生物从地图里删除 .npc spawn #dist 添加NPC</p>
+<p>.speed 20 移动加速 .npc delete 删除NPC</p>
+<p>.bank # 打开仓库 .npc say $text 编辑NPC说话</p>
+<p>.taxicheat on/off 开启/关闭所有飞行路线 .npc yell $text 编辑NPC大喊</p>
+<p>.explorecheat 1/0 开启/关闭所有探索地图 .npc faction #factionid 调整NPC阵营</p>
+<p>.start 脱离卡死（回城） .npc changelevel # 改变所选npc的等级 (#=1-73)</p>
+<p>.dismount 下马 .npc info 列出被选NPC的详细描述</p>
+<p>.die 杀死目标 .npc spawndist #dist 调整所选生物的刷新距离为#dist</p>
+<p>.cooldown 重置目标所有技能冷却时间 .npc spawntime # 调整所选生物的刷新时间为#</p>
+<p>.guid 显示当前目标生物的 GUID</p>
+<p>.gps 显示角色或生物的坐标(x,y,z) 地图标号和地区 .reset命令：</p>
+<p>.go $x $y $z $mapid 转到对应map的指定坐标(x,y,z)处 .reset stats 重置目标所有状态</p>
+<p>.goname * 传送自己到名为*的人物处 .reset honor 重置目标荣誉点数</p>
+<p>.namego * 传送名为*的目标到自己所在处 .reset level 重置目标等级</p>
+<p>.commands 显示你的帐号可以使用的命令 .reset spells 重置目标所有技能</p>
+<p>.cooldown 立即使目标的魔法冷却 .reset talents 重置目标所有天赋</p>
+<p>.respawn 立即刷新身边最近的生物或游戏目标</p>
+<p>.password $old_password $new_password $new_password 更改你账号的密码 服务器管理命令：</p>
+<p>.saveall 保存在线玩家数据</p>
+<p>.modify命令： .info 显示服务器状态</p>
+<p>.modify money 9999999999 为目标(或自己) 增加#铜 .kick 从世界中剔出去一个选定的玩家</p>
+<p>.modify hp # # 将目标的HP设置为#/# .announce * 广播*给所有在线玩家</p>
+<p>.modify mana # # 将目标的MP设置为#/# .loadscripts * 重新加载脚本名字为*的脚本</p>
+<p>.modify rage # # 将目标的怒气值设置为#/# .shutdown # 服务器将在#秒后关闭</p>
+<p>.modify energy # # 将目标的能量值设置为#/# .shutdown cancel 取消关闭服务器</p>
+<p>.modify speed # 将目标移动速度设定为初始速度的#倍（#=0.1-10） .gm fly on 开启内域飞行</p>
+<p>.modify bwalk # 将目标移后退度设定为初始速度的#倍（#=0.1-10） .gm fly off 关闭</p>
+<p>.modify swim 10 将目标游泳速度设定为初始速度的#倍（#=0.1-10） .modify aspeed 10 改变飞行速度 1-10</p>
+<p></p>
+
+            </div>
+            
+            
+              <div class="post-footer">
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+      <strong class="language" data-lan="author">本文作者：</strong>
+      Whitehat
+    </li>
+    <li class="post-copyright-link">
+      <strong class="language" data-lan="link">本文链接：</strong>
+      <a href="https://52wow.github.io/IaV-R3Vv8/" title="GM常用命令">https://52wow.github.io/IaV-R3Vv8/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong class="language" data-lan="copyright">版权声明： </strong>
+      本博客所有文章除特别声明外，均采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i> BY-NC-SA</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+  <div class="tags">
+    
+  </div>
+  <div class="nav">
+    <div class="nav-prev">
+      
+    </div>
+    <div class="nav-next">
+      
+    </div>
+  </div>
+</div>
+            
+            
+  <script src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script>
+<div id="vcomments" style="padding: 10px 0px 0px 0px"></div>
+
+<style>
+  .v .veditor {
+    min-height: 10rem;
+    background-image: url('');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: right;
+    background-color: rgba(255, 255, 255, 0);
+    resize: none;
+  }
+
+  .v .vwrap {
+    border: 1px solid #000 !important;
+  }
+
+  .v .vbtn {
+    padding: .4rem 1.2rem !important;
+    border-color: #fff !important;
+    background-color: #49b1f5 !important;
+    color: #fff !important;
+    font-size: .7rem !important;
+  }
+
+  .v .vcards .vcard .vh .vmeta .vat {
+    padding: 0 .8rem !important;
+    border: 1px solid #00c4b6 !important;
+    border-radius: 5px !important;
+    color: #00c4b6 !important;
+  }
+</style>
+<script>
+  new Valine({
+    el: '#vcomments',
+    appId: '',
+    appKey: '',
+    avatar: '',
+    placeholder: '',
+    pageSize: '',
+    lang: 'zh-cn',
+    enableQQ: 'true' === 'true',
+    visitor: 'true' === 'true',
+    highlight: 'true' === 'true',
+    avatarForce: 'true' === 'false',
+  });
+</script>
+
+          </div>
         </div>
       </div>
     </div>
@@ -493,6 +1168,253 @@
   }
 
 </script>
+    <div class="light-box" id="light_box"></div>
+<script>
+  let imgs = document.querySelectorAll('.post-body img');
+  let lightBox = document.querySelector('#light_box');
+  lightBox.addEventListener('mousedown', (e) => {
+    e.preventDefault()
+  })
+  lightBox.addEventListener('mousewheel', (e) => {
+    e.preventDefault()
+  })
+  let width = window.innerWidth * 0.8;
+  lightBox.onclick = () => {
+    let img = lightBox.querySelector('img');
+    lightBox.style = '';
+    img && img.remove();
+  }
+  imgs.forEach(item => {
+    item.onclick = function (e) {
+      let lightImg = document.createElement('img');
+      lightImg.src = this.src;
+      lightBox.style = `height: 100%; opacity: 1; background-color: rgba(0, 0, 0, 0.5);cursor: zoom-out;`;
+      lightImg.style = `width: ${width}px;border-radius: 2px;`;
+      lightImg.onclick = function () {
+        lightBox.style = '';
+        this.remove();
+      }
+      lightBox.append(lightImg);
+    }
+  })
+</script>
+    <div class="reward-mask" style="display: none;">
+  <div class="reward-relative">
+    <span class="close" aria-hidden="true">x</span>
+    <div class="reward-body">
+      <h2>感谢您的支持，我会继续努力的!</h2>
+      <div class="reward-img-box">
+        <div style="position: relative; width: 140px; height: 140px;">
+          
+          
+          
+        </div>
+      </div>
+      <p class="reward-word">扫码打赏，你说多少就多少</p>
+      <p class="reward-tip">打开微信扫一扫，即可进行扫码打赏哦</p>
+    </div>
+    <div class="bottom">
+      
+      
+    </div>
+  </div>
+</div>
+<style>
+  .reward-mask {
+    position: fixed;
+    z-index: 99999;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #00000054;
+  }
+
+  .reward-relative {
+    position: relative;
+    width: 480px;
+    text-align: center;
+    margin: 0 auto;
+    border-radius: 5px;
+    background-color: #fff;
+    top: 50%;
+    margin-top: -205px;
+  }
+
+  .reward-relative .close {
+    position: absolute;
+    right: 10px;
+    font-weight: normal;
+    font-size: 16px;
+    color: #929292;
+  }
+
+  .reward-body {
+    padding: 40px 20px 20px;
+  }
+
+  .bottom {
+    display: flex;
+  }
+
+  .reward-btn {
+    text-align: center;
+  }
+
+  .reward-btn-text {
+    display: inline-block;
+    cursor: pointer;
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    border-radius: 50%;
+    background-color: #ff9734;
+    color: #FFF;
+    margin-top: 20px;
+  }
+
+  .pay-text {
+    margin-top: 10px;
+    padding: 10px;
+    flex: 1;
+    transition: all .2s linear;
+  }
+
+  .pay-text:hover {
+    background-color: #a5a5a536;
+  }
+
+  .reward-body h2 {
+    padding-top: 10px;
+    text-align: center;
+    color: #a3a3a3;
+    font-size: 16px;
+    font-weight: normal;
+    margin: 0 0 20px;
+  }
+
+  .reward-body h2:after,
+  .reward-body h2:before {
+    font-family: Arial, Helvetica, sans-serif;
+    background: 0 0;
+    width: 0;
+    height: 0;
+    font-style: normal;
+    color: #eee;
+    font-size: 80px;
+    position: absolute;
+    top: 20px;
+  }
+
+  .reward-body h2:before {
+    content: '\201c';
+    left: 50px;
+  }
+
+  .reward-body h2:after {
+    content: '\201d';
+    right: 80px;
+  }
+
+  .reward-img-box {
+    display: inline-block;
+    padding: 10px;
+    border: 6px solid #ea5f00;
+    margin: 0 auto;
+    border-radius: 3px;
+    position: relative;
+  }
+
+  .reward-img {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+  }
+
+  @media (max-width: 767px) {
+    .reward-relative {
+      height: 100%;
+      top: 0px;
+      margin-top: 0;
+      width: auto;
+    }
+
+    .reward-relative .bottom {
+      flex-direction: column;
+    }
+
+    .reward-relative .pay-text {
+      width: 80%;
+      margin: 5px auto;
+      border: 1px solid silver;
+      padding: 6px;
+      border-radius: 4px;
+    }
+
+    .reward-body h2:after {
+      right: 40px;
+    }
+
+    .reward-body h2:after,
+    .reward-body h2:before {
+      font-size: 60px;
+    }
+
+    .reward-body h2:before {
+      left: 20px;
+    }
+  }
+</style>
+<script>
+  !function () {
+    var mask = document.querySelector('.reward-mask');
+    let close = document.querySelector('.reward-relative .close');
+    let rewardBtn = document.querySelector('.reward-btn');
+
+    let zfb = document.querySelector('#zfb'),
+      wx = document.querySelector('#wx'),
+      zfbBtn = document.querySelector('#zfbBtn'),
+      wxBtn = document.querySelector('#wxBtn');
+
+    if (zfbBtn && wxBtn) {
+      zfbBtn.addEventListener('click', () => {
+        window.Velocity(zfb, 'transition.slideLeftIn', {
+          duration: 400
+        });
+        window.Velocity(wx, 'transition.slideRightOut', {
+          display: 'none',
+          duration: 400
+        });
+      });
+
+      wxBtn.addEventListener('click', () => {
+        window.Velocity(wx, 'transition.slideRightIn', {
+          duration: 400
+        });
+        window.Velocity(zfb, 'transition.slideLeftOut', {
+          display: 'none',
+          duration: 400
+        });
+      });
+    }
+
+    rewardBtn.addEventListener('click', (e) => {
+      window.Velocity(mask, 'transition.slideDownIn', {
+        duration: 400
+      })
+    });
+
+    close.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.Velocity(mask, 'transition.slideUpOut', {
+        duration: 400
+      })
+    })
+  }()
+</script>
+
   </div>
 </body>
 
@@ -1117,7 +2039,6 @@
 
 
 <script src="/media/js/mouse/love.js"></script>
-
 
 
 </html>
