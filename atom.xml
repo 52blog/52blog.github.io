@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://52wow.github.io</id>
     <title>Whitehat</title>
-    <updated>2020-06-26T17:22:13.496Z</updated>
+    <updated>2020-06-26T17:45:10.977Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://52wow.github.io"/>
     <link rel="self" href="https://52wow.github.io/atom.xml"/>
@@ -355,6 +355,15 @@
 <p>.modify bwalk # 将目标移后退度设定为初始速度的#倍（#=0.1-10） .gm fly off 关闭</p>
 <p>.modify swim 10 将目标游泳速度设定为初始速度的#倍（#=0.1-10） .modify aspeed 10 改变飞行速度 1-10</p>
 <p></p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[进程守护器程序宕机自动重启工具]]></title>
+        <id>https://52wow.github.io/sesX1JqAB/</id>
+        <link href="https://52wow.github.io/sesX1JqAB/">
+        </link>
+        <updated>2020-06-26T17:33:09.000Z</updated>
+        <content type="html"><![CDATA[<figure data-type="image" tabindex="1"><img src="https://52wow.github.io/post-images/1593193497846.jpg" alt="" loading="lazy"></figure>
 ]]></content>
     </entry>
     <entry>
@@ -13428,283 +13437,6 @@ PS.代码只能刷头衔，头衔代表的成就是不加的。</p>
 　　.wpmodify	2	语法:.wpmodify[#creature_guidorSelectaCreature]add:添加一个确定的路径点visual：路径点可见waittime</span>time：等候时间emoteID：动作表情	<br>
 　　		spellID：魔法技能text1|text2|text3|text4|text5<text>：文本model1ID：模型1model2ID：模型2move：移动到玩家位置del：删除每次只允许用一个参数	<br>
 　　.wpshow	2	语法:.wpshow[#creature_guidorSelectaCreature]on：开启first：首个路径点last：最后一个路径点off：关闭info：路径点信息你必须先开启路径显示，然后选择一个可见路径点，才能使用info参数显示详细信息</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[数据库各表功能解释]]></title>
-        <id>https://52wow.github.io/ZtjWyXcUv/</id>
-        <link href="https://52wow.github.io/ZtjWyXcUv/">
-        </link>
-        <updated>2020-06-26T15:22:31.000Z</updated>
-        <summary type="html"><![CDATA[<p>characters中文表</p>
-<p>account_data（账号数据）</p>
-<p>addons（插件）</p>
-<p>anti_cheaters（反_骗子）</p>
-<p>arena_team（竞技场队伍）</p>
-<p>arena_team_member（舞台上的团队成员）</p>
-<p>arenateamstats（竞技场队伍统计）</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>characters中文表</p>
-<p>account_data（账号数据）</p>
-<p>addons（插件）</p>
-<p>anti_cheaters（反_骗子）</p>
-<p>arena_team（竞技场队伍）</p>
-<p>arena_team_member（舞台上的团队成员）</p>
-<p>arenateamstats（竞技场队伍统计）</p>
-<!-- more -->
-<p>auctionhouse（拍卖行）</p>
-<p>auctionhousebot（）未知</p>
-<p>bugreport（bug报告）</p>
-<p>channels（渠道）</p>
-<p>characteraccountdata（字符帐户数据）</p>
-<p>characterachievement（角色成就）</p>
-<p>characterachievementprogress（角色成就进展）</p>
-<p>characteraction（角色战斗）</p>
-<p>characteraura（角色光环）</p>
-<p>character_battleground_data（战场数据字符）</p>
-<p>characterdeclinedname（角色被拒绝名）不确定</p>
-<p>character_equipmentsets（角色装备设置）</p>
-<p>character_gifts（角色天赋）</p>
-<p>characterglyphs（角色雕文）</p>
-<p>character_homebind（角色炉石绑定）</p>
-<p>character_instance（角色实况）</p>
-<p>character_inventory（角色目录）</p>
-<p>character_pet（角色宠物）</p>
-<p>character_pet_declinedname（角色宠物下降名）不确定</p>
-<p>characterqueststatus（角色任务状况）</p>
-<p>character_queststatus_daily（角色任务状况日志）</p>
-<p>character_reputation（角色声望）</p>
-<p>characterskills（角色技能）</p>
-<p>character_social（角色社交）</p>
-<p>characterspell（角色法术）</p>
-<p>characterspellcooldown（角色法术的冷却时间）</p>
-<p>charactertalent（角色天赋）</p>
-<p>charactertutorial（人物教程）</p>
-<p>characters（人物角色）</p>
-<p>charactersvirtual（有效人物）</p>
-<p>corpse（尸体）</p>
-<p>gameeventconditionsave（游戏事故的情况下保存）</p>
-<p>game_event_save（游戏活动保存）</p>
-<p>gmtickets（GM清单）</p>
-<p>groupinstance（团队实况）</p>
-<p>groupmember（团队成员）</p>
-<p>groups（团体）</p>
-<p>guild（公会）</p>
-<p>guildbankeventlog（公会银行事件日志）</p>
-<p>guildbankitem（公会银行项目）</p>
-<p>guildbankright（公会银行的权利）</p>
-<p>guildbanktab（公会银行卡）</p>
-<p>guild_eventlog（公会事件日志）</p>
-<p>guildmember（公会成员）</p>
-<p>guildrank（公会排名）</p>
-<p>instance（实例）</p>
-<p>instancereset（实况复位）</p>
-<p>item_instance（道具情况）</p>
-<p>item_refund_instance（道具售出情况）</p>
-<p>item_text（道具文本）</p>
-<p>mail（邮件）</p>
-<p>mailitems（用邮件发送道具）</p>
-<p>petaura（宠物光环）</p>
-<p>petspell（宠物法术）</p>
-<p>pet_spell_cooldown（宠物法术的冷却时间）</p>
-<p>petition（申请书）应该指的是工会签名</p>
-<p>petition_sign（签署申请书）</p>
-<p>savedvariables（保存变量）</p>
-<p>=============================================================================================================================</p>
-<p>information_schema中文表</p>
-<p>CHARACTERSETS（字符集）</p>
-<p>COLLATIONCHARACTERSETAPPLICABILITY（整理字符集适用性）</p>
-<p>COLLATIONS（排序规则）</p>
-<p>COLUMNPRIVILEGES（柱特权）</p>
-<p>COLUMNS（列）</p>
-<p>KEYCOLUMNUSAGE（KEY列用法）</p>
-<p>PROFILING（程序概要分析）</p>
-<p>ROUTINES（例程）</p>
-<p>SCHEMAPRIVILEGES（图式特权）</p>
-<p>SCHEMATA（图式）</p>
-<p>STATISTICS（统计）</p>
-<p>TABLE_CONSTRAINTS（表约束）</p>
-<p>TABLE_PRIVILEGES（表特权）</p>
-<p>TABLES（附录）</p>
-<p>TRIGGERS（触发器）</p>
-<p>USERPRIVILEGES（用户权限）</p>
-<p>VIEWS（点击）感觉这个不是很重要</p>
-<p>=============================================================================================================================</p>
-<p>MYsql中文表</p>
-<p>columnspriv（单独列）</p>
-<p>db（日志）</p>
-<p>func（函数）</p>
-<p>helpcategory（帮助类）</p>
-<p>helpkeyword（帮助关键字）</p>
-<p>help_relation（帮助关系）</p>
-<p>help_topic（帮助主题）</p>
-<p>host（主人）</p>
-<p>proc（进程）</p>
-<p>procs_priv（单一程序）</p>
-<p>tables_priv（表私法）</p>
-<p>time_zone（时区）</p>
-<p>time_zone_leap_second（闰秒时区）</p>
-<p>time_zone_name（时区名称）</p>
-<p>time_zone_transition（时区转换）</p>
-<p>time_zone_transition_type（时区的过渡类型）</p>
-<p>user（用户）</p>
-<p>=============================================================================================================================</p>
-<p>realmd中文表</p>
-<p>account（账号）</p>
-<p>account_access（账号访问）GM账号创建的地方</p>
-<p>account_banned（账号禁止）封号</p>
-<p>account_pay（薪酬）</p>
-<p>ip_banned（IP禁止）封IP</p>
-<p>logs（日志）</p>
-<p>realmcharacters（角色范围）</p>
-<p>realmlist（IP-外网-版本）想局域网的在这里改IP</p>
-<p>uptime（运行时间）</p>
-<p>=============================================================================================================================</p>
-<p>world（mangos）中文表</p>
-<p>accessrequirement（准入要求）</p>
-<p>achievement_criteria_data（成就标准数据）</p>
-<p>achievementreward（成就奖励）</p>
-<p>areatrigger_involvedrelation（区域联系的触发事件）</p>
-<p>areatrigger_scripts（区域触发脚本）</p>
-<p>areatriggertavern（区域触发酒馆）未知</p>
-<p>areatrigger_teleport（区域传送）</p>
-<p>autobroadcast（自动广播）</p>
-<p>battleground_events（战场事件）</p>
-<p>battleground_template（战场模板）</p>
-<p>battlemaster_entry（战场进入控制）</p>
-<p>command（命令）</p>
-<p>creature（怪物）</p>
-<p>creature_addon（怪物整合包）</p>
-<p>creature_ai_scripts（怪物智能脚本）</p>
-<p>creature_ai_summons（怪物智能召集）</p>
-<p>creature_ai_texts（怪物智能文本）</p>
-<p>creature_classlevelstats（怪物分类级别统计）</p>
-<p>creature_equip_template（怪物装备模板）</p>
-<p>creatureformations（怪物形态）</p>
-<p>creature_involvedrelation（怪物联系信息）</p>
-<p>creaturelinkedrespawn（怪物刷新）</p>
-<p>creatureloottemplate（怪物掠夺模板）</p>
-<p>creature_model_info（怪物模型）</p>
-<p>creature_onkill_reputation（杀怪所获荣誉）</p>
-<p>creaturequestrelation（怪物任务信息）</p>
-<p>creature_respawn（怪物刷新）</p>
-<p>creaturetemplate（怪物模板）</p>
-<p>creaturetemplateaddon（怪物模板插件）</p>
-<p>customitemlevelup（自定义装备级别）</p>
-<p>customitemteleport（自定义装备移动）</p>
-<p>custom_mgcn_string（自定义？字符串）未知</p>
-<p>custom_npc_teleport（自定义NPC传送）</p>
-<p>customtexts（自定义文本）</p>
-<p>db_script_string（数据库脚本的字符串）</p>
-<p>disenchant_loot_template（附魔分配模板）</p>
-<p>eventscripts（事件脚本）</p>
-<p>exploration_basexp（勘探basexp）未知</p>
-<p>fishing_loot_template（？模板）</p>
-<p>game_event（游戏活动）</p>
-<p>game_event_battleground_holiday（战场节日游戏活动）</p>
-<p>game_event_condition（游戏事件的条件）</p>
-<p>gameeventcreature（游戏怪物信息）</p>
-<p>game_event_creature_quest（游戏怪物信息）</p>
-<p>game_event_gameobject（游戏物品信息）</p>
-<p>gameeventgameobjectquest（游戏任务物品信息）</p>
-<p>game_event_model_equip（游戏装备的模型）</p>
-<p>gameeventnpcgossip（游戏中NPC交谈）</p>
-<p>game_event_npc_vendor（游戏中NPC商品商人）</p>
-<p>game_event_npcflag（游戏中NPC标记）</p>
-<p>gameeventpool（游戏活动池）</p>
-<p>game_event_prerequisite（游戏活动的先决条件）</p>
-<p>game_event_quest_condition（游戏活动的任务条件）</p>
-<p>game_graveyard_zone（游戏墓地区）</p>
-<p>game_tele（游戏远距离视野）</p>
-<p>game_weather（游戏天气）</p>
-<p>gameobject（物品信息）草、矿、箱子等刷新时间、地点</p>
-<p>gameobject_involvedrelation（任务关联物品描述）</p>
-<p>gameobject_loot_template（物品分配模板）</p>
-<p>gameobjectquestrelation（任务物品叙述）</p>
-<p>gameobject_respawn（物品信息复位）</p>
-<p>gameobjectscripts（物品信息脚本）</p>
-<p>gameobject_template（物品信息模板）物品信息对应的草、矿等具体信息</p>
-<p>gossip_menu（交谈菜单）</p>
-<p>gossip_menu_option（交谈菜单选项）</p>
-<p>gossip_scripts（交谈脚本）</p>
-<p>instance_template（实例模板）</p>
-<p>itemenchantmenttemplate（道具魔法模板）</p>
-<p>itemloottemplate（道具分配模板）</p>
-<p>itemrequiredtarget（道具所需目标）</p>
-<p>item_template（道具模板）</p>
-<p>localesachievementreward（区域成就奖励）</p>
-<p>locales_creature（区域中的生物）</p>
-<p>localesgameobject（区域物品信息）</p>
-<p>locales_gossip_menu_option（区域交谈菜单选项）</p>
-<p>locales_item（本地道具）</p>
-<p>locales_npc_text（NPC文本区域设置）</p>
-<p>localespagetext（区域文件的文本）</p>
-<p>locales_points_of_interest（感兴趣的区域设置点）</p>
-<p>locales_quest（任务地点）</p>
-<p>mail_level_reward（邮件级别奖励）未知</p>
-<p>mail_loot_template（邮件分配模板）未知</p>
-<p>milling_loot_template（？模板）未知</p>
-<p>npcgossip（NPC交谈）</p>
-<p>npc_spellclick_spells（NPC技能点击）未知</p>
-<p>npctext（NPC文本）</p>
-<p>npc_trainer（训练师）</p>
-<p>npc_vendor（物品商）</p>
-<p>page_text（页面文字）</p>
-<p>pet_levelstats（宠物级别统计）</p>
-<p>petnamegeneration（宠物的名字生成）</p>
-<p>pickpocketing_loot_template（盗贼偷窃模板）</p>
-<p>player_classlevelstats（分类角色级别统计）</p>
-<p>player_levelstats（角色级别统计）</p>
-<p>player_xp_for_level（角色每级所需经验）</p>
-<p>playercreateinfo（人物出生信息）</p>
-<p>playercreateinfo_action（人物出生时的操作）</p>
-<p>playercreateinfo_item（人物出生时所持有道具）</p>
-<p>playercreateinfo_spell（人物出生所绘的法术）</p>
-<p>playercreateinfospellcustom（自定义人物出生法术）</p>
-<p>points_of_interest（兴趣点）</p>
-<p>pool_creature（？生物）</p>
-<p>poolgameobject（指地上的矿、草药、箱子等刷新地点、时间）</p>
-<p>pool_pool（？）未知</p>
-<p>pool_template（？模板）未知</p>
-<p>prospectingloottemplate（？分配模板）未知</p>
-<p>quest_end_scripts（任务结束脚本）</p>
-<p>quest_poi（任务信息）</p>
-<p>questpoipoints（任务信息指引）</p>
-<p>quest_start_scripts（追求启动脚本）</p>
-<p>questtemplate（任务模板）</p>
-<p>reference_loot_template（参数分配模板）</p>
-<p>reserved_name（保留名称）</p>
-<p>script_texts（脚本文本）</p>
-<p>script_waypoint（脚本航点）</p>
-<p>skilldiscoverytemplate（技能探索模板）</p>
-<p>skillextraitemtemplate（技能额外项模板）</p>
-<p>skill_fishing_base_level（技能最低学习等级）</p>
-<p>skinning_loot_template（技能分配模板）</p>
-<p>spellarea（法术有效区域）</p>
-<p>spell_bonus_data（法术加成数据）</p>
-<p>spelldbc（法术数据库）</p>
-<p>spell_disabled（禁用法术）</p>
-<p>spell_enchant_proc_data（法术强化进程的数据）</p>
-<p>spell_group（团队施法）</p>
-<p>spell_group_stack_rules（团队施法叠加规则）</p>
-<p>spelllearnspell（学习法术）</p>
-<p>spelllinkedspell（法术链接）</p>
-<p>spell_loot_template（法术分配模板）</p>
-<p>spell_pet_auras（法术宠物光环）</p>
-<p>spell_proc_event（法术进程事件）</p>
-<p>spellranks（法术等级）</p>
-<p>spell_required（法术前提要求）</p>
-<p>spell_script_target（法术脚本目标）</p>
-<p>spell_scripts（法术脚本）</p>
-<p>spelltargetposition（法术目标位置）</p>
-<p>spell_threat（法术威胁值）</p>
-<p>transport_events（传送事件）</p>
-<p>transports（传送）</p>
-<p>trinity_string（三位一体的字符串）</p>
-<p>vehicleaccessory（媒介物配件）</p>
-<p>version（版本）</p>
-<p>waypointdata（航点数据）</p>
-<p>waypoint_scripts（航点脚本）</p>
 ]]></content>
     </entry>
 </feed>
