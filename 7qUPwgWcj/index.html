@@ -8,7 +8,7 @@
 <meta name="keywords" content="Whitehat个人博客">
 <meta name="description" content="">
 <meta name="theme-color" content="#000">
-<title>Whitehat</title>
+<title>中文说明worldserver.conf | Whitehat</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1593186098885">
 <link rel="stylesheet" href="/media/css/gemini.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
@@ -38,7 +38,8 @@
 
 
 
-  <meta name="description" content="">
+  <meta name="description" content="中文说明worldserver.conf" />
+  <meta name="keywords" content="" />
 </head>
 
 <body>
@@ -74,7 +75,7 @@
             
               
             
-            <li class="nav-item nav-item-active">
+            <li class="nav-item ">
               
               
                 <a href="/archives/" target="_self">
@@ -87,7 +88,7 @@
             
               
             
-            <li class="nav-item nav-item-active">
+            <li class="nav-item ">
               
               
                 <a href="/archives/" target="_self">
@@ -158,10 +159,25 @@
   <div class="main-continer">
     
     <div
-      class="section-layout  gemini">
+      class="section-layout gemini ">
       <div class="section-layout-wrapper">
-        <div id="sidebarMeta" class="sidebar">
-    
+        
+
+<div class="sidebar">
+  
+    <div class="sidebar-box box-shadow-wrapper bg-color right-motion" id="sidebar">
+      
+        <div class="post-list-sidebar">
+          <div class="sidebar-title">
+            <span id="tocSideBar" class="sidebar-title-item sidebar-title-active language" data-lan="index">文章目录</span>
+            <span id="metaSideBar" class="sidebar-title-item language" data-lan="preview">站点概览</span>
+          </div>
+        </div>
+      
+      <div class="sidebar-body gemini" id="sidebar_body">
+        
+          
+            
 <div class="sidebar-wrapper box-shadow-wrapper bg-color">
   <div class="sidebar-item">
     <img class="site-author-image right-motion" src="/images/avatar.png"/>
@@ -217,201 +233,2779 @@
 
 
 </div>
+          
+        
+      </div>
+    </div>
+  
 </div>
 <script>
-  let sidebarMeta = document.querySelector('#sidebarMeta');
-  let scheme = 'gemini';
-  let sidebarWrapper = document.querySelector('.sidebar-wrapper');
-  if (sidebarMeta && (scheme === 'pisces' || scheme === 'gemini')) {
-    document.addEventListener('scroll', function(e) {
-      if (document.scrollingElement.scrollTop > parseInt(sidebarMeta.style.marginTop) + 10) {
-        sidebarWrapper.classList.add('home-sidebar-fixed')
-      } else {
-        sidebarWrapper.classList.remove('home-sidebar-fixed')
-      }
-    });
-  }
-  </script>
-        <div class="section-box box-shadow-wrapper">
-          <section class="section archives-section bg-color posts-expand">
-            
+  const SIDEBAR_TITLE_ACTIVE = 'sidebar-title-active';
+  const SIDEBAR_BODY_ACTIVE = 'sidebar-body-active';
+  const SLIDE_UP_IN = 'slide-up-in';
 
-<div class="bg-color">
-  <div class="archive-timeline-box">
-    <div class="archive-timeline-title">
-      
-        <h2 class="language" data-lan="archives" data-count="11">非常好！目前共计11篇日志，继续努力！</h2>
-      
-    </div>
+  let sidebar = document.querySelector('#sidebar'),
+  tocSideBar = document.querySelector('#tocSideBar'),
+  metaSideBar = document.querySelector('#metaSideBar'),
+  postToc = document.querySelector('#post_toc'),
+  postSiteMeta = document.querySelector('#post_side_meta'),
+  sidebarTitle = document.querySelector('.sidebar-title'),
+  sidebarBody = document.querySelector('#sidebar_body');
+
+  tocSideBar && tocSideBar.addEventListener('click', (e) => {
+    toggleSidebar(e);
+  });
+
+  metaSideBar && metaSideBar.addEventListener('click', (e) => {
+    toggleSidebar(e);
+  });
+
+  function toggleSidebar(e) {
+    let currentTitle = document.querySelector("."+SIDEBAR_TITLE_ACTIVE);
+    if (currentTitle == e.srcElement) {
+      return ;
+    }
+    let current, showElement, hideElement;
+    if (e.srcElement == metaSideBar) {
+      showElement = postSiteMeta;
+      hideElement = postToc;
+    } else if (e.srcElement == tocSideBar){
+      showElement = postToc;
+      hideElement = postSiteMeta;
+    }
+    currentTitle.classList.remove(SIDEBAR_TITLE_ACTIVE);
+    e.srcElement.classList.add(SIDEBAR_TITLE_ACTIVE);
+
+    window.Velocity(hideElement, 'stop');
+    window.Velocity(hideElement, 'transition.slideUpOut', {
+      display: 'none',
+      duration: 200,
+      complete: function () {
+        window.Velocity(showElement, 'transition.slideDownIn', {
+          duration: 200
+        });
+      }
+    })
+    hideElement.classList.remove(SIDEBAR_BODY_ACTIVE);
+    showElement.classList.add(SIDEBAR_BODY_ACTIVE);
+  }
+
+  postToc && postToc.addEventListener('transitionend', function() {
+    this.classList.remove(SLIDE_UP_IN);
+  });
+
+  if (sidebarBody) {
+    if (sidebarBody.classList.contains('pisces') || sidebarBody.classList.contains('gemini')) {
+      let hasFix = false;
+      let scrollEl = document.querySelector('.main-continer');
+      let limitTop = document.querySelector('#nav_ul').children.length * 42 + 162;
+      window.addEventListener('scroll', function(e) {
+        if (document.scrollingElement.scrollTop >= limitTop) {
+          if (!hasFix) {
+            sidebar.classList.add('sidebar-fixed');
+            hasFix = true;
+          }
+        } else {
+          if (hasFix) {
+            sidebar.classList.remove('sidebar-fixed');
+            hasFix = false;
+          }
+        }
+      });
+    }
+  }
+  
+</script>
+        <div class="section-box box-shadow-wrapper">
+          <div class="section bg-color post post-page">
+            <header class="post-header">
+  <h1 class="post-title">
+    <a class="post-title-link" href="https://52wow.github.io/7qUPwgWcj/">
+      中文说明worldserver.conf
+    </a>
+  </h1>
+  <div class="post-meta">
     
-      
-      
-        <div class="node-title">
-          <h2 class="tag-year">2020</h2>
-        </div>    
-        
-      
-      <a href="https://52wow.github.io/ua67La5gr/">
-        <div class="motion-warpper tag-archive-node">
-          <div class="tag-node">
-            <h1>
-              06-26
-              <small>物品绿色字解释教程</small>
-            </h1>
-          </div>  
-      </div>
-      </a>
+    <span class="meta-item pc-show">
+      <i class="fa fa-calendar-o"></i>
+      <span class="language" data-lan="publish">发布于</span>
+      <span>2020-06-26</span>
+      <span class="post-meta-divider pc-show">|</span>
+    </span>
     
-      
-      
-      <a href="https://52wow.github.io/arChdbiRN/">
-        <div class="motion-warpper tag-archive-node">
-          <div class="tag-node">
-            <h1>
-              06-26
-              <small>职业任务技能与材料</small>
-            </h1>
-          </div>  
-      </div>
-      </a>
+    <span class="meta-item">
+      <i class="fa fa-clock-o"></i>
+      <span>39<span class="language" data-lan="minute">分钟</span></span>
+    </span>
+    <span class="meta-item">
+      <span class="post-meta-divider">|</span>
+      <i class="fa fa-file-word-o"></i>
+      <span>8669<span class="pc-show language" data-lan="words">字数</span></span>
+    </span>
     
-      
-      
-      <a href="https://52wow.github.io/ba3vyiltg/">
-        <div class="motion-warpper tag-archive-node">
-          <div class="tag-node">
-            <h1>
-              06-26
-              <small>常用测试技能 （ctrl+f 筛选）</small>
-            </h1>
-          </div>  
-      </div>
-      </a>
     
-      
-      
-      <a href="https://52wow.github.io/M8t2PhDMQ/">
-        <div class="motion-warpper tag-archive-node">
-          <div class="tag-node">
-            <h1>
-              06-26
-              <small>sql语句教程（ctrl+f 筛选）</small>
-            </h1>
-          </div>  
-      </div>
-      </a>
     
-      
-      
-      <a href="https://52wow.github.io/Vgr8xJcKx/">
-        <div class="motion-warpper tag-archive-node">
-          <div class="tag-node">
-            <h1>
-              06-26
-              <small>GM技能大全</small>
-            </h1>
-          </div>  
-      </div>
-      </a>
-    
-      
-      
-      <a href="https://52wow.github.io/WnIj8LZa8/">
-        <div class="motion-warpper tag-archive-node">
-          <div class="tag-node">
-            <h1>
-              06-26
-              <small>GM指令详解</small>
-            </h1>
-          </div>  
-      </div>
-      </a>
-    
-      
-      
-      <a href="https://52wow.github.io/ZtjWyXcUv/">
-        <div class="motion-warpper tag-archive-node">
-          <div class="tag-node">
-            <h1>
-              06-26
-              <small>数据库各表功能解释</small>
-            </h1>
-          </div>  
-      </div>
-      </a>
-    
-      
-      
-      <a href="https://52wow.github.io/_Om6b66fb/">
-        <div class="motion-warpper tag-archive-node">
-          <div class="tag-node">
-            <h1>
-              06-26
-              <small>DBC表目录说明</small>
-            </h1>
-          </div>  
-      </div>
-      </a>
-    
-      
-      
-      <a href="https://52wow.github.io/7qUPwgWcj/">
-        <div class="motion-warpper tag-archive-node">
-          <div class="tag-node">
-            <h1>
-              06-26
-              <small>中文说明worldserver.conf</small>
-            </h1>
-          </div>  
-      </div>
-      </a>
-    
-      
-      
-      <a href="https://52wow.github.io/aBf0nbuKJ/">
-        <div class="motion-warpper tag-archive-node">
-          <div class="tag-node">
-            <h1>
-              06-26
-              <small>清理数据sql命令</small>
-            </h1>
-          </div>  
-      </div>
-      </a>
-    
-      
-      
-      <a href="https://52wow.github.io/IaV-R3Vv8/">
-        <div class="motion-warpper tag-archive-node">
-          <div class="tag-node">
-            <h1>
-              06-26
-              <small>GM常用命令</small>
-            </h1>
-          </div>  
-      </div>
-      </a>
+    <span id="/7qUPwgWcj/" data-flag-title="中文说明worldserver.conf" class="meta-item pc-show leancloud_visitors">
+      <span class="post-meta-divider">|</span>
+      <i class="fa fa-eye"></i>
+      <span><span class="language" data-lan="view">浏览量</span>：<span class="leancloud-visitors-count"></span></span>
+    </span>
     
   </div>
-  
-<div class="page bg-color">
-  <ul class="pagination-ul">
-    
-    
-      
-        <li class="pagination-li pagination-active">
-            <a href="/archives/page/../">
-              1
-            </a>
-        </li>
-      
-    
-    
-  </ul>
-</div>
-</div>
+</header>
+            <div class="post-body next-md-body" id="post_body">
+              <p>中文说明worldserver.conf<br>
+　　<br>
+　　[worldserver]<br>
+　　<br>
+　　mmap.enablePathFinding=1MMAPS开启<br>
+　　<br>
+　　CONNECTIONSANDDIRECTORIES<br>
+　　<br>
+　　RealmID<br>
+　　<br>
+　　登陆服务器设置，RealmID必须匹配Realmlist，默认：1<br>
+　　<br>
+　　RealmID=1<br>
+　　<br>
+　　DataDir</p>
+<!-- more -->
+<p>数据文件目录设置(DBC/Maps/vMaps)<br>
+　　<br>
+　　DataDir=“data”<br>
+　　<br>
+　　LogsDir<br>
+　　<br>
+　　日志文件目录设置<br>
+　　<br>
+　　LogsDir=“data”<br>
+　　<br>
+　　LoginDatabaseInfo<br>
+　　<br>
+　　WorldDatabaseInfo<br>
+　　<br>
+　　CharacterDatabaseInfo<br>
+　　<br>
+　　数据库链接设置，格式:ip;端口;用户名;密码;数据库名称<br>
+　　<br>
+　　LoginDatabaseInfo=“127.0.0.1;3306;root;root;ZH”<br>
+　　<br>
+　　WorldDatabaseInfo=“127.0.0.1;3306;root;root;SJ”<br>
+　　<br>
+　　CharacterDatabaseInfo=“127.0.0.1;3306;root;root;JS”<br>
+　　<br>
+　　LoginDatabase.WorkerThreads<br>
+　　<br>
+　　WorldDatabase.WorkerThreads<br>
+　　<br>
+　　CharacterDatabase.WorkerThreads<br>
+　　<br>
+　　用几个线程处理Mysql数据异步(即延迟)，默认：1、1、1<br>
+　　<br>
+　　LoginDatabase.WorkerThreads=1<br>
+　　<br>
+　　WorldDatabase.WorkerThreads=1<br>
+　　<br>
+　　CharacterDatabase.WorkerThreads=1<br>
+　　<br>
+　　LoginDatabase.SynchThreads<br>
+　　<br>
+　　WorldDatabase.SynchThreads<br>
+　　<br>
+　　CharacterDatabase.SynchThreads<br>
+　　<br>
+　　用几个线程连接数据库，默认：1、1、2<br>
+　　<br>
+　　LoginDatabase.SynchThreads=1<br>
+　　<br>
+　　WorldDatabase.SynchThreads=1<br>
+　　<br>
+　　CharacterDatabase.SynchThreads=2<br>
+　　<br>
+　　MaxPingTime<br>
+　　<br>
+　　最高ping数据库的时间间隔，默认：30(分钟)<br>
+　　<br>
+　　MaxPingTime=30<br>
+　　<br>
+　　WorldServerPort<br>
+　　<br>
+　　worldserver.exe使用的系统端口，默认：8085<br>
+　　<br>
+　　WorldServerPort=8085<br>
+　　<br>
+　　BindIP<br>
+　　<br>
+　　worldserver.exe绑定的IP地址/主机，默认：&quot;0.0.0.0&quot;<br>
+　　<br>
+　　BindIP=“0.0.0.0”<br>
+　　<br>
+　　PERFORMANCESETTINGS<br>
+　　<br>
+　　UseProcessors<br>
+　　<br>
+　　在多线程系统使用线程MASK(只在Windows系统下使用)，默认：0(自动选择)，数值(设置处理器的线程值)<br>
+　　<br>
+　　UseProcessors=0<br>
+　　<br>
+　　ProcessPriority<br>
+　　<br>
+　　进程优先权设置(只在Windows系统下使用)，默认:1(高优先)，0(正常优先权)<br>
+　　<br>
+　　ProcessPriority=1<br>
+　　<br>
+　　Compression<br>
+　　<br>
+　　发送到客户端的数据包的压缩级别(1到9)，默认:1(速度快,不压缩)，9(速度慢，最好的压缩)<br>
+　　<br>
+　　Compression=1<br>
+　　<br>
+　　PlayerLimit<br>
+　　<br>
+　　除GM之外，游戏最大在线玩家数量，默认:1000<br>
+　　<br>
+　　PlayerLimit=100<br>
+　　<br>
+　　SaveRespawnTimeImmediately<br>
+　　<br>
+　　记录生物/游戏对象等再生时间设置，在生物死亡或箱子等被使用/打开情况下。<br>
+　　<br>
+　　默认:1(保存生物/游戏对象再生时间，开始于当前格没有卸载)<br>
+　　<br>
+　　0(保存生物/游戏对象再生时间，开始于当前格卸载后)<br>
+　　<br>
+　　SaveRespawnTimeImmediately=1<br>
+　　<br>
+　　MaxOverspeedPings<br>
+　　<br>
+　　最大的超速限制，在玩家被踢出之前(最小值是2,0为取消检测)，默认：2<br>
+　　<br>
+　　MaxOverspeedPings=0<br>
+　　<br>
+　　GridUnload<br>
+　　<br>
+　　卸载Grids(如果里的内存够大,可以禁用,提高玩家第二次经过新Grids时候的速度)<br>
+　　<br>
+　　P.S:Grids就是地图上刷出来的东西,玩家经过一个地方就会加载该地方的环境,离开的时候就卸载该地方的环境<br>
+　　<br>
+　　默认:1(卸载)，0(不卸载)<br>
+　　<br>
+　　GridUnload=1<br>
+　　<br>
+　　SocketTimeOutTime<br>
+　　<br>
+　　与客户端断开连接当玩家在选择人物界面超过多少时间，默认：900000(15分钟)<br>
+　　<br>
+　　SocketTimeOutTime=900000<br>
+　　<br>
+　　SessionAddDelay<br>
+　　<br>
+　　Description:Time(inmicroseconds)thatanetworkthreadwillsleepafterauthentication<br>
+　　<br>
+　　protocolhandlingbeforeaddingaconnectiontotheworldsessionmap.<br>
+　　<br>
+　　Default:10000-(10milliseconds,0.01second)<br>
+　　<br>
+　　SessionAddDelay=10000<br>
+　　<br>
+　　GridCleanUpDelay<br>
+　　<br>
+　　默认地图网格清理延迟(单位毫秒)，默认:300000(5分钟)<br>
+　　<br>
+　　GridCleanUpDelay=300000<br>
+　　<br>
+　　MapUpdateInterval<br>
+　　<br>
+　　默认地图更新间隔(单位毫秒)，默认:100(1秒)<br>
+　　<br>
+　　MapUpdateInterval=100<br>
+　　<br>
+　　ChangeWeatherInterval<br>
+　　<br>
+　　默认天气更新间隔(单位毫秒)，默认:600000(10分钟)<br>
+　　<br>
+　　ChangeWeatherInterval=9000000<br>
+　　<br>
+　　PlayerSaveInterval<br>
+　　<br>
+　　默认玩家数据保存间隔(单位毫秒)，默认:900000-(15分钟)<br>
+　　<br>
+　　PlayerSaveInterval=900000<br>
+　　<br>
+　　PlayerSave.Stats.MinLevel<br>
+　　<br>
+　　最低多少等级将玩家的属性数据保存到数据库<br>
+　　<br>
+　　默认:0(不保存玩家的属性属性)<br>
+　　<br>
+　　1+(保存玩家的数据，玩家的等级+1)<br>
+　　<br>
+　　PlayerSave.Stats.MinLevel=0<br>
+　　<br>
+　　PlayerSave.Stats.SaveOnlyOnLogout<br>
+　　<br>
+　　启用保存玩家数据仅在玩家退出游戏时，默认：1(仅在玩家退出游戏时)，0(使用时间循环保存数据)<br>
+　　<br>
+　　PlayerSave.Stats.SaveOnlyOnLogout=1<br>
+　　<br>
+　　vmap.enableLOS<br>
+　　<br>
+　　vmap.enableHeight<br>
+　　<br>
+　　开启/关闭VMmap视线和高度计算支持，开启后需要Vmaps文件支持，默认:0(关闭)1(开启)<br>
+　　<br>
+　　vmap.enableLOS=1<br>
+　　<br>
+　　vmap.enableHeight=1<br>
+　　<br>
+　　vmap.ignoreSpellIds<br>
+　　<br>
+　　这些法术将被忽略准线算法，列表的ID以符号分割','<br>
+　　<br>
+　　例:&quot;7720,1337&quot;<br>
+　　<br>
+　　默认:&quot;7720&quot;<br>
+　　<br>
+　　vmap.ignoreSpellIds=“7720”<br>
+　　<br>
+　　vmap.petLOS<br>
+　　<br>
+　　对宠物开启vmaps，默认：0(不启用，低Cpu占用)，1(启用，高Cpu占用)<br>
+　　<br>
+　　vmap.petLOS=1<br>
+　　<br>
+　　vmap.enableIndoorCheck<br>
+　　<br>
+　　室内外检查光环(坐骑等).<br>
+　　<br>
+　　默认:1-(启用)<br>
+　　<br>
+　　0-(禁用，降低一些的CPU使用率)<br>
+　　<br>
+　　vmap.enableIndoorCheck=1<br>
+　　<br>
+　　DetectPosCollision<br>
+　　<br>
+　　检查最后的移动位置,召唤位置,可看见的碰撞以及其他对象或墙壁等位置测试(墙壁测试，只有当副本测试设置vmaps的相关设置启用后生效)<br>
+　　<br>
+　　默认:1(启用,占用更多的CPU资源)，0(关闭,不理想的设置,但可以节省较多的CUP资源，适合服务器档次较差的情况)<br>
+　　<br>
+　　DetectPosCollision=1<br>
+　　<br>
+　　TargetPosRecalculateRange<br>
+　　<br>
+　　重新计算目标移动后的依次的远近范围,从移动的目标点(+移动者的大小)和被瞄准对象(+大小)的最大距离<br>
+　　<br>
+　　根据激活瞬间的移动目标点开始重新计算协助半径,最大:混战攻击范围(5),最小:联络范围(0.5)<br>
+　　<br>
+　　更大的距离,会使生物们表现更加完美,较小的距离,将会让生物们反应更精确敏感。<br>
+　　<br>
+　　默认:1.5<br>
+　　<br>
+　　TargetPosRecalculateRange=1.5<br>
+　　<br>
+　　UpdateUptimeInterval<br>
+　　<br>
+　　系统正常运行更新时间周期以分钟为单位(用于更新'uptime'数据表)。必须大于0，默认:10分钟<br>
+　　<br>
+　　UpdateUptimeInterval=100<br>
+　　<br>
+　　LogDB.Opt.ClearInterval<br>
+　　<br>
+　　WUPDATE_CLEANDB计时器清理log表旧数据的时间间隔。必须大于0，默认:10分钟<br>
+　　<br>
+　　LogDB.Opt.ClearInterval=100<br>
+　　<br>
+　　LogDB.Opt.ClearTime<br>
+　　<br>
+　　清理log表的时间间隔，默认:1209600(14天)，0-不清理<br>
+　　<br>
+　　LogDB.Opt.ClearTime=0<br>
+　　<br>
+　　MaxCoreStuckTime<br>
+　　<br>
+　　周期的检查如果过程已经冻结,如果发现过程已经冻结将在多少秒之后重启控制器。<br>
+　　<br>
+　　单位:秒,必须大于0。如果使用此功能建议值大于10秒，默认:0(不使用)<br>
+　　<br>
+　　MaxCoreStuckTime=0<br>
+　　<br>
+　　AddonChannel<br>
+　　<br>
+　　在本服务器允许/禁用使用的插件频道(可以停止一些客户端扩展功能或关闭插件频道)，默认:1(允许)、0(关闭)<br>
+　　<br>
+　　AddonChannel=1<br>
+　　<br>
+　　MapUpdate.Threads<br>
+　　<br>
+　　地图线程数量，默认:1<br>
+　　<br>
+　　MapUpdate.Threads=1<br>
+　　<br>
+　　CleanCharacterDB<br>
+　　<br>
+　　启用数据自动清理功能，默认：0(不启用)，1(启用)<br>
+　　<br>
+　　CleanCharacterDB=0<br>
+　　<br>
+　　PersistentCharacterCleanFlags<br>
+　　<br>
+　　Description:Determinesthecharactercleanflagsthatremainsetaftercleanups.<br>
+　　<br>
+　　Thisisabitmaskvalue,check/doc/CharacterDBCleanup.txtformore<br>
+　　<br>
+　　information.<br>
+　　<br>
+　　Example:14-(Cleaningupskills,talentsandspellswillremainenabledafterthe<br>
+　　<br>
+　　nextcleanup)<br>
+　　<br>
+　　Default:0-(Allcleanupmethodswillbedisabledafterthenextcleanup)<br>
+　　<br>
+　　PersistentCharacterCleanFlags=0<br>
+　　<br>
+　　SERVERLOGGING<br>
+　　<br>
+　　PidFile<br>
+　　<br>
+　　是否创建登录控制器TrinityCore系统进程档案记录PID文件<br>
+　　<br>
+　　PidFile=“”<br>
+　　<br>
+　　LogLevel<br>
+　　<br>
+　　服务器控制台记录显示的级别，0=最小;1=基础和错误;2=详细;3=完全或侦错<br>
+　　<br>
+　　LogLevel=0<br>
+　　<br>
+　　LogFile<br>
+　　<br>
+　　日志文件的名字，默认：&quot;Server.log&quot;<br>
+　　<br>
+　　LogFile=“”<br>
+　　<br>
+　　LogTimestamp<br>
+　　<br>
+　　日志文件用服务器时间命名与否，默认:0-没有时间戳在名字、1-增加时间戳在名字在形式<br>
+　　<br>
+　　LogTimestamp=0<br>
+　　<br>
+　　LogFileLevel<br>
+　　<br>
+　　服务器记录文件的记录级别，0=最小;1=基础和错误;2=详细;3=完全或侦错<br>
+　　<br>
+　　LogFileLevel=0<br>
+　　<br>
+　　DebugLogMask<br>
+　　<br>
+　　描述：位掩码，确定哪些调试日志将被输出(level3)<br>
+　　<br>
+　　Possibleflags:<br>
+　　<br>
+　　1-Anythingrelatedtounitsthatdoesn'tfitinother<br>
+　　<br>
+　　categories.<br>
+　　<br>
+　　2-Anythingrelatedtopets.<br>
+　　<br>
+　　4-Anythingrelatedtovehicles.<br>
+　　<br>
+　　8-AnythingrelatedtoC++AI,instancescripts,etc.<br>
+　　<br>
+　　16-AnythingrelatedtoDBAI,suchasSAI,EAI,CreatureAI<br>
+　　<br>
+　　32-AnythingrelatedtoDBmapscripts<br>
+　　<br>
+　　64-Anythingrelatedtonetworkinput/output,<br>
+　　<br>
+　　suchaspackethandlersandnetcodelogs<br>
+　　<br>
+　　128-Anythingrelatedtothespellsystemandaurasystem<br>
+　　<br>
+　　256-Anythingrelatedtotheachievementsystem<br>
+　　<br>
+　　512-Anythingrelatedtotheconditionsystem<br>
+　　<br>
+　　1024-Anythingrelatedtothepoolsystem<br>
+　　<br>
+　　2048-Anythingrelatedtotheauctionhouse<br>
+　　<br>
+　　4096-Anythingrelatedtoarena'sandbattlegrounds<br>
+　　<br>
+　　8192-AnythingrelatedtooutdoorPVP<br>
+　　<br>
+　　16384-Anythingrelatedtothechatsystem<br>
+　　<br>
+　　32768-AnythingrelatedtotheLFGsystem<br>
+　　<br>
+　　65536-Anythingrelatedtomaps,instances(notscripts),<br>
+　　<br>
+　　grids,cells,visibility,etc.<br>
+　　<br>
+　　131072-AnythingrelatedtoplayerloadingfromDB<br>
+　　<br>
+　　(Player::_LoadXXXfunctions)<br>
+　　<br>
+　　262144-Anythingrelatedtoitems<br>
+　　<br>
+　　524288-Anythingrelatedtoplayerskills<br>
+　　<br>
+　　(donotconfusewithspells)<br>
+　　<br>
+　　1048576-Anythingrelatedtoloot<br>
+　　<br>
+　　2097152-Anythingrelatedtoguilds<br>
+　　<br>
+　　4194304-Anythingrelatedtotransports<br>
+　　<br>
+　　Simplyaddthevaluestogethertocreateabitmask.<br>
+　　<br>
+　　FormoreinfoseeenumDebugLogFiltersinLog.h<br>
+　　<br>
+　　Default:0(nothing)<br>
+　　<br>
+　　DebugLogMask=0<br>
+　　<br>
+　　WorldLogFile<br>
+　　<br>
+　　世界服务器封包记录日志文件(World.log)空为不记录<br>
+　　<br>
+　　WorldLogFile=“”<br>
+　　<br>
+　　DBErrorLogFile<br>
+　　<br>
+　　服务器运行中数据库错误日志，默认:&quot;DBErrors.log&quot;<br>
+　　<br>
+　　DBErrorLogFile=“”<br>
+　　<br>
+　　CharLogFile<br>
+　　<br>
+　　角色活动日志文件名设置，默认:&quot;Char.log&quot;<br>
+　　<br>
+　　CharLogFile=“”<br>
+　　<br>
+　　CharLogTimestamp<br>
+　　<br>
+　　角色日志文件是否使用服务器时间戳来顺序命名，默认:0-不使用时间戳名、1-使用时间戳命名日志文件<br>
+　　<br>
+　　CharLogTimestamp=0<br>
+　　<br>
+　　CharLogDump<br>
+　　<br>
+　　角色删除前是否同时清除在日志文件里的记录Char.log，默认:0-不包含日志文件内的角色记录、1-包含日志文件内的记录<br>
+　　<br>
+　　CharLogDump=0<br>
+　　<br>
+　　CharLogDump.Separate<br>
+　　<br>
+　　将角色删除信息写入一个单独的文件(账号、角色guid，角色名字)<br>
+　　<br>
+　　默认:0-不单独创建一个文件<br>
+　　<br>
+　　1-单独创建一个文件<br>
+　　<br>
+　　CharLogDump.Separate=0<br>
+　　<br>
+　　CharLogDump.SeparateDir<br>
+　　<br>
+　　角色删除信息日志文件目录设置<br>
+　　<br>
+　　CharLogDump.SeparateDir=“”<br>
+　　<br>
+　　GmLogFile<br>
+　　<br>
+　　记录GM命令使用情况的日志文件名，默认：&quot;GM.log&quot;<br>
+　　<br>
+　　GmLogFile=“”<br>
+　　<br>
+　　GmLogTimestamp<br>
+　　<br>
+　　GM日志文件是否使用服务器时间戳来顺序命名，默认:0-不包含日志文件内的角色记录、1-包含日志文件内的记录<br>
+　　<br>
+　　GmLogTimestamp=0<br>
+　　<br>
+　　GmLogPerAccount<br>
+　　<br>
+　　GM日志文件和GM账号ID(注:如果GmLogFile设置不记录的话,此功能无效)<br>
+　　<br>
+　　默认:0-添加GM日志数据到一个唯一的日志文件、1-添加GM日志数据到一个以此GM账号名为文件名的日志文件<br>
+　　<br>
+　　GmLogPerAccount=0<br>
+　　<br>
+　　RaLogFile<br>
+　　<br>
+　　RA控制台命令的日志文件，默认：&quot;Ra.log&quot;<br>
+　　<br>
+　　RaLogFile=“”<br>
+　　<br>
+　　ArenaLogFile<br>
+　　<br>
+　　竞技日志文件名称，默认：&quot;&quot;-不创建竞技日志<br>
+　　<br>
+　　ArenaLogFile=“”<br>
+　　<br>
+　　ArenaLog.ExtendedInfo<br>
+　　<br>
+　　记录玩家的详细信息，默认：0(不记录)，1(记录)<br>
+　　<br>
+　　ArenaLog.ExtendedInfo=0<br>
+　　<br>
+　　SQLDriverLogFile<br>
+　　<br>
+　　记录Sql事件的文件名称，默认：&quot;&quot;(不使用)<br>
+　　<br>
+　　SQLDriverLogFile=“”<br>
+　　<br>
+　　SQLDriverQueryLogging<br>
+　　<br>
+　　Description:LogSQLqueriestotheSQLDriverLogFileandconsole.<br>
+　　<br>
+　　Default:0-(Disabled,Queryerrorsonly)<br>
+　　<br>
+　　1-(Enabled,Fullquerylogging-mayhaveperformanceimpact)<br>
+　　<br>
+　　SQLDriverQueryLogging=0<br>
+　　<br>
+　　LogColors<br>
+　　<br>
+　　控制台信息的颜色(格式:&quot;正常颜色详情颜色Debug颜色错误颜色).<br>
+　　<br>
+　　Colors:0-Black<br>
+　　<br>
+　　1-Red<br>
+　　<br>
+　　2-Green<br>
+　　<br>
+　　3-Brown<br>
+　　<br>
+　　4-Blue<br>
+　　<br>
+　　5-Magenta<br>
+　　<br>
+　　6-Cyan<br>
+　　<br>
+　　7-Grey<br>
+　　<br>
+　　8-Yellow<br>
+　　<br>
+　　9-Lred<br>
+　　<br>
+　　10-Lgreen<br>
+　　<br>
+　　11-Lblue<br>
+　　<br>
+　　12-Lmagenta<br>
+　　<br>
+　　13-Lcyan<br>
+　　<br>
+　　14-White<br>
+　　<br>
+　　Example:&quot;131195&quot;-(Enabled)<br>
+　　<br>
+　　Default:&quot;&quot;-(Disabled)<br>
+　　<br>
+　　LogColors=“131195”<br>
+　　<br>
+　　EnableLogDB<br>
+　　<br>
+　　服务器日志保存在数据库，默认:0-关闭，1-开启<br>
+　　<br>
+　　EnableLogDB=0<br>
+　　<br>
+　　DBLogLevel<br>
+　　<br>
+　　数据库日志的记录级别，0=最小;1=基础和错误;2=详细;3=完全或侦错<br>
+　　<br>
+　　DBLogLevel=0<br>
+　　<br>
+　　LogDB.Char<br>
+　　<br>
+　　将角色日志信息写入数据库，默认：0(不使用)，1(使用)<br>
+　　<br>
+　　LogDB.Char=0<br>
+　　<br>
+　　LogDB.GM<br>
+　　<br>
+　　将使用的Gm命令信息写入数据库，默认：0(不使用)，1(使用)<br>
+　　<br>
+　　LogDB.GM=0<br>
+　　<br>
+　　LogDB.RA<br>
+　　<br>
+　　将使用RA控制台命令信息写入数据库，默认：0(不使用)，1(使用)<br>
+　　<br>
+　　LogDB.RA=0<br>
+　　<br>
+　　LogDB.World<br>
+　　<br>
+　　将世界服务器封包记录信息写入数据库，默认：0(不使用)，1(使用)<br>
+　　<br>
+　　LogDB.World=0<br>
+　　<br>
+　　LogDB.Chat<br>
+　　<br>
+　　将角色聊天记录信息写入数据库，默认：0(不使用)，1(使用)<br>
+　　<br>
+　　LogDB.Chat=0<br>
+　　<br>
+　　ChatLogFile<br>
+　　<br>
+　　聊天记录日志文件的名字，默认：&quot;Chat.log&quot;<br>
+　　<br>
+　　ChatLogFile=“”<br>
+　　<br>
+　　ChatLogTimestamp<br>
+　　<br>
+　　聊天日志文件用服务器时间命名与否，默认:0-没有时间戳在名字、1-增加时间戳在名字在形式<br>
+　　<br>
+　　ChatLogTimestamp=0<br>
+　　<br>
+　　ChatLogs.Channel<br>
+　　<br>
+　　启用记录自主频道聊天信息.<br>
+　　<br>
+　　Default:0-off<br>
+　　<br>
+　　1-on<br>
+　　<br>
+　　ChatLogs.Channel=0<br>
+　　<br>
+　　ChatLogs.Whisper<br>
+　　<br>
+　　启用记录玩家之间私聊信息<br>
+　　<br>
+　　Default:0-off<br>
+　　<br>
+　　1-on<br>
+　　<br>
+　　ChatLogs.Whisper=0<br>
+　　<br>
+　　ChatLogs.SysChan<br>
+　　<br>
+　　Description:Logsystemchannelmessages.<br>
+　　<br>
+　　Default:0-(Disabled)<br>
+　　<br>
+　　1-(Enabled)<br>
+　　<br>
+　　ChatLogs.SysChan=0<br>
+　　<br>
+　　ChatLogs.Party<br>
+　　<br>
+　　启用记录小队聊天信息.<br>
+　　<br>
+　　Default:0-off<br>
+　　<br>
+　　1-on<br>
+　　<br>
+　　ChatLogs.Party=0<br>
+　　<br>
+　　ChatLogs.Raid<br>
+　　<br>
+　　启用记录团队聊天信息.<br>
+　　<br>
+　　Default:0-off<br>
+　　<br>
+　　1-on<br>
+　　<br>
+　　ChatLogs.Raid=0<br>
+　　<br>
+　　ChatLogs.Guild<br>
+　　<br>
+　　启用记录公会聊天信息.<br>
+　　<br>
+　　Default:0-off<br>
+　　<br>
+　　1-on<br>
+　　<br>
+　　ChatLogs.Guild=0<br>
+　　<br>
+　　ChatLogs.Public<br>
+　　<br>
+　　启用记录公共聊天活动信息(对话/大喊/表情)..<br>
+　　<br>
+　　Default:0-off<br>
+　　<br>
+　　1-on<br>
+　　<br>
+　　ChatLogs.Public=0<br>
+　　<br>
+　　ChatLogs.Addon<br>
+　　<br>
+　　启用记录插件信息.<br>
+　　<br>
+　　Default:0-off<br>
+　　<br>
+　　1-on<br>
+　　<br>
+　　ChatLogs.Addon=0<br>
+　　<br>
+　　ChatLogs.BattleGround<br>
+　　<br>
+　　启用记录战场聊天信息.<br>
+　　<br>
+　　Default:0-off<br>
+　　<br>
+　　1-on<br>
+　　<br>
+　　ChatLogs.BattleGround=0<br>
+　　<br>
+　　SERVERSETTINGS<br>
+　　<br>
+　　GameType<br>
+　　<br>
+　　登录服务器运行方式设置<br>
+　　<br>
+　　0=NORMAL;1=PVP;4=NORMAL;6=RP;8=RPPVP;16FFA_PVP(除休息复活地方和禁猎区以外,所有的区域为PVP区)<br>
+　　<br>
+　　GameType=0<br>
+　　<br>
+　　RealmZone<br>
+　　<br>
+　　服务登录区域设置(设置服务器支持的区域字符表/服务器名称列表等的正确显示)<br>
+　　<br>
+　　默认1-(全地区)<br>
+　　<br>
+　　2-(UnitedStates-extended-Latin)<br>
+　　<br>
+　　3-(Oceanic-extended-Latin)<br>
+　　<br>
+　　4-(LatinAmerica-extended-Latin)<br>
+　　<br>
+　　5-(Tournament-basic-Latinatcreate,anyatlogin)<br>
+　　<br>
+　　6-(Korea-East-Asian)<br>
+　　<br>
+　　7-(Tournament-basic-Latinatcreate,anyatlogin)<br>
+　　<br>
+　　8-(English-extended-Latin)<br>
+　　<br>
+　　9-(German-extended-Latin)<br>
+　　<br>
+　　10-(French-extended-Latin)<br>
+　　<br>
+　　11-(Spanish-extended-Latin)<br>
+　　<br>
+　　12-(Russian-Cyrillic)<br>
+　　<br>
+　　13-(Tournament-basic-Latinatcreate,anyatlogin)<br>
+　　<br>
+　　14-(Taiwan-East-Asian)<br>
+　　<br>
+　　15-(Tournament-basic-Latinatcreate,anyatlogin)<br>
+　　<br>
+　　16-(China-East-Asian)<br>
+　　<br>
+　　17-(CN1-basic-Latinatcreate,anyatlogin)<br>
+　　<br>
+　　18-(CN2-basic-Latinatcreate,anyatlogin)<br>
+　　<br>
+　　19-(CN3-basic-Latinatcreate,anyatlogin)<br>
+　　<br>
+　　20-(CN4-basic-Latinatcreate,anyatlogin)<br>
+　　<br>
+　　21-(CN5-basic-Latinatcreate,anyatlogin)<br>
+　　<br>
+　　22-(CN6-basic-Latinatcreate,anyatlogin)<br>
+　　<br>
+　　23-(CN7-basic-Latinatcreate,anyatlogin)<br>
+　　<br>
+　　24-(CN8-basic-Latinatcreate,anyatlogin)<br>
+　　<br>
+　　25-(Tournament-basic-Latinatcreate,anyatlogin)<br>
+　　<br>
+　　26-(TestServer-anylanguage)<br>
+　　<br>
+　　27-(Tournament-basic-Latinatcreate,anyatlogin)<br>
+　　<br>
+　　28-(QAServer-anylanguage)<br>
+　　<br>
+　　29-(CN9-basic-Latinatcreate,anyatlogin)<br>
+　　<br>
+　　RealmZone=1<br>
+　　<br>
+　　StrictPlayerNames<br>
+　　<br>
+　　玩家角色名称语言文字规定，默认：0(全符号支持)<br>
+　　<br>
+　　StrictPlayerNames=0<br>
+　　<br>
+　　StrictCharterNames<br>
+　　<br>
+　　公会/竞技团队名称语言文字规定，默认：0(全符号支持)<br>
+　　<br>
+　　StrictCharterNames=0<br>
+　　<br>
+　　StrictPetNames<br>
+　　<br>
+　　宠物名称语言文字规定，默认：0(全符号支持)<br>
+　　<br>
+　　StrictPetNames=0<br>
+　　<br>
+　　DBC.Locale<br>
+　　<br>
+　　DBC地区语言类型设置，默认：255(自动检测dbc语言类型)<br>
+　　<br>
+　　Default:255-(AutoDetect)<br>
+　　<br>
+　　0-(English)<br>
+　　<br>
+　　1-(Korean)<br>
+　　<br>
+　　2-(French)<br>
+　　<br>
+　　3-(German)<br>
+　　<br>
+　　4-(Chinese)<br>
+　　<br>
+　　5-(Taiwanese)<br>
+　　<br>
+　　6-(Spanish)<br>
+　　<br>
+　　7-(SpanishMexico)<br>
+　　<br>
+　　8-(Russian)<br>
+　　<br>
+　　DBC.Locale=255<br>
+　　<br>
+　　DeclinedNames<br>
+　　<br>
+　　允许使用俄语字体创建角色，默认：0(不允许)，1(允许)<br>
+　　<br>
+　　DeclinedNames=0<br>
+　　<br>
+　　Expansion<br>
+　　<br>
+　　开放内容选择，0(普通)，1(燃烧的远程)，2(巫妖王之怒)<br>
+　　<br>
+　　Expansion=2<br>
+　　<br>
+　　MinPlayerName<br>
+　　<br>
+　　最短角色名称字符数量，默认：2<br>
+　　<br>
+　　MinPlayerName=2<br>
+　　<br>
+　　MinCharterName<br>
+　　<br>
+　　最短公会/竞技团队名称字符数量，默认：2<br>
+　　<br>
+　　MinCharterName=2<br>
+　　<br>
+　　MinPetName<br>
+　　<br>
+　　最短宠物名称字符数量，默认：2<br>
+　　<br>
+　　MinPetName=2<br>
+　　<br>
+　　MaxWhoListReturns<br>
+　　<br>
+　　客户端列表显示的最大在线玩家数量，默认：49(稳定)<br>
+　　<br>
+　　MaxWhoListReturns=49<br>
+　　<br>
+　　CharacterCreating.Disabled<br>
+　　<br>
+　　禁止建立新角色<br>
+　　<br>
+　　默认:0-不限制建立新角色，1-禁止联盟建立角色，2-禁止部落建立角色，3-全部禁止建立角色<br>
+　　<br>
+　　CharacterCreating.Disabled=0<br>
+　　<br>
+　　CharacterCreating.Disabled.RaceMask<br>
+　　<br>
+　　禁止种族新建角色<br>
+　　<br>
+　　默认:0-不限制建立新角色<br>
+　　<br>
+　　1=人类<br>
+　　<br>
+　　2=兽人<br>
+　　<br>
+　　4=矮人<br>
+　　<br>
+　　8=暗夜精灵<br>
+　　<br>
+　　16=亡灵<br>
+　　<br>
+　　32=牛头人<br>
+　　<br>
+　　64=侏儒<br>
+　　<br>
+　　128=巨魔<br>
+　　<br>
+　　512=血精灵<br>
+　　<br>
+　　1024=德莱尼<br>
+　　<br>
+　　例如:1536=1024+512-德莱尼和血精灵禁止建立新角色<br>
+　　<br>
+　　CharacterCreating.Disabled.RaceMask=0<br>
+　　<br>
+　　CharacterCreating.Disabled.ClassMask<br>
+　　<br>
+　　禁止职业建立新角色<br>
+　　<br>
+　　默认:不限制建立新角色<br>
+　　<br>
+　　1=战士<br>
+　　<br>
+　　2=圣骑士<br>
+　　<br>
+　　4=猎人<br>
+　　<br>
+　　8=盗贼<br>
+　　<br>
+　　16=牧师<br>
+　　<br>
+　　32=死骑<br>
+　　<br>
+　　64=萨满<br>
+　　<br>
+　　128=法师<br>
+　　<br>
+　　256=术士<br>
+　　<br>
+　　1024=德鲁伊<br>
+　　<br>
+　　例如:288=32+256-死骑和术士禁止建立新角色<br>
+　　<br>
+　　CharacterCreating.Disabled.ClassMask=0<br>
+　　<br>
+　　CharactersPerAccount<br>
+　　<br>
+　　每个账号允许创建最大角色数量<br>
+　　<br>
+　　CharactersPerAccount=50<br>
+　　<br>
+　　CharactersPerRealm<br>
+　　<br>
+　　一个区相同账号最大角色数量<br>
+　　<br>
+　　CharactersPerRealm=10<br>
+　　<br>
+　　HeroicCharactersPerRealm<br>
+　　<br>
+　　一个区建立英雄职业(死亡骑士)的数量<br>
+　　<br>
+　　HeroicCharactersPerRealm=1<br>
+　　<br>
+　　CharacterCreating.MinLevelForHeroicCharacter<br>
+　　<br>
+　　创建英雄职业(死亡骑士)需要其它角色的等级，默认：55<br>
+　　<br>
+　　CharacterCreating.MinLevelForHeroicCharacter=80<br>
+　　<br>
+　　SkipCinematics<br>
+　　<br>
+　　角色第一次登陆播放电影脚本(允许或关闭通常情况下人物开始位置坐标处的剧情介绍)<br>
+　　<br>
+　　默认:0-介绍每个新角色，1-仅介绍选中的种族，2-禁用介绍<br>
+　　<br>
+　　SkipCinematics=2<br>
+　　<br>
+　　MaxPlayerLevel<br>
+　　<br>
+　　获取经验的最高等级，默认：80，不推荐超越100级<br>
+　　<br>
+　　MaxPlayerLevel=80<br>
+　　<br>
+　　MinDualSpecLevel<br>
+　　<br>
+　　学习双天赋技能的最低等级，默认：40<br>
+　　<br>
+　　MinDualSpecLevel=80<br>
+　　<br>
+　　StartPlayerLevel<br>
+　　<br>
+　　普通角色出生等级，默认：1<br>
+　　<br>
+　　StartPlayerLevel=1<br>
+　　<br>
+　　StartHeroicPlayerLevel<br>
+　　<br>
+　　英雄职业(死亡骑士)出生等级，默认：55<br>
+　　<br>
+　　StartHeroicPlayerLevel=55<br>
+　　<br>
+　　StartPlayerMoney<br>
+　　<br>
+　　玩家出生赠送的金钱数量，1金币=100银币=10000铜币，默认：0金币<br>
+　　<br>
+　　StartPlayerMoney=0<br>
+　　<br>
+　　MaxHonorPoints<br>
+　　<br>
+　　玩家拥有的最大荣誉点数量，默认：75000<br>
+　　<br>
+　　MaxHonorPoints=75000<br>
+　　<br>
+　　StartHonorPoints<br>
+　　<br>
+　　玩家出生拥有的荣誉点数量，默认：0<br>
+　　<br>
+　　StartHonorPoints=0<br>
+　　<br>
+　　MaxArenaPoints<br>
+　　<br>
+　　玩家拥有的最大竞技点数量，默认：10000<br>
+　　<br>
+　　MaxArenaPoints=10000<br>
+　　<br>
+　　StartArenaPoints<br>
+　　<br>
+　　玩家出生拥有的竞技点数量，默认：0<br>
+　　<br>
+　　StartArenaPoints=0<br>
+　　<br>
+　　RecruitAFriend.MaxLevel<br>
+　　<br>
+　　Description:HighestleveluptowhichacharactercanbenefitfromtheRecruit-A-Friend<br>
+　　<br>
+　　experiencemultiplier.<br>
+　　<br>
+　　Default:60<br>
+　　<br>
+　　RecruitAFriend.MaxLevel=60<br>
+　　<br>
+　　RecruitAFriend.MaxDifference<br>
+　　<br>
+　　Description:HighestleveldifferencebetweenlinkedRecruiterandFriendbenefitfrom<br>
+　　<br>
+　　theRecruit-A-Friendexperiencemultiplier.<br>
+　　<br>
+　　Default:3<br>
+　　<br>
+　　RecruitAFriend.MaxDifference=3<br>
+　　<br>
+　　InstantLogout<br>
+　　<br>
+　　开启/关闭玩家退出或小退安全级别(0..4)之间(在非战斗/竞技/下降过程中)<br>
+　　<br>
+　　Default:1-(Enabled,Mods/GMs/Admins)<br>
+　　<br>
+　　0-(Enabled,Everyone)<br>
+　　<br>
+　　2-(Enabled,GMs/Admins)<br>
+　　<br>
+　　3-(Enabled,Admins)<br>
+　　<br>
+　　4-(Disabled)<br>
+　　<br>
+　　InstantLogout=1<br>
+　　<br>
+　　DisableWaterBreath<br>
+　　<br>
+　　关闭/开启水下呼吸会员等级要求(0..4)或则更高<br>
+　　<br>
+　　Default:4-(Disabled)<br>
+　　<br>
+　　0-(Enabled,Everyone)<br>
+　　<br>
+　　1-(Enabled,Mods/GMs/Admins)<br>
+　　<br>
+　　2-(Enabled,GMs/Admins)<br>
+　　<br>
+　　3-(Enabled,Admins)<br>
+　　<br>
+　　DisableWaterBreath=4<br>
+　　<br>
+　　AllFlightPaths<br>
+　　<br>
+　　角色创建后激活所有飞行点(注:所有飞行点,不只包括角色所在队伍)，默认：1(启用)，0(禁用)<br>
+　　<br>
+　　AllFlightPaths=1<br>
+　　<br>
+　　InstantFlightPaths<br>
+　　<br>
+　　飞行路线将使玩家立即传送到目的地，而不用进行飞行等待，默认：0(不使用)，1(使用)<br>
+　　<br>
+　　InstantFlightPaths=0<br>
+　　<br>
+　　AlwaysMaxSkillForLevel<br>
+　　<br>
+　　玩家将登录时自动获取最大的技能等级(武器或防御)对全局生效，默认：1(启用)，0(禁用)<br>
+　　<br>
+　　AlwaysMaxSkillForLevel=0<br>
+　　<br>
+　　ActivateWeather<br>
+　　<br>
+　　启用天气系统，默认：1(启用)，0(禁用)<br>
+　　<br>
+　　ActivateWeather=1<br>
+　　<br>
+　　CastUnstuck<br>
+　　<br>
+　　允许在客户端帮助选择使用卡死技能.startGM命令，默认：1(启用)，0(禁用)<br>
+　　<br>
+　　CastUnstuck=1<br>
+　　<br>
+　　Instance.IgnoreLevel<br>
+　　<br>
+　　取消进入副本的等级限制，默认：1(取消)，0(不取消)<br>
+　　<br>
+　　Instance.IgnoreLevel=1<br>
+　　<br>
+　　Instance.IgnoreRaid<br>
+　　<br>
+　　取消进入副本的组队限制，默认：1(取消)，0(不取消)<br>
+　　<br>
+　　Instance.IgnoreRaid=1<br>
+　　<br>
+　　Instance.ResetTimeHour<br>
+　　<br>
+　　每天副本重置时间(0-23)，默认：4<br>
+　　<br>
+　　Instance.ResetTimeHour=3<br>
+　　<br>
+　　Instance.UnloadDelay<br>
+　　<br>
+　　当副本没有玩家时，在一定时间内从内存清理副本地图。默认:1800000(毫秒,即30分钟)，0(副本地图存放在内存中，直到副本重置)<br>
+　　<br>
+　　Instance.UnloadDelay=600000<br>
+　　<br>
+　　Quests.LowLevelHideDiff<br>
+　　<br>
+　　玩家可以看到NPC头上的感叹号的任务等级比自己高的级数<br>
+　　<br>
+　　Default:4-(Enabled,Hidequeststhathave4levelslessthanthecharacter)<br>
+　　<br>
+　　-1-(Disabled,Showallavailablequestmarks)<br>
+　　<br>
+　　Quests.LowLevelHideDiff=15<br>
+　　<br>
+　　Quests.HighLevelHideDiff<br>
+　　<br>
+　　玩家可以看到NPC头上的感叹号的任务等级比自己低的级数<br>
+　　<br>
+　　Default:7-(Enabled,Hidequeststhathave7levelsmorethanthecharacter)<br>
+　　<br>
+　　-1-(Disabled,Showallavailablequestmarks)<br>
+　　<br>
+　　Quests.HighLevelHideDiff=15<br>
+　　<br>
+　　Quests.IgnoreRaid<br>
+　　<br>
+　　Description:Allownon-raidqueststobecompletedwhileinaraidgroup.<br>
+　　<br>
+　　Default:0-(Disabled)<br>
+　　<br>
+　　1-(Enabled)<br>
+　　<br>
+　　Quests.IgnoreRaid=0<br>
+　　<br>
+　　Guild.EventLogRecordsCount<br>
+　　<br>
+　　公会事件记录的最大数量，默认：100<br>
+　　<br>
+　　Guild.EventLogRecordsCount=100<br>
+　　<br>
+　　Guild.BankEventLogRecordsCount<br>
+　　<br>
+　　银行事件记录的最大数量，默认：25<br>
+　　<br>
+　　Guild.BankEventLogRecordsCount=25<br>
+　　<br>
+　　MaxPrimaryTradeSkill<br>
+　　<br>
+　　玩家最多可以学的商业技能个数，默认：2<br>
+　　<br>
+　　MaxPrimaryTradeSkill=13<br>
+　　<br>
+　　MinPetitionSigns<br>
+　　<br>
+　　建立公会所需的最少玩家签名个数，默认：9<br>
+　　<br>
+　　MinPetitionSigns=9<br>
+　　<br>
+　　MaxGroupXPDistance<br>
+　　<br>
+　　组队杀死怪物获得经验的最大距离(距离怪物)，默认：74<br>
+　　<br>
+　　MaxGroupXPDistance=74<br>
+　　<br>
+　　MaxRecruitAFriendBonusDistance<br>
+　　<br>
+　　Description:MaxdistancebetweencharacterandandgrouptogaintheRecruit-A-Friend<br>
+　　<br>
+　　XPmultiplier.<br>
+　　<br>
+　　Default:100<br>
+　　<br>
+　　MaxRecruitAFriendBonusDistance=100<br>
+　　<br>
+　　MailDeliveryDelay<br>
+　　<br>
+　　邮寄物品延迟时间，默认：3600(1个小时)<br>
+　　<br>
+　　MailDeliveryDelay=600<br>
+　　<br>
+　　SkillChance.Prospecting<br>
+　　<br>
+　　默认情况下不可能提升预测技能,但是可以使用配置来启用，默认:0(不可以提升)，1(可以提升)<br>
+　　<br>
+　　SkillChance.Prospecting=0<br>
+　　<br>
+　　SkillChance.Milling<br>
+　　<br>
+　　为不可能消减的下隆等级水平,但可以自定义设置，默认:0(不消减)，1(可以消减)<br>
+　　<br>
+　　SkillChance.Milling=0<br>
+　　<br>
+　　OffhandCheckAtSpellUnlearn<br>
+　　<br>
+　　重置天赋时检查副手武器栏，0-只在更换地图，登陆时检查并重置，1-在重置天赋的同时检查并重置<br>
+　　<br>
+　　OffhandCheckAtSpellUnlearn=1<br>
+　　<br>
+　　ClientCacheVersion<br>
+　　<br>
+　　重置客户端缓存，当更新数据库时，默认：0(关闭)，1(开启)<br>
+　　<br>
+　　ClientCacheVersion=0<br>
+　　<br>
+　　Event.Announce<br>
+　　<br>
+　　游戏活动事件公告，默认：0(关闭)，1(开启)<br>
+　　<br>
+　　Event.Announce=0<br>
+　　<br>
+　　BeepAtStart<br>
+　　<br>
+　　启动完毕后蜂鸣一声(通常只在Unix/Linux系统下工作)，默认：0(关闭)，1(开启)<br>
+　　<br>
+　　BeepAtStart=1<br>
+　　<br>
+　　Motd<br>
+　　<br>
+　　每日问候消息被显示在世界注册为每名用户('@'为换行符)<br>
+　　<br>
+　　Motd=“欢迎来到魔兽世界单机版”<br>
+　　<br>
+　　Server.LoginInfo<br>
+　　<br>
+　　角色登陆后是否显示服务器信息，默认：0(关闭)，1(开启)<br>
+　　<br>
+　　Server.LoginInfo=0<br>
+　　<br>
+　　Command.LookupMaxResults<br>
+　　<br>
+　　Gm命令.lookupcommand最大可显示的行数，默认：0(无限制)<br>
+　　<br>
+　　Default:0-unlimited<br>
+　　<br>
+　　Command.LookupMaxResults=0<br>
+　　<br>
+　　AllowTickets<br>
+　　<br>
+　　Description:Allow/disallowsendingnewtickets.<br>
+　　<br>
+　　Default:1-(Enabled)<br>
+　　<br>
+　　0-(Disabled)<br>
+　　<br>
+　　AllowTickets=1<br>
+　　<br>
+　　DungeonFinder.Enable<br>
+　　<br>
+　　启动随机组队功能，默认：1(开启)，0(关闭)<br>
+　　<br>
+　　DungeonFinder.Enable=0<br>
+　　<br>
+　　DBC.EnforceItemAttributes<br>
+　　<br>
+　　修复物品数据，可选择使用Dbc数据或者数据库数据<br>
+　　<br>
+　　默认:1-开启，使用Dbc数据，0-关闭，使用数据库数据<br>
+　　<br>
+　　DBC.EnforceItemAttributes=1<br>
+　　<br>
+　　AccountInstancesPerHour爆本<br>
+　　<br>
+　　Description:Controlsthemaxamountofdifferentinstancesplayercanenterwithinhour<br>
+　　<br>
+　　Default:5<br>
+　　<br>
+　　AccountInstancesPerHour=5<br>
+　　<br>
+　　PLAYERINTERACTION<br>
+　　<br>
+　　AllowTwoSide.Accounts<br>
+　　<br>
+　　是否运行同1个帐号建立不2个不同阵营的角色。默认：0(不允许)，1(允许)<br>
+　　<br>
+　　AllowTwoSide.Accounts=1<br>
+　　<br>
+　　AllowTwoSide.Interaction.Chat<br>
+　　<br>
+　　否允许不同阵营间的玩家聊天，默认：0(不允许)，1(允许)<br>
+　　<br>
+　　AllowTwoSide.Interaction.Chat=1<br>
+　　<br>
+　　AllowTwoSide.Interaction.Channel<br>
+　　<br>
+　　否允许不同阵营间的玩家(频道)，默认：0(不允许)，1(允许)<br>
+　　<br>
+　　AllowTwoSide.Interaction.Channel=1<br>
+　　<br>
+　　AllowTwoSide.Interaction.Group<br>
+　　<br>
+　　否允许不同阵营间的玩家(组队)，默认：0(不允许)，1(允许)<br>
+　　<br>
+　　AllowTwoSide.Interaction.Group=1<br>
+　　<br>
+　　AllowTwoSide.Interaction.Guild<br>
+　　<br>
+　　否允许不同阵营间的玩家(工会)，默认：0(不允许)，1(允许)<br>
+　　<br>
+　　AllowTwoSide.Interaction.Guild=1<br>
+　　<br>
+　　AllowTwoSide.Interaction.Auction<br>
+　　<br>
+　　否允许不同阵营间的玩家(拍卖行)，默认：0(不允许)，1(允许)<br>
+　　<br>
+　　AllowTwoSide.Interaction.Auction=1<br>
+　　<br>
+　　否允许不同阵营间的玩家(邮件)，默认：0(不允许)，1(允许)<br>
+　　<br>
+　　AllowTwoSide.Interaction.Mail=1<br>
+　　<br>
+　　AllowTwoSide.WhoList<br>
+　　<br>
+　　是否在在线玩家列表里显示敌对阵营玩家。默认：0(不允许)，1(允许)<br>
+　　<br>
+　　AllowTwoSide.WhoList=1<br>
+　　<br>
+　　AllowTwoSide.AddFriend<br>
+　　<br>
+　　是否运行不同阵营之间互加好友。默认：0(不允许)，1(允许)<br>
+　　<br>
+　　AllowTwoSide.AddFriend=1<br>
+　　<br>
+　　AllowTwoSide.Trade<br>
+　　<br>
+　　是否运行不同阵营之间交易。默认：0(不允许)，1(允许)<br>
+　　<br>
+　　AllowTwoSide.Trade=1<br>
+　　<br>
+　　TalentsInspecting<br>
+　　<br>
+　　是否允许查看其他玩家天赋。默认：0(不允许)，1(允许)<br>
+　　<br>
+　　TalentsInspecting=1<br>
+　　<br>
+　　CREATURESETTINGS<br>
+　　<br>
+　　ThreatRadius<br>
+　　<br>
+　　生物脱离战斗的半径，当角色与生物距离大约该距离时，生物脱离战斗<br>
+　　<br>
+　　ThreatRadius=60<br>
+　　<br>
+　　Rate.Creature.Aggro<br>
+　　<br>
+　　物自动攻击的范围乘以的倍数或者关闭自动攻击，默认：1怪物视野<br>
+　　<br>
+　　Rate.Creature.Aggro=1<br>
+　　<br>
+　　CreatureFamilyFleeAssistanceRadius<br>
+　　<br>
+　　怪物进行逃跑时，能在自己多大直径内招来协助伙伴，默认：30，0(关闭)<br>
+　　<br>
+　　CreatureFamilyFleeAssistanceRadius=30<br>
+　　<br>
+　　CreatureFamilyAssistanceRadius<br>
+　　<br>
+　　同类生物(家族)协助攻击侦测范围，默认：10，0(关闭)<br>
+　　<br>
+　　CreatureFamilyAssistanceRadius=10<br>
+　　<br>
+　　CreatureFamilyAssistanceDelay<br>
+　　<br>
+　　同类生物(家族)协助攻击侦测时间，默认:1500(1.5秒)<br>
+　　<br>
+　　CreatureFamilyAssistanceDelay=1000<br>
+　　<br>
+　　CreatureFamilyFleeDelay<br>
+　　<br>
+　　怪物逃离时找不到协助伙伴多长时间返回，默认，默认：7000(7秒)<br>
+　　<br>
+　　CreatureFamilyFleeDelay=7000<br>
+　　<br>
+　　WorldBossLevelDiff<br>
+　　<br>
+　　世界BOSS动态变更与目标的等级差(适合单机或小型服务器调整难度之用)，默认：3<br>
+　　<br>
+　　WorldBossLevelDiff=1<br>
+　　<br>
+　　Corpse.Decay.NORMAL<br>
+　　<br>
+　　Corpse.Decay.RARE<br>
+　　<br>
+　　Corpse.Decay.ELITE<br>
+　　<br>
+　　Corpse.Decay.RAREELITE<br>
+　　<br>
+　　Corpse.Decay.WORLDBOSS<br>
+　　<br>
+　　普通、精英、稀有精英、BOSS、稀有普通怪等尸体在没有抢劫或剥皮等情况下腐烂消失的时间(单位:秒)<br>
+　　<br>
+　　默认:60,300,300,300,3600<br>
+　　<br>
+　　Corpse.Decay.NORMAL=150<br>
+　　<br>
+　　Corpse.Decay.RARE=300<br>
+　　<br>
+　　Corpse.Decay.ELITE=300<br>
+　　<br>
+　　Corpse.Decay.RAREELITE=300<br>
+　　<br>
+　　Corpse.Decay.WORLDBOSS=600<br>
+　　<br>
+　　Rate.Corpse.Decay.Looted<br>
+　　<br>
+　　普通、精英、稀有精英、BOSS、稀有普通怪等尸体在倍抢劫或者剥皮情况下腐烂消失时间倍率，配合上面时间设置<br>
+　　<br>
+　　默认：0.5<br>
+　　<br>
+　　Rate.Corpse.Decay.Looted=0.1<br>
+　　<br>
+　　Rate.Creature.Normal.Damage<br>
+　　<br>
+　　Rate.Creature.Elite.Elite.Damage<br>
+　　<br>
+　　Rate.Creature.Elite.RARE.Damage<br>
+　　<br>
+　　Rate.Creature.Elite.RAREELITE.Damage<br>
+　　<br>
+　　Rate.Creature.Elite.WORLDBOSS.Damage<br>
+　　<br>
+　　普通、精英、稀有精英、BOSS、稀有普通怪的物理攻击强度倍数，默认：1<br>
+　　<br>
+　　Rate.Creature.Normal.Damage=2<br>
+　　<br>
+　　Rate.Creature.Elite.Elite.Damage=1<br>
+　　<br>
+　　Rate.Creature.Elite.RARE.Damage=1.5<br>
+　　<br>
+　　Rate.Creature.Elite.RAREELITE.Damage=1<br>
+　　<br>
+　　Rate.Creature.Elite.WORLDBOSS.Damage=0.1<br>
+　　<br>
+　　Rate.Creature.Normal.SpellDamage<br>
+　　<br>
+　　Rate.Creature.Elite.Elite.SpellDamage<br>
+　　<br>
+　　Rate.Creature.Elite.RARE.SpellDamage<br>
+　　<br>
+　　Rate.Creature.Elite.RAREELITE.SpellDamage<br>
+　　<br>
+　　Rate.Creature.Elite.WORLDBOSS.SpellDamage<br>
+　　<br>
+　　普通、精英、稀有精英、BOSS、稀有普通怪魔法攻击强度倍偻，默认：1<br>
+　　<br>
+　　Rate.Creature.Normal.SpellDamage=2<br>
+　　<br>
+　　Rate.Creature.Elite.Elite.SpellDamage=1<br>
+　　<br>
+　　Rate.Creature.Elite.RARE.SpellDamage=1.5<br>
+　　<br>
+　　Rate.Creature.Elite.RAREELITE.SpellDamage=1<br>
+　　<br>
+　　Rate.Creature.Elite.WORLDBOSS.SpellDamage=0.5<br>
+　　<br>
+　　Rate.Creature.Normal.HP<br>
+　　<br>
+　　Rate.Creature.Elite.Elite.HP<br>
+　　<br>
+　　Rate.Creature.Elite.RARE.HP<br>
+　　<br>
+　　Rate.Creature.Elite.RAREELITE.HP<br>
+　　<br>
+　　Rate.Creature.Elite.WORLDBOSS.HP<br>
+　　<br>
+　　普通、精英、稀有精英、BOSS、稀有普通怪的血量倍数，默认：1<br>
+　　<br>
+　　Rate.Creature.Normal.HP=2<br>
+　　<br>
+　　Rate.Creature.Elite.Elite.HP=1<br>
+　　<br>
+　　Rate.Creature.Elite.RARE.HP=1.5<br>
+　　<br>
+　　Rate.Creature.Elite.RAREELITE.HP=1<br>
+　　<br>
+　　Rate.Creature.Elite.WORLDBOSS.HP=0.5<br>
+　　<br>
+　　ListenRange.Say<br>
+　　<br>
+　　生物(或其它的游戏对象)说话时，玩家能看到文字和听到声音的距离，默认：40<br>
+　　<br>
+　　ListenRange.Say=40<br>
+　　<br>
+　　ListenRange.TextEmote<br>
+　　<br>
+　　生物(或其它的游戏对象)发出表情信息时，玩家能看到表情内容和听到声音的距离，默认：40<br>
+　　<br>
+　　ListenRange.TextEmote=40<br>
+　　<br>
+　　ListenRange.Yell<br>
+　　<br>
+　　生物(或其它的游戏对象)叫喊时，玩家能看到文字和听到声音的距离，默认：300<br>
+　　<br>
+　　ListenRange.Yell=300<br>
+　　<br>
+　　CHATSETTINGS<br>
+　　<br>
+　　ChatFakeMessagePreventing<br>
+　　<br>
+　　聊天保护功能，防止由于恶意玩家输入了特殊符号造成身边玩家客户端工作异常问题<br>
+　　<br>
+　　默认:0-不保护，1-保护<br>
+　　<br>
+　　ChatFakeMessagePreventing=0<br>
+　　<br>
+　　ChatStrictLinkChecking.Severity<br>
+　　<br>
+　　Description:Checkchatmessagesforingamelinkstospells,items,quests,etc.<br>
+　　<br>
+　　Default:0-(Disabled)<br>
+　　<br>
+　　1-(Enabled,Checkifonlyvalidpipecommandsareused,Preventsposting<br>
+　　<br>
+　　pictures.)<br>
+　　<br>
+　　2-(Enabled,Verifythatpipecommandsareusedinacorrectorder)<br>
+　　<br>
+　　3-(Checkifcolor,entryandnamedon'tcontradicteachother.Forthisto<br>
+　　<br>
+　　workcorrectly,pleaseassurethatyouhaveextractedlocaleDBCsof<br>
+　　<br>
+　　everylanguagespecificclientplayingonthisserver)<br>
+　　<br>
+　　ChatStrictLinkChecking.Severity=0<br>
+　　<br>
+　　ChatStrictLinkChecking.Kick<br>
+　　<br>
+　　Description:Defineswhatshouldbedoneifamessageisconsideredtocontaininvalid<br>
+　　<br>
+　　pipecommands.<br>
+　　<br>
+　　Default:0-(Silentlyignoremessage)<br>
+　　<br>
+　　1-(Disconnectplayerswhosentmalformedmessages)<br>
+　　<br>
+　　ChatStrictLinkChecking.Kick=0<br>
+　　<br>
+　　ChatFlood.MessageCount<br>
+　　<br>
+　　Description:Chatfloodprotection,numberofmessagesbeforeplayergetsmuted.<br>
+　　<br>
+　　Default:10-(Enabled)<br>
+　　<br>
+　　0-(Disabled)<br>
+　　<br>
+　　ChatFlood.MessageCount=10<br>
+　　<br>
+　　ChatFlood.MessageDelay<br>
+　　<br>
+　　Description:Time(inseconds)betweenmessagestobecountedintoChatFlood.MessageCount.<br>
+　　<br>
+　　Default:1<br>
+　　<br>
+　　ChatFlood.MessageDelay=1<br>
+　　<br>
+　　ChatFlood.MuteTime<br>
+　　<br>
+　　Description:Time(inseconds)charactersgetmutedforviolatingChatFlood.MessageCount.<br>
+　　<br>
+　　Default:10<br>
+　　<br>
+　　ChatFlood.MuteTime=10<br>
+　　<br>
+　　Channel.RestrictedLfg<br>
+　　<br>
+　　Description:RestrictLookupForGroupchanneltocharactersregisteredintheLFGtool.<br>
+　　<br>
+　　Default:1-(Enabled,AllowjointochannelonlyifregisteredinLFG)<br>
+　　<br>
+　　0-(Disabled,Allowjointochannelinanytime)<br>
+　　<br>
+　　Channel.RestrictedLfg=1<br>
+　　<br>
+　　Channel.SilentlyGMJoin<br>
+　　<br>
+　　Description:SilentlyjoinGMcharacterstochannels<br>
+　　<br>
+　　Default:0-(Disabled,Joinwithannouncement)<br>
+　　<br>
+　　1-(Enabled,Joinwithoutannouncement)<br>
+　　<br>
+　　Channel.SilentlyGMJoin=0<br>
+　　<br>
+　　ChatLevelReq.Channel<br>
+　　<br>
+　　Description:Levelrequirementforcharacterstobeabletowriteinchatchannels.<br>
+　　<br>
+　　Default:1<br>
+　　<br>
+　　ChatLevelReq.Channel=1<br>
+　　<br>
+　　ChatLevelReq.Whisper<br>
+　　<br>
+　　Description:Levelrequirementforcharacterstobeabletowhisperothercharacters.<br>
+　　<br>
+　　Default:1<br>
+　　<br>
+　　ChatLevelReq.Whisper=1<br>
+　　<br>
+　　ChatLevelReq.Say<br>
+　　<br>
+　　Description:Levelrequirementforcharacterstobeabletousesay/yell/emote.<br>
+　　<br>
+　　Default:1<br>
+　　<br>
+　　ChatLevelReq.Say=1<br>
+　　<br>
+　　AllowPlayerCommands<br>
+　　<br>
+　　是否允许玩家使用游戏命令，默认：1(允许)，0(不允许)<br>
+　　<br>
+　　AllowPlayerCommands=1<br>
+　　<br>
+　　PreserveCustomChannels<br>
+　　<br>
+　　Description:Storecustomchatchannelsettingslikepassword,automaticownershiphandout<br>
+　　<br>
+　　orbanlistinthedatabase.Needstobeenabledtosavecustom<br>
+　　<br>
+　　world/trade/etc.channelsthathaveautomaticownershiphandoutdisabled.<br>
+　　<br>
+　　(.channelsetownership$channeloff)<br>
+　　<br>
+　　Default:0-(Disabled,Blizzlike,Channelsettingsarelostiflastpersonleft)<br>
+　　<br>
+　　1-(Enabled)<br>
+　　<br>
+　　PreserveCustomChannels=1<br>
+　　<br>
+　　PreserveCustomChannelDuration<br>
+　　<br>
+　　Description:Time(indays)thatneedstopassbeforethecustomschatchannelsget<br>
+　　<br>
+　　cleanedupfromthedatabase.Onlychannelswithownershiphandoutenabled<br>
+　　<br>
+　　(defaultbehavior)willbecleaned.<br>
+　　<br>
+　　Default:14-(Enabled,Cleanchannelsthathaven'tbeenusedfor14days)<br>
+　　<br>
+　　0-(Disabled,Infinitechannelstorage)<br>
+　　<br>
+　　PreserveCustomChannelDuration=14<br>
+　　<br>
+　　GAMEMASTERSETTINGS<br>
+　　<br>
+　　GM.LoginState<br>
+　　<br>
+　　登录时GM是否进入管理模式，默认:2-上次离开时状态，0-不进入管理默认，1-进入管理模式<br>
+　　<br>
+　　GM.LoginState=2<br>
+　　<br>
+　　GM.Visible<br>
+　　<br>
+　　登录时GM是否隐身，默认:2-上次离开时状态，0-不隐身，1-隐身<br>
+　　<br>
+　　GM.Visible=2<br>
+　　<br>
+　　GM.Chat<br>
+　　<br>
+　　登录时GM是否进入Blz聊天默认，默认:2-上次离开时状态，0-不使用，1-使用<br>
+　　<br>
+　　GM.Chat=2<br>
+　　<br>
+　　GM.WhisperingTo<br>
+　　<br>
+　　登录时GM是否允许接收玩家的悄悄话，默认:2-上次离开时状态，0-不接收，1-接收<br>
+　　<br>
+　　GM.WhisperingTo=2<br>
+　　<br>
+　　GM.InGMList.Level<br>
+　　<br>
+　　是否显示指定等级的GM显示列表(当GM隐身时)或则(.gmoff)<br>
+　　<br>
+　　默认:3(全部)，0(玩家)，1(普通GM)，2(高级GM)<br>
+　　<br>
+　　GM.InGMList.Level=3<br>
+　　<br>
+　　GM.InWhoList.Level<br>
+　　<br>
+　　Description:MaxGMlevelshowedinwholist(ifvisible).<br>
+　　<br>
+　　Default:3-(Anyone)<br>
+　　<br>
+　　0-(Onlyplayers)<br>
+　　<br>
+　　1-(Onlymoderators)<br>
+　　<br>
+　　2-(Onlygamemasters)<br>
+　　<br>
+　　GM.InWhoList.Level=3<br>
+　　<br>
+　　GM.LogTrade<br>
+　　<br>
+　　是否记录GM交易信息在GM日志内，默认：1(开启)，0(不开启)<br>
+　　<br>
+　　GM.LogTrade=0<br>
+　　<br>
+　　GM.StartLevel<br>
+　　<br>
+　　GM新建角色等级，默认：1<br>
+　　<br>
+　　GM.StartLevel=1<br>
+　　<br>
+　　GM.AllowInvite<br>
+　　<br>
+　　Description:AllowplayerstoinviteGMcharacters.<br>
+　　<br>
+　　Default:0-(Disabled)<br>
+　　<br>
+　　1-(Enabled)<br>
+　　<br>
+　　GM.AllowInvite=0<br>
+　　<br>
+　　GM.AllowFriend<br>
+　　<br>
+　　Description:AllowplayerstoaddGMcharacterstotheirfriendslist.<br>
+　　<br>
+　　Default:0-(Disabled)<br>
+　　<br>
+　　1-(Enabled)<br>
+　　<br>
+　　GM.AllowFriend=0<br>
+　　<br>
+　　GM.LowerSecurity<br>
+　　<br>
+　　Description:Allowlowersecuritylevelstousecommandsonhighersecuritylevel<br>
+　　<br>
+　　characters.<br>
+　　<br>
+　　Default:0-(Disabled)<br>
+　　<br>
+　　1-(Enabled)<br>
+　　<br>
+　　GM.LowerSecurity=0<br>
+　　<br>
+　　GM.AllowAchievementGain<br>
+　　<br>
+　　是否允许GM获得系统成就，默认:1(允许)，0(不允许)<br>
+　　<br>
+　　GM.AllowAchievementGain=1<br>
+　　<br>
+　　GM.TicketSystem.ChanceOfGMSurvey<br>
+　　<br>
+　　Description:ChanceofsendingaGMsurveyafterticketcompletion.<br>
+　　<br>
+　　Default:50-(Enabled)<br>
+　　<br>
+　　0-(Disabled)<br>
+　　<br>
+　　GM.TicketSystem.ChanceOfGMSurvey=50<br>
+　　<br>
+　　VISIBILITYANDDISTANCES<br>
+　　<br>
+　　Visibility.GroupMode<br>
+　　<br>
+　　团队可见模式<br>
+　　<br>
+　　默认:0(标准设置：只有同一个团队的队友才可以100%侦测隐形玩家)<br>
+　　<br>
+　　1(只有同一个小队的队友才可以100%侦测隐形玩家)<br>
+　　<br>
+　　2(同一阵营的队友可以100%侦测隐形玩家)<br>
+　　<br>
+　　Visibility.GroupMode=0<br>
+　　<br>
+　　Visibility.Distance.Continents<br>
+　　<br>
+　　Visibility.Distance.Instances<br>
+　　<br>
+　　Visibility.Distance.BGArenas<br>
+　　<br>
+　　在不同的地图可视范围距离.<br>
+　　<br>
+　　在普通大陆的可视距离<sub>90码.在战场/竞技场</sub>180.在副本的可视范围默认为~120.<br>
+　　<br>
+　　最大距离:~333<br>
+　　<br>
+　　最低是最大aggro半径(45)*Rate.Creature.Aggro<br>
+　　<br>
+　　Visibility.Distance.Continents=90<br>
+　　<br>
+　　Visibility.Distance.Instances=120<br>
+　　<br>
+　　Visibility.Distance.BGArenas=180<br>
+　　<br>
+　　Visibility.Notify.Period.OnContinents<br>
+　　<br>
+　　Visibility.Notify.Period.InInstances<br>
+　　<br>
+　　Visibility.Notify.Period.InBGArenas<br>
+　　<br>
+　　Description:Time(inmilliseconds)forvisibilityupdateperiod.Lowervaluesmayhave<br>
+　　<br>
+　　performanceimpact.<br>
+　　<br>
+　　Default:1000-(Visibility.Notify.Period.OnContinents)<br>
+　　<br>
+　　1000-(Visibility.Notify.Period.InInstances)<br>
+　　<br>
+　　1000-(Visibility.Notify.Period.InBGArenas)<br>
+　　<br>
+　　Visibility.Notify.Period.OnContinents=1000<br>
+　　<br>
+　　Visibility.Notify.Period.InInstances=1000<br>
+　　<br>
+　　Visibility.Notify.Period.InBGArenas=1000<br>
+　　<br>
+　　SERVERRATES<br>
+　　<br>
+　　Rate.Health<br>
+　　<br>
+　　Rate.Mana<br>
+　　<br>
+　　Rate.Rage.Income<br>
+　　<br>
+　　Rate.Rage.Loss<br>
+　　<br>
+　　Rate.RunicPower.Income<br>
+　　<br>
+　　Rate.RunicPower.Loss<br>
+　　<br>
+　　Rate.Focus<br>
+　　<br>
+　　Rate.Energy<br>
+　　<br>
+　　Rate.Loyalty<br>
+　　<br>
+　　生命、魔法、怒气增长、怒气减少、符文能量增长、符文能量减少、仇恨、忠诚度倍率<br>
+　　<br>
+　　Rate.Health=1<br>
+　　<br>
+　　Rate.Mana=1<br>
+　　<br>
+　　Rate.Rage.Income=1<br>
+　　<br>
+　　Rate.Rage.Loss=1<br>
+　　<br>
+　　Rate.RunicPower.Income=1<br>
+　　<br>
+　　Rate.RunicPower.Loss=1<br>
+　　<br>
+　　Rate.Focus=1<br>
+　　<br>
+　　Rate.Energy=1<br>
+　　<br>
+　　Rate.Loyalty=1<br>
+　　<br>
+　　Rate.Skill.Discovery<br>
+　　<br>
+　　专业技能点数升级倍数<br>
+　　<br>
+　　Rate.Skill.Discovery=1<br>
+　　<br>
+　　Rate.Drop.Item.Poor<br>
+　　<br>
+　　Rate.Drop.Item.Normal<br>
+　　<br>
+　　Rate.Drop.Item.Uncommon<br>
+　　<br>
+　　Rate.Drop.Item.Rare<br>
+　　<br>
+　　Rate.Drop.Item.Epic<br>
+　　<br>
+　　Rate.Drop.Item.Legendary<br>
+　　<br>
+　　Rate.Drop.Item.Artifact<br>
+　　<br>
+　　Rate.Drop.Item.Referenced<br>
+　　<br>
+　　Rate.Drop.Money<br>
+　　<br>
+　　粗糙、普通、优秀、精良、史诗、橙色、传说、任务、任务物品数量、金币爆率倍率<br>
+　　<br>
+　　Rate.Drop.Item.Poor=1<br>
+　　<br>
+　　Rate.Drop.Item.Normal=1<br>
+　　<br>
+　　Rate.Drop.Item.Uncommon=2<br>
+　　<br>
+　　Rate.Drop.Item.Rare=2<br>
+　　<br>
+　　Rate.Drop.Item.Epic=2<br>
+　　<br>
+　　Rate.Drop.Item.Legendary=2<br>
+　　<br>
+　　Rate.Drop.Item.Artifact=1<br>
+　　<br>
+　　Rate.Drop.Item.Referenced=1<br>
+　　<br>
+　　Rate.Drop.Money=0.01<br>
+　　<br>
+　　Rate.Drop.Item.ReferencedAmount<br>
+　　<br>
+　　Description:Multiplierforreferencedlootamount.<br>
+　　<br>
+　　Default:1<br>
+　　<br>
+　　Rate.Drop.Item.ReferencedAmount=1<br>
+　　<br>
+　　Rate.XP.Kill<br>
+　　<br>
+　　Rate.XP.Quest<br>
+　　<br>
+　　Rate.XP.Explore<br>
+　　<br>
+　　杀怪、任务、探索地图获得经验倍率<br>
+　　<br>
+　　Rate.XP.Kill=1<br>
+　　<br>
+　　Rate.XP.Quest=1<br>
+　　<br>
+　　Rate.XP.Explore=0.1<br>
+　　<br>
+　　Rate.RepairCost<br>
+　　<br>
+　　修理装备价格倍率<br>
+　　<br>
+　　Rate.RepairCost=2<br>
+　　<br>
+　　Rate.Rest.InGame<br>
+　　<br>
+　　Rate.Rest.Offline.InTavernOrCity<br>
+　　<br>
+　　Rate.Rest.Offline.InWilderness<br>
+　　<br>
+　　精力条增长倍率(1-正常,2-两倍增长,0.5-半倍增长)<br>
+　　<br>
+　　Rate.Rest.InGame=1<br>
+　　<br>
+　　Rate.Rest.Offline.InTavernOrCity=1<br>
+　　<br>
+　　Rate.Rest.Offline.InWilderness=1<br>
+　　<br>
+　　Rate.Damage.Fall<br>
+　　<br>
+　　空中跌落伤害倍率(1-标准,2-两倍伤害,0.5-一半伤害)<br>
+　　<br>
+　　Rate.Damage.Fall=1<br>
+　　<br>
+　　Rate.Auction.Time<br>
+　　<br>
+　　Rate.Auction.Deposit<br>
+　　<br>
+　　Rate.Auction.Cut<br>
+　　<br>
+　　拍卖倍率(拍卖时间,开始拍卖时的存款倍率,在拍卖结束拍卖价格削减比例)<br>
+　　<br>
+　　Rate.Auction.Time=1<br>
+　　<br>
+　　Rate.Auction.Deposit=1<br>
+　　<br>
+　　Rate.Auction.Cut=1<br>
+　　<br>
+　　Rate.Honor<br>
+　　<br>
+　　荣誉增长倍率<br>
+　　<br>
+　　Rate.Honor=1<br>
+　　<br>
+　　Rate.Mining.Amount<br>
+　　<br>
+　　Rate.Mining.Next<br>
+　　<br>
+　　采矿开采倍率<br>
+　　<br>
+　　Rate.Mining.Amount=1<br>
+　　<br>
+　　Rate.Mining.Next<br>
+　　<br>
+　　Description:Miningrates.<br>
+　　<br>
+　　Default:Chancetotomineadepositagain.<br>
+　　<br>
+　　Rate.Mining.Next=1<br>
+　　<br>
+　　Rate.Talent<br>
+　　<br>
+　　天赋增长倍率<br>
+　　<br>
+　　Rate.Talent=2<br>
+　　<br>
+　　Rate.Reputation.Gain<br>
+　　<br>
+　　声望增长倍率<br>
+　　<br>
+　　Rate.Reputation.Gain=1<br>
+　　<br>
+　　Rate.Reputation.LowLevel.Kill<br>
+　　<br>
+　　Rate.Reputation.LowLevel.Quest<br>
+　　<br>
+　　低等级杀人、任务获得荣誉倍率<br>
+　　<br>
+　　Rate.Reputation.LowLevel.Kill=1<br>
+　　<br>
+　　Rate.Reputation.LowLevel.Quest<br>
+　　<br>
+　　Description:Reputationgainrate.<br>
+　　<br>
+　　Default:1<br>
+　　<br>
+　　Rate.Reputation.LowLevel.Quest=1<br>
+　　<br>
+　　Rate.Reputation.RecruitAFriendBonus<br>
+　　<br>
+　　Description:Reputationbonusrateforrecruit-a-friend.<br>
+　　<br>
+　　Default:0.1<br>
+　　<br>
+　　Rate.Reputation.RecruitAFriendBonus=0.1<br>
+　　<br>
+　　Rate.MoveSpeed<br>
+　　<br>
+　　角色移动速度倍率，默认：1(不提高)，1.4(提高40%移动速度)<br>
+　　<br>
+　　Rate.MoveSpeed=1<br>
+　　<br>
+　　Rate.InstanceResetTime<br>
+　　<br>
+　　团队副本/英雄副本重置时间倍率<br>
+　　<br>
+　　Rate.InstanceResetTime=0.01<br>
+　　<br>
+　　SkillGain.Crafting<br>
+　　<br>
+　　SkillGain.Defense<br>
+　　<br>
+　　SkillGain.Gathering<br>
+　　<br>
+　　SkillGain.Weapon<br>
+　　<br>
+　　制造/防御/采集/武器技能增益技能成长倍率<br>
+　　<br>
+　　SkillGain.Crafting=1<br>
+　　<br>
+　　SkillGain.Defense=1<br>
+　　<br>
+　　SkillGain.Gathering=1<br>
+　　<br>
+　　SkillGain.Weapon=1<br>
+　　<br>
+　　SkillChance.Orange<br>
+　　<br>
+　　SkillChance.Yellow<br>
+　　<br>
+　　SkillChance.Green<br>
+　　<br>
+　　SkillChance.Grey<br>
+　　<br>
+　　技能熟练度提升几率<br>
+　　<br>
+　　SkillChance.Orange=100<br>
+　　<br>
+　　SkillChance.Yellow=60<br>
+　　<br>
+　　SkillChance.Green=30<br>
+　　<br>
+　　SkillChance.Grey=0<br>
+　　<br>
+　　SkillChance.MiningSteps<br>
+　　<br>
+　　SkillChance.SkinningSteps<br>
+　　<br>
+　　剥皮和采矿机会减少与技能水平，默认:0-不减少<br>
+　　<br>
+　　SkillChance.MiningSteps=0<br>
+　　<br>
+　　SkillChance.SkinningSteps=0<br>
+　　<br>
+　　DurabilityLoss.InPvP<br>
+　　<br>
+　　角色Pvp死亡装备是否掉持久度，1(掉落)，0(不掉落)<br>
+　　<br>
+　　DurabilityLoss.InPvP=0<br>
+　　<br>
+　　DurabilityLoss.OnDeath<br>
+　　<br>
+　　角色正常死亡装备持久度掉落倍率，10(标准)，20(双倍)，5(一半)<br>
+　　<br>
+　　DurabilityLoss.OnDeath=10<br>
+　　<br>
+　　DurabilityLossChance.Damage<br>
+　　<br>
+　　Description:Chancetolosedurabilityononeequippeditemfromdamage.<br>
+　　<br>
+　　Default:0.5-(100/0.5=200,Each200damageoneequippeditemwillusedurability)<br>
+　　<br>
+　　DurabilityLossChance.Damage=0.5<br>
+　　<br>
+　　DurabilityLossChance.Absorb<br>
+　　<br>
+　　死亡后装备耐久、护甲、招架、格挡的损耗倍率<br>
+　　<br>
+　　DurabilityLossChance.Absorb=0.5<br>
+　　<br>
+　　DurabilityLossChance.Parry=0.05<br>
+　　<br>
+　　DurabilityLossChance.Block=0.05<br>
+　　<br>
+　　Death.SicknessLevel<br>
+　　<br>
+　　灵魂医师复活玩家产生复活虚弱的等级，默认：81(无死亡虚弱时间)<br>
+　　<br>
+　　Death.SicknessLevel=81<br>
+　　<br>
+　　Death.CorpseReclaimDelay.PvP<br>
+　　<br>
+　　Death.CorpseReclaimDelay.PvE<br>
+　　<br>
+　　允许/禁止在PVP/PVE服务器造成普通死亡时增加复活延迟，默认：1(允许)，0(不允许)<br>
+　　<br>
+　　Death.CorpseReclaimDelay.PvP=0<br>
+　　<br>
+　　Death.CorpseReclaimDelay.PvE=0<br>
+　　<br>
+　　Death.Bones.World<br>
+　　<br>
+　　Death.Bones.BattlegroundOrArena<br>
+　　<br>
+　　启用/关闭复活时创建骨头代替尸体(在正常区域或副本,或者战场或者竞技场)，默认：1(开启)，0(关闭)<br>
+　　<br>
+　　Death.Bones.World=1<br>
+　　<br>
+　　Death.Bones.BattlegroundOrArena=1<br>
+　　<br>
+　　Die.Command.Mode<br>
+　　<br>
+　　选择GM命令：.die的形式，默认：1(无爆率)，0(有爆率)<br>
+　　<br>
+　　Die.Command.Mode=0<br>
+　　<br>
+　　自动公告<br>
+　　<br>
+　　AUTOBROADCAST<br>
+　　<br>
+　　AutoBroadcast.On<br>
+　　<br>
+　　是否启用游戏公告系统，默认：1(启用)，0(关闭)<br>
+　　<br>
+　　AutoBroadcast.On=1<br>
+　　<br>
+　　AutoBroadcast.Center<br>
+　　<br>
+　　公告类型设置，默认：0(聊天窗口)，1(屏幕上方)，2(同时使用上述两种方式)<br>
+　　<br>
+　　AutoBroadcast.Center=0<br>
+　　<br>
+　　AutoBroadcast.Timer<br>
+　　<br>
+　　公告间隔时间，默认：60000(1分钟)<br>
+　　<br>
+　　AutoBroadcast.Timer=3000000<br>
+　　<br>
+　　BATTLEGROUNDCONFIG<br>
+　　<br>
+　　Battleground.CastDeserter<br>
+　　<br>
+　　玩家强制离开战场是否判断为逃兵，默认：1(开启)，0(关闭)<br>
+　　<br>
+　　Battleground.CastDeserter=1<br>
+　　<br>
+　　Battleground.QueueAnnouncer.Enable<br>
+　　<br>
+　　启用战场排队广告系统，默认：0(关闭)，1(开启)<br>
+　　<br>
+　　Battleground.QueueAnnouncer.Enable=0<br>
+　　<br>
+　　Battleground.QueueAnnouncer.PlayerOnly<br>
+　　<br>
+　　战场排队广告系统，0(全部玩家)，1(仅战场玩家)<br>
+　　<br>
+　　Battleground.QueueAnnouncer.PlayerOnly=0<br>
+　　<br>
+　　Battleground.InvitationType<br>
+　　<br>
+　　战场邀请类型(排队提示进入战场类型)<br>
+　　<br>
+　　默认:0(普通-邀请所有申请玩家,不开启动态平衡)<br>
+　　<br>
+　　1(测试-不允许大量单一阵营玩家进入)<br>
+　　<br>
+　　Battleground.InvitationType=0<br>
+　　<br>
+　　Battleground.PrematureFinishTimer<br>
+　　<br>
+　　如有一方玩家少于最小玩家要求,将开启战场强制关闭时间，默认:300000(5分钟)<br>
+　　<br>
+　　BattleGround.PrematureFinishTimer=300000<br>
+　　<br>
+　　BattleGround.PremadeGroupWaitForMatch<br>
+　　<br>
+　　在进入战场后一方团队等待另一方团队的战场等待时间，默认:1800000(30分钟)<br>
+　　<br>
+　　BattleGround.PremadeGroupWaitForMatch=1800000<br>
+　　<br>
+　　Battleground.GiveXPForKills<br>
+　　<br>
+　　在战场杀死玩家是否获得经验，默认：0(不给)，1(给)<br>
+　　<br>
+　　Battleground.GiveXPForKills=0<br>
+　　<br>
+　　Battleground.Random.ResetHour<br>
+　　<br>
+　　随机战场在每日的几时重置，默认：6<br>
+　　<br>
+　　Battleground.Random.ResetHour=6<br>
+　　<br>
+　　ARENACONFIG<br>
+　　<br>
+　　Arena.MaxRatingDifference<br>
+　　<br>
+　　竞技场排名设置,最大排名差:在排名赛中，两队之间最大排名的差值限止<br>
+　　<br>
+　　Arena.MaxRatingDifference=150<br>
+　　<br>
+　　Arena.RatingDiscardTimer<br>
+　　<br>
+　　排名作废计时:经过指定的毫秒数以后,当前选择的比赛队伍时排名信息将作废，也同样可以用这个计时来激活更新<br>
+　　<br>
+　　Arena.RatingDiscardTimer=600000<br>
+　　<br>
+　　Arena.AutoDistributePoints<br>
+　　<br>
+　　自动分配点数:设置竞技场点数是否应当每周自动分配,否则就用GM指令来分配<br>
+　　<br>
+　　默认:0(禁止)(推荐):使用GM指令(.flusharenapoints)或者sql命令行来分配点数<br>
+　　<br>
+　　1(激活):竞技场点数被自动分配<br>
+　　<br>
+　　Arena.AutoDistributePoints=0<br>
+　　<br>
+　　Arena.AutoDistributeInterval<br>
+　　<br>
+　　点数自动分配的间隔时间，如果自动启用单位：天<br>
+　　<br>
+　　Arena.AutoDistributeInterval=7<br>
+　　<br>
+　　Arena.QueueAnnouncer.Enable<br>
+　　<br>
+　　竞技场:启用排队播音员广播聊天，默认:0(不启用)，1(启用)<br>
+　　<br>
+　　Arena.QueueAnnouncer.Enable=0<br>
+　　<br>
+　　Arena.ArenaSeason.ID<br>
+　　<br>
+　　本赛季目前的地区编号显示在用户端，默认：1(范围1-8)<br>
+　　<br>
+　　Arena.ArenaSeason.ID=8<br>
+　　<br>
+　　Arena.ArenaSeason.InProgress<br>
+　　<br>
+　　本赛季目前领域的状态，默认:1(激活状态)，0(完成状态)<br>
+　　<br>
+　　Arena.ArenaSeason.InProgress=1<br>
+　　<br>
+　　Arena.ArenaStartRating<br>
+　　<br>
+　　Description:Startratingfornewarenateams.<br>
+　　<br>
+　　Default:0<br>
+　　<br>
+　　Arena.ArenaStartRating=0<br>
+　　<br>
+　　Arena.ArenaStartPersonalRating<br>
+　　<br>
+　　Description:Startpersonalratingwhenjoiningateam.<br>
+　　<br>
+　　Default:0<br>
+　　<br>
+　　Arena.ArenaStartPersonalRating=0<br>
+　　<br>
+　　Arena.ArenaStartMatchmakerRating<br>
+　　<br>
+　　Description:Startmatchmakerratingforplayers.<br>
+　　<br>
+　　Default:1500<br>
+　　<br>
+　　Arena.ArenaStartMatchmakerRating=1500<br>
+　　<br>
+　　NETWORKCONFIG<br>
+　　<br>
+　　Network.Threads<br>
+　　<br>
+　　Description:Numberofthreadsfornetwork.<br>
+　　<br>
+　　Default:1-(Recommended1threadper1000connections)<br>
+　　<br>
+　　Network.Threads=1<br>
+　　<br>
+　　Network.OutKBuff<br>
+　　<br>
+　　Description:Amountofmemory(inbytes)usedfortheoutputkernelbuffer(seeSO_SNDBUF<br>
+　　<br>
+　　socketoption,TCPmanual).<br>
+　　<br>
+　　Default:-1-(Usesystemdefaultsetting)<br>
+　　<br>
+　　Network.OutKBuff=-1<br>
+　　<br>
+　　Network.OutUBuff<br>
+　　<br>
+　　Description:Amountofmemory(inbytes)reservedintheuserspaceperconnectionfor<br>
+　　<br>
+　　outputbuffering.<br>
+　　<br>
+　　Default:65536<br>
+　　<br>
+　　Network.OutUBuff=65536<br>
+　　<br>
+　　Network.TcpNoDelay:<br>
+　　<br>
+　　Description:TCPNaglealgorithmsetting.<br>
+　　<br>
+　　Default:0-(Enabled,Lesstraffic,Morelatency)<br>
+　　<br>
+　　1-(Disabled,Moretraffic,Lesslatency,TCP_NO_DELAY)<br>
+　　<br>
+　　Network.TcpNodelay=1<br>
+　　<br>
+　　CONSOLEANDREMOTEACCESS<br>
+　　<br>
+　　Console.Enable<br>
+　　<br>
+　　Description:Enableconsole.<br>
+　　<br>
+　　Default:1-(Enabled)<br>
+　　<br>
+　　0-(Disabled)<br>
+　　<br>
+　　Console.Enable=1<br>
+　　<br>
+　　Ra.Enable远程控制台开关<br>
+　　<br>
+　　Description:Enableremoteconsole(telnet).<br>
+　　<br>
+　　Default:0-(Disabled)<br>
+　　<br>
+　　1-(Enabled)<br>
+　　<br>
+　　Ra.Enable=0<br>
+　　<br>
+　　Ra.IP<br>
+　　<br>
+　　Description:BindremoteaccesstoIP/hostname.<br>
+　　<br>
+　　Default:&quot;0.0.0.0&quot;-(BindtoallIPsonthesystem)<br>
+　　<br>
+　　Ra.IP=“0.0.0.0”<br>
+　　<br>
+　　Ra.Port<br>
+　　<br>
+　　Description:TCPporttoreachtheremoteconsole.<br>
+　　<br>
+　　Default:3443<br>
+　　<br>
+　　Ra.Port=3443<br>
+　　<br>
+　　Ra.MinLevel<br>
+　　<br>
+　　Description:Requiredsecurityleveltousetheremoteconsole.<br>
+　　<br>
+　　Default:3<br>
+　　<br>
+　　Ra.MinLevel=3<br>
+　　<br>
+　　SOAP.Enable<br>
+　　<br>
+　　Description:Enablesoapservice<br>
+　　<br>
+　　Default:0-(Disabled)<br>
+　　<br>
+　　1-(Enabled)<br>
+　　<br>
+　　SOAP.Enabled=0<br>
+　　<br>
+　　SOAP.IP<br>
+　　<br>
+　　Description:BindSOAPservicetoIP/hostname<br>
+　　<br>
+　　Default:&quot;127.0.0.1&quot;-(Bindtolocalhost)<br>
+　　<br>
+　　SOAP.IP=“127.0.0.1”<br>
+　　<br>
+　　SOAP.Port<br>
+　　<br>
+　　Description:TCPporttoreachtheSOAPservice.<br>
+　　<br>
+　　Default:7878<br>
+　　<br>
+　　SOAP.Port=7878<br>
+　　<br>
+　　CHARACTERDELETEOPTIONS<br>
+　　<br>
+　　CharDelete.Method<br>
+　　<br>
+　　Description:Characterdeletionbehavior.<br>
+　　<br>
+　　Default:0-(Completelyremovecharacterfromthedatabase)<br>
+　　<br>
+　　1-(Unlinkthecharacterfromaccountandfreeupthename,Appearsas<br>
+　　<br>
+　　deletedingame)<br>
+　　<br>
+　　CharDelete.Method=0<br>
+　　<br>
+　　CharDelete.MinLevel<br>
+　　<br>
+　　Description:Requiredleveltousetheunlinkingmethodifenabled.<br>
+　　<br>
+　　Default:0-(Samemethodforeverylevel)<br>
+　　<br>
+　　1+-(Onlycharacterswiththespecifiedlevelwillusetheunlinkingmethod)<br>
+　　<br>
+　　CharDelete.MinLevel=0<br>
+　　<br>
+　　CharDelete.KeepDays<br>
+　　<br>
+　　Description:Time(indays)beforeunlinkedcharacterswillberemovedfromthedatabase.<br>
+　　<br>
+　　Default:30-(Enabled)<br>
+　　<br>
+　　0-(Disabled,Don'tdeleteanycharacters)<br>
+　　<br>
+　　CharDelete.KeepDays=30<br>
+　　<br>
+　　CUSTOMSERVEROPTIONS<br>
+　　<br>
+　　PlayerStart.AllReputation<br>
+　　<br>
+　　角色创建后获得全部的声望，默认：1(开启)，0(关闭)<br>
+　　<br>
+　　PlayerStart.AllReputation=0<br>
+　　<br>
+　　PlayerStart.AllSpells<br>
+　　<br>
+　　角色创建后学习全部技能，配合数据库playercreateinfo_spell_custom，请不要开启此功能<br>
+　　<br>
+　　默认:0(关闭)，1(开启)<br>
+　　<br>
+　　PlayerStart.AllSpells=0<br>
+　　<br>
+　　PlayerStart.MapsExplored<br>
+　　<br>
+　　角色创建后探索成就全满，默认：1(开启)，0(关闭)<br>
+　　<br>
+　　PlayerStart.MapsExplored=0<br>
+　　<br>
+　　HonorPointsAfterDuel<br>
+　　<br>
+　　决斗后获胜方得到的荣誉，默认：0(关闭)，1(开启)<br>
+　　<br>
+　　HonorPointsAfterDuel=0<br>
+　　<br>
+　　AlwaysMaxWeaponSkill<br>
+　　<br>
+　　玩家升级将自动获得最大武器熟练度和防御度，默认：1(开启)，0(关闭)<br>
+　　<br>
+　　AlwaysMaxWeaponSkill=0<br>
+　　<br>
+　　PvPToken.Enable<br>
+　　<br>
+　　开启PVP奖励系统，玩家将通过此系统从其他玩家那里得到经验值，默认：0(关闭)，1(开启)<br>
+　　<br>
+　　PvPToken.Enable=0<br>
+　　<br>
+　　PvPToken.MapAllowType<br>
+　　<br>
+　　玩家在那些地方会出现PVP奖励<br>
+　　<br>
+　　4-所有地图里<br>
+　　<br>
+　　3-战场<br>
+　　<br>
+　　2-竞技场<br>
+　　<br>
+　　1-战场和竞技场<br>
+　　<br>
+　　PvPToken.MapAllowType=4<br>
+　　<br>
+　　PvPToken.ItemID<br>
+　　<br>
+　　杀死对手后获胜方获得的物品Id，默认：29434<br>
+　　<br>
+　　PvPToken.ItemID=29434<br>
+　　<br>
+　　PvPToken.ItemCount<br>
+　　<br>
+　　杀死对手后获胜方获得的物品数量，默认：1<br>
+　　<br>
+　　PvPToken.ItemCount=1<br>
+　　<br>
+　　NoResetTalentsCost<br>
+　　<br>
+　　重置天赋是否免费，默认：0(关闭)，1(开启)<br>
+　　<br>
+　　NoResetTalentsCost=0<br>
+　　<br>
+　　Guild.AllowMultipleGuildMaster<br>
+　　<br>
+　　Description:Allowmorethanoneguildmaster.AdditionalGuildMastersmustbesetusing<br>
+　　<br>
+　　the&quot;.guildrank&quot;command.<br>
+　　<br>
+　　Default:0-(Disabled)<br>
+　　<br>
+　　1-(Enabled)<br>
+　　<br>
+　　Guild.AllowMultipleGuildMaster=0<br>
+　　<br>
+　　ShowKickInWorld<br>
+　　<br>
+　　踢出玩家是否进行世界公告，0(不公告)，1(公告)<br>
+　　<br>
+　　ShowKickInWorld=0<br>
+　　<br>
+　　RecordUpdateTimeDiffInterval<br>
+　　<br>
+　　服务端数据更新间隔时间，默认：60000，diff&lt;300状态良好，diff&gt;600状态较差，可能出现当机<br>
+　　<br>
+　　RecordUpdateTimeDiffInterval=60000<br>
+　　<br>
+　　MinRecordUpdateTimeDiff<br>
+　　<br>
+　　间隔大于该值(MinRecordUpdateTimeDiff)后记录唯一的更新时间差，默认：100<br>
+　　<br>
+　　MinRecordUpdateTimeDiff=100<br>
+　　<br>
+　　PlayerStart.String<br>
+　　<br>
+　　自定义角色登陆后显示的信息，默认：””<br>
+　　<br>
+　　PlayerStart.String=“Welcome”<br>
+　　<br>
+　　LevelReq.Trade<br>
+　　<br>
+　　角色使用交易系统的最低等级，默认：1<br>
+　　<br>
+　　LevelReq.Trade=1<br>
+　　<br>
+　　LevelReq.Ticket<br>
+　　<br>
+　　角色使用拍报告系统的最低等级，默认：1<br>
+　　<br>
+　　LevelReq.Ticket=1<br>
+　　<br>
+　　LevelReq.Auction<br>
+　　<br>
+　　角色使用拍卖行系统的最低等级，默认：1<br>
+　　<br>
+　　LevelReq.Auction=1<br>
+　　<br>
+　　LevelReq.Mail<br>
+　　<br>
+　　角色使用邮件系统的最低等级，默认：1<br>
+　　<br>
+　　LevelReq.Mail=1</p>
 
-          </section>
+            </div>
+            
+            
+              <div class="post-footer">
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+      <strong class="language" data-lan="author">本文作者：</strong>
+      Whitehat
+    </li>
+    <li class="post-copyright-link">
+      <strong class="language" data-lan="link">本文链接：</strong>
+      <a href="https://52wow.github.io/7qUPwgWcj/" title="中文说明worldserver.conf">https://52wow.github.io/7qUPwgWcj/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong class="language" data-lan="copyright">版权声明： </strong>
+      本博客所有文章除特别声明外，均采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i> BY-NC-SA</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+  <div class="tags">
+    
+  </div>
+  <div class="nav">
+    <div class="nav-prev">
+      
+        <i class="fa fa-chevron-left"></i>
+        <a class="nav-pc-next" title="DBC表目录说明" href="https://52wow.github.io/_Om6b66fb/">DBC表目录说明</a class="nav-pc-next">
+        <a class="nav-mobile-prev" title="DBC表目录说明" href="https://52wow.github.io/_Om6b66fb/">上一篇</a>
+      
+    </div>
+    <div class="nav-next">
+      
+        <a class="nav-pc-next" title="清理数据sql命令" href="https://52wow.github.io/aBf0nbuKJ/">清理数据sql命令</a>
+        <a class="nav-mobile-next" title="清理数据sql命令" href="https://52wow.github.io/aBf0nbuKJ/">下一篇</a>
+        <i class="fa fa-chevron-right"></i>
+      
+    </div>
+  </div>
+</div>
+            
+            
+  <script src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script>
+<div id="vcomments" style="padding: 10px 0px 0px 0px"></div>
+
+<style>
+  .v .veditor {
+    min-height: 10rem;
+    background-image: url('');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: right;
+    background-color: rgba(255, 255, 255, 0);
+    resize: none;
+  }
+
+  .v .vwrap {
+    border: 1px solid #000 !important;
+  }
+
+  .v .vbtn {
+    padding: .4rem 1.2rem !important;
+    border-color: #fff !important;
+    background-color: #49b1f5 !important;
+    color: #fff !important;
+    font-size: .7rem !important;
+  }
+
+  .v .vcards .vcard .vh .vmeta .vat {
+    padding: 0 .8rem !important;
+    border: 1px solid #00c4b6 !important;
+    border-radius: 5px !important;
+    color: #00c4b6 !important;
+  }
+</style>
+<script>
+  new Valine({
+    el: '#vcomments',
+    appId: '',
+    appKey: '',
+    avatar: '',
+    placeholder: '',
+    pageSize: '',
+    lang: 'zh-cn',
+    enableQQ: 'true' === 'true',
+    visitor: 'true' === 'true',
+    highlight: 'true' === 'true',
+    avatarForce: 'true' === 'false',
+  });
+</script>
+
+          </div>
         </div>
       </div>
     </div>
@@ -611,6 +3205,253 @@
   }
 
 </script>
+    <div class="light-box" id="light_box"></div>
+<script>
+  let imgs = document.querySelectorAll('.post-body img');
+  let lightBox = document.querySelector('#light_box');
+  lightBox.addEventListener('mousedown', (e) => {
+    e.preventDefault()
+  })
+  lightBox.addEventListener('mousewheel', (e) => {
+    e.preventDefault()
+  })
+  let width = window.innerWidth * 0.8;
+  lightBox.onclick = () => {
+    let img = lightBox.querySelector('img');
+    lightBox.style = '';
+    img && img.remove();
+  }
+  imgs.forEach(item => {
+    item.onclick = function (e) {
+      let lightImg = document.createElement('img');
+      lightImg.src = this.src;
+      lightBox.style = `height: 100%; opacity: 1; background-color: rgba(0, 0, 0, 0.5);cursor: zoom-out;`;
+      lightImg.style = `width: ${width}px;border-radius: 2px;`;
+      lightImg.onclick = function () {
+        lightBox.style = '';
+        this.remove();
+      }
+      lightBox.append(lightImg);
+    }
+  })
+</script>
+    <div class="reward-mask" style="display: none;">
+  <div class="reward-relative">
+    <span class="close" aria-hidden="true">x</span>
+    <div class="reward-body">
+      <h2>感谢您的支持，我会继续努力的!</h2>
+      <div class="reward-img-box">
+        <div style="position: relative; width: 140px; height: 140px;">
+          
+          
+          
+        </div>
+      </div>
+      <p class="reward-word">扫码打赏，你说多少就多少</p>
+      <p class="reward-tip">打开微信扫一扫，即可进行扫码打赏哦</p>
+    </div>
+    <div class="bottom">
+      
+      
+    </div>
+  </div>
+</div>
+<style>
+  .reward-mask {
+    position: fixed;
+    z-index: 99999;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #00000054;
+  }
+
+  .reward-relative {
+    position: relative;
+    width: 480px;
+    text-align: center;
+    margin: 0 auto;
+    border-radius: 5px;
+    background-color: #fff;
+    top: 50%;
+    margin-top: -205px;
+  }
+
+  .reward-relative .close {
+    position: absolute;
+    right: 10px;
+    font-weight: normal;
+    font-size: 16px;
+    color: #929292;
+  }
+
+  .reward-body {
+    padding: 40px 20px 20px;
+  }
+
+  .bottom {
+    display: flex;
+  }
+
+  .reward-btn {
+    text-align: center;
+  }
+
+  .reward-btn-text {
+    display: inline-block;
+    cursor: pointer;
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    border-radius: 50%;
+    background-color: #ff9734;
+    color: #FFF;
+    margin-top: 20px;
+  }
+
+  .pay-text {
+    margin-top: 10px;
+    padding: 10px;
+    flex: 1;
+    transition: all .2s linear;
+  }
+
+  .pay-text:hover {
+    background-color: #a5a5a536;
+  }
+
+  .reward-body h2 {
+    padding-top: 10px;
+    text-align: center;
+    color: #a3a3a3;
+    font-size: 16px;
+    font-weight: normal;
+    margin: 0 0 20px;
+  }
+
+  .reward-body h2:after,
+  .reward-body h2:before {
+    font-family: Arial, Helvetica, sans-serif;
+    background: 0 0;
+    width: 0;
+    height: 0;
+    font-style: normal;
+    color: #eee;
+    font-size: 80px;
+    position: absolute;
+    top: 20px;
+  }
+
+  .reward-body h2:before {
+    content: '\201c';
+    left: 50px;
+  }
+
+  .reward-body h2:after {
+    content: '\201d';
+    right: 80px;
+  }
+
+  .reward-img-box {
+    display: inline-block;
+    padding: 10px;
+    border: 6px solid #ea5f00;
+    margin: 0 auto;
+    border-radius: 3px;
+    position: relative;
+  }
+
+  .reward-img {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+  }
+
+  @media (max-width: 767px) {
+    .reward-relative {
+      height: 100%;
+      top: 0px;
+      margin-top: 0;
+      width: auto;
+    }
+
+    .reward-relative .bottom {
+      flex-direction: column;
+    }
+
+    .reward-relative .pay-text {
+      width: 80%;
+      margin: 5px auto;
+      border: 1px solid silver;
+      padding: 6px;
+      border-radius: 4px;
+    }
+
+    .reward-body h2:after {
+      right: 40px;
+    }
+
+    .reward-body h2:after,
+    .reward-body h2:before {
+      font-size: 60px;
+    }
+
+    .reward-body h2:before {
+      left: 20px;
+    }
+  }
+</style>
+<script>
+  !function () {
+    var mask = document.querySelector('.reward-mask');
+    let close = document.querySelector('.reward-relative .close');
+    let rewardBtn = document.querySelector('.reward-btn');
+
+    let zfb = document.querySelector('#zfb'),
+      wx = document.querySelector('#wx'),
+      zfbBtn = document.querySelector('#zfbBtn'),
+      wxBtn = document.querySelector('#wxBtn');
+
+    if (zfbBtn && wxBtn) {
+      zfbBtn.addEventListener('click', () => {
+        window.Velocity(zfb, 'transition.slideLeftIn', {
+          duration: 400
+        });
+        window.Velocity(wx, 'transition.slideRightOut', {
+          display: 'none',
+          duration: 400
+        });
+      });
+
+      wxBtn.addEventListener('click', () => {
+        window.Velocity(wx, 'transition.slideRightIn', {
+          duration: 400
+        });
+        window.Velocity(zfb, 'transition.slideLeftOut', {
+          display: 'none',
+          duration: 400
+        });
+      });
+    }
+
+    rewardBtn.addEventListener('click', (e) => {
+      window.Velocity(mask, 'transition.slideDownIn', {
+        duration: 400
+      })
+    });
+
+    close.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.Velocity(mask, 'transition.slideUpOut', {
+        duration: 400
+      })
+    })
+  }()
+</script>
+
   </div>
 </body>
 
@@ -9448,7 +12289,6 @@ PS.代码只能刷头衔，头衔代表的成就是不加的。&lt;/p&gt;
 
 
 <script src="/media/js/mouse/love.js"></script>
-
 
 
 </html>
