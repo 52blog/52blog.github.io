@@ -157,7 +157,7 @@
   <div class="main-continer">
     
     <div
-      class="section-layout  gemini">
+      class="section-layout gemini ">
       <div class="section-layout-wrapper">
         <div id="sidebarMeta" class="sidebar">
     
@@ -218,68 +218,237 @@
     });
   }
   </script>
-        <div class="section-box box-shadow-wrapper">
-          <section class="section tags-section bg-color posts-expand">
-            <div class="tags-box">
-  <div class="tag-cloud-title language" data-lan="cloud-tags" data-count="0">
-    目前共计 0 个标签
-  </div>
-  <div class="tag-cloud-list" id="tags">
+        <div class="section-box gemini">
+          <section class="section  posts-expand slide-down-in">
+            
+  <article class="post-list-box  post box-shadow-wrapper">
+    <div class="article-wrapper bg-color">
+      <header class="post-header">
+  <h1 class="post-title">
+    <a class="post-title-link" href="https://52wow.github.io/_Om6b66fb/">
+      DBC表目录说明
+    </a>
+  </h1>
+  <div class="post-meta">
+    
+    <span class="meta-item pc-show">
+      <i class="fa fa-calendar-o"></i>
+      <span class="language" data-lan="publish">发布于</span>
+      <span>2020-06-26</span>
+      <span class="post-meta-divider pc-show">|</span>
+    </span>
+    
+    <span class="meta-item">
+      <i class="fa fa-clock-o"></i>
+      <span>8<span class="language" data-lan="minute">分钟</span></span>
+    </span>
+    <span class="meta-item">
+      <span class="post-meta-divider">|</span>
+      <i class="fa fa-file-word-o"></i>
+      <span>1864<span class="pc-show language" data-lan="words">字数</span></span>
+    </span>
     
   </div>
-</div>
-<script>
+</header>
+      <div class="post-body">
+        
+        
+          
+          
+            <p>
+            
+          
+            <p>Achievement.dbc记录了成就的详细内容——名字，描述等等<br>
+　　<br>
+　　Achievement_Category.dbc成就的分类[像：&quot;经典旧世&quot;、&quot;任务&quot;、&quot;战场&quot;、&quot;荣誉击杀&quot;、&quot;战斗、&quot;消耗品&quot;……等等]<br>
+　　<br>
+　　Achievement_Criteria.dbc记录了成就的达成要求<br>
+　　<br>
+　　AnimationData.dbc里面是各种行为、动作的镜头动作</p>
 
-  let fontStart = 12, fontEnd = 30, colorStart = '#666', colorEnd = '#000';
-  let tags = document.querySelector('#tags').children;
-  let counts = [];
-  for(let i = 0; i < tags.length; i++) {
-    counts.push(tags[i].rel);
-  }
-  let lowest = Math.min.apply(null,counts), highest = Math.max.apply(null,counts);;
-  let range = highest - lowest;
-  if (range === 0) {
-    range = 1;
-  }
-  let fontIncr, colorIncr;
-  fontIncr = (fontEnd - fontStart) / range;
+            
+          
+        
+        
+        <div class="post-button text-center">
+          <a class="btn language" data-lan="read-more" href="https://52wow.github.io/_Om6b66fb/" rel="contents">
+            阅读全文 »
+          </a>
+        </div>
+        
+      </div>
+      
+    </div>
+  </article>
+
+  <article class="post-list-box  post box-shadow-wrapper">
+    <div class="article-wrapper bg-color">
+      <header class="post-header">
+  <h1 class="post-title">
+    <a class="post-title-link" href="https://52wow.github.io/7qUPwgWcj/">
+      中文说明worldserver.conf
+    </a>
+  </h1>
+  <div class="post-meta">
+    
+    <span class="meta-item pc-show">
+      <i class="fa fa-calendar-o"></i>
+      <span class="language" data-lan="publish">发布于</span>
+      <span>2020-06-26</span>
+      <span class="post-meta-divider pc-show">|</span>
+    </span>
+    
+    <span class="meta-item">
+      <i class="fa fa-clock-o"></i>
+      <span>39<span class="language" data-lan="minute">分钟</span></span>
+    </span>
+    <span class="meta-item">
+      <span class="post-meta-divider">|</span>
+      <i class="fa fa-file-word-o"></i>
+      <span>8669<span class="pc-show language" data-lan="words">字数</span></span>
+    </span>
+    
+  </div>
+</header>
+      <div class="post-body">
+        
+        
+          
+          
+            <p>
+            
+          
+            <p>中文说明worldserver.conf<br>
+　　<br>
+　　[worldserver]<br>
+　　<br>
+　　mmap.enablePathFinding=1MMAPS开启<br>
+　　<br>
+　　CONNECTIONSANDDIRECTORIES<br>
+　　<br>
+　　RealmID<br>
+　　<br>
+　　登陆服务器设置，RealmID必须匹配Realmlist，默认：1<br>
+　　<br>
+　　RealmID=1<br>
+　　<br>
+　　DataDir</p>
+
+            
+          
+        
+        
+        <div class="post-button text-center">
+          <a class="btn language" data-lan="read-more" href="https://52wow.github.io/7qUPwgWcj/" rel="contents">
+            阅读全文 »
+          </a>
+        </div>
+        
+      </div>
+      
+    </div>
+  </article>
+
+  <article class="post-list-box  post box-shadow-wrapper">
+    <div class="article-wrapper bg-color">
+      <header class="post-header">
+  <h1 class="post-title">
+    <a class="post-title-link" href="https://52wow.github.io/aBf0nbuKJ/">
+      清理数据sql命令
+    </a>
+  </h1>
+  <div class="post-meta">
+    
+    <span class="meta-item pc-show">
+      <i class="fa fa-calendar-o"></i>
+      <span class="language" data-lan="publish">发布于</span>
+      <span>2020-06-26</span>
+      <span class="post-meta-divider pc-show">|</span>
+    </span>
+    
+    <span class="meta-item">
+      <i class="fa fa-clock-o"></i>
+      <span>1<span class="language" data-lan="minute">分钟</span></span>
+    </span>
+    <span class="meta-item">
+      <span class="post-meta-divider">|</span>
+      <i class="fa fa-file-word-o"></i>
+      <span>85<span class="pc-show language" data-lan="words">字数</span></span>
+    </span>
+    
+  </div>
+</header>
+      <div class="post-body">
+        
+        
+          
+          
+            <p>
+            
+          
+            <p>sql命令: 用于清空某表的数据 且让自增的id重新从0开始</p>
+
+            
+          
+            <p>truncate table 你的表名</p>
+
+            
+          
+            <p>truncate table account;</p>
+
+            
+          
+            <p>其他表全选右键清空</p>
+<h4 id="建立新分区命令">建立新分区命令</h4>
+
+            
+          
+            <p>INSERT INTO <code>realmlist</code> (<code>id</code>, <code>name</code>, <code>address</code>, <code>localAddress</code>, <code>localSubnetMask</code>, <code>port</code>, <code>icon</code>, <code>flag</code>, <code>timezone</code>, <code>allowedSecurityLevel</code>, <code>population</code>, <code>gamebuild</code>) VALUES ('5', 'wow', '127.0.0.1', '127.0.0.1', '255.255.255.0', '8085', '1', '64', '16', '0', '0', '12340')</p>
+
+            
+          
+        
+        
+      </div>
+      
+    </div>
+  </article>
   
-  let sColorArr = toRGB(colorStart), eColorArr = toRGB(colorEnd);
-
-  for(let i = 0; i < tags.length; i++) {
-    let disCount = tags[i].rel - lowest;
-    let fontSize = fontStart + disCount * fontIncr;
-    let style = 'font-size: ' + fontSize + 'px;';
-    let arr = [];
-    for(let c = 0; c < sColorArr.length; c++) {
-      if (disCount === 0) {
-        disCount = 1;
-      }
-      let val = (sColorArr[c] - eColorArr[c]) / range * disCount;
-      if (val >= 100) {
-        val = eColorArr[c];
-      } else if (val <= 0) {
-        val = sColorArr[c];
-      }
-      arr[c] = Math.floor(val);
-    }
-    style += 'color: ' + toHex(arr);
-    tags[i].style = style;
-  }
-
-  function toRGB(code) {
-    if (code.length === 4) {
-      code = code.replace(/(\w)(\w)(\w)/gi, "\$1\$1\$2\$2\$3\$3");
-    }
-    var hex = /(\w{2})(\w{2})(\w{2})/.exec(code);
-    return [parseInt(hex[1], 16), parseInt(hex[2], 16), parseInt(hex[3], 16)];
-  }
-
-  function toHex(ary) {
-    return "#" + ((1 << 24) + (ary[0] << 16) + (ary[1] << 8) + ary[2]).toString(16).slice(1);
-  }
-
-</script>
+            
+            
+<div class="page bg-color">
+  <ul class="pagination-ul">
+    
+      <li class="pagination-dir">
+        <a href="https://52wow.github.io/page/2/">
+          <i class="fa fa-angle-left"></i>
+        </a>
+      </li>
+    
+    
+      
+        <li class="pagination-li ">
+            <a href="/page/../">
+              1
+            </a>
+        </li>
+      
+        <li class="pagination-li ">
+            <a href="/page/2">
+              2
+            </a>
+        </li>
+      
+        <li class="pagination-li pagination-active">
+            <a href="/page/3">
+              3
+            </a>
+        </li>
+      
+    
+    
+  </ul>
+</div>
           </section>
         </div>
       </div>
@@ -479,6 +648,36 @@
     });
   }
 
+</script>
+    <div class="light-box" id="light_box"></div>
+<script>
+  let imgs = document.querySelectorAll('.post-body img');
+  let lightBox = document.querySelector('#light_box');
+  lightBox.addEventListener('mousedown', (e) => {
+    e.preventDefault()
+  })
+  lightBox.addEventListener('mousewheel', (e) => {
+    e.preventDefault()
+  })
+  let width = window.innerWidth * 0.8;
+  lightBox.onclick = () => {
+    let img = lightBox.querySelector('img');
+    lightBox.style = '';
+    img && img.remove();
+  }
+  imgs.forEach(item => {
+    item.onclick = function (e) {
+      let lightImg = document.createElement('img');
+      lightImg.src = this.src;
+      lightBox.style = `height: 100%; opacity: 1; background-color: rgba(0, 0, 0, 0.5);cursor: zoom-out;`;
+      lightImg.style = `width: ${width}px;border-radius: 2px;`;
+      lightImg.onclick = function () {
+        lightBox.style = '';
+        this.remove();
+      }
+      lightBox.append(lightImg);
+    }
+  })
 </script>
   </div>
 </body>

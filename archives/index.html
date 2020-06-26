@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 <meta name="keywords" content="Whitehat个人博客">
 <meta name="description" content="">
-<meta name="theme-color" content="#000">
+<meta name="theme-color" content="#495057">
 <title>Whitehat</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1593189935172">
+<link rel="shortcut icon" href="/favicon.ico?v=1593191940859">
 <link rel="stylesheet" href="/media/css/gemini.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -72,6 +72,8 @@
           
             
             
+              
+            
             <li class="nav-item ">
               
               
@@ -82,6 +84,8 @@
             </li>
           
             
+            
+              
             
             <li class="nav-item ">
               
@@ -94,6 +98,8 @@
           
             
             
+              
+            
             <li class="nav-item ">
               
               
@@ -103,6 +109,16 @@
               
             </li>
           
+          
+            
+              <li class="nav-item ">
+                <a href="/friends/" target="_self">
+                  
+                    <i class="fa fa-address-book"></i> 友情链接
+                  
+                </a>
+              </li>
+            
           
           
             <li id="fa_search" class="nav-item">
@@ -183,21 +199,6 @@
       </div>
     
   
-  
-    <div class="sidebar-item sidebar-item-social">
-      <div class="social-item">
-        
-          
-            <a href=" https://discord.gg/cD9nF8f">
-              <i class="fa fa-qq " title="联系我"></i>
-            </a>
-          
-        
-        
-      </div>
-    </div>
-  
-
   
 
 
@@ -370,45 +371,6 @@
       </div>
       </a>
     
-      
-      
-      <a href="https://52wow.github.io/_Om6b66fb/">
-        <div class="motion-warpper tag-archive-node">
-          <div class="tag-node">
-            <h1>
-              06-26
-              <small>DBC表目录说明</small>
-            </h1>
-          </div>  
-      </div>
-      </a>
-    
-      
-      
-      <a href="https://52wow.github.io/7qUPwgWcj/">
-        <div class="motion-warpper tag-archive-node">
-          <div class="tag-node">
-            <h1>
-              06-26
-              <small>中文说明worldserver.conf</small>
-            </h1>
-          </div>  
-      </div>
-      </a>
-    
-      
-      
-      <a href="https://52wow.github.io/aBf0nbuKJ/">
-        <div class="motion-warpper tag-archive-node">
-          <div class="tag-node">
-            <h1>
-              06-26
-              <small>清理数据sql命令</small>
-            </h1>
-          </div>  
-      </div>
-      </a>
-    
   </div>
   
 <div class="page bg-color">
@@ -422,7 +384,19 @@
             </a>
         </li>
       
+        <li class="pagination-li ">
+            <a href="/archives/page/2">
+              2
+            </a>
+        </li>
+      
     
+    
+      <li class="pagination-dir">
+        <a href="/archives/page/2">
+          <i class="fa fa-angle-right"></i>
+        </a>
+      </li>
     
   </ul>
 </div>
@@ -991,8 +965,9 @@
 &lt;pre&gt;&lt;code&gt;              5人本0代表普通，1代表英雄模式
 
              10人本0代表普通，2代表英雄模式
-
-              25人本1代表普通，3代表英雄模式
+&lt;/code&gt;&lt;/pre&gt;
+&lt;!-- more --&gt;
+&lt;pre&gt;&lt;code&gt;              25人本1代表普通，3代表英雄模式
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;level_min ： 进入副本的最低等级要求；&lt;/p&gt;
 &lt;p&gt;level_max ： 进入副本的最高等级要求；&lt;/p&gt;
@@ -6928,8 +6903,9 @@ type=2 （光环）：
 3	地图	        只有设置跟地区相关的成就时才使用，否则为-1&lt;br&gt;
 4	前一个	        如果这个成就属于一个系列，这里就是前一个成就的编号，否则为0&lt;br&gt;
 5-20	名称	        成就的名称&lt;br&gt;
-21	未知	        貌似总为 0xFF01FE&lt;br&gt;
-22-37	描述	        如果描述为空，说明这不是一个成就，而是统计选项的一部分&lt;br&gt;
+21	未知	        貌似总为 0xFF01FE&lt;/p&gt;
+&lt;!-- more --&gt;
+&lt;p&gt;22-37	描述	        如果描述为空，说明这不是一个成就，而是统计选项的一部分&lt;br&gt;
 38	未知	        貌似总为 16712190，极少情况下是 16712188&lt;br&gt;
 39	分类	        成就分类编号，参考Achievement_Category.dbc&lt;br&gt;
 40	点数	        0，5，10，15，20，25，30，50&lt;br&gt;
@@ -6941,7 +6917,6 @@ type=2 （光环）：
 60	未知	&lt;br&gt;
 61	要求	        得到此成就需要满足的要求。例如成就要求你获得25个徽章，那这里就是25&lt;br&gt;
 62	引用的成就	引用的成就，包括所有完成的标准&lt;/p&gt;
-&lt;!-- more --&gt;
 &lt;h2 id=&#34;achievement_categorydbc-详解&#34;&gt;Achievement_Category.dbc 详解&lt;/h2&gt;
 &lt;p&gt;Achievement_Category.dbc 详解 成就分类表&lt;/p&gt;
 &lt;p&gt;列	字段	       详细说明&lt;br&gt;
@@ -9115,8 +9090,8 @@ PS.代码只能刷头衔，头衔代表的成就是不加的。&lt;/p&gt;
       
       <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://52wow.github.io/ba3vyiltg/"" data-c="
-          &lt;p&gt;##经常使用&lt;br&gt;
-.Learn 73326	光明使者的战袍	笼罩在圣光中，好看&lt;/p&gt;
+          &lt;h2 id=&#34;经常使用&#34;&gt;经常使用&lt;/h2&gt;
+&lt;p&gt;.Learn 73326	光明使者的战袍	笼罩在圣光中，好看&lt;/p&gt;
 &lt;p&gt;.Learn 71953	辐射光环	每3秒治疗最大生命值的3%，手动取消&lt;/p&gt;
 &lt;p&gt;.Learn 9778 	回血	装备：在战斗中被击中之后有3%的几率回复60到100点生命值&lt;/p&gt;
 &lt;p&gt;.Learn 22818	魔尔达的勇气	魔尔达的勇气+15%耐力持续2小时&lt;/p&gt;
@@ -9139,8 +9114,8 @@ PS.代码只能刷头衔，头衔代表的成就是不加的。&lt;/p&gt;
 &lt;p&gt;.learn 6560 	LeCraft Test Spell	使你的急速等级提高200%&lt;/p&gt;
 &lt;p&gt;.learn 69383	黑暗饥寒	让施法者的生命值回复所承受伤害的一半。&lt;/p&gt;
 &lt;p&gt;.learn 31700      内域飞行&lt;/p&gt;
-&lt;p&gt;##对敌用DEBUFF类&lt;br&gt;
-.learn 28374	残杀	使周围全部单位的生命值减少最大生命值的5%。&lt;/p&gt;
+&lt;h2 id=&#34;对敌用debuff类&#34;&gt;对敌用DEBUFF类&lt;/h2&gt;
+&lt;p&gt;.learn 28374	残杀	使周围全部单位的生命值减少最大生命值的5%。&lt;/p&gt;
 &lt;p&gt;.learn 28375	残杀	使周围全部单位的生命值减少最大生命值的5%。&lt;/p&gt;
 &lt;p&gt;.learn 54426	屠杀	使周围全部单位的生命值减少最大生命值的5%。&lt;/p&gt;
 &lt;p&gt;.learn 71123	屠杀	使附近所有单位的当前生命值减少至其生命值上限的$s1%。&lt;/p&gt;
@@ -9480,8 +9455,8 @@ PS.代码只能刷头衔，头衔代表的成就是不加的。&lt;/p&gt;
 &lt;p&gt;.learn 75350	幽缓之影	使一名敌人的攻击和施法速度降低&lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;s&lt;/mi&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;s1%，持续&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.64444em;vertical-align:0em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;s&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;1&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;d。&lt;/p&gt;
 &lt;p&gt;.learn 30494	粘稠的软泥	厚重的软泥使所有邻近敌人的移动速度和攻击速度降低，持续&lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;d&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;。&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;移&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;动&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;和&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;攻&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;击&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;速&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;度&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;降&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;低&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;d。移动和攻击速度降低&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.69444em;vertical-align:0em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;d&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;。&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;移&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;动&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;和&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;攻&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;击&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;速&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;度&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;降&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;低&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;s1%。&lt;/p&gt;
 &lt;p&gt;.learn 67255	最终冥想	&amp;quot;进入冥想，降低施法者周围半径&lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;码&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;范&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;围&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;内&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;的&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;敌&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;人&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;的&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;移&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;动&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;和&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;攻&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;击&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;速&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;度&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;，&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;持&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;续&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;a1码范围内的敌人的移动和攻击速度，持续&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.64444em;vertical-align:0em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;码&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;范&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;围&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;内&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;的&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;敌&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;人&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;的&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;移&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;动&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;和&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;攻&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;击&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;速&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;度&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;，&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;持&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;续&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;d。移动速度降低&lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;s&lt;/mi&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;s1%。攻击和施法速度降低&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.64444em;vertical-align:0em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;s&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;1&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;s2%。&amp;quot;&lt;/p&gt;
-&lt;p&gt;##威胁值&lt;br&gt;
-.learn 43263	食尸鬼嘲讽	嘲讽周围半径$a1码内的所有敌人，造成很高的威胁值。&lt;/p&gt;
+&lt;h2 id=&#34;威胁值&#34;&gt;威胁值&lt;/h2&gt;
+&lt;p&gt;.learn 43263	食尸鬼嘲讽	嘲讽周围半径$a1码内的所有敌人，造成很高的威胁值。&lt;/p&gt;
 &lt;p&gt;.learn 36213	大地之怒	嘲讽周围半径$a1码范围内的所有敌人，并产生很高的威胁值。&lt;/p&gt;
 &lt;p&gt;.learn 5209 	挑战咆哮	嘲讽附近半径&lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;码&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;范&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;围&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;内&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;的&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;所&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;有&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;敌&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;人&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;，&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;强&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;制&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;它&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;们&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;攻&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;击&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;你&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;，&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;持&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;续&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;a1码范围内的所有敌人，强制它们攻击你，持续&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.64444em;vertical-align:0em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;码&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;范&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;围&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;内&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;的&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;所&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;有&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;敌&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;人&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;，&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;强&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;制&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;它&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;们&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;攻&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;击&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;你&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;，&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;持&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;续&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;d。&lt;/p&gt;
 &lt;p&gt;.learn 46276	掠食者嘲讽	使目标攻击掠食者。被掠食者嘲讽了。&lt;/p&gt;
@@ -9493,8 +9468,8 @@ PS.代码只能刷头衔，头衔代表的成就是不加的。&lt;/p&gt;
 &lt;p&gt;.learn 67765	遁形	使施法者在$66d内保持隐形，每秒降低一定的威胁值。如果你做出任何动作，或者受到任何动作的影响，这个效果就会消失。在隐形状态下，你只能看到其他的隐形目标和那些可以看到隐形单位的人。效果持续$32612d。消隐中。&lt;/p&gt;
 &lt;p&gt;.learn 40618	毫无意义	你的举动不会产生威胁值。&lt;/p&gt;
 &lt;p&gt;.learn 36886	仇恨之怒	使所有方式造成的威胁值提高$s1%。&lt;/p&gt;
-&lt;p&gt;##光环类&lt;br&gt;
-.learn 50182	奥术急速光环	&amp;quot;使施法者的施法速度提高&lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;s&lt;/mi&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;s1%并使其法术伤害提高&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.64444em;vertical-align:0em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;s&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;1&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;s2点，持续&lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;d&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;。&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;施&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;法&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;速&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;度&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;提&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;高&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;d。施法速度提高&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.69444em;vertical-align:0em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;d&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;。&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;施&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;法&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;速&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;度&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;提&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;高&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;s1%。法术伤害提高$s2点。&amp;quot;&lt;/p&gt;
+&lt;h2 id=&#34;光环类&#34;&gt;光环类&lt;/h2&gt;
+&lt;p&gt;.learn 50182	奥术急速光环	&amp;quot;使施法者的施法速度提高&lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;s&lt;/mi&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;s1%并使其法术伤害提高&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.64444em;vertical-align:0em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;s&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;1&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;s2点，持续&lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;d&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;。&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;施&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;法&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;速&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;度&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;提&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;高&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;d。施法速度提高&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.69444em;vertical-align:0em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;d&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;。&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;施&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;法&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;速&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;度&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;提&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;高&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;s1%。法术伤害提高$s2点。&amp;quot;&lt;/p&gt;
 &lt;p&gt;.learn 56827	奥术急速光环	&amp;quot;使施法者的施法速度提高&lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;s&lt;/mi&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;s1%并使其法术伤害提高&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.64444em;vertical-align:0em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;s&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;1&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;s2点，持续&lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;d&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;。&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;施&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;法&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;速&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;度&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;提&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;高&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;d。施法速度提高&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.69444em;vertical-align:0em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;d&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;。&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;施&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;法&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;速&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;度&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;提&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;高&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;s1%。法术伤害提高$s2点。&amp;quot;&lt;/p&gt;
 &lt;p&gt;.learn 41453	多彩抗性光环	使邻近小队成员对所有法术的魔法抗性提高&lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;s&lt;/mi&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;，&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;持&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;续&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;s1，持续&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.64444em;vertical-align:0em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;s&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;，&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;持&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;续&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;d。魔法抗性提高$s1点。&lt;/p&gt;
 &lt;p&gt;.learn 32828	防护光环	使20内所有友方生物获得2000点额外护甲值和75点魔法抗性。&lt;/p&gt;
@@ -9520,8 +9495,8 @@ PS.代码只能刷头衔，头衔代表的成就是不加的。&lt;/p&gt;
 &lt;p&gt;.learn 60023	天灾军旗光环	使周围半径&lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;码&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;范&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;围&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;内&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;的&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;所&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;有&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;天&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;灾&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;士&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;兵&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;造&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;成&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;的&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;伤&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;害&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;提&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;高&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;a1码范围内的所有天灾士兵造成的伤害提高&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.64444em;vertical-align:0em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;码&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;范&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;围&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;内&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;的&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;所&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;有&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;天&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;灾&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;士&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;兵&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;造&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;成&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;的&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;伤&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;害&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;提&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;高&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;s1%，攻击速度提高$s2%。.learn 24907	枭兽光环	法术爆击几率提高5%。&lt;/p&gt;
 &lt;p&gt;.learn 10270	邪能压制	使半径&lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;码&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;范&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;围&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;内&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;的&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;所&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;有&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;小&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;队&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;成&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;员&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;的&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;攻&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;击&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;强&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;度&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;提&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;高&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;a1码范围内的所有小队成员的攻击强度提高&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.64444em;vertical-align:0em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;码&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;范&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;围&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;内&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;的&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;所&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;有&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;小&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;队&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;成&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;员&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;的&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;攻&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;击&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;强&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;度&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;提&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;高&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;s1点。每个圣骑士在同一时间内只能开启一种光环，且同类光环的效果无法叠加。攻击强度降低$s1点。&lt;/p&gt;
 &lt;p&gt;.learn 19746	专注光环	使周围半径&lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;码&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;范&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;围&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;内&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;的&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;小&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;队&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;或&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;团&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;队&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;成&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;员&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;在&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;施&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;法&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;时&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;因&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;为&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;受&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;到&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;伤&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;害&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;而&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;损&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;失&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;的&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;施&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;法&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;时&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;间&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;减&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;少&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;a1码范围内的小队或团队成员在施法时因为受到伤害而损失的施法时间减少&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.64444em;vertical-align:0em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;码&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;范&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;围&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;内&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;的&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;小&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;队&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;或&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;团&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;队&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;成&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;员&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;在&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;施&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;法&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;时&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;因&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;为&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;受&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;到&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;伤&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;害&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;而&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;损&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;失&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;的&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;施&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;法&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;时&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;间&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;减&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;少&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;s1%。因为受到伤害而损失的施法时间减少$s1%。&lt;/p&gt;
-&lt;p&gt;##秒杀&lt;br&gt;
-.learn 35354	死亡之手	立即轰杀所有目标。&lt;/p&gt;
+&lt;h2 id=&#34;秒杀&#34;&gt;秒杀&lt;/h2&gt;
+&lt;p&gt;.learn 35354	死亡之手	立即轰杀所有目标。&lt;/p&gt;
 &lt;p&gt;.learn 5  	      死亡之触	立即轰杀目标，很强罢……&lt;/p&gt;
 &lt;p&gt;.learn 31008	辩护之锤	立即轰杀目标。很华丽吧……&lt;/p&gt;
 &lt;p&gt;.learn 35958	法力炸弹爆炸	杀死半径45码范围内的所有敌人。轰！世界清静了。&lt;/p&gt;
@@ -9529,8 +9504,8 @@ PS.代码只能刷头衔，头衔代表的成就是不加的。&lt;/p&gt;
 &lt;p&gt;.learn 48850	复仇撕咬	立即杀死目标。&lt;/p&gt;
 &lt;p&gt;.learn 60046	刺杀	立即杀死牺牲者。死亡转瞬即至。&lt;/p&gt;
 &lt;p&gt;.learn 64166	毁灭所有生命	毁灭所有生命。嘭！&lt;/p&gt;
-&lt;p&gt;##提高生存类&lt;br&gt;
-.learn 38350	Crit Proc Heal	你的近战和远程爆击有一定几率为你恢复$38349s1点生命值。&lt;/p&gt;
+&lt;h2 id=&#34;提高生存类&#34;&gt;提高生存类&lt;/h2&gt;
+&lt;p&gt;.learn 38350	Crit Proc Heal	你的近战和远程爆击有一定几率为你恢复$38349s1点生命值。&lt;/p&gt;
 &lt;p&gt;.learn 9778 	Proc Self Heal 22	在战斗中被击中之后有3%的几率回复60到100点生命值。&lt;/p&gt;
 &lt;p&gt;.learn 12732	阿弗拉沙碎片	使你在普通状态下的生命值和法力值回复提高5点。&lt;/p&gt;
 &lt;p&gt;.learn 23780	庇护	护甲值提高500点，每次受到近战或远程攻击时回复35点生命值，持续20秒。&lt;/p&gt;
@@ -10138,9 +10113,9 @@ PS.代码只能刷头衔，头衔代表的成就是不加的。&lt;/p&gt;
 &lt;p&gt;.learn 1857 	消失	等级 2使你消失并进入强化的潜行模式，持续$11329d。同时也可解除一切移动限制效果。比消失（等级 1）更有效。强化潜行。&lt;/p&gt;
 &lt;p&gt;.learn 27617	消失	等级 2使你消失并进入强化的潜行模式，持续$11329d。同时也可解除一切移动限制效果。比消失（等级 1）更有效。强化潜行。&lt;/p&gt;
 &lt;p&gt;.learn 26889	消失	等级 3使你消失并进入强化的潜行模式，持续$11329d。同时解除一切移动限制效果。比消失（等级 2）更有效。强化潜行。&lt;/p&gt;
-&lt;p&gt;.learn 26888	消失	等级 3使你消失并进入强化的潜行模式，持续$11329d。同时解除一切移动限制效果。比消失（等级2）更有效。强化潜行。&lt;br&gt;
-##消除控制类技能&lt;br&gt;
-.learn 70996	Exhaustion Removal (TEST)	移除疲倦和心满意足效果。欺骗性技能。&lt;/p&gt;
+&lt;p&gt;.learn 26888	消失	等级 3使你消失并进入强化的潜行模式，持续$11329d。同时解除一切移动限制效果。比消失（等级2）更有效。强化潜行。&lt;/p&gt;
+&lt;h2 id=&#34;消除控制类技能&#34;&gt;消除控制类技能&lt;/h2&gt;
+&lt;p&gt;.learn 70996	Exhaustion Removal (TEST)	移除疲倦和心满意足效果。欺骗性技能。&lt;/p&gt;
 &lt;p&gt;.learn 41313	Immune Fear/Stun/Snare	解除一切恐惧、昏迷和减速效果。&lt;/p&gt;
 &lt;p&gt;.learn 41310	Immune Root/Stun/Polymorph	解除一切定身、昏迷和变形效果。&lt;/p&gt;
 &lt;p&gt;.learn 22890	Undo Crowd Control	移除一个昏迷、减速或定身效果。&lt;/p&gt;
@@ -11067,8 +11042,8 @@ PS.代码只能刷头衔，头衔代表的成就是不加的。&lt;/p&gt;
 &lt;p&gt;.learn 24189	重击	对所有邻近敌人造成$s1点伤害并将其击退。&lt;/p&gt;
 &lt;p&gt;.learn 64587	自然炸弹	对施法者周围半径&lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;码&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;范&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;围&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;内&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;的&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;敌&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;人&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;造&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;成&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;a1码范围内的敌人造成&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.64444em;vertical-align:0em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;码&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;范&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;围&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;内&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;的&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;敌&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;人&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;造&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;成&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;s1点自然伤害，将它们击退。&lt;/p&gt;
 &lt;p&gt;.learn 64650	自然炸弹	对施法者周围半径&lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;码&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;范&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;围&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;内&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;的&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;敌&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;人&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;造&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;成&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;a1码范围内的敌人造成&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.64444em;vertical-align:0em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;码&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;范&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;围&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;内&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;的&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;敌&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;人&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;造&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;成&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;s1点自然伤害，将它们击退。&lt;/p&gt;
-&lt;p&gt;##移动速度类&lt;br&gt;
-.learn 23451	加速	移动速度提高100%。持续10秒&lt;/p&gt;
+&lt;h2 id=&#34;移动速度类&#34;&gt;移动速度类&lt;/h2&gt;
+&lt;p&gt;.learn 23451	加速	移动速度提高100%。持续10秒&lt;/p&gt;
 &lt;p&gt;.learn 23978	加速	移动速度提高100%。持续10秒&lt;/p&gt;
 &lt;p&gt;.learn 16618	风之魂	移动速度提高，持续5分钟&lt;/p&gt;
 &lt;p&gt;.learn 22863		移动速度+30%，持续30秒&lt;/p&gt;
@@ -11379,8 +11354,8 @@ PS.代码只能刷头衔，头衔代表的成就是不加的。&lt;/p&gt;
 &lt;p&gt;.learn 23060	作战鸣叫	攻击速度提高&lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;s&lt;/mi&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;s1%，持续&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.64444em;vertical-align:0em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;s&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;1&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;d。&lt;/p&gt;
 &lt;p&gt;.learn 54483	西萊圖斯活力	傷害降低30%，攻击和施法速度提高60%，持续2分钟&lt;/p&gt;
 &lt;p&gt;.learn 23537	狂乱	物理伤害提高219到281点，攻击速度提高50%，持续10分钟&lt;/p&gt;
-&lt;p&gt;##传送类&lt;br&gt;
-.learn 66377	[PH] Test - Flying Charge	冲锋攻击，造成$s1点伤害，并移除对手身上的一层防御效果。&lt;/p&gt;
+&lt;h2 id=&#34;传送类&#34;&gt;传送类&lt;/h2&gt;
+&lt;p&gt;.learn 66377	[PH] Test - Flying Charge	冲锋攻击，造成$s1点伤害，并移除对手身上的一层防御效果。&lt;/p&gt;
 &lt;p&gt;.learn 66381	[PH] Test - Flying Charge Rebound	冲锋攻击，造成$s1点伤害，并移除对手身上的一层防御效果。&lt;/p&gt;
 &lt;p&gt;.learn 5696 	Charge (TEST)	等级 1向敌人冲锋，产生$/10;s2点怒气值，并使其昏迷$7922d。&lt;/p&gt;
 &lt;p&gt;.learn 63662	Test Charge! Speed Up	向你选定的目标发动冲锋！&lt;/p&gt;
@@ -11745,9 +11720,9 @@ PS.代码只能刷头衔，头衔代表的成就是不加的。&lt;/p&gt;
 &lt;p&gt;.learn 60932	逃脱	你尝试摆脱目标，向后方跳跃。必须面对目标。尝试从敌人面前逃脱，向后方跳跃。必须面对目标使用。&lt;/p&gt;
 &lt;p&gt;.learn 28683	跳跃	等级 1向前跳跃$a1码。&lt;/p&gt;
 &lt;p&gt;.learn 57882	跳跃	跃向指定位置，最短距离5码，最长距离45码。轻盈追迹者可以使用此技能脱离战斗。&lt;/p&gt;
-&lt;p&gt;.learn 61507	脱离	你尝试摆脱目标，向后方跳跃。必须面对目标。尝试从敌人面前逃脱，向后方跳跃。必须面对目标使用。		&lt;br&gt;
-##提高属性类&lt;br&gt;
-.learn 56449	Increased Resilience 100 +$s1 韧性等级。&lt;/p&gt;
+&lt;p&gt;.learn 61507	脱离	你尝试摆脱目标，向后方跳跃。必须面对目标。尝试从敌人面前逃脱，向后方跳跃。必须面对目标使用。&lt;/p&gt;
+&lt;h2 id=&#34;提高属性类&#34;&gt;提高属性类&lt;/h2&gt;
+&lt;p&gt;.learn 56449	Increased Resilience 100 +$s1 韧性等级。&lt;/p&gt;
 &lt;p&gt;.learn 56450	Increased Resilience 100 +$s1 韧性等级。&lt;/p&gt;
 &lt;p&gt;.learn 56509	Increased Resilience 100 +$s1 韧性等级。&lt;/p&gt;
 &lt;p&gt;.learn 32145	Increased Resilience 35	 +$s1 韧性等级。&lt;/p&gt;

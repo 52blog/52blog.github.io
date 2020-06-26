@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://52wow.github.io</id>
     <title>Whitehat</title>
-    <updated>2020-06-26T16:45:42.409Z</updated>
+    <updated>2020-06-26T17:19:06.233Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://52wow.github.io"/>
     <link rel="self" href="https://52wow.github.io/atom.xml"/>
@@ -363,6 +363,15 @@
         <link href="https://52wow.github.io/5sjexSO9W/">
         </link>
         <updated>2020-06-26T16:18:19.000Z</updated>
+        <summary type="html"><![CDATA[<h2 id="access_requirement副本及区域进入条件-表详解">access_requirement副本及区域进入条件 表详解</h2>
+<p>access_requirement表的作用：限制进入副本或区域的条件，各项字段的作用解释如下：</p>
+<p>mapid ：副本或区域的地图编号，可以在 instance_template 或者 areatrigger_teleport 表中查找；</p>
+<p>difficulty：副本难度，其中，</p>
+<pre><code>              5人本0代表普通，1代表英雄模式
+
+             10人本0代表普通，2代表英雄模式
+</code></pre>
+]]></summary>
         <content type="html"><![CDATA[<h2 id="access_requirement副本及区域进入条件-表详解">access_requirement副本及区域进入条件 表详解</h2>
 <p>access_requirement表的作用：限制进入副本或区域的条件，各项字段的作用解释如下：</p>
 <p>mapid ：副本或区域的地图编号，可以在 instance_template 或者 areatrigger_teleport 表中查找；</p>
@@ -370,8 +379,9 @@
 <pre><code>              5人本0代表普通，1代表英雄模式
 
              10人本0代表普通，2代表英雄模式
-
-              25人本1代表普通，3代表英雄模式
+</code></pre>
+<!-- more -->
+<pre><code>              25人本1代表普通，3代表英雄模式
 </code></pre>
 <p>level_min ： 进入副本的最低等级要求；</p>
 <p>level_max ： 进入副本的最高等级要求；</p>
@@ -6310,19 +6320,7 @@ type=2 （光环）：
 3	地图	        只有设置跟地区相关的成就时才使用，否则为-1<br>
 4	前一个	        如果这个成就属于一个系列，这里就是前一个成就的编号，否则为0<br>
 5-20	名称	        成就的名称<br>
-21	未知	        貌似总为 0xFF01FE<br>
-22-37	描述	        如果描述为空，说明这不是一个成就，而是统计选项的一部分<br>
-38	未知	        貌似总为 16712190，极少情况下是 16712188<br>
-39	分类	        成就分类编号，参考Achievement_Category.dbc<br>
-40	点数	        0，5，10，15，20，25，30，50<br>
-41	组中的次序	最小值是1<br>
-42	标识	        取值范围0-768，256-每个服务器只有一个玩家能获得此成就，768-每个服务器只有一个团队能获得此成就<br>
-43	技能图标	显示的图标<br>
-44-59	奖励	<br>
-47	奖金	        额外的奖励文本<br>
-60	未知	<br>
-61	要求	        得到此成就需要满足的要求。例如成就要求你获得25个徽章，那这里就是25<br>
-62	引用的成就	引用的成就，包括所有完成的标准</p>
+21	未知	        貌似总为 0xFF01FE</p>
 ]]></summary>
         <content type="html"><![CDATA[<h2 id="achievementdbc">Achievement.dbc</h2>
 <p>Achievement.dbc成就dbc，包含所有的成就。</p>
@@ -6332,8 +6330,9 @@ type=2 （光环）：
 3	地图	        只有设置跟地区相关的成就时才使用，否则为-1<br>
 4	前一个	        如果这个成就属于一个系列，这里就是前一个成就的编号，否则为0<br>
 5-20	名称	        成就的名称<br>
-21	未知	        貌似总为 0xFF01FE<br>
-22-37	描述	        如果描述为空，说明这不是一个成就，而是统计选项的一部分<br>
+21	未知	        貌似总为 0xFF01FE</p>
+<!-- more -->
+<p>22-37	描述	        如果描述为空，说明这不是一个成就，而是统计选项的一部分<br>
 38	未知	        貌似总为 16712190，极少情况下是 16712188<br>
 39	分类	        成就分类编号，参考Achievement_Category.dbc<br>
 40	点数	        0，5，10，15，20，25，30，50<br>
@@ -6345,7 +6344,6 @@ type=2 （光环）：
 60	未知	<br>
 61	要求	        得到此成就需要满足的要求。例如成就要求你获得25个徽章，那这里就是25<br>
 62	引用的成就	引用的成就，包括所有完成的标准</p>
-<!-- more -->
 <h2 id="achievement_categorydbc-详解">Achievement_Category.dbc 详解</h2>
 <p>Achievement_Category.dbc 详解 成就分类表</p>
 <p>列	字段	       详细说明<br>
@@ -8545,15 +8543,15 @@ PS.代码只能刷头衔，头衔代表的成就是不加的。</p>
         <link href="https://52wow.github.io/ba3vyiltg/">
         </link>
         <updated>2020-06-26T15:32:35.000Z</updated>
-        <summary type="html"><![CDATA[<p>##经常使用<br>
-.Learn 73326	光明使者的战袍	笼罩在圣光中，好看</p>
+        <summary type="html"><![CDATA[<h2 id="经常使用">经常使用</h2>
+<p>.Learn 73326	光明使者的战袍	笼罩在圣光中，好看</p>
 <p>.Learn 71953	辐射光环	每3秒治疗最大生命值的3%，手动取消</p>
 <p>.Learn 9778 	回血	装备：在战斗中被击中之后有3%的几率回复60到100点生命值</p>
 <p>.Learn 22818	魔尔达的勇气	魔尔达的勇气+15%耐力持续2小时</p>
 <p>.Learn 62320	敏锐光环	使近战、远程和施法速度提高20%，手动取消</p>
 ]]></summary>
-        <content type="html"><![CDATA[<p>##经常使用<br>
-.Learn 73326	光明使者的战袍	笼罩在圣光中，好看</p>
+        <content type="html"><![CDATA[<h2 id="经常使用">经常使用</h2>
+<p>.Learn 73326	光明使者的战袍	笼罩在圣光中，好看</p>
 <p>.Learn 71953	辐射光环	每3秒治疗最大生命值的3%，手动取消</p>
 <p>.Learn 9778 	回血	装备：在战斗中被击中之后有3%的几率回复60到100点生命值</p>
 <p>.Learn 22818	魔尔达的勇气	魔尔达的勇气+15%耐力持续2小时</p>
@@ -8576,8 +8574,8 @@ PS.代码只能刷头衔，头衔代表的成就是不加的。</p>
 <p>.learn 6560 	LeCraft Test Spell	使你的急速等级提高200%</p>
 <p>.learn 69383	黑暗饥寒	让施法者的生命值回复所承受伤害的一半。</p>
 <p>.learn 31700      内域飞行</p>
-<p>##对敌用DEBUFF类<br>
-.learn 28374	残杀	使周围全部单位的生命值减少最大生命值的5%。</p>
+<h2 id="对敌用debuff类">对敌用DEBUFF类</h2>
+<p>.learn 28374	残杀	使周围全部单位的生命值减少最大生命值的5%。</p>
 <p>.learn 28375	残杀	使周围全部单位的生命值减少最大生命值的5%。</p>
 <p>.learn 54426	屠杀	使周围全部单位的生命值减少最大生命值的5%。</p>
 <p>.learn 71123	屠杀	使附近所有单位的当前生命值减少至其生命值上限的$s1%。</p>
@@ -8917,8 +8915,8 @@ PS.代码只能刷头衔，头衔代表的成就是不加的。</p>
 <p>.learn 75350	幽缓之影	使一名敌人的攻击和施法速度降低<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi><mn>1</mn></mrow><annotation encoding="application/x-tex">s1%，持续</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord mathdefault">s</span><span class="mord">1</span></span></span></span>d。</p>
 <p>.learn 30494	粘稠的软泥	厚重的软泥使所有邻近敌人的移动速度和攻击速度降低，持续<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>d</mi><mi mathvariant="normal">。</mi><mi mathvariant="normal">移</mi><mi mathvariant="normal">动</mi><mi mathvariant="normal">和</mi><mi mathvariant="normal">攻</mi><mi mathvariant="normal">击</mi><mi mathvariant="normal">速</mi><mi mathvariant="normal">度</mi><mi mathvariant="normal">降</mi><mi mathvariant="normal">低</mi></mrow><annotation encoding="application/x-tex">d。移动和攻击速度降低</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">d</span><span class="mord cjk_fallback">。</span><span class="mord cjk_fallback">移</span><span class="mord cjk_fallback">动</span><span class="mord cjk_fallback">和</span><span class="mord cjk_fallback">攻</span><span class="mord cjk_fallback">击</span><span class="mord cjk_fallback">速</span><span class="mord cjk_fallback">度</span><span class="mord cjk_fallback">降</span><span class="mord cjk_fallback">低</span></span></span></span>s1%。</p>
 <p>.learn 67255	最终冥想	&quot;进入冥想，降低施法者周围半径<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi><mn>1</mn><mi mathvariant="normal">码</mi><mi mathvariant="normal">范</mi><mi mathvariant="normal">围</mi><mi mathvariant="normal">内</mi><mi mathvariant="normal">的</mi><mi mathvariant="normal">敌</mi><mi mathvariant="normal">人</mi><mi mathvariant="normal">的</mi><mi mathvariant="normal">移</mi><mi mathvariant="normal">动</mi><mi mathvariant="normal">和</mi><mi mathvariant="normal">攻</mi><mi mathvariant="normal">击</mi><mi mathvariant="normal">速</mi><mi mathvariant="normal">度</mi><mi mathvariant="normal">，</mi><mi mathvariant="normal">持</mi><mi mathvariant="normal">续</mi></mrow><annotation encoding="application/x-tex">a1码范围内的敌人的移动和攻击速度，持续</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord mathdefault">a</span><span class="mord">1</span><span class="mord cjk_fallback">码</span><span class="mord cjk_fallback">范</span><span class="mord cjk_fallback">围</span><span class="mord cjk_fallback">内</span><span class="mord cjk_fallback">的</span><span class="mord cjk_fallback">敌</span><span class="mord cjk_fallback">人</span><span class="mord cjk_fallback">的</span><span class="mord cjk_fallback">移</span><span class="mord cjk_fallback">动</span><span class="mord cjk_fallback">和</span><span class="mord cjk_fallback">攻</span><span class="mord cjk_fallback">击</span><span class="mord cjk_fallback">速</span><span class="mord cjk_fallback">度</span><span class="mord cjk_fallback">，</span><span class="mord cjk_fallback">持</span><span class="mord cjk_fallback">续</span></span></span></span>d。移动速度降低<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi><mn>1</mn></mrow><annotation encoding="application/x-tex">s1%。攻击和施法速度降低</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord mathdefault">s</span><span class="mord">1</span></span></span></span>s2%。&quot;</p>
-<p>##威胁值<br>
-.learn 43263	食尸鬼嘲讽	嘲讽周围半径$a1码内的所有敌人，造成很高的威胁值。</p>
+<h2 id="威胁值">威胁值</h2>
+<p>.learn 43263	食尸鬼嘲讽	嘲讽周围半径$a1码内的所有敌人，造成很高的威胁值。</p>
 <p>.learn 36213	大地之怒	嘲讽周围半径$a1码范围内的所有敌人，并产生很高的威胁值。</p>
 <p>.learn 5209 	挑战咆哮	嘲讽附近半径<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi><mn>1</mn><mi mathvariant="normal">码</mi><mi mathvariant="normal">范</mi><mi mathvariant="normal">围</mi><mi mathvariant="normal">内</mi><mi mathvariant="normal">的</mi><mi mathvariant="normal">所</mi><mi mathvariant="normal">有</mi><mi mathvariant="normal">敌</mi><mi mathvariant="normal">人</mi><mi mathvariant="normal">，</mi><mi mathvariant="normal">强</mi><mi mathvariant="normal">制</mi><mi mathvariant="normal">它</mi><mi mathvariant="normal">们</mi><mi mathvariant="normal">攻</mi><mi mathvariant="normal">击</mi><mi mathvariant="normal">你</mi><mi mathvariant="normal">，</mi><mi mathvariant="normal">持</mi><mi mathvariant="normal">续</mi></mrow><annotation encoding="application/x-tex">a1码范围内的所有敌人，强制它们攻击你，持续</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord mathdefault">a</span><span class="mord">1</span><span class="mord cjk_fallback">码</span><span class="mord cjk_fallback">范</span><span class="mord cjk_fallback">围</span><span class="mord cjk_fallback">内</span><span class="mord cjk_fallback">的</span><span class="mord cjk_fallback">所</span><span class="mord cjk_fallback">有</span><span class="mord cjk_fallback">敌</span><span class="mord cjk_fallback">人</span><span class="mord cjk_fallback">，</span><span class="mord cjk_fallback">强</span><span class="mord cjk_fallback">制</span><span class="mord cjk_fallback">它</span><span class="mord cjk_fallback">们</span><span class="mord cjk_fallback">攻</span><span class="mord cjk_fallback">击</span><span class="mord cjk_fallback">你</span><span class="mord cjk_fallback">，</span><span class="mord cjk_fallback">持</span><span class="mord cjk_fallback">续</span></span></span></span>d。</p>
 <p>.learn 46276	掠食者嘲讽	使目标攻击掠食者。被掠食者嘲讽了。</p>
@@ -8930,8 +8928,8 @@ PS.代码只能刷头衔，头衔代表的成就是不加的。</p>
 <p>.learn 67765	遁形	使施法者在$66d内保持隐形，每秒降低一定的威胁值。如果你做出任何动作，或者受到任何动作的影响，这个效果就会消失。在隐形状态下，你只能看到其他的隐形目标和那些可以看到隐形单位的人。效果持续$32612d。消隐中。</p>
 <p>.learn 40618	毫无意义	你的举动不会产生威胁值。</p>
 <p>.learn 36886	仇恨之怒	使所有方式造成的威胁值提高$s1%。</p>
-<p>##光环类<br>
-.learn 50182	奥术急速光环	&quot;使施法者的施法速度提高<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi><mn>1</mn></mrow><annotation encoding="application/x-tex">s1%并使其法术伤害提高</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord mathdefault">s</span><span class="mord">1</span></span></span></span>s2点，持续<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>d</mi><mi mathvariant="normal">。</mi><mi mathvariant="normal">施</mi><mi mathvariant="normal">法</mi><mi mathvariant="normal">速</mi><mi mathvariant="normal">度</mi><mi mathvariant="normal">提</mi><mi mathvariant="normal">高</mi></mrow><annotation encoding="application/x-tex">d。施法速度提高</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">d</span><span class="mord cjk_fallback">。</span><span class="mord cjk_fallback">施</span><span class="mord cjk_fallback">法</span><span class="mord cjk_fallback">速</span><span class="mord cjk_fallback">度</span><span class="mord cjk_fallback">提</span><span class="mord cjk_fallback">高</span></span></span></span>s1%。法术伤害提高$s2点。&quot;</p>
+<h2 id="光环类">光环类</h2>
+<p>.learn 50182	奥术急速光环	&quot;使施法者的施法速度提高<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi><mn>1</mn></mrow><annotation encoding="application/x-tex">s1%并使其法术伤害提高</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord mathdefault">s</span><span class="mord">1</span></span></span></span>s2点，持续<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>d</mi><mi mathvariant="normal">。</mi><mi mathvariant="normal">施</mi><mi mathvariant="normal">法</mi><mi mathvariant="normal">速</mi><mi mathvariant="normal">度</mi><mi mathvariant="normal">提</mi><mi mathvariant="normal">高</mi></mrow><annotation encoding="application/x-tex">d。施法速度提高</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">d</span><span class="mord cjk_fallback">。</span><span class="mord cjk_fallback">施</span><span class="mord cjk_fallback">法</span><span class="mord cjk_fallback">速</span><span class="mord cjk_fallback">度</span><span class="mord cjk_fallback">提</span><span class="mord cjk_fallback">高</span></span></span></span>s1%。法术伤害提高$s2点。&quot;</p>
 <p>.learn 56827	奥术急速光环	&quot;使施法者的施法速度提高<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi><mn>1</mn></mrow><annotation encoding="application/x-tex">s1%并使其法术伤害提高</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord mathdefault">s</span><span class="mord">1</span></span></span></span>s2点，持续<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>d</mi><mi mathvariant="normal">。</mi><mi mathvariant="normal">施</mi><mi mathvariant="normal">法</mi><mi mathvariant="normal">速</mi><mi mathvariant="normal">度</mi><mi mathvariant="normal">提</mi><mi mathvariant="normal">高</mi></mrow><annotation encoding="application/x-tex">d。施法速度提高</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">d</span><span class="mord cjk_fallback">。</span><span class="mord cjk_fallback">施</span><span class="mord cjk_fallback">法</span><span class="mord cjk_fallback">速</span><span class="mord cjk_fallback">度</span><span class="mord cjk_fallback">提</span><span class="mord cjk_fallback">高</span></span></span></span>s1%。法术伤害提高$s2点。&quot;</p>
 <p>.learn 41453	多彩抗性光环	使邻近小队成员对所有法术的魔法抗性提高<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi><mn>1</mn><mi mathvariant="normal">，</mi><mi mathvariant="normal">持</mi><mi mathvariant="normal">续</mi></mrow><annotation encoding="application/x-tex">s1，持续</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord mathdefault">s</span><span class="mord">1</span><span class="mord cjk_fallback">，</span><span class="mord cjk_fallback">持</span><span class="mord cjk_fallback">续</span></span></span></span>d。魔法抗性提高$s1点。</p>
 <p>.learn 32828	防护光环	使20内所有友方生物获得2000点额外护甲值和75点魔法抗性。</p>
@@ -8957,8 +8955,8 @@ PS.代码只能刷头衔，头衔代表的成就是不加的。</p>
 <p>.learn 60023	天灾军旗光环	使周围半径<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi><mn>1</mn><mi mathvariant="normal">码</mi><mi mathvariant="normal">范</mi><mi mathvariant="normal">围</mi><mi mathvariant="normal">内</mi><mi mathvariant="normal">的</mi><mi mathvariant="normal">所</mi><mi mathvariant="normal">有</mi><mi mathvariant="normal">天</mi><mi mathvariant="normal">灾</mi><mi mathvariant="normal">士</mi><mi mathvariant="normal">兵</mi><mi mathvariant="normal">造</mi><mi mathvariant="normal">成</mi><mi mathvariant="normal">的</mi><mi mathvariant="normal">伤</mi><mi mathvariant="normal">害</mi><mi mathvariant="normal">提</mi><mi mathvariant="normal">高</mi></mrow><annotation encoding="application/x-tex">a1码范围内的所有天灾士兵造成的伤害提高</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord mathdefault">a</span><span class="mord">1</span><span class="mord cjk_fallback">码</span><span class="mord cjk_fallback">范</span><span class="mord cjk_fallback">围</span><span class="mord cjk_fallback">内</span><span class="mord cjk_fallback">的</span><span class="mord cjk_fallback">所</span><span class="mord cjk_fallback">有</span><span class="mord cjk_fallback">天</span><span class="mord cjk_fallback">灾</span><span class="mord cjk_fallback">士</span><span class="mord cjk_fallback">兵</span><span class="mord cjk_fallback">造</span><span class="mord cjk_fallback">成</span><span class="mord cjk_fallback">的</span><span class="mord cjk_fallback">伤</span><span class="mord cjk_fallback">害</span><span class="mord cjk_fallback">提</span><span class="mord cjk_fallback">高</span></span></span></span>s1%，攻击速度提高$s2%。.learn 24907	枭兽光环	法术爆击几率提高5%。</p>
 <p>.learn 10270	邪能压制	使半径<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi><mn>1</mn><mi mathvariant="normal">码</mi><mi mathvariant="normal">范</mi><mi mathvariant="normal">围</mi><mi mathvariant="normal">内</mi><mi mathvariant="normal">的</mi><mi mathvariant="normal">所</mi><mi mathvariant="normal">有</mi><mi mathvariant="normal">小</mi><mi mathvariant="normal">队</mi><mi mathvariant="normal">成</mi><mi mathvariant="normal">员</mi><mi mathvariant="normal">的</mi><mi mathvariant="normal">攻</mi><mi mathvariant="normal">击</mi><mi mathvariant="normal">强</mi><mi mathvariant="normal">度</mi><mi mathvariant="normal">提</mi><mi mathvariant="normal">高</mi></mrow><annotation encoding="application/x-tex">a1码范围内的所有小队成员的攻击强度提高</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord mathdefault">a</span><span class="mord">1</span><span class="mord cjk_fallback">码</span><span class="mord cjk_fallback">范</span><span class="mord cjk_fallback">围</span><span class="mord cjk_fallback">内</span><span class="mord cjk_fallback">的</span><span class="mord cjk_fallback">所</span><span class="mord cjk_fallback">有</span><span class="mord cjk_fallback">小</span><span class="mord cjk_fallback">队</span><span class="mord cjk_fallback">成</span><span class="mord cjk_fallback">员</span><span class="mord cjk_fallback">的</span><span class="mord cjk_fallback">攻</span><span class="mord cjk_fallback">击</span><span class="mord cjk_fallback">强</span><span class="mord cjk_fallback">度</span><span class="mord cjk_fallback">提</span><span class="mord cjk_fallback">高</span></span></span></span>s1点。每个圣骑士在同一时间内只能开启一种光环，且同类光环的效果无法叠加。攻击强度降低$s1点。</p>
 <p>.learn 19746	专注光环	使周围半径<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi><mn>1</mn><mi mathvariant="normal">码</mi><mi mathvariant="normal">范</mi><mi mathvariant="normal">围</mi><mi mathvariant="normal">内</mi><mi mathvariant="normal">的</mi><mi mathvariant="normal">小</mi><mi mathvariant="normal">队</mi><mi mathvariant="normal">或</mi><mi mathvariant="normal">团</mi><mi mathvariant="normal">队</mi><mi mathvariant="normal">成</mi><mi mathvariant="normal">员</mi><mi mathvariant="normal">在</mi><mi mathvariant="normal">施</mi><mi mathvariant="normal">法</mi><mi mathvariant="normal">时</mi><mi mathvariant="normal">因</mi><mi mathvariant="normal">为</mi><mi mathvariant="normal">受</mi><mi mathvariant="normal">到</mi><mi mathvariant="normal">伤</mi><mi mathvariant="normal">害</mi><mi mathvariant="normal">而</mi><mi mathvariant="normal">损</mi><mi mathvariant="normal">失</mi><mi mathvariant="normal">的</mi><mi mathvariant="normal">施</mi><mi mathvariant="normal">法</mi><mi mathvariant="normal">时</mi><mi mathvariant="normal">间</mi><mi mathvariant="normal">减</mi><mi mathvariant="normal">少</mi></mrow><annotation encoding="application/x-tex">a1码范围内的小队或团队成员在施法时因为受到伤害而损失的施法时间减少</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord mathdefault">a</span><span class="mord">1</span><span class="mord cjk_fallback">码</span><span class="mord cjk_fallback">范</span><span class="mord cjk_fallback">围</span><span class="mord cjk_fallback">内</span><span class="mord cjk_fallback">的</span><span class="mord cjk_fallback">小</span><span class="mord cjk_fallback">队</span><span class="mord cjk_fallback">或</span><span class="mord cjk_fallback">团</span><span class="mord cjk_fallback">队</span><span class="mord cjk_fallback">成</span><span class="mord cjk_fallback">员</span><span class="mord cjk_fallback">在</span><span class="mord cjk_fallback">施</span><span class="mord cjk_fallback">法</span><span class="mord cjk_fallback">时</span><span class="mord cjk_fallback">因</span><span class="mord cjk_fallback">为</span><span class="mord cjk_fallback">受</span><span class="mord cjk_fallback">到</span><span class="mord cjk_fallback">伤</span><span class="mord cjk_fallback">害</span><span class="mord cjk_fallback">而</span><span class="mord cjk_fallback">损</span><span class="mord cjk_fallback">失</span><span class="mord cjk_fallback">的</span><span class="mord cjk_fallback">施</span><span class="mord cjk_fallback">法</span><span class="mord cjk_fallback">时</span><span class="mord cjk_fallback">间</span><span class="mord cjk_fallback">减</span><span class="mord cjk_fallback">少</span></span></span></span>s1%。因为受到伤害而损失的施法时间减少$s1%。</p>
-<p>##秒杀<br>
-.learn 35354	死亡之手	立即轰杀所有目标。</p>
+<h2 id="秒杀">秒杀</h2>
+<p>.learn 35354	死亡之手	立即轰杀所有目标。</p>
 <p>.learn 5  	      死亡之触	立即轰杀目标，很强罢……</p>
 <p>.learn 31008	辩护之锤	立即轰杀目标。很华丽吧……</p>
 <p>.learn 35958	法力炸弹爆炸	杀死半径45码范围内的所有敌人。轰！世界清静了。</p>
@@ -8966,8 +8964,8 @@ PS.代码只能刷头衔，头衔代表的成就是不加的。</p>
 <p>.learn 48850	复仇撕咬	立即杀死目标。</p>
 <p>.learn 60046	刺杀	立即杀死牺牲者。死亡转瞬即至。</p>
 <p>.learn 64166	毁灭所有生命	毁灭所有生命。嘭！</p>
-<p>##提高生存类<br>
-.learn 38350	Crit Proc Heal	你的近战和远程爆击有一定几率为你恢复$38349s1点生命值。</p>
+<h2 id="提高生存类">提高生存类</h2>
+<p>.learn 38350	Crit Proc Heal	你的近战和远程爆击有一定几率为你恢复$38349s1点生命值。</p>
 <p>.learn 9778 	Proc Self Heal 22	在战斗中被击中之后有3%的几率回复60到100点生命值。</p>
 <p>.learn 12732	阿弗拉沙碎片	使你在普通状态下的生命值和法力值回复提高5点。</p>
 <p>.learn 23780	庇护	护甲值提高500点，每次受到近战或远程攻击时回复35点生命值，持续20秒。</p>
@@ -9575,9 +9573,9 @@ PS.代码只能刷头衔，头衔代表的成就是不加的。</p>
 <p>.learn 1857 	消失	等级 2使你消失并进入强化的潜行模式，持续$11329d。同时也可解除一切移动限制效果。比消失（等级 1）更有效。强化潜行。</p>
 <p>.learn 27617	消失	等级 2使你消失并进入强化的潜行模式，持续$11329d。同时也可解除一切移动限制效果。比消失（等级 1）更有效。强化潜行。</p>
 <p>.learn 26889	消失	等级 3使你消失并进入强化的潜行模式，持续$11329d。同时解除一切移动限制效果。比消失（等级 2）更有效。强化潜行。</p>
-<p>.learn 26888	消失	等级 3使你消失并进入强化的潜行模式，持续$11329d。同时解除一切移动限制效果。比消失（等级2）更有效。强化潜行。<br>
-##消除控制类技能<br>
-.learn 70996	Exhaustion Removal (TEST)	移除疲倦和心满意足效果。欺骗性技能。</p>
+<p>.learn 26888	消失	等级 3使你消失并进入强化的潜行模式，持续$11329d。同时解除一切移动限制效果。比消失（等级2）更有效。强化潜行。</p>
+<h2 id="消除控制类技能">消除控制类技能</h2>
+<p>.learn 70996	Exhaustion Removal (TEST)	移除疲倦和心满意足效果。欺骗性技能。</p>
 <p>.learn 41313	Immune Fear/Stun/Snare	解除一切恐惧、昏迷和减速效果。</p>
 <p>.learn 41310	Immune Root/Stun/Polymorph	解除一切定身、昏迷和变形效果。</p>
 <p>.learn 22890	Undo Crowd Control	移除一个昏迷、减速或定身效果。</p>
@@ -10504,8 +10502,8 @@ PS.代码只能刷头衔，头衔代表的成就是不加的。</p>
 <p>.learn 24189	重击	对所有邻近敌人造成$s1点伤害并将其击退。</p>
 <p>.learn 64587	自然炸弹	对施法者周围半径<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi><mn>1</mn><mi mathvariant="normal">码</mi><mi mathvariant="normal">范</mi><mi mathvariant="normal">围</mi><mi mathvariant="normal">内</mi><mi mathvariant="normal">的</mi><mi mathvariant="normal">敌</mi><mi mathvariant="normal">人</mi><mi mathvariant="normal">造</mi><mi mathvariant="normal">成</mi></mrow><annotation encoding="application/x-tex">a1码范围内的敌人造成</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord mathdefault">a</span><span class="mord">1</span><span class="mord cjk_fallback">码</span><span class="mord cjk_fallback">范</span><span class="mord cjk_fallback">围</span><span class="mord cjk_fallback">内</span><span class="mord cjk_fallback">的</span><span class="mord cjk_fallback">敌</span><span class="mord cjk_fallback">人</span><span class="mord cjk_fallback">造</span><span class="mord cjk_fallback">成</span></span></span></span>s1点自然伤害，将它们击退。</p>
 <p>.learn 64650	自然炸弹	对施法者周围半径<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi><mn>1</mn><mi mathvariant="normal">码</mi><mi mathvariant="normal">范</mi><mi mathvariant="normal">围</mi><mi mathvariant="normal">内</mi><mi mathvariant="normal">的</mi><mi mathvariant="normal">敌</mi><mi mathvariant="normal">人</mi><mi mathvariant="normal">造</mi><mi mathvariant="normal">成</mi></mrow><annotation encoding="application/x-tex">a1码范围内的敌人造成</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord mathdefault">a</span><span class="mord">1</span><span class="mord cjk_fallback">码</span><span class="mord cjk_fallback">范</span><span class="mord cjk_fallback">围</span><span class="mord cjk_fallback">内</span><span class="mord cjk_fallback">的</span><span class="mord cjk_fallback">敌</span><span class="mord cjk_fallback">人</span><span class="mord cjk_fallback">造</span><span class="mord cjk_fallback">成</span></span></span></span>s1点自然伤害，将它们击退。</p>
-<p>##移动速度类<br>
-.learn 23451	加速	移动速度提高100%。持续10秒</p>
+<h2 id="移动速度类">移动速度类</h2>
+<p>.learn 23451	加速	移动速度提高100%。持续10秒</p>
 <p>.learn 23978	加速	移动速度提高100%。持续10秒</p>
 <p>.learn 16618	风之魂	移动速度提高，持续5分钟</p>
 <p>.learn 22863		移动速度+30%，持续30秒</p>
@@ -10816,8 +10814,8 @@ PS.代码只能刷头衔，头衔代表的成就是不加的。</p>
 <p>.learn 23060	作战鸣叫	攻击速度提高<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi><mn>1</mn></mrow><annotation encoding="application/x-tex">s1%，持续</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord mathdefault">s</span><span class="mord">1</span></span></span></span>d。</p>
 <p>.learn 54483	西萊圖斯活力	傷害降低30%，攻击和施法速度提高60%，持续2分钟</p>
 <p>.learn 23537	狂乱	物理伤害提高219到281点，攻击速度提高50%，持续10分钟</p>
-<p>##传送类<br>
-.learn 66377	[PH] Test - Flying Charge	冲锋攻击，造成$s1点伤害，并移除对手身上的一层防御效果。</p>
+<h2 id="传送类">传送类</h2>
+<p>.learn 66377	[PH] Test - Flying Charge	冲锋攻击，造成$s1点伤害，并移除对手身上的一层防御效果。</p>
 <p>.learn 66381	[PH] Test - Flying Charge Rebound	冲锋攻击，造成$s1点伤害，并移除对手身上的一层防御效果。</p>
 <p>.learn 5696 	Charge (TEST)	等级 1向敌人冲锋，产生$/10;s2点怒气值，并使其昏迷$7922d。</p>
 <p>.learn 63662	Test Charge! Speed Up	向你选定的目标发动冲锋！</p>
@@ -11182,9 +11180,9 @@ PS.代码只能刷头衔，头衔代表的成就是不加的。</p>
 <p>.learn 60932	逃脱	你尝试摆脱目标，向后方跳跃。必须面对目标。尝试从敌人面前逃脱，向后方跳跃。必须面对目标使用。</p>
 <p>.learn 28683	跳跃	等级 1向前跳跃$a1码。</p>
 <p>.learn 57882	跳跃	跃向指定位置，最短距离5码，最长距离45码。轻盈追迹者可以使用此技能脱离战斗。</p>
-<p>.learn 61507	脱离	你尝试摆脱目标，向后方跳跃。必须面对目标。尝试从敌人面前逃脱，向后方跳跃。必须面对目标使用。		<br>
-##提高属性类<br>
-.learn 56449	Increased Resilience 100 +$s1 韧性等级。</p>
+<p>.learn 61507	脱离	你尝试摆脱目标，向后方跳跃。必须面对目标。尝试从敌人面前逃脱，向后方跳跃。必须面对目标使用。</p>
+<h2 id="提高属性类">提高属性类</h2>
+<p>.learn 56449	Increased Resilience 100 +$s1 韧性等级。</p>
 <p>.learn 56450	Increased Resilience 100 +$s1 韧性等级。</p>
 <p>.learn 56509	Increased Resilience 100 +$s1 韧性等级。</p>
 <p>.learn 32145	Increased Resilience 35	 +$s1 韧性等级。</p>
