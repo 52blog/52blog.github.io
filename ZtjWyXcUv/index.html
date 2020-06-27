@@ -8,8 +8,8 @@
 <meta name="keywords" content="Whitehat个人博客">
 <meta name="description" content="">
 <meta name="theme-color" content="#495057">
-<title>auth char world 数据库各表功能解释 | Whitehat</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1593252835461">
+<title>auth characters world 数据库各表功能解释 | Whitehat</title>
+<link rel="shortcut icon" href="/favicon.ico?v=1593253629054">
 <link rel="stylesheet" href="/media/css/gemini.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -38,7 +38,7 @@
 
 
 
-  <meta name="description" content="auth char world 数据库各表功能解释" />
+  <meta name="description" content="auth characters world 数据库各表功能解释" />
   <meta name="keywords" content="" />
 </head>
 
@@ -177,7 +177,8 @@
       <div class="sidebar-body gemini" id="sidebar_body">
         
           
-            
+            <div class="post-side-meta" id="post_side_meta">
+              
 <div class="sidebar-wrapper box-shadow-wrapper bg-color">
   <div class="sidebar-item">
     <img class="site-author-image right-motion" src="/images/avatar.png"/>
@@ -220,6 +221,199 @@
 
 
 </div>
+            </div>
+            <div class="post-toc sidebar-body-active" id="post_toc" style="opacity: 1;">
+              <div class="toc-box right-motion">
+  <div class="toc-wrapper auto-number no_compress"
+    id="toc_wrapper">
+    <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#characters%E4%B8%AD%E6%96%87%E8%A1%A8">characters中文表</a></li>
+<li><a href="#information_schema%E4%B8%AD%E6%96%87%E8%A1%A8">information_schema中文表</a></li>
+<li><a href="#mysql%E4%B8%AD%E6%96%87%E8%A1%A8">MYsql中文表</a></li>
+<li><a href="#realmd%E4%B8%AD%E6%96%87%E8%A1%A8">realmd中文表</a></li>
+<li><a href="#world%E6%B8%B8%E6%88%8F%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%AD%E6%96%87%E8%A1%A8">world（游戏数据库）中文表</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+</div>
+
+<script>
+
+  let lastTop = 0, lList = [], hList = [], postBody, lastIndex = -1;
+  let active = 'active-show', activeClass = 'active-current';
+  let tocWrapper = document.querySelector('#toc_wrapper');
+  let tocContent = tocWrapper.children[0];
+  let autoNumber = tocWrapper && tocWrapper.classList.contains('auto-number');
+
+  function addTocNumber(elem, deep) {
+    if (!elem) {
+      return;
+    }
+    let prop = elem.__proto__;
+
+    if (prop === HTMLUListElement.prototype) {
+      for (let i = 0; i < elem.children.length; i++) {
+        addTocNumber(elem.children[i], deep + (i + 1) + '.');
+      }
+    } else if (prop === HTMLLIElement.prototype) {
+      // 保存li元素
+      if (elem.children[0] && elem.children[0].__proto__ === HTMLAnchorElement.prototype) {
+        lList.push(elem);
+      }
+      for (let i = 0; i < elem.children.length; i++) {
+        let cur = elem.children[i];
+        if (cur.__proto__ === HTMLAnchorElement.prototype) {
+          if (autoNumber) {
+            cur.text = deep + ' ' + cur.text;
+          }
+        } else if (cur.__proto__ === HTMLUListElement.prototype) {
+          addTocNumber(cur, deep);
+        }
+      }
+    }
+  }
+
+  function removeParentActiveClass() {
+    let parents = tocContent.querySelectorAll('.' + active)
+    parents.forEach(function (elem) {
+      elem.classList.remove(active);
+    });
+  }
+
+  function addActiveClass(index) {
+    if (index >= 0 && index < hList.length) {
+      lList[index].classList.add(activeClass);
+    }
+  }
+
+  function removeActiveClass(index) {
+    if (index >= 0 && index < hList.length) {
+      lList[index].classList.remove(activeClass);
+    }
+  }
+
+  function addActiveLiElemment(elem, parent) {
+    if (!elem || elem === parent) {
+      return;
+    } else {
+      if (elem.__proto__ === HTMLLIElement.prototype) {
+        elem.classList.add(active);
+      }
+      addActiveLiElemment(elem.parentElement, parent);
+    }
+  }
+
+  function showToc() {
+    if (tocWrapper) {
+      postBody = document.querySelector('#post_body');
+      for (let i = 0; i < postBody.children.length; i++) {
+        if (postBody.children[i].__proto__ === HTMLHeadingElement.prototype) {
+          hList.push(postBody.children[i]);
+        }
+      }
+      if (tocWrapper.classList.contains('compress')) {
+        tocContent.classList.add('closed');
+      } else if (tocWrapper.classList.contains('no_compress')) {
+        tocContent.classList.add('expanded');
+      } else {
+        if (hList.length > 10) {
+          active = 'active-hidden'
+          tocContent.classList.add('closed');
+        } else {
+          tocContent.classList.add('expanded');
+        }
+      }
+    }
+  }
+
+  (function () {
+    // 处理不是从#一级标题开始目录
+    if (tocContent.children.length === 1 && tocContent.children[0].__proto__ === HTMLLIElement.prototype) {
+      let con = tocContent.children[0].children[0];
+      tocContent.innerHTML = con.innerHTML;
+    }
+    let markdownItTOC = document.querySelector('.markdownIt-TOC');
+    let innerHeight = window.innerHeight;
+    markdownItTOC.style = `max-height: ${innerHeight - 80 > 0 ? innerHeight - 80 : innerHeight}px`
+    addTocNumber(tocContent, '');
+  })();
+
+  document.addEventListener('scroll', function (e) {
+    if (lList.length <= 0) {
+      return;
+    }
+    let scrollTop = document.scrollingElement.scrollTop + 10;
+    let dir;
+
+    if (lastTop - scrollTop > 0) {
+      dir = 'up';
+    } else {
+      dir = 'down';
+    }
+
+    lastTop = scrollTop;
+    if (scrollTop <= 0) {
+      if (lastIndex >= 0 && lastIndex < hList.length) {
+        lList[lastIndex].classList.remove(activeClass);
+      }
+      return;
+    }
+
+    let current = 0, hasFind = false;
+    for (let i = 0; i < hList.length; i++) {
+      if (hList[i].offsetTop > scrollTop) {
+        current = i;
+        hasFind = true;
+        break;
+      }
+    }
+    if (!hasFind && scrollTop > lList[lList.length - 1].offsetTop) {
+      current = hList.length - 1;
+    } else {
+      current--;
+    }
+    if (dir === 'down') {
+      if (current > lastIndex) {
+        addActiveClass(current);
+        removeActiveClass(lastIndex)
+        lastIndex = current;
+        removeParentActiveClass();
+        lList[current] && addActiveLiElemment(lList[current].parentElement, tocContent);
+      }
+    } else {
+      if (current < lastIndex) {
+        addActiveClass(current);
+        removeActiveClass(lastIndex);
+        lastIndex = current;
+        removeParentActiveClass();
+        lList[current] && addActiveLiElemment(lList[current].parentElement, tocContent);
+      }
+    }
+  });
+
+
+  window.addEventListener('load', function () {
+    showToc();
+    document.querySelector('#sidebar').style = 'display: block;';
+    tocWrapper.classList.add('toc-active');
+    setTimeout(function () {
+      if ("createEvent" in document) {
+        let evt = document.createEvent("HTMLEvents");
+        evt.initEvent("scroll", false, true);
+        document.dispatchEvent(evt);
+      }
+      else {
+        document.fireEvent("scroll");
+      }
+    }, 500)
+  })
+
+</script>
+            </div>
           
         
       </div>
@@ -308,7 +502,7 @@
             <header class="post-header">
   <h1 class="post-title">
     <a class="post-title-link" href="https://52wow.github.io/ZtjWyXcUv/">
-      auth char world 数据库各表功能解释
+      auth characters world 数据库各表功能解释
     </a>
   </h1>
   <div class="post-meta">
@@ -338,7 +532,7 @@
     
     
     
-    <span id="/ZtjWyXcUv/" data-flag-title="auth char world 数据库各表功能解释" class="meta-item pc-show leancloud_visitors">
+    <span id="/ZtjWyXcUv/" data-flag-title="auth characters world 数据库各表功能解释" class="meta-item pc-show leancloud_visitors">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-eye"></i>
       <span><span class="language" data-lan="view">浏览量</span>：<span class="leancloud-visitors-count"></span></span>
@@ -347,7 +541,7 @@
   </div>
 </header>
             <div class="post-body next-md-body" id="post_body">
-              <p>##characters中文表</p>
+              <h2 id="characters中文表">characters中文表</h2>
 <p>account_data（账号数据）</p>
 <p>addons（插件）</p>
 <p>anti_cheaters（反_骗子）</p>
@@ -414,7 +608,7 @@
 <p>petition_sign（签署申请书）</p>
 <p>savedvariables（保存变量）</p>
 <p>=============================================================================================================================</p>
-<p>information_schema中文表</p>
+<h2 id="information_schema中文表">information_schema中文表</h2>
 <p>CHARACTERSETS（字符集）</p>
 <p>COLLATIONCHARACTERSETAPPLICABILITY（整理字符集适用性）</p>
 <p>COLLATIONS（排序规则）</p>
@@ -433,7 +627,7 @@
 <p>USERPRIVILEGES（用户权限）</p>
 <p>VIEWS（点击）感觉这个不是很重要</p>
 <p>=============================================================================================================================</p>
-<p>##MYsql中文表</p>
+<h2 id="mysql中文表">MYsql中文表</h2>
 <p>columnspriv（单独列）</p>
 <p>db（日志）</p>
 <p>func（函数）</p>
@@ -452,7 +646,7 @@
 <p>time_zone_transition_type（时区的过渡类型）</p>
 <p>user（用户）</p>
 <p>=============================================================================================================================</p>
-<p>##realmd中文表</p>
+<h2 id="realmd中文表">realmd中文表</h2>
 <p>account（账号）</p>
 <p>account_access（账号访问）GM账号创建的地方</p>
 <p>account_banned（账号禁止）封号</p>
@@ -463,7 +657,7 @@
 <p>realmlist（IP-外网-版本）想局域网的在这里改IP</p>
 <p>uptime（运行时间）</p>
 <p>=============================================================================================================================</p>
-<p>##world（游戏数据库）中文表</p>
+<h2 id="world游戏数据库中文表">world（游戏数据库）中文表</h2>
 <p>accessrequirement（准入要求）</p>
 <p>achievement_criteria_data（成就标准数据）</p>
 <p>achievementreward（成就奖励）</p>
@@ -620,7 +814,7 @@
     </li>
     <li class="post-copyright-link">
       <strong class="language" data-lan="link">本文链接：</strong>
-      <a href="https://52wow.github.io/ZtjWyXcUv/" title="auth char world 数据库各表功能解释">https://52wow.github.io/ZtjWyXcUv/</a>
+      <a href="https://52wow.github.io/ZtjWyXcUv/" title="auth characters world 数据库各表功能解释">https://52wow.github.io/ZtjWyXcUv/</a>
     </li>
     <li class="post-copyright-license">
       <strong class="language" data-lan="copyright">版权声明： </strong>
@@ -14562,7 +14756,7 @@ PS.代码只能刷头衔，头衔代表的成就是不加的。&lt;/p&gt;
       
       <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://52wow.github.io/ZtjWyXcUv/"" data-c="
-          &lt;p&gt;##characters中文表&lt;/p&gt;
+          &lt;h2 id=&#34;characters中文表&#34;&gt;characters中文表&lt;/h2&gt;
 &lt;p&gt;account_data（账号数据）&lt;/p&gt;
 &lt;p&gt;addons（插件）&lt;/p&gt;
 &lt;p&gt;anti_cheaters（反_骗子）&lt;/p&gt;
@@ -14629,7 +14823,7 @@ PS.代码只能刷头衔，头衔代表的成就是不加的。&lt;/p&gt;
 &lt;p&gt;petition_sign（签署申请书）&lt;/p&gt;
 &lt;p&gt;savedvariables（保存变量）&lt;/p&gt;
 &lt;p&gt;=============================================================================================================================&lt;/p&gt;
-&lt;p&gt;information_schema中文表&lt;/p&gt;
+&lt;h2 id=&#34;information_schema中文表&#34;&gt;information_schema中文表&lt;/h2&gt;
 &lt;p&gt;CHARACTERSETS（字符集）&lt;/p&gt;
 &lt;p&gt;COLLATIONCHARACTERSETAPPLICABILITY（整理字符集适用性）&lt;/p&gt;
 &lt;p&gt;COLLATIONS（排序规则）&lt;/p&gt;
@@ -14648,7 +14842,7 @@ PS.代码只能刷头衔，头衔代表的成就是不加的。&lt;/p&gt;
 &lt;p&gt;USERPRIVILEGES（用户权限）&lt;/p&gt;
 &lt;p&gt;VIEWS（点击）感觉这个不是很重要&lt;/p&gt;
 &lt;p&gt;=============================================================================================================================&lt;/p&gt;
-&lt;p&gt;##MYsql中文表&lt;/p&gt;
+&lt;h2 id=&#34;mysql中文表&#34;&gt;MYsql中文表&lt;/h2&gt;
 &lt;p&gt;columnspriv（单独列）&lt;/p&gt;
 &lt;p&gt;db（日志）&lt;/p&gt;
 &lt;p&gt;func（函数）&lt;/p&gt;
@@ -14667,7 +14861,7 @@ PS.代码只能刷头衔，头衔代表的成就是不加的。&lt;/p&gt;
 &lt;p&gt;time_zone_transition_type（时区的过渡类型）&lt;/p&gt;
 &lt;p&gt;user（用户）&lt;/p&gt;
 &lt;p&gt;=============================================================================================================================&lt;/p&gt;
-&lt;p&gt;##realmd中文表&lt;/p&gt;
+&lt;h2 id=&#34;realmd中文表&#34;&gt;realmd中文表&lt;/h2&gt;
 &lt;p&gt;account（账号）&lt;/p&gt;
 &lt;p&gt;account_access（账号访问）GM账号创建的地方&lt;/p&gt;
 &lt;p&gt;account_banned（账号禁止）封号&lt;/p&gt;
@@ -14678,7 +14872,7 @@ PS.代码只能刷头衔，头衔代表的成就是不加的。&lt;/p&gt;
 &lt;p&gt;realmlist（IP-外网-版本）想局域网的在这里改IP&lt;/p&gt;
 &lt;p&gt;uptime（运行时间）&lt;/p&gt;
 &lt;p&gt;=============================================================================================================================&lt;/p&gt;
-&lt;p&gt;##world（游戏数据库）中文表&lt;/p&gt;
+&lt;h2 id=&#34;world游戏数据库中文表&#34;&gt;world（游戏数据库）中文表&lt;/h2&gt;
 &lt;p&gt;accessrequirement（准入要求）&lt;/p&gt;
 &lt;p&gt;achievement_criteria_data（成就标准数据）&lt;/p&gt;
 &lt;p&gt;achievementreward（成就奖励）&lt;/p&gt;
@@ -14823,7 +15017,7 @@ PS.代码只能刷头衔，头衔代表的成就是不加的。&lt;/p&gt;
 &lt;p&gt;version（版本）&lt;/p&gt;
 &lt;p&gt;waypointdata（航点数据）&lt;/p&gt;
 &lt;p&gt;waypoint_scripts（航点脚本）&lt;/p&gt;
-">auth char world 数据库各表功能解释</a>
+">auth characters world 数据库各表功能解释</a>
       </div>
       
       <div class="item">
