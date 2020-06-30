@@ -9,7 +9,7 @@
 <meta name="description" content="">
 <meta name="theme-color" content="#495057">
 <title>清理数据sql命令 | Whitehat</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1593253629054">
+<link rel="shortcut icon" href="/favicon.ico?v=1593520014657">
 <link rel="stylesheet" href="/media/css/gemini.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -189,7 +189,7 @@
     <div class="sidebar-item-box">
       <a href="/archives/">
         
-        <span class="site-item-stat-count">14</span>
+        <span class="site-item-stat-count">15</span>
         <span class="site-item-stat-name language" data-lan="article">文章</span>
       </a>
     </div>
@@ -1431,6 +1431,51 @@
 &lt;p&gt;.modify swim 10 将目标游泳速度设定为初始速度的#倍（#=0.1-10） .modify aspeed 10 改变飞行速度 1-10&lt;/p&gt;
 &lt;p&gt;&lt;/p&gt;
 ">GM常用命令</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://52wow.github.io/uNLx9_mJC/"" data-c="
+          &lt;p&gt;一般模型大体是m2、blp、skin这几个文件构成。如图：&lt;br&gt;
+&lt;img src=&#34;https://52wow.github.io/post-images/1593519737283.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;!-- more --&gt;
+&lt;p&gt;然而，我们找遍服务端、客户端也找不到哪里有这些文件。其实这个模型文件是放进客户端补丁文件里的。&lt;/p&gt;
+&lt;p&gt;我们用MPQ编辑器.exe打开客户端…\Data\zhCN\下面的补丁文件，就可以发现它们的踪迹。&lt;br&gt;
+.&lt;br&gt;
+不同的客户端补丁有很多，我们找到…\alternate\Creature...这个路径。&lt;br&gt;
+这个目录的下级目录就有一些模型文件。把模型文件WhimsyshireCloudMount整个文件夹拖进去）&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://52wow.github.io/post-images/1593519732811.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;2&#34;&gt;&lt;img src=&#34;https://52wow.github.io/post-images/1593519766811.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;复制好后关闭。模型文件就导入了补丁里。&lt;br&gt;
+模型导入后，就需要调用。用DBC编辑器.exe打开数个关联文件，开始制作这个坐骑。&lt;/p&gt;
+&lt;p&gt;1.先打开CreatureModelData.dbc，建一个不重复的ID，把模型路径复制到第3列，&lt;br&gt;
+注意后缀名是.mex，不是m2。其余各项数值照填&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;3&#34;&gt;&lt;img src=&#34;https://52wow.github.io/post-images/1593519803309.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;4&#34;&gt;&lt;img src=&#34;https://52wow.github.io/post-images/1593519825600.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;然后打开CreatureDisplayInfo.dbc，建立各个贴图ID&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;5&#34;&gt;&lt;img src=&#34;https://52wow.github.io/post-images/1593519856337.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;3.再打开SpellVisualKit.dbc，建立一个动作ID，只有第3列填97（坐下），其余列不用管。如果不想改骑马动作，可以不用做这个表&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;6&#34;&gt;&lt;img src=&#34;https://52wow.github.io/post-images/1593519872908.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;再打开SpellVisual.dbc ，新建ID，注意第5列填SpellVisualKit.dbc表新建那个ID 30000。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://52wow.github.io/post-images/1593519896087.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+打开Spell.dbc 制作一个新的召唤法术。这个表非常复杂，一共234列，每列的作用可以&lt;br&gt;
+找个Spell.dbc详解看看。截图也不太现实，这里我就放个附件下载供大家参考。&lt;br&gt;
+（要注意的是132列填上SpellVisual.dbc新建的那个ID）&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;7&#34;&gt;&lt;img src=&#34;https://52wow.github.io/post-images/1593519919311.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;最后打开SpellIcon.dbc建立图标ID，照着填上即可&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;8&#34;&gt;&lt;img src=&#34;https://52wow.github.io/post-images/1593519934426.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;把修改保存好的文件拖进客户端patch-zhCN-z.MPQ补丁就行。&lt;/p&gt;
+&lt;p&gt;打开N8，在数据库中creature_template表导入模型数据，&lt;br&gt;
+在creature_model_info表中导入贴图数据。&lt;/p&gt;
+&lt;p&gt;这个也比较复杂，还是下载附件，把文件&lt;br&gt;
+creature_template.MYD、&lt;br&gt;
+creature_template.MYI、&lt;br&gt;
+creature_model_info.MYD&lt;br&gt;
+creature_model_info.MYI&lt;br&gt;
+复制到服务端\server\data\world\下面替换即可。有兴趣研究可以用N8打开自行研究修改。&lt;/p&gt;
+&lt;p&gt;.&lt;br&gt;
+重启服务器，进入游戏。先用GM命令.learn 法术id 就可以召唤这个坐骑了。&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;9&#34;&gt;&lt;img src=&#34;https://52wow.github.io/post-images/1593519958116.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+">坐骑模型的使用方法</a>
       </div>
       
       <div class="item">
@@ -14601,7 +14646,7 @@ PS.代码只能刷头衔，头衔代表的成就是不加的。&lt;/p&gt;
 &lt;p&gt;time_zone_transition_type（时区的过渡类型）&lt;/p&gt;
 &lt;p&gt;user（用户）&lt;/p&gt;
 &lt;p&gt;=============================================================================================================================&lt;/p&gt;
-&lt;h2 id=&#34;realmd中文表&#34;&gt;realmd中文表&lt;/h2&gt;
+&lt;h2 id=&#34;auth中文表&#34;&gt;auth中文表&lt;/h2&gt;
 &lt;p&gt;account（账号）&lt;/p&gt;
 &lt;p&gt;account_access（账号访问）GM账号创建的地方&lt;/p&gt;
 &lt;p&gt;account_banned（账号禁止）封号&lt;/p&gt;

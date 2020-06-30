@@ -8,7 +8,7 @@
 <meta name="keywords" content="Whitehat个人博客">
 <meta name="description" content="">
 <meta name="theme-color" content="#495057">
-<title>物品绿色字解释教程 | Whitehat</title>
+<title>坐骑模型的使用方法 | Whitehat</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1593520014657">
 <link rel="stylesheet" href="/media/css/gemini.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
@@ -38,7 +38,7 @@
 
 
 
-  <meta name="description" content="物品绿色字解释教程" />
+  <meta name="description" content="坐骑模型的使用方法" />
   <meta name="keywords" content="" />
 </head>
 
@@ -307,8 +307,8 @@
           <div class="section bg-color post post-page">
             <header class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://52wow.github.io/ua67La5gr/">
-      物品绿色字解释教程
+    <a class="post-title-link" href="https://52wow.github.io/uNLx9_mJC/">
+      坐骑模型的使用方法
     </a>
   </h1>
   <div class="post-meta">
@@ -316,23 +316,23 @@
     <span class="meta-item pc-show">
       <i class="fa fa-calendar-o"></i>
       <span class="language" data-lan="publish">发布于</span>
-      <span>2020-06-26</span>
+      <span>2020-06-30</span>
       <span class="post-meta-divider pc-show">|</span>
     </span>
     
     <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>1<span class="language" data-lan="minute">分钟</span></span>
+      <span>2<span class="language" data-lan="minute">分钟</span></span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>38<span class="pc-show language" data-lan="words">字数</span></span>
+      <span>541<span class="pc-show language" data-lan="words">字数</span></span>
     </span>
     
     
     
-    <span id="/ua67La5gr/" data-flag-title="物品绿色字解释教程" class="meta-item pc-show leancloud_visitors">
+    <span id="/uNLx9_mJC/" data-flag-title="坐骑模型的使用方法" class="meta-item pc-show leancloud_visitors">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-eye"></i>
       <span><span class="language" data-lan="view">浏览量</span>：<span class="leancloud-visitors-count"></span></span>
@@ -341,10 +341,46 @@
   </div>
 </header>
             <div class="post-body next-md-body" id="post_body">
-              <p>有的时候新制作的物品 要解释什么功能 不需要必须连接spell.dbc</p>
-<p>|cFF33FF00使用;免费修理身上装备！|r<br>
-<img src="https://52wow.github.io/post-images/1593186025033.png" alt="" loading="lazy"></p>
+              <p>一般模型大体是m2、blp、skin这几个文件构成。如图：<br>
+<img src="https://52wow.github.io/post-images/1593519737283.jpg" alt="" loading="lazy"></p>
 <!-- more -->
+<p>然而，我们找遍服务端、客户端也找不到哪里有这些文件。其实这个模型文件是放进客户端补丁文件里的。</p>
+<p>我们用MPQ编辑器.exe打开客户端…\Data\zhCN\下面的补丁文件，就可以发现它们的踪迹。<br>
+.<br>
+不同的客户端补丁有很多，我们找到…\alternate\Creature...这个路径。<br>
+这个目录的下级目录就有一些模型文件。把模型文件WhimsyshireCloudMount整个文件夹拖进去）</p>
+<figure data-type="image" tabindex="1"><img src="https://52wow.github.io/post-images/1593519732811.jpg" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="2"><img src="https://52wow.github.io/post-images/1593519766811.jpg" alt="" loading="lazy"></figure>
+<p>复制好后关闭。模型文件就导入了补丁里。<br>
+模型导入后，就需要调用。用DBC编辑器.exe打开数个关联文件，开始制作这个坐骑。</p>
+<p>1.先打开CreatureModelData.dbc，建一个不重复的ID，把模型路径复制到第3列，<br>
+注意后缀名是.mex，不是m2。其余各项数值照填</p>
+<figure data-type="image" tabindex="3"><img src="https://52wow.github.io/post-images/1593519803309.jpg" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="4"><img src="https://52wow.github.io/post-images/1593519825600.jpg" alt="" loading="lazy"></figure>
+<p>然后打开CreatureDisplayInfo.dbc，建立各个贴图ID</p>
+<figure data-type="image" tabindex="5"><img src="https://52wow.github.io/post-images/1593519856337.jpg" alt="" loading="lazy"></figure>
+<p>3.再打开SpellVisualKit.dbc，建立一个动作ID，只有第3列填97（坐下），其余列不用管。如果不想改骑马动作，可以不用做这个表</p>
+<figure data-type="image" tabindex="6"><img src="https://52wow.github.io/post-images/1593519872908.jpg" alt="" loading="lazy"></figure>
+<p>再打开SpellVisual.dbc ，新建ID，注意第5列填SpellVisualKit.dbc表新建那个ID 30000。</p>
+<p><img src="https://52wow.github.io/post-images/1593519896087.jpg" alt="" loading="lazy"><br>
+打开Spell.dbc 制作一个新的召唤法术。这个表非常复杂，一共234列，每列的作用可以<br>
+找个Spell.dbc详解看看。截图也不太现实，这里我就放个附件下载供大家参考。<br>
+（要注意的是132列填上SpellVisual.dbc新建的那个ID）</p>
+<figure data-type="image" tabindex="7"><img src="https://52wow.github.io/post-images/1593519919311.jpg" alt="" loading="lazy"></figure>
+<p>最后打开SpellIcon.dbc建立图标ID，照着填上即可</p>
+<figure data-type="image" tabindex="8"><img src="https://52wow.github.io/post-images/1593519934426.jpg" alt="" loading="lazy"></figure>
+<p>把修改保存好的文件拖进客户端patch-zhCN-z.MPQ补丁就行。</p>
+<p>打开N8，在数据库中creature_template表导入模型数据，<br>
+在creature_model_info表中导入贴图数据。</p>
+<p>这个也比较复杂，还是下载附件，把文件<br>
+creature_template.MYD、<br>
+creature_template.MYI、<br>
+creature_model_info.MYD<br>
+creature_model_info.MYI<br>
+复制到服务端\server\data\world\下面替换即可。有兴趣研究可以用N8打开自行研究修改。</p>
+<p>.<br>
+重启服务器，进入游戏。先用GM命令.learn 法术id 就可以召唤这个坐骑了。</p>
+<figure data-type="image" tabindex="9"><img src="https://52wow.github.io/post-images/1593519958116.jpg" alt="" loading="lazy"></figure>
 
             </div>
             
@@ -357,7 +393,7 @@
     </li>
     <li class="post-copyright-link">
       <strong class="language" data-lan="link">本文链接：</strong>
-      <a href="https://52wow.github.io/ua67La5gr/" title="物品绿色字解释教程">https://52wow.github.io/ua67La5gr/</a>
+      <a href="https://52wow.github.io/uNLx9_mJC/" title="坐骑模型的使用方法">https://52wow.github.io/uNLx9_mJC/</a>
     </li>
     <li class="post-copyright-license">
       <strong class="language" data-lan="copyright">版权声明： </strong>
@@ -371,14 +407,14 @@
     <div class="nav-prev">
       
         <i class="fa fa-chevron-left"></i>
-        <a class="nav-pc-next" title="DBC表的中文详解（ctrl+f 筛选）" href="https://52wow.github.io/d9ksXDLei/">DBC表的中文详解（ctrl+f 筛选）</a class="nav-pc-next">
-        <a class="nav-mobile-prev" title="DBC表的中文详解（ctrl+f 筛选）" href="https://52wow.github.io/d9ksXDLei/">上一篇</a>
+        <a class="nav-pc-next" title="GM常用命令" href="https://52wow.github.io/IaV-R3Vv8/">GM常用命令</a class="nav-pc-next">
+        <a class="nav-mobile-prev" title="GM常用命令" href="https://52wow.github.io/IaV-R3Vv8/">上一篇</a>
       
     </div>
     <div class="nav-next">
       
-        <a class="nav-pc-next" title="职业任务技能与材料" href="https://52wow.github.io/arChdbiRN/">职业任务技能与材料</a>
-        <a class="nav-mobile-next" title="职业任务技能与材料" href="https://52wow.github.io/arChdbiRN/">下一篇</a>
+        <a class="nav-pc-next" title="Windows下魔兽世界服务器通用编译环境搭建教程" href="https://52wow.github.io/sesX1JqAB/">Windows下魔兽世界服务器通用编译环境搭建教程</a>
+        <a class="nav-mobile-next" title="Windows下魔兽世界服务器通用编译环境搭建教程" href="https://52wow.github.io/sesX1JqAB/">下一篇</a>
         <i class="fa fa-chevron-right"></i>
       
     </div>
