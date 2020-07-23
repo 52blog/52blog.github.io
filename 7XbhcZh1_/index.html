@@ -8,7 +8,7 @@
 <meta name="keywords" content="Whitehat个人博客">
 <meta name="description" content="">
 <meta name="theme-color" content="#495057">
-<title>职业任务技能与材料 | Whitehat</title>
+<title>可以在聊天框查看详情的法术链接（源码） | Whitehat</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1595468696448">
 <link rel="stylesheet" href="/media/css/gemini.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
@@ -38,7 +38,7 @@
 
 
 
-  <meta name="description" content="职业任务技能与材料" />
+  <meta name="description" content="可以在聊天框查看详情的法术链接（源码）" />
   <meta name="keywords" content="" />
 </head>
 
@@ -313,8 +313,8 @@
           <div class="section bg-color post post-page">
             <section class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://52wow.github.io/arChdbiRN/">
-      职业任务技能与材料
+    <a class="post-title-link" href="https://52wow.github.io/7XbhcZh1_/">
+      可以在聊天框查看详情的法术链接（源码）
     </a>
   </h1>
   <div class="post-meta">
@@ -322,23 +322,23 @@
     <span class="meta-item pc-show">
       <i class="fa fa-calendar-o"></i>
       <span class="language" data-lan="publish">发布于</span>
-      <span class="publish-time" data-t="2020-06-26 23:37:02">2020-06-26</span>
+      <span class="publish-time" data-t="2020-07-23 09:42:43">2020-07-23</span>
       <span class="post-meta-divider pc-show">|</span>
     </span>
     
     <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>14<span class="language" data-lan="minute">分钟</span></span>
+      <span>1<span class="language" data-lan="minute">分钟</span></span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>2831<span class="pc-show language" data-lan="words">字数</span></span>
+      <span>89<span class="pc-show language" data-lan="words">字数</span></span>
     </span>
     
     
     
-    <span id="/arChdbiRN/" data-flag-title="职业任务技能与材料" class="meta-item pc-show leancloud_visitors">
+    <span id="/7XbhcZh1_/" data-flag-title="可以在聊天框查看详情的法术链接（源码）" class="meta-item pc-show leancloud_visitors">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-eye"></i>
       <span><span class="language" data-lan="view">浏览量</span>：<span class="leancloud-visitors-count"></span></span>
@@ -347,257 +347,24 @@
   </div>
 </section>
             <div class="post-body next-md-body" id="post_body">
-              <p>战士：<br>
-.learn 71	防御姿态<br>
-.learn 2458	狂暴姿态<br>
-.learn 2457	战斗姿态</p>
-<p>猎人：<br>
-.learn 982	复活你的宠物<br>
-.learn 1528	解救主人<br>
-.learn 2641	解散你的宠物<br>
-.learn 6991	喂养宠物<br>
-.learn 5149	训练野兽<br>
-.learn 1515	驯服野兽<br>
-.learn 883	召唤你的宠物</p>
+              <p>//法术链接<br>
+std::string GetSpellink(uint32 entry)<br>
+{<br>
+SpellInfo const* spellInfo = sSpellMgr-&gt;GetSpellInfo(entry);<br>
+if (!spellInfo)<br>
+return &quot;<UnKnow>&quot;;<br>
+std::string name = spellInfo-&gt;SpellName[4];</p>
+<pre><code>std::ostringstream oss;
+
+oss &lt;&lt; &quot;|cff71d5ff|Hspell:&quot; &lt;&lt; entry &lt;&lt; &quot;|h[&quot; &lt;&lt; name &lt;&lt; &quot;]|h|r&quot;;
+return oss.str();
+</code></pre>
+<p>}</p>
 <!-- more -->
-<p>萨满图腾：<br>
-.add 5175 大地图腾<br>
-.add 5176 火焰图腾<br>
-.add 5177 水之图腾<br>
-.add 5178 空气图腾</p>
-<p>德鲁伊形态：<br>
-.learn 9634 巨熊 BL<br>
-.learn 5487 熊 LM<br>
-.learn 768  猎豹<br>
-.learn 1066 海狮<br>
-.learn 783  旅行形态</p>
-<p>盗贼：<br>
-.add 5060 盗贼工具</p>
-<p>术士<br>
-.add 6265 灵魂碎片</p>
-<p>圣骑士<br>
-.add 21177 王者印记</p>
-<p>##商业技能</p>
-<p>全商业技能学习（宏设置）<br>
-.learn all crafts 					<br>
-.setskill 186 450 450	采矿		.setskill 333 450 450	附魔	<br>
-.setskill 171 450 450	炼金		.setskill 755 450 450	珠宝	<br>
-.setskill 164 450 450	锻造		.setskill 202 450 450	工程	<br>
-.setskill 197 450 450	裁缝		.setskill 129 450 450	急救	<br>
-.setskill 185 450 450	烹饪		.setskill 182 450 450	草药	<br>
-.setskill 160 450 450	制皮		.setskill 393 450 450	剥皮	<br>
-.setskill 356 450 450	钓鱼		.setskill 773 450 450	铭文</p>
-<p>＝＝采矿＝＝	＝＝裁缝＝＝	＝＝钓鱼＝＝	＝＝工程学＝＝	＝＝剥皮＝＝	<br>
-.learn 2575	.learn 3908	.learn 7620	.learn 4036	.learn 8613	<br>
-.learn 2576	.learn 3909	.learn 7731	.learn 4037	.learn 8617	<br>
-.learn 3564	.learn 3910	.learn 7732	.learn 4038	.learn 8618	<br>
-.learn 10248	.learn 12180	.learn 18248	.learn 12656	.learn 10768	<br>
-.learn 29354	.learn 26790	.learn 33095	.learn 30350	.learn 32678	<br>
-.setskill 186 450 450	.setskill 197 450 450	.setskill 356 450 450	.setskill 202 450 450	.setskill 393 450 450</p>
-<p>＝＝炼金＝＝	＝＝烹饪＝＝	＝＝附魔＝＝	＝＝急救＝＝		<br>
-.learn 2259	.learn 2550	.learn 7411	.learn 3273		<br>
-.learn 3101	.learn 3102	.learn 7412	.learn 3274		<br>
-.learn 3464	.learn 3413	.learn 7413	.learn 7924		<br>
-.learn 11611	.learn 18260	.learn 13920	.learn 10846		<br>
-.learn 28596	.learn 33359	.learn 28029	.learn 27028		<br>
-.setskill 171 450 450	.setskill 185 450 450	.setskill 333 450 450	.setskill 129 450 450</p>
-<p>＝＝锻造＝＝	＝＝制皮＝＝	＝＝珠宝加工＝＝	＝＝*药＝＝		<br>
-.learn 2018	.learn 2108	.learn 25229	.learn 2366		<br>
-.learn 3100	.learn 3104	.learn 25230	.learn 2368		<br>
-.learn 3538	.learn 3811	.learn 28894	.learn 3570		<br>
-.learn 9785	.learn 10662	.learn 28895	.learn 11993		<br>
-.learn 29844	.learn 32549	.learn 28897	.learn 28695		<br>
-.setskill 164 450 450	.setskill 165 450 450	.setskill 755 450 450	.setskill 182 450 450</p>
-<p>##声望</p>
-<p>藏宝海湾	.modifyrep21N	污染者	.modifyrep510N	埃索达	.modifyrep930N	复仇之手	.modifyrep1067N	<br>
-　　斯通纳德兽人	.modifyrep46N	银色黎明	.modifyrep529N	奥尔多	.modifyrep932N	探险者协会	.modifyrep1068N	<br>
-　　铁炉堡	.modifyrep47N	暗矛巨魔	.modifyrep530N	星界财团	.modifyrep933N	卡鲁耶克	.modifyrep1073N	<br>
-　　诺莫瑞根流浪者	.modifyrep54N	leatherworking?	.modifyrep549N	占星者	.modifyrep934N	破碎残阳	.modifyrep1077N	<br>
-　　瑟银兄弟会	.modifyrep59N	engineering-goblin?	.modifyrep550N	沙塔尔	.modifyrep935N	战歌进攻部队	.modifyrep1085N	<br>
-　　部落	.modifyrep67N	engineering-gnome?	.modifyrep551N	沙塔斯城	.modifyrep936N	祈伦托	.modifyrep1090N	<br>
-　　幽暗城	.modifyrep68N	blacksmithing-hammersmithing?	.modifyrep569N	玛格汉	.modifyrep941N	龙眠协调者	.modifyrep1091N	<br>
-　　达纳苏斯	.modifyrep69N	blacksmithing-axesmithing?	.modifyrep570N	塞纳里奥远征军	.modifyrep942N	巫妖王之怒	.modifyrep1097N	<br>
-　　辛迪加	.modifyrep70N	blacksmithing-swordsmithing?	.modifyrep571N	荣耀堡	.modifyrep946N	黯刃骑士团	.modifyrep1098N	<br>
-　　暴风城	.modifyrep72N	凯尔达隆	.modifyrep574N	萨尔玛	.modifyrep947N	狂心部族	.modifyrep1104N	<br>
-　　奥格瑞玛	.modifyrep76N	木喉要塞	.modifyrep576N	紫罗兰之眼	.modifyrep967N	神谕者	.modifyrep1105N	<br>
-　　雷霆崖	.modifyrep81N	永望镇	.modifyrep577N	孢子村	.modifyrep970N	银白十字军	.modifyrep1106N	<br>
-　　怪物-无组织	.modifyrep83N	冬刃豹训练师	.modifyrep589N	库雷尼	.modifyrep978N	索拉查盆地	.modifyrep1117N	<br>
-　　怪物-有组织	.modifyrep86N	塞纳里奥议会	.modifyrep609N	外域	.modifyrep980N	艾泽拉斯	.modifyrep1118N	<br>
-　　血航海盗	.modifyrep87N	霜狼氏族	.modifyrep729N	时光守护者	.modifyrep989N	霍迪尔之子	.modifyrep1119N	<br>
-　　吉尔吉斯半人马	.modifyrep92N	雷矛卫队	.modifyrep730N	流沙之鳞	.modifyrep990N	霜诞矮人	.modifyrep1126N	<br>
-　　玛格拉斯半人马	.modifyrep93N	海达希亚水元素	.modifyrep749N	friendly	.modifyrep1005N	公会声望	.modifyrep1168N	<br>
-　　热沙港	.modifyrep169N	辛德拉	.modifyrep809N	贫民窟	.modifyrep1011N	大地之环	.modifyrep1135N	<br>
-　　赞达拉部族	.modifyrep270N	战歌氏族	.modifyrep889N	灰舌死誓者	.modifyrep1012N	海加尔复仇者	.modifyrep1204N	<br>
-　　黑水海盗	.modifyrep289N	银翼要塞	.modifyrep890N	灵翼之龙	.modifyrep1015N	瑟拉贊恩	.modifyrep1171N	<br>
-　　拉文霍德	.modifyrep349N	联盟部队	.modifyrep891N	沙塔尔天空卫队	.modifyrep1031N	龍喉氏族	.modifyrep1172N	<br>
-　　加基森	.modifyrep369N	部落军队	.modifyrep892N	联盟先锋	.modifyrep1037N	蘭姆卡韓	.modifyrep1173N	<br>
-　　联盟	.modifyrep469N	暗月马戏团	.modifyrep909N	奥格瑞拉	.modifyrep1038N	蠻錘氏族	.modifyrep1174N	<br>
-　　荆齿城	.modifyrep470N	诺兹多姆子	.modifyrep910N	骁勇远征军	.modifyrep1050N	巴拉丁鐵衛	.modifyrep1177N	<br>
-　　蛮锤部落	.modifyrep471N	银月城	.modifyrep911N	部落远征军	.modifyrep1052N	地獄吼先鋒	.modifyrep1178N	<br>
-　　阿拉索联军	.modifyrep509N	塔奎林	.modifyrep922N	坦卡族	.modifyrep1064N	灰烬审判军	.modifyrep1156N	<br>
-　　<br>
-　　##头衔<br>
-PS.代码只能刷头衔，头衔代表的成就是不加的。</p>
-<p>.titles add 85 至高者        首位80 级人物</p>
-<p>==================================================</p>
-<p>1.种族	5.世界事件</p>
-<p>.titles add 110 奎尔萨拉斯的 首位80 血精灵	.titles add 74 长老</p>
-<p>.titles add 111 阿古斯的     首位80 德莱尼	.titles add 75 火焰看守者</p>
-<p>.titles add 112 卡兹莫丹的   首位80 矮人	.titles add 76 火焰守护者</p>
-<p>.titles add 113 诺姆瑞跟的   首位80 侏儒	.titles add 124 万鬼</p>
-<p>.titles add 114 狮心         首位80 人类	.titles add 125 博学大师</p>
-<p>.titles add 115 伊露恩勇士   首位80 夜精灵	.titles add 133 酿酒大师</p>
-<p>.titles add 116 奥格玛英雄   首位80 兽人	.titles add 134 狂欢客</p>
-<p>.titles add 117 旷野奔驰者   首位80 牛头人	.titles add 135 爱情傻瓜</p>
-<p>.titles add 118 暗矛的       首位80 食人妖	.titles add 137 女监护</p>
-<p>.titles add 119 被遗忘者     首位80 亡灵	.titles add 138 男监护</p>
-<p>==================================================	.titles add 155 贵族</p>
-<p>2.职业	=================================</p>
-<p>.titles add 86 无尽风暴的    首位80 洒满	6.专业技能</p>
-<p>.titles add 87 翡翠梦境的    首位80 德鲁伊	.titles add 83 熟练钓手</p>
-<p>.titles add 89 先知          首位80 牧师	.titles add 84 大厨</p>
-<p>.titles add 90 煞星          首位80 术士	.titles add 96 宗师级炼金师</p>
-<p>.titles add 91 巡者          首位80 猎人	.titles add 97 宗师级铁匠</p>
-<p>.titles add 92 黯刃          首位80 死亡骑士	.titles add 98 料理铁人</p>
-<p>.titles add 93 大法师        首位80 法师	.titles add 99 宗师级附魔师</p>
-<p>.titles add 94 战争使者      首位80 战士	.titles add 100 宗师级工程师</p>
-<p>.titles add 95 刺客          首位80 盗贼	.titles add 101 医生</p>
-<p>==================================================	.titles add 102 宗师级钓手</p>
-<p>3.声望	.titles add 103 宗师级草药师</p>
-<p>.titles add 146 艾克索达的	.titles add 104 宗师级雕铭师</p>
-<p>.titles add 147 达纳苏斯的	.titles add 105 宗师级珠宝设计师</p>
-<p>.titles add 148 铁炉堡的	.titles add 106 宗师级制皮师</p>
-<p>.titles add 149 暴风城的	.titles add 107 宗师级矿工</p>
-<p>.titles add 150 奥格玛的	.titles add 108 宗师级剥皮师</p>
-<p>.titles add 151 森金的	.titles add 109 宗师级裁缝</p>
-<p>.titles add 152 银月城的	=================================</p>
-<p>.titles add 153 雷霆崖的	7.其他</p>
-<p>.titles add 154 幽暗城的	.titles add 46 圣甲虫领主</p>
-<p>==================================================	.titles add 53 那鲁的勇士</p>
-<p>4.PVP	.titles add 63 破碎之日的</p>
-<p>.titles add 42 斗士	.titles add 64 阿达欧之手</p>
-<p>.titles add 43 决斗者	.titles add 77 人人崇拜的</p>
-<p>.titles add 44 竞争者	.titles add 78 探险家</p>
-<p>.titles add 45 挑战者	.titles add 79 外交官</p>
-<p>.titles add 62 残忍斗士	.titles add 120 魔法追星者</p>
-<p>.titles add 71 复仇斗士	.titles add 121 暮光镇压者</p>
-<p>.titles add 72 战斗大师	.titles add 122 纳克萨玛斯征服者</p>
-<p>.titles add 80 野蛮斗士	.titles add 123 北裂境英雄</p>
-<p>.titles add 81 搜寻者	.titles add 128 完美胜利者</p>
-<p>.titles add 82 竞技场大师	.titles add 129 冰冻荒原勇士</p>
-<p>.titles add 157 致命斗士	.titles add 130 大使</p>
-<p>.titles add 167 狂烈斗士	.titles add 131 银白勇士</p>
-<p>.titles add 163 胜利者	.titles add 132 塞纳留斯卫士</p>
-<p>.titles add 169 无情斗士	.titles add 139 黑曜杀戮者</p>
-<p>.titles add 177 愤怒斗士	.titles add 140 夜幕的</p>
-<p>联盟	.titles add 141 不朽</p>
-<p>.titles add 1 士兵	.titles add 142 不灭</p>
-<p>.titles add 2 下士	.titles add 143 炸鸡勇者</p>
-<p>.titles add 3 士官	.titles add 144 血帆上将</p>
-<p>.titles add 4 上士	.titles add 145 神经病</p>
-<p>.titles add 5 士官长	.titles add 156 十字军</p>
-<p>.titles add 6 骑士	.titles add 158 死神葬送者</p>
-<p>.titles add 7 中尉骑士	.titles add 159 星穹防卫者</p>
-<p>.titles add 8 上尉骑士	.titles add 160 奥杜亚征服者</p>
-<p>.titles add 9 一等骑士	.titles add 161 奥杜亚勇士</p>
-<p>.titles add 10 少校	.titles add 164 唤星者</p>
-<p>.titles add 11 指挥官	.titles add 165 星界巡行者</p>
-<p>.titles add 12 元帅	.titles add 166 泰坦信使</p>
-<p>.titles add 13 战场元帅	.titles add 168 旅人</p>
-<p>.titles add 14 总元帅	.titles add 170 大十字军</p>
-<p>.titles add 48 审判者	.titles add 171 银白防卫者</p>
-<p>.titles add 126 联盟的	.titles add 172 有耐心的</p>
-<p>部落	.titles add 173 黎明曙光</p>
-<p>.titles add 15 斥候	.titles add 174 坠王煞星</p>
-<p>.titles add 16 蛮兵	.titles add 175 诛王勇者</p>
-<p>.titles add 17 士官	.titles add 176 灰烬裁决者的</p>
-<p>.titles add 18 资深士官</p>
-<p>.titles add 19 一等士官</p>
-<p>.titles add 20 石卫士</p>
-<p>.titles add 21 血卫士</p>
-<p>.titles add 22 军团士兵</p>
-<p>.titles add 23 百夫长</p>
-<p>.titles add 24 勇士</p>
-<p>.titles add 25 中将</p>
-<p>.titles add 26 将军</p>
-<p>.titles add 27 督军</p>
-<p>.titles add 28 高阶督军</p>
-<p>.titles add 47 征服者</p>
-<p>.titles add 127 部落的</p>
-<p>##光辉事迹<br>
-阿达尔之手		五字角斗士		服务器第一80		服务器第一专业技能</p>
-<p>.achievement add 431		.achievement add 416		.achievement add 457		.achievement add 1414</p>
-<p>纳鲁的勇士		.achievement add 418		服务器第一80侏儒		.achievement add 1415</p>
-<p>.achievement add 432		.achievement add 419		.achievement add 1404		.achievement add 1416</p>
-<p>奥妮克希亚60级		.achievement add 420		血精灵		.achievement add 1417</p>
-<p>.achievement add 684		.achievement add 3336		.achievement add 1405		.achievement add 1418</p>
-<p>遵命，船长		.achievement add 3436		德莱尼		.achievement add 1419</p>
-<p>.achievement add 871		.achievement add 3758		.achievement add 1406		.achievement add 1420</p>
-<p>古典坐骑		.achievement add 4599		矮人		.achievement add 1421</p>
-<p>.achievement add 879				.achievement add 1407		.achievement add 1422</p>
-<p>致命垂钓 祖格		联盟军衔光辉		人类		.achievement add 1423</p>
-<p>.achievement add 560		.achievement add 433		.achievement add 1408		.achievement add 1424</p>
-<p>美酒节酒杯		.achievement add 434		暗夜精灵		.achievement add 1425</p>
-<p>.achievement add 1292		.achievement add 473		.achievement add 1409		.achievement add 1426</p>
-<p>.achievement add 1293		.achievement add 435		兽人		.achievement add 1427</p>
-<p>.achievement add 4782		.achievement add 436		.achievement add 1410</p>
-<p>竞争者的战袍		.achievement add 437		牛头人</p>
-<p>.achievement add 1636		.achievement add 438		.achievement add 1411		服务器第一击杀</p>
-<p>竞争之魂		.achievement add 472		巨魔		.achievement add 456</p>
-<p>.achievement add 1637		.achievement add 439		.achievement add 1412		.achievement add 1400</p>
-<p>发条战士		.achievement add 440		亡灵		.achievement add 1402</p>
-<p>.achievement add 1705		.achievement add 441		.achievement add 1413		.achievement add 1463</p>
-<p>打架赛车		.achievement add 471				.achievement add 3117</p>
-<p>.achievement add 1706		.achievement add 470		服务器第一职业		.achievement add 3259</p>
-<p>保卫者的战袍（黑暗之门）		.achievement add 442		盗贼		.achievement add 4078</p>
-<p>.achievement add 2079				.achievement add 458		.achievement add 4576</p>
-<p>防患未然（日常）		部落军衔光辉		战士</p>
-<p>.achievement add 2018		.achievement add 443		.achievement add 459</p>
-<p>死亡证明（日常2）		.achievement add 444		法师		魔兽世界周年</p>
-<p>.achievement add 2019		.achievement add 445		.achievement add 460		.achievement add 2398</p>
-<p>银色黎明战袍（天灾入侵）		.achievement add 446		死亡骑士		.achievement add 4400</p>
-<p>.achievement add 2116		.achievement add 447		.achievement add 461		.achievement add 5512</p>
-<p>吸血鬼猎人（吸血蝙蝠宝宝id:38658）		.achievement add 448		猎人		.achievement add 5863</p>
-<p>.achievement add 2456		.achievement add 469		.achievement add 462		.achievement add 6131</p>
-<p>第五元素（水之精粹）		.achievement add 449		术士		.achievement add 7853</p>
-<p>.achievement add 2496		.achievement add 450		.achievement add 463</p>
-<p>碧玉虎		.achievement add 451		牧师</p>
-<p>.achievement add 3636		.achievement add 452		.achievement add 464</p>
-<p>墨玉猎豹（48527）		.achievement add 453		圣骑士</p>
-<p>.achievement add 3896		.achievement add 454		.achievement add 465</p>
-<p>若莫瑞根行动（联盟）		.achievement add 468		德鲁伊</p>
-<p>.achievement add 4786		.achievement add 455		.achievement add 466</p>
-<p>卡拉赞恩的灭亡（BL）				萨满</p>
-<p>.achievement add 4790				.achievement add 467</p>
-<p>更加强力党的老友（item:54860）</p>
-<p>.achievement add 4832</p>
-<p>##武器技能<br>
-.learn 203  	徒手<br>
-.learn 1180       匕首<br>
-.learn 198  	单手锤<br>
-.learn 196  	单手斧<br>
-.learn 201  	单手剑<br>
-.learn 15590      拳套武器</p>
-<p>.learn 674  	双持武器<br>
-.learn 46917      泰坦之握<br>
-.learn 199  	双手锤<br>
-.learn 197  	双手斧<br>
-.learn 202   	双手剑<br>
-.learn 200  	长柄武器<br>
-.learn 227   	法仗<br>
-.learn 264   	弓<br>
-.learn 5011       弩<br>
-.learn 266  	枪械<br>
-.learn 2567  	投掷<br>
-.learn 5009  	魔杖<br>
-.learn 9116  	盾</p>
-<p>.learn 9077       皮甲<br>
-.learn 8737       学锁甲<br>
-.learn 750  	学板甲</p>
-<p>.learn 20597	剑类武器精通<br>
-.learn 20864	锤类武器精通<br>
-.learn 20595	枪械专精<br>
-.maxskill   	武器技能等至Max</p>
+<p>应用语句:<br>
+//聊天框显示ID为5的技能链接<br>
+ChatHandler(player-&gt;GetSession()).PSendSysMessage(&quot;技能预览：%s&quot;, GetSpellink(5).c_str());</p>
+<figure data-type="image" tabindex="1"><img src="https://52wow.github.io/post-images/1595468694772.png" alt="" loading="lazy"></figure>
 
             </div>
             
@@ -610,7 +377,7 @@ PS.代码只能刷头衔，头衔代表的成就是不加的。</p>
     </li>
     <li class="post-copyright-link">
       <strong class="language" data-lan="link">本文链接：</strong>
-      <a href="https://52wow.github.io/arChdbiRN/" title="职业任务技能与材料">https://52wow.github.io/arChdbiRN/</a>
+      <a href="https://52wow.github.io/7XbhcZh1_/" title="可以在聊天框查看详情的法术链接（源码）">https://52wow.github.io/7XbhcZh1_/</a>
     </li>
     <li class="post-copyright-license">
       <strong class="language" data-lan="copyright">版权声明： </strong>
@@ -624,14 +391,14 @@ PS.代码只能刷头衔，头衔代表的成就是不加的。</p>
     <div class="nav-prev">
       
         <i class="fa fa-chevron-left"></i>
-        <a class="nav-pc-next" title="物品绿色字解释教程" href="https://52wow.github.io/ua67La5gr/">物品绿色字解释教程</a class="nav-pc-next">
-        <a class="nav-mobile-prev" title="物品绿色字解释教程" href="https://52wow.github.io/ua67La5gr/">上一篇</a>
+        <a class="nav-pc-next" title="GM常用命令" href="https://52wow.github.io/IaV-R3Vv8/">GM常用命令</a class="nav-pc-next">
+        <a class="nav-mobile-prev" title="GM常用命令" href="https://52wow.github.io/IaV-R3Vv8/">上一篇</a>
       
     </div>
     <div class="nav-next">
       
-        <a class="nav-pc-next" title="常用测试技能 （ctrl+f 筛选）" href="https://52wow.github.io/ba3vyiltg/">常用测试技能 （ctrl+f 筛选）</a>
-        <a class="nav-mobile-next" title="常用测试技能 （ctrl+f 筛选）" href="https://52wow.github.io/ba3vyiltg/">下一篇</a>
+        <a class="nav-pc-next" title="C++编译教程（随机地下城修改单人可以进）" href="https://52wow.github.io/m5WAioLA4/">C++编译教程（随机地下城修改单人可以进）</a>
+        <a class="nav-mobile-next" title="C++编译教程（随机地下城修改单人可以进）" href="https://52wow.github.io/m5WAioLA4/">下一篇</a>
         <i class="fa fa-chevron-right"></i>
       
     </div>
