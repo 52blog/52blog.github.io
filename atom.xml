@@ -2,13 +2,47 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://52blog.github.io</id>
     <title>52blog</title>
-    <updated>2021-09-23T14:14:30.840Z</updated>
+    <updated>2021-09-23T14:39:22.064Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://52blog.github.io"/>
     <link rel="self" href="https://52blog.github.io/atom.xml"/>
     <logo>https://52blog.github.io/images/avatar.png</logo>
     <icon>https://52blog.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, 52blog</rights>
+    <entry>
+        <title type="html"><![CDATA[魔兽世界编译---老TC&Sunwell核心&AzerothCore核心]]></title>
+        <id>https://52blog.github.io/MZBHBJ1nc/</id>
+        <link href="https://52blog.github.io/MZBHBJ1nc/">
+        </link>
+        <updated>2021-09-23T14:16:58.000Z</updated>
+        <content type="html"><![CDATA[<p>http://www.azerothcore.org/       AZ端官网</p>
+<p>https://www.trinitycore.org/        TC端官网</p>
+<p>1：安装GitExtensions(一定要安装，虽然源码我也会提供，cmake需要用到)，确保Git, MySYSGit, and KDiff三个都要选择安装,在git安装过程中选择”Run Git from the Windows Command Prompt“</p>
+<p>2：安装vs2013，VS2015.</p>
+<p>3：安装mysql，要记住自己设置的root的密码，字符集选择utf8，安装中选择加入环境变量。</p>
+<p>4：boost，直接使用我上文提供的编译好的安装文件即可，安装完成后，设置环境变量BOOST_ROOT=你安装的boost的根目录</p>
+<p>我的电脑 右键 属性 高级设置  环境变量 系统变量 新建  如下 ↓<br>
+<img src="https://52blog.github.io/post-images/1632406862231.png" alt="" loading="lazy"><br>
+<img src="https://52blog.github.io/post-images/1632406894967.png" alt="" loading="lazy"><br>
+<img src="https://52blog.github.io/post-images/1632406809039.png" alt="" loading="lazy"></p>
+<p>5：cmake，一路默认安装</p>
+<p>6：openssl，其中有一步需要留意，就是会让选择把openSSL的dll拷贝到哪，要选择The OpenSSL binaries (/bin) directory</p>
+<p>7：zeroMQ，一路默认安装</p>
+<p>软件全部安装完毕 下面是编译教程</p>
+<p>获取魔兽世界模拟器源代码   github 下载源码并解压出来</p>
+<figure data-type="image" tabindex="1"><img src="https://52blog.github.io/post-images/1632407081616.png" alt="" loading="lazy"></figure>
+<p>利用此工具 cmake 代码  <img src="https://52blog.github.io/post-images/1632407109187.png" alt="" loading="lazy"></p>
+<figure data-type="image" tabindex="2"><img src="https://52blog.github.io/post-images/1632407225859.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="3"><img src="https://52blog.github.io/post-images/1632407243999.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="4"><img src="https://52blog.github.io/post-images/1632407483439.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="5"><img src="https://52blog.github.io/post-images/1632407517914.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="6"><img src="https://52blog.github.io/post-images/1632407648693.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="7"><img src="https://52blog.github.io/post-images/1632407806560.png" alt="" loading="lazy"></figure>
+<p>生成的核心文件在这里</p>
+<p>AZ\build\bin\RelWithDebInfo</p>
+<figure data-type="image" tabindex="8"><img src="https://52blog.github.io/post-images/1632407913511.png" alt="" loading="lazy"></figure>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[魔兽世界编译教程 Trinity ]]></title>
         <id>https://52blog.github.io/ovbTGIV9e/</id>

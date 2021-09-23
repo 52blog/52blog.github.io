@@ -9,7 +9,7 @@
 <meta name="description" content="">
 <meta name="theme-color" content="#495057">
 <title>魔兽世界编译教程 Trinity  | 52blog</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1632406467961">
+<link rel="shortcut icon" href="/favicon.ico?v=1632407957356">
 <link rel="stylesheet" href="/media/css/gemini.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -194,7 +194,7 @@
     <div class="sidebar-item-box">
       <a href="/archives/">
         
-        <span class="site-item-stat-count">1</span>
+        <span class="site-item-stat-count">2</span>
         <span class="site-item-stat-name language" data-lan="article">文章</span>
       </a>
     </div>
@@ -501,6 +501,10 @@ PHP 4.x+（用以构建注册和管理页面）</p>
   </div>
   <div class="nav">
     <div class="nav-prev">
+      
+        <i class="fa fa-chevron-left"></i>
+        <a class="nav-pc-next" title="魔兽世界编译---老TC&amp;Sunwell核心&amp;AzerothCore核心" href="https://52blog.github.io/MZBHBJ1nc/">魔兽世界编译---老TC&amp;Sunwell核心&amp;AzerothCore核心</a class="nav-pc-next">
+        <a class="nav-mobile-prev" title="魔兽世界编译---老TC&amp;Sunwell核心&amp;AzerothCore核心" href="https://52blog.github.io/MZBHBJ1nc/">上一篇</a>
       
     </div>
     <div class="nav-next">
@@ -1017,6 +1021,37 @@ PHP 4.x+（用以构建注册和管理页面）</p>
       <hr>
     </div>
     <div class="result" id="result">
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://52blog.github.io/MZBHBJ1nc/"" data-c="
+          &lt;p&gt;http://www.azerothcore.org/       AZ端官网&lt;/p&gt;
+&lt;p&gt;https://www.trinitycore.org/        TC端官网&lt;/p&gt;
+&lt;p&gt;1：安装GitExtensions(一定要安装，虽然源码我也会提供，cmake需要用到)，确保Git, MySYSGit, and KDiff三个都要选择安装,在git安装过程中选择”Run Git from the Windows Command Prompt“&lt;/p&gt;
+&lt;p&gt;2：安装vs2013，VS2015.&lt;/p&gt;
+&lt;p&gt;3：安装mysql，要记住自己设置的root的密码，字符集选择utf8，安装中选择加入环境变量。&lt;/p&gt;
+&lt;p&gt;4：boost，直接使用我上文提供的编译好的安装文件即可，安装完成后，设置环境变量BOOST_ROOT=你安装的boost的根目录&lt;/p&gt;
+&lt;p&gt;我的电脑 右键 属性 高级设置  环境变量 系统变量 新建  如下 ↓&lt;br&gt;
+&lt;img src=&#34;https://52blog.github.io/post-images/1632406862231.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;img src=&#34;https://52blog.github.io/post-images/1632406894967.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;img src=&#34;https://52blog.github.io/post-images/1632406809039.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;5：cmake，一路默认安装&lt;/p&gt;
+&lt;p&gt;6：openssl，其中有一步需要留意，就是会让选择把openSSL的dll拷贝到哪，要选择The OpenSSL binaries (/bin) directory&lt;/p&gt;
+&lt;p&gt;7：zeroMQ，一路默认安装&lt;/p&gt;
+&lt;p&gt;软件全部安装完毕 下面是编译教程&lt;/p&gt;
+&lt;p&gt;获取魔兽世界模拟器源代码   github 下载源码并解压出来&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://52blog.github.io/post-images/1632407081616.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;利用此工具 cmake 代码  &lt;img src=&#34;https://52blog.github.io/post-images/1632407109187.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;2&#34;&gt;&lt;img src=&#34;https://52blog.github.io/post-images/1632407225859.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;3&#34;&gt;&lt;img src=&#34;https://52blog.github.io/post-images/1632407243999.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;4&#34;&gt;&lt;img src=&#34;https://52blog.github.io/post-images/1632407483439.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;5&#34;&gt;&lt;img src=&#34;https://52blog.github.io/post-images/1632407517914.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;6&#34;&gt;&lt;img src=&#34;https://52blog.github.io/post-images/1632407648693.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;7&#34;&gt;&lt;img src=&#34;https://52blog.github.io/post-images/1632407806560.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;生成的核心文件在这里&lt;/p&gt;
+&lt;p&gt;AZ\build\bin\RelWithDebInfo&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;8&#34;&gt;&lt;img src=&#34;https://52blog.github.io/post-images/1632407913511.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+">魔兽世界编译---老TC&Sunwell核心&AzerothCore核心</a>
+      </div>
       
       <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://52blog.github.io/ovbTGIV9e/"" data-c="
