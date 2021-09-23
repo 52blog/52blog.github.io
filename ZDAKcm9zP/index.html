@@ -8,7 +8,7 @@
 <meta name="keywords" content="52blog个人博客">
 <meta name="description" content="">
 <meta name="theme-color" content="#495057">
-<title>魔兽世界编译---老TC&amp;Sunwell核心&amp;AzerothCore核心 | 52blog</title>
+<title>DBC表目录说明 | 52blog</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1632410829784">
 <link rel="stylesheet" href="/media/css/gemini.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
@@ -38,7 +38,7 @@
 
 
 
-  <meta name="description" content="魔兽世界编译---老TC&Sunwell核心&AzerothCore核心" />
+  <meta name="description" content="DBC表目录说明" />
   <meta name="keywords" content="" />
 </head>
 
@@ -313,8 +313,8 @@
           <div class="section bg-color post post-page">
             <section class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://52blog.github.io/MZBHBJ1nc/">
-      魔兽世界编译---老TC&amp;Sunwell核心&amp;AzerothCore核心
+    <a class="post-title-link" href="https://52blog.github.io/ZDAKcm9zP/">
+      DBC表目录说明
     </a>
   </h1>
   <div class="post-meta">
@@ -322,23 +322,23 @@
     <span class="meta-item pc-show">
       <i class="fa fa-calendar-o"></i>
       <span class="language" data-lan="publish">发布于</span>
-      <span class="publish-time" data-t="2021-09-23 22:16:58">2021-09-23</span>
+      <span class="publish-time" data-t="2021-09-23 23:25:47">2021-09-23</span>
       <span class="post-meta-divider pc-show">|</span>
     </span>
     
     <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>2<span class="language" data-lan="minute">分钟</span></span>
+      <span>8<span class="language" data-lan="minute">分钟</span></span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>281<span class="pc-show language" data-lan="words">字数</span></span>
+      <span>1874<span class="pc-show language" data-lan="words">字数</span></span>
     </span>
     
     
     
-    <span id="/MZBHBJ1nc/" data-flag-title="魔兽世界编译---老TC&amp;Sunwell核心&amp;AzerothCore核心" class="meta-item pc-show leancloud_visitors">
+    <span id="/ZDAKcm9zP/" data-flag-title="DBC表目录说明" class="meta-item pc-show leancloud_visitors">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-eye"></i>
       <span><span class="language" data-lan="view">浏览量</span>：<span class="leancloud-visitors-count"></span></span>
@@ -347,33 +347,130 @@
   </div>
 </section>
             <div class="post-body next-md-body" id="post_body">
-              <p>http://www.azerothcore.org/       AZ端官网</p>
-<p>https://www.trinitycore.org/        TC端官网</p>
-<p>1：安装GitExtensions(一定要安装，虽然源码我也会提供，cmake需要用到)，确保Git, MySYSGit, and KDiff三个都要选择安装,在git安装过程中选择”Run Git from the Windows Command Prompt“</p>
-<p>2：安装vs2013，VS2015.</p>
-<p>3：安装mysql，要记住自己设置的root的密码，字符集选择utf8，安装中选择加入环境变量。</p>
-<p>4：boost，直接使用我上文提供的编译好的安装文件即可，安装完成后，设置环境变量BOOST_ROOT=你安装的boost的根目录</p>
-<p>我的电脑 右键 属性 高级设置  环境变量 系统变量 新建  如下 ↓<br>
-<img src="https://52blog.github.io/post-images/1632406862231.png" alt="" loading="lazy"><br>
-<img src="https://52blog.github.io/post-images/1632406894967.png" alt="" loading="lazy"><br>
-<img src="https://52blog.github.io/post-images/1632406809039.png" alt="" loading="lazy"></p>
-<p>5：cmake，一路默认安装</p>
-<p>6：openssl，其中有一步需要留意，就是会让选择把openSSL的dll拷贝到哪，要选择The OpenSSL binaries (/bin) directory</p>
-<p>7：zeroMQ，一路默认安装</p>
+              <p>Achievement.dbc 记录了成就的详细内容——名字，描述等等</p>
+<p>Achievement_Category.dbc 成就的分类[像：&quot;经典旧世&quot;、&quot;任务&quot;、&quot;战场&quot;、&quot;荣誉击杀&quot; 、&quot;战斗、&quot;消耗品&quot;……等等]</p>
+<p>Achievement_Criteria.dbc 记录了成就的达成要求</p>
+<p>AnimationData.dbc 里面是各种行为、动作的镜头动作</p>
+<p>AreaTable.dbc 地区表，记录了小地区的信息——名字、范围等[比如” 奈辛瓦里远征队营地”、” 莫格罗什要塞”等……]</p>
 <!-- more -->
-<p>软件全部安装完毕 下面是编译教程</p>
-<p>获取魔兽世界模拟器源代码   github 下载源码并解压出来</p>
-<figure data-type="image" tabindex="1"><img src="https://52blog.github.io/post-images/1632407081616.png" alt="" loading="lazy"></figure>
-<p>利用此工具 cmake 代码  <img src="https://52blog.github.io/post-images/1632407109187.png" alt="" loading="lazy"></p>
-<figure data-type="image" tabindex="2"><img src="https://52blog.github.io/post-images/1632407225859.png" alt="" loading="lazy"></figure>
-<figure data-type="image" tabindex="3"><img src="https://52blog.github.io/post-images/1632407243999.png" alt="" loading="lazy"></figure>
-<figure data-type="image" tabindex="4"><img src="https://52blog.github.io/post-images/1632407483439.png" alt="" loading="lazy"></figure>
-<figure data-type="image" tabindex="5"><img src="https://52blog.github.io/post-images/1632407517914.png" alt="" loading="lazy"></figure>
-<figure data-type="image" tabindex="6"><img src="https://52blog.github.io/post-images/1632407648693.png" alt="" loading="lazy"></figure>
-<figure data-type="image" tabindex="7"><img src="https://52blog.github.io/post-images/1632407806560.png" alt="" loading="lazy"></figure>
-<p>生成的核心文件在这里</p>
-<p>AZ\build\bin\RelWithDebInfo</p>
-<figure data-type="image" tabindex="8"><img src="https://52blog.github.io/post-images/1632407913511.png" alt="" loading="lazy"></figure>
+<p>AreaTrigger.dbc 传送点坐标</p>
+<p>AuctionHouse.dbc 拍卖行种类</p>
+<p>BankBagSlotPrices.dbc 开银行栏位的价钱</p>
+<p>BarberShopStyle.dbc 理发店能做的发型</p>
+<p>BattlemasterList.dbc 战场、竞技场种类</p>
+<p>Cfg_Categories.dbc 记录了WOW的各个服务大区[居然还有一到十区、网易的3.13果然很赶工]</p>
+<p>由Char打头的dbc 记录了角色的脸型、发型、发色、肤色、特征[胡须、耳环]等包含的种类</p>
+<p>CharSections.dbc 角色的各部位贴图文件</p>
+<p>CharStartOutfit.dbc 出生时的装备</p>
+<p>CharTitles.dbc 角色能获取的称号总类别</p>
+<p>ChatChannels.dbc 系统默认频道总类别</p>
+<p>ChatProfanity.dbc 敏感字眼[开启过滤后会显示成!@#$$的那些词]</p>
+<p>ChrClasses.dbc 职业总类别</p>
+<p>ChrRaces.dbc 所有种族[包括但不仅限于玩家]</p>
+<p>CinematicCamera.dbc 每个种族出生的种族介绍的镜头[比如，你建了一个人类，背后就有一个家伙唠叨人类的起源、特长、特征等等，然后同时，镜头从暴风城一路飞到北郡，介绍完最后一句话，镜头刚到走到你身上，就是记录的这个玩意]</p>
+<p>CreatureDisplayInfo.dbc和CreatureDisplayInfoExtra.dbc 两个记录了生物的ID、模型、贴图、装备等。这其中的关联要理清的话，要花很大的功夫。猫扑模型区有很详细的介绍</p>
+<p>CreatureFamily.dbc 生物所属的类型[其实就是指野兽的分类，Family是野兽独有的属性，“生物”在这特指野兽]</p>
+<p>CreatureModelData.dbc 生物模型信息</p>
+<p>CreatureSoundData.dbc 生物语音路径</p>
+<p>CreatureSpellData.dbc 生物的法术信息</p>
+<p>CreatureType.dbc 生物类型[人型、亡灵、野兽、龙类……这种分类]</p>
+<p>CurrencyCategory.dbc 货币的大分类</p>
+<p>CurrencyTypes.dbc 货币细类<br>
+1.<br>
+Emotes.dbc 表情动作的名字</p>
+<p>EmotesText.dbc 表情动作的命令[/dance、/cry……]</p>
+<p>EmotesTextData.dbc 表情动作的提示文字[一般分这几种：你看到的，A对B做了什么，A对自己做了什么，某人对你做了什么，你对某人做了什么，你对自己做了什么]</p>
+<p>EmotesTextSound.dbc 做表情时发出什么样的声音</p>
+<p>Exhaustion.dbc 玩家的休息状态及处于这种状态下的收益减益设定[精力充沛、正常、疲倦1、疲倦2、精疲力竭、战友招募]</p>
+<p>Faction.dbc 记录了WOW里所有的阵营[名字，阵营ID等]</p>
+<p>FactionGroup.dbc 阵营分类[玩家、联盟、部落、怪物]</p>
+<p>FileData.dbc 开场动画的名字</p>
+<p>GameObjectArtKit.dbc 旗杆[战场里，被联盟占下的             旗，部落占下的旗，还有争夺中的旗，还有火焰节的那个旗……等等]</p>
+<p>GameObjectDisplayInfo.dbc 游戏中的对象外观[对象就是WOW里的摆设啦等，比如一本魔法宝典，等]</p>
+<p>GameTables.dbc 游戏公式表[比如，抗性的设定、升一级需要的经验、NPC魔法消耗倍数等。这个与游戏中各种各样的公式计算有关]</p>
+<p>GameTips.dbc 角色登录的时候，Loading条上面的“小窍门”</p>
+<p>GMSurveyAnswers.dbc 、GMSurveyQuestions.dbc GM评价问卷的答案、题目</p>
+<p>GMTicketCategory.dbc 联系GM时的问题分类</p>
+<p>GroundEffectDoodad.dbc 地表模型</p>
+<p>GroundEffectTexture.dbc 地表模型的材质贴图</p>
+<p>gtBarberShopCostBase.dbc 理发店的价钱</p>
+<p>HolidayDescriptions.dbc 节日描述</p>
+<p>HolidayNames.dbc 节日名字、ID</p>
+<p>Holidays.dbc 节日设定</p>
+<p>Item.dbc 物品总汇</p>
+<p>ItemBagFamily.dbc 物品可放入包裹[按包裹的属性，箭矢、灵魂碎片、附魔材料、矿物……]</p>
+<p>ItemClass.dbc 物品种类[武器、护甲、配方、消耗品……在AH浏览时的那个分类就用的这个]</p>
+<p>ItemCondExtCosts.dbc、ItemExtendedCost.dbc物品的售出与购回价</p>
+<p>ItemDisplayInfo.dbc 物品外观</p>
+<p>ItemGroupSounds.dbc 各类物品的声音</p>
+<p>ItemPetFood.dbc 宠物食物总类别</p>
+<p>ItemRandomProperties.dbc 物品的随机属性[灵猴之、孤狼之、雄鹰之……]</p>
+<p>ItemRandomSuffix.dbc 随机属性的加成方法</p>
+<p>ItemSet.dbc 套装总汇</p>
+<p>ItemSubClass.dbc 物品子类[容器、灵魂袋、法杖、红色、多彩……AH的子类搜索就是用的这个分类]</p>
+<p>ItemVisualEffects.dbc 视觉特效</p>
+<p>Languages.dbc WOW中的语言[达纳苏斯语、侏儒二进制语——这个雷、等]</p>
+<p>LanguageWords.dbc 不同语言的字符映射</p>
+<p>LFGDungeons.dbc 组队功能中的地下城、地下城的等级范围、ID</p>
+<p>LightSkybox.dbc 天空模型</p>
+<p>LiquidMaterial.dbc 流体的材质[猜测是岩浆、普通水、烫水……这种分类]</p>
+<p>LiquidType.dbc 不同类型的流体的贴图</p>
+<p>LoadingScreens.dbc 切换场景时的Loading画面路径</p>
+<p>LoadingScreenTaxiSplines.dbc 乘坐飞艇和船时的航线图</p>
+<p>Lock.dbc 锁的位置（？）</p>
+<p>LockType.dbc 箱子的类型</p>
+<p>MailTemplate.dbc 邮件模板[NPC经常会寄信给你，这个dbc就管的这个信的内容]</p>
+<p>Map.dbc 大地图区域</p>
+<p>Movie.dbc 开场电影怎么放[先来个BLZ的LOGO，再来一段正式CG]</p>
+<p>NameGen.dbc 名字不能包含的字符（提示为已注册？）</p>
+<p>NamesProfanity.dbc 名字禁止包含的字符</p>
+<p>NamesReserved.dbc 名字已存在（？）</p>
+<p>NPCSounds.dbc NPC声音文件</p>
+<p>PageTextMaterial.dbc 信纸</p>
+<p>PaperDollItemFrame.dbc 装备栏贴图</p>
+<p>ParticleColor.dbc 粒子颜色（可能是各个场合的粒子外观）</p>
+<p>PetitionType.dbc 签名表[包括公会、战队]</p>
+<p>QuestInfo.dbc 任务难度[地下城、组队、团队、PVP、团队-10、团队-20，这个在任务名的后面有一个括号会说明]</p>
+<p>QuestSort.dbc 任务归类[季节性、法师、猎人、制皮……等]</p>
+<p>Resistances.dbc 抗性分类</p>
+<p>ServerMessages.dbc 服务器提示消息[还有多少时间关机啦、多少时间重启什么的]</p>
+<p>SkillCostsData.dbc 法术的消耗需求</p>
+<p>SkillLine.dbc 技能面板技能总类别[快键 K]</p>
+<p>SkillLineAbility.dbc 技能面板上的技能熟练度</p>
+<p>SkillLineCategory.dbc 技能大类</p>
+<p>SoundEntries.dbc 声音文件的入口[详细定义了每一个”引用”]</p>
+<p>SoundProviderPreferences.dbc 同类场景的引用[比如,冬泉谷和丹莫罗的音乐都是MOUNTAINS]</p>
+<p>SoundWaterType.dbc 各类”水”的声音</p>
+<p>SpamMessages.dbc “乱码”的转换方法</p>
+<p>Spell.dbc 技能定义[最大的dbc文档！！！]</p>
+<p>SpellCastTimes.dbc 施法时间分类</p>
+<p>SpellDispelType.dbc 法术类型[诅咒、魔法、疾病……]</p>
+<p>SpellFocusObject.dbc 技能施放对象[object，一般是指游戏内的对象]</p>
+<p>SpellIcon.dbc 技能-图标对应</p>
+<p>SpellItemEnchantment.dbc “使用”类物品提供的效果</p>
+<p>SpellMechanic.dbc 技能命中的效果[被魅惑、被缴械、被变形、流血、瘫痪……]</p>
+<p>SpellMissileMotion.dbc 技能算法</p>
+<p>SpellRange.dbc 技能距离、范围</p>
+<p>SpellShapeshiftForm.dbc 各种形态……</p>
+<p>SpellVisualEffectName.dbc 技能外观模型</p>
+<p>Startup_Strings.dbc WOW.exe的提示字符串</p>
+<p>Talent.dbc 天赋总汇</p>
+<p>TalentTab.dbc 天赋系别</p>
+<p>TaxiNodes.dbc 出租车节点</p>
+<p>TaxiPath.dbc 节点对应的行走路径</p>
+<p>TaxiPathNode.dbc 节点坐标</p>
+<p>TerrainType.dbc 地区类型[比如 山、平原、干地等]</p>
+<p>TerrainTypeSounds.dbc 各种地区类型对应的音乐</p>
+<p>TotemCategory.dbc 工具分类[指”需要XX物品”的情况下，被需求的物品。</p>
+<p>WeaponImpactSounds.dbc 武器攻击声效</p>
+<p>WeaponSwingSounds2.dbc 武器挥舞声效</p>
+<p>Weather.dbc 天气配置</p>
+<p>WMOAreaTable.dbc “小地区”表</p>
+<p>WorldMapArea.dbc 地图区域划分</p>
+<p>WorldStateUI.dbc 区域内战斗提示[麦迪文的剩余护盾：X%；部落控制了内城区！]</p>
+<p>WowError_Strings.dbc WOW出错界面及错误报告界面字符</p>
+<p>ZoneIntroMusicTable.dbc 地区介绍音乐[这个音乐作为IntroMusic一般是主题性质的音乐]</p>
+<p>ZoneMusic.dbc 地区音乐</p>
 
             </div>
             
@@ -386,7 +483,7 @@
     </li>
     <li class="post-copyright-link">
       <strong class="language" data-lan="link">本文链接：</strong>
-      <a href="https://52blog.github.io/MZBHBJ1nc/" title="魔兽世界编译---老TC&amp;Sunwell核心&amp;AzerothCore核心">https://52blog.github.io/MZBHBJ1nc/</a>
+      <a href="https://52blog.github.io/ZDAKcm9zP/" title="DBC表目录说明">https://52blog.github.io/ZDAKcm9zP/</a>
     </li>
     <li class="post-copyright-license">
       <strong class="language" data-lan="copyright">版权声明： </strong>
@@ -400,14 +497,14 @@
     <div class="nav-prev">
       
         <i class="fa fa-chevron-left"></i>
-        <a class="nav-pc-next" title="GM常用命令" href="https://52blog.github.io/7UauMuWv8/">GM常用命令</a class="nav-pc-next">
-        <a class="nav-mobile-prev" title="GM常用命令" href="https://52blog.github.io/7UauMuWv8/">上一篇</a>
+        <a class="nav-pc-next" title="SQL数据库表解释" href="https://52blog.github.io/4nGL3mfVP/">SQL数据库表解释</a class="nav-pc-next">
+        <a class="nav-mobile-prev" title="SQL数据库表解释" href="https://52blog.github.io/4nGL3mfVP/">上一篇</a>
       
     </div>
     <div class="nav-next">
       
-        <a class="nav-pc-next" title="魔兽世界编译教程 Trinity " href="https://52blog.github.io/ovbTGIV9e/">魔兽世界编译教程 Trinity </a>
-        <a class="nav-mobile-next" title="魔兽世界编译教程 Trinity " href="https://52blog.github.io/ovbTGIV9e/">下一篇</a>
+        <a class="nav-pc-next" title="中文说明worldserver.conf" href="https://52blog.github.io/mg1CMOlSs/">中文说明worldserver.conf</a>
+        <a class="nav-mobile-next" title="中文说明worldserver.conf" href="https://52blog.github.io/mg1CMOlSs/">下一篇</a>
         <i class="fa fa-chevron-right"></i>
       
     </div>

@@ -2,13 +2,1733 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://52blog.github.io</id>
     <title>52blog</title>
-    <updated>2021-09-23T15:20:14.984Z</updated>
+    <updated>2021-09-23T15:27:12.414Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://52blog.github.io"/>
     <link rel="self" href="https://52blog.github.io/atom.xml"/>
     <logo>https://52blog.github.io/images/avatar.png</logo>
     <icon>https://52blog.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, 52blog</rights>
+    <entry>
+        <title type="html"><![CDATA[SQL数据库表解释]]></title>
+        <id>https://52blog.github.io/4nGL3mfVP/</id>
+        <link href="https://52blog.github.io/4nGL3mfVP/">
+        </link>
+        <updated>2021-09-23T15:26:35.000Z</updated>
+        <summary type="html"><![CDATA[<p>characters 中文表</p>
+<p>account_data（账号数据）<br>
+addons（插件）<br>
+anti_cheaters（反_骗子）<br>
+arena_team（竞技场队伍）<br>
+arena_team_member（舞台上的团队成员）<br>
+arena team stats（竞技场队伍统计）<br>
+auctionhouse（ 拍卖行 ）<br>
+auctionhousebot（  ）未知<br>
+bugreport（bug报告）<br>
+channels（频道）</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>characters 中文表</p>
+<p>account_data（账号数据）<br>
+addons（插件）<br>
+anti_cheaters（反_骗子）<br>
+arena_team（竞技场队伍）<br>
+arena_team_member（舞台上的团队成员）<br>
+arena team stats（竞技场队伍统计）<br>
+auctionhouse（ 拍卖行 ）<br>
+auctionhousebot（  ）未知<br>
+bugreport（bug报告）<br>
+channels（频道）</p>
+<!-- more -->
+<h1 id="character-account-data字符帐户数据character-achievement角色成就character-achievement-progress角色成就进展character-action角色战斗character-aura角色光环character_battleground_data战场数据字符character-declinedname角色被拒绝名-不确定character_equipmentsets角色装备设置-character_gifts角色天赋character-glyphs角色雕文character_homebind-角色炉石绑定-character_instance角色实况character_inventory角色目录character_pet角色宠物character_pet_declinedname角色宠物下降名不确定character-queststatus角色任务状况character_queststatus_daily角色任务状况日志character_reputation角色声望character-skills角色技能character_social角色社交character-spell角色法术character-spell-cooldown角色法术的冷却时间character-talent角色天赋character-tutorial人物教程characters人物角色characters-virtual有效人物corpse尸体game-event-condition-save游戏事故的情况下保存game_event_save游戏活动保存gm-ticketsgm清单group-instance团队实况group-member团队成员groups团体guild公会guild-bank-eventlog公会银行事件日志guild-bank-item公会银行项目guild-bank-right公会银行的权利guild-bank-tab公会银行卡guild_eventlog公会事件日志guild-member公会成员guild-rank公会排名instance实例instance-reset实况复位item_instance道具情况item_refund_instance道具售出情况item_text道具文本mail邮件mail-items用邮件发送道具pet-aura宠物光环pet-spell宠物法术pet_spell_cooldown宠物法术的冷却时间petition申请书-应该指的是工会签名petition_sign签署申请书saved-variables保存变量">character account data（字符帐户数据）<br>
+character achievement（角色成就）<br>
+character achievement progress（角色成就进展）<br>
+character action（角色战斗）<br>
+character aura（角色光环）<br>
+character_battleground_data（战场数据字符）<br>
+character declinedname（角色被拒绝名 ） 不确定<br>
+character_equipmentsets（角色装备设置 ）<br>
+character_gifts（角色天赋）<br>
+character glyphs（角色雕文）<br>
+character_homebind（ 角色炉石绑定 ）<br>
+character_instance（角色实况）<br>
+character_inventory（角色目录）<br>
+character_pet（角色宠物）<br>
+character_pet_declinedname（角色宠物下降名）不确定<br>
+character queststatus（角色任务状况）<br>
+character_queststatus_daily（角色任务状况日志）<br>
+character_reputation（角色声望）<br>
+character skills（角色技能）<br>
+character_social（角色社交）<br>
+character spell（角色法术）<br>
+character spell cooldown（角色法术的冷却时间）<br>
+character talent（角色天赋）<br>
+character tutorial（人物教程）<br>
+characters（人物角色）<br>
+characters virtual（有效人物）<br>
+corpse（尸体）<br>
+game event condition save（游戏事故的情况下保存）<br>
+game_event_save（游戏活动保存）<br>
+gm tickets（GM清单）<br>
+group instance（团队实况）<br>
+group member（团队成员）<br>
+groups（团体）<br>
+guild（公会）<br>
+guild bank eventlog（公会银行事件日志）<br>
+guild bank item（公会银行项目）<br>
+guild bank right（公会银行的权利）<br>
+guild bank tab（公会银行卡）<br>
+guild_eventlog（公会事件日志）<br>
+guild member（公会成员）<br>
+guild rank（公会排名）<br>
+instance（实例）<br>
+instance reset（实况复位）<br>
+item_instance（道具情况）<br>
+item_refund_instance（道具售出情况）<br>
+item_text（道具文本）<br>
+mail（邮件）<br>
+mail items（用邮件发送道具）<br>
+pet aura（宠物光环）<br>
+pet spell（宠物法术）<br>
+pet_spell_cooldown（宠物法术的冷却时间）<br>
+petition（申请书）            应该指的是工会签名<br>
+petition_sign（签署申请书）<br>
+saved variables（保存变量）</h1>
+<p>information_schema 中文表</p>
+<h1 id="character-sets字符集collation-character-set-applicability整理字符集适用性collations排序规则column-privileges柱特权columns列key-column-usagekey列用法profiling程序概要分析routines例程schema-privileges图式特权schemata图式statistics统计table_constraints表约束table_privileges表特权tables附录triggers触发器user-privileges用户权限views点击-感觉这个不是很重要">CHARACTER SETS（字符集）<br>
+COLLATION CHARACTER SET APPLICABILITY（整理字符集适用性）<br>
+COLLATIONS（排序规则）<br>
+COLUMN PRIVILEGES（柱特权）<br>
+COLUMNS（列）<br>
+KEY COLUMN USAGE（KEY列用法）<br>
+PROFILING（程序概要分析）<br>
+ROUTINES（例程）<br>
+SCHEMA PRIVILEGES（图式特权）<br>
+SCHEMATA（图式）<br>
+STATISTICS（统计）<br>
+TABLE_CONSTRAINTS（表约束）<br>
+TABLE_PRIVILEGES（表特权）<br>
+TABLES（附录）<br>
+TRIGGERS（触发器）<br>
+USER PRIVILEGES（用户权限）<br>
+VIEWS（点击）                     感觉这个不是很重要</h1>
+<p>MYsql 中文表</p>
+<h1 id="columns-priv单独列db日志func函数help-category帮助类help-keyword帮助关键字help_relation帮助关系help_topic帮助主题host主人proc进程procs_priv单一程序tables_priv表私法time_zone时区time_zone_leap_second闰秒时区time_zone_name时区名称time_zone_transition时区转换time_zone_transition_type时区的过渡类型user用户">columns priv（单独列）<br>
+db（日志）<br>
+func（函数）<br>
+help category（帮助类）<br>
+help keyword（帮助关键字）<br>
+help_relation（帮助关系）<br>
+help_topic（帮助主题）<br>
+host（主人）<br>
+proc（进程）<br>
+procs_priv（单一程序）<br>
+tables_priv（表私法）<br>
+time_zone（时区）<br>
+time_zone_leap_second（闰秒时区）<br>
+time_zone_name（时区名称）<br>
+time_zone_transition（时区转换）<br>
+time_zone_transition_type（时区的过渡类型）<br>
+user（用户）</h1>
+<p>realmd 中文表</p>
+<h1 id="account账号account_access账号访问gm账号创建的地方account_banned账号禁止封号account_pay薪酬ip_bannedip禁止封iplogs日志realmcharacters-角色范围-realmlistip-外网-版本-想局域网的在这里改ipuptime运行时间">account（账号）<br>
+account_access（账号访问）GM账号创建的地方<br>
+account_banned（账号禁止）封号<br>
+account_pay（薪酬）<br>
+ip_banned（IP禁止）封IP<br>
+logs（日志）<br>
+realmcharacters（ 角色范围 ）<br>
+realmlist（IP-外网-版本）   想局域网的在这里改IP<br>
+uptime（运行时间）</h1>
+<p>world（mangos）中文表</p>
+<p>access requirement（准入要求）<br>
+achievement_criteria_data（成就标准数据）<br>
+achievement reward（成就奖励）<br>
+areatrigger_involvedrelation（ 区域联系的触发事件 ）<br>
+areatrigger_scripts（区域触发脚本）<br>
+areatrigger tavern（区域触发酒馆）未知<br>
+areatrigger_teleport（区域传送）<br>
+autobroadcast（自动广播 ）<br>
+battleground_events（战场事件）<br>
+battleground_template（战场模板）<br>
+battlemaster_entry（战场进入控制）<br>
+command（命令）<br>
+creature（怪物）<br>
+creature_addon（怪物整合包）<br>
+creature_ai_scripts（怪物智能脚本）<br>
+creature_ai_summons（怪物智能召集）<br>
+creature_ai_texts（怪物智能文本）<br>
+creature_classlevelstats（怪物分类级别统计）<br>
+creature_equip_template（怪物装备模板）<br>
+creature formations（怪物形态）<br>
+creature_involvedrelation（怪物联系信息）<br>
+creature linked respawn（怪物刷新）<br>
+creature loot template（怪物掠夺模板）<br>
+creature_model_info（怪物模型）<br>
+creature_onkill_reputation（杀怪所获荣誉）<br>
+creature questrelation（怪物任务信息）<br>
+creature_respawn（怪物刷新）<br>
+creature template（ 怪物模板 ）<br>
+creature template addon（ 怪物模板插件 ）<br>
+custom item levelup（自定义装备级别）<br>
+custom item teleport（自定义装备移动）<br>
+custom_mgcn_string（自定义？字符串）未知<br>
+custom_npc_teleport（自定义 NPC 传送）<br>
+custom texts（自定义文本）<br>
+db_script_string（数据库脚本的字符串）<br>
+disenchant_loot_template（附魔分配模板）<br>
+event scripts（事件脚本）<br>
+exploration_basexp（勘探basexp）未知<br>
+fishing_loot_template（？模板）<br>
+game_event（游戏活动）<br>
+game_event_battleground_holiday（战场节日游戏活动）<br>
+game_event_condition（游戏事件的条件）<br>
+game event creature（游戏怪物信息）<br>
+game_event_creature_quest（游戏怪物信息）<br>
+game_event_gameobject（游戏物品信息）<br>
+game event gameobject quest（游戏任务物品信息）<br>
+game_event_model_equip（游戏装备的模型）<br>
+game event npc gossip（游戏中NPC交谈）<br>
+game_event_npc_vendor（游戏中NPC商品商人）<br>
+game_event_npcflag（游戏中NPC标记）<br>
+game event pool（游戏活动池）<br>
+game_event_prerequisite（游戏活动的先决条件）<br>
+game_event_quest_condition（游戏活动的任务条件）<br>
+game_graveyard_zone（游戏墓地区）<br>
+game_tele（游戏远距离视野）<br>
+game_weather（游戏天气）<br>
+gameobject（物品信息）         草、矿、箱子等刷新时间、地点<br>
+gameobject_involvedrelation（任务关联物品描述）<br>
+gameobject_loot_template（物品分配模板）<br>
+gameobject questrelation（任务物品叙述）<br>
+gameobject_respawn（物品信息复位）<br>
+gameobject scripts（物品信息脚本）<br>
+gameobject_template（物品信息模板）物品信息对应的草、矿等具体信息<br>
+gossip_menu（交谈菜单）<br>
+gossip_menu_option（交谈菜单选项）<br>
+gossip_scripts（交谈脚本）<br>
+instance_template（实例模板）<br>
+item enchantment template（道具魔法模板）<br>
+item loot template（道具分配模板）<br>
+item required target（道具所需目标）<br>
+item_template（道具模板）<br>
+locales achievement reward（区域成就奖励）<br>
+locales_creature（区域中的生物）<br>
+locales gameobject（区域物品信息）<br>
+locales_gossip_menu_option（区域交谈菜单选项）<br>
+locales_item（本地道具）<br>
+locales_npc_text（NPC 文本区域设置）<br>
+locales page text（区域文件的文本）<br>
+locales_points_of_interest（感兴趣的区域设置点）<br>
+locales_quest（任务地点）<br>
+mail_level_reward（邮件级别奖励）未知<br>
+mail_loot_template（邮件分配模板）未知<br>
+milling_loot_template（？模板）未知<br>
+npc gossip（NPC 交谈）<br>
+npc_spellclick_spells（NPC 技能点击）未知<br>
+npc text（NPC 文本）<br>
+npc_trainer（训练师）<br>
+npc_vendor（物品商）<br>
+page_text（页面文字）<br>
+pet_levelstats（宠物级别统计）<br>
+pet name generation（宠物的名字生成）<br>
+pickpocketing_loot_template（盗贼偷窃模板）<br>
+player_classlevelstats（分类角色级别统计）<br>
+player_levelstats（角色级别统计）<br>
+player_xp_for_level（角色每级所需经验）<br>
+playercreateinfo（ 人物出生信息 ）<br>
+playercreateinfo_action（人物出生时的操作）<br>
+playercreateinfo_item（人物出生时所持有道具）<br>
+playercreateinfo_spell（人物出生所绘的法术）<br>
+playercreateinfo spell custom（自定义人物出生法术）<br>
+points_of_interest（兴趣点）<br>
+pool_creature（？生物）<br>
+pool gameobject（指地上的矿、草药、箱子等刷新地点、时间）<br>
+pool_pool（？）未知<br>
+pool_template（？模板）未知<br>
+prospecting loot template（？分配模板）未知<br>
+quest_end_scripts（任务结束脚本）<br>
+quest_poi（任务信息）<br>
+quest poi points（任务信息指引）<br>
+quest_start_scripts（追求启动脚本）<br>
+quest template（任务模板）<br>
+reference_loot_template（参数分配模板）<br>
+reserved_name（保留名称）<br>
+script_texts（脚本文本）<br>
+script_waypoint（脚本航点）<br>
+skill discovery template（技能探索模板）<br>
+skill extra item template（技能额外项模板）<br>
+skill_fishing_base_level（技能最低学习等级）<br>
+skinning_loot_template（技能分配模板）<br>
+spell area（法术有效区域）<br>
+spell_bonus_data（法术加成数据）<br>
+spell dbc（法术数据库）<br>
+spell_disabled（禁用法术）<br>
+spell_enchant_proc_data（法术强化进程的数据）<br>
+spell_group（团队施法）<br>
+spell_group_stack_rules（团队施法叠加规则）<br>
+spell learn spell（学习法术）<br>
+spell linked spell（法术链接）<br>
+spell_loot_template（法术分配模板）<br>
+spell_pet_auras（法术宠物光环）<br>
+spell_proc_event（法术进程事件）<br>
+spell ranks（法术等级）<br>
+spell_required（法术前提要求）<br>
+spell_script_target（法术脚本目标）<br>
+spell_scripts（法术脚本）<br>
+spell target position（法术目标位置）<br>
+spell_threat（法术威胁值）<br>
+transport_events（传送事件）<br>
+transports（传送）<br>
+trinity_string（三位一体的字符串）<br>
+vehicle accessory（媒介物配件）<br>
+version（版本）<br>
+waypoint data（航点数据）<br>
+waypoint_scripts（航点脚本）</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[DBC表目录说明]]></title>
+        <id>https://52blog.github.io/ZDAKcm9zP/</id>
+        <link href="https://52blog.github.io/ZDAKcm9zP/">
+        </link>
+        <updated>2021-09-23T15:25:47.000Z</updated>
+        <summary type="html"><![CDATA[<p>Achievement.dbc 记录了成就的详细内容——名字，描述等等</p>
+<p>Achievement_Category.dbc 成就的分类[像：&quot;经典旧世&quot;、&quot;任务&quot;、&quot;战场&quot;、&quot;荣誉击杀&quot; 、&quot;战斗、&quot;消耗品&quot;……等等]</p>
+<p>Achievement_Criteria.dbc 记录了成就的达成要求</p>
+<p>AnimationData.dbc 里面是各种行为、动作的镜头动作</p>
+<p>AreaTable.dbc 地区表，记录了小地区的信息——名字、范围等[比如” 奈辛瓦里远征队营地”、” 莫格罗什要塞”等……]</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>Achievement.dbc 记录了成就的详细内容——名字，描述等等</p>
+<p>Achievement_Category.dbc 成就的分类[像：&quot;经典旧世&quot;、&quot;任务&quot;、&quot;战场&quot;、&quot;荣誉击杀&quot; 、&quot;战斗、&quot;消耗品&quot;……等等]</p>
+<p>Achievement_Criteria.dbc 记录了成就的达成要求</p>
+<p>AnimationData.dbc 里面是各种行为、动作的镜头动作</p>
+<p>AreaTable.dbc 地区表，记录了小地区的信息——名字、范围等[比如” 奈辛瓦里远征队营地”、” 莫格罗什要塞”等……]</p>
+<!-- more -->
+<p>AreaTrigger.dbc 传送点坐标</p>
+<p>AuctionHouse.dbc 拍卖行种类</p>
+<p>BankBagSlotPrices.dbc 开银行栏位的价钱</p>
+<p>BarberShopStyle.dbc 理发店能做的发型</p>
+<p>BattlemasterList.dbc 战场、竞技场种类</p>
+<p>Cfg_Categories.dbc 记录了WOW的各个服务大区[居然还有一到十区、网易的3.13果然很赶工]</p>
+<p>由Char打头的dbc 记录了角色的脸型、发型、发色、肤色、特征[胡须、耳环]等包含的种类</p>
+<p>CharSections.dbc 角色的各部位贴图文件</p>
+<p>CharStartOutfit.dbc 出生时的装备</p>
+<p>CharTitles.dbc 角色能获取的称号总类别</p>
+<p>ChatChannels.dbc 系统默认频道总类别</p>
+<p>ChatProfanity.dbc 敏感字眼[开启过滤后会显示成!@#$$的那些词]</p>
+<p>ChrClasses.dbc 职业总类别</p>
+<p>ChrRaces.dbc 所有种族[包括但不仅限于玩家]</p>
+<p>CinematicCamera.dbc 每个种族出生的种族介绍的镜头[比如，你建了一个人类，背后就有一个家伙唠叨人类的起源、特长、特征等等，然后同时，镜头从暴风城一路飞到北郡，介绍完最后一句话，镜头刚到走到你身上，就是记录的这个玩意]</p>
+<p>CreatureDisplayInfo.dbc和CreatureDisplayInfoExtra.dbc 两个记录了生物的ID、模型、贴图、装备等。这其中的关联要理清的话，要花很大的功夫。猫扑模型区有很详细的介绍</p>
+<p>CreatureFamily.dbc 生物所属的类型[其实就是指野兽的分类，Family是野兽独有的属性，“生物”在这特指野兽]</p>
+<p>CreatureModelData.dbc 生物模型信息</p>
+<p>CreatureSoundData.dbc 生物语音路径</p>
+<p>CreatureSpellData.dbc 生物的法术信息</p>
+<p>CreatureType.dbc 生物类型[人型、亡灵、野兽、龙类……这种分类]</p>
+<p>CurrencyCategory.dbc 货币的大分类</p>
+<p>CurrencyTypes.dbc 货币细类<br>
+1.<br>
+Emotes.dbc 表情动作的名字</p>
+<p>EmotesText.dbc 表情动作的命令[/dance、/cry……]</p>
+<p>EmotesTextData.dbc 表情动作的提示文字[一般分这几种：你看到的，A对B做了什么，A对自己做了什么，某人对你做了什么，你对某人做了什么，你对自己做了什么]</p>
+<p>EmotesTextSound.dbc 做表情时发出什么样的声音</p>
+<p>Exhaustion.dbc 玩家的休息状态及处于这种状态下的收益减益设定[精力充沛、正常、疲倦1、疲倦2、精疲力竭、战友招募]</p>
+<p>Faction.dbc 记录了WOW里所有的阵营[名字，阵营ID等]</p>
+<p>FactionGroup.dbc 阵营分类[玩家、联盟、部落、怪物]</p>
+<p>FileData.dbc 开场动画的名字</p>
+<p>GameObjectArtKit.dbc 旗杆[战场里，被联盟占下的             旗，部落占下的旗，还有争夺中的旗，还有火焰节的那个旗……等等]</p>
+<p>GameObjectDisplayInfo.dbc 游戏中的对象外观[对象就是WOW里的摆设啦等，比如一本魔法宝典，等]</p>
+<p>GameTables.dbc 游戏公式表[比如，抗性的设定、升一级需要的经验、NPC魔法消耗倍数等。这个与游戏中各种各样的公式计算有关]</p>
+<p>GameTips.dbc 角色登录的时候，Loading条上面的“小窍门”</p>
+<p>GMSurveyAnswers.dbc 、GMSurveyQuestions.dbc GM评价问卷的答案、题目</p>
+<p>GMTicketCategory.dbc 联系GM时的问题分类</p>
+<p>GroundEffectDoodad.dbc 地表模型</p>
+<p>GroundEffectTexture.dbc 地表模型的材质贴图</p>
+<p>gtBarberShopCostBase.dbc 理发店的价钱</p>
+<p>HolidayDescriptions.dbc 节日描述</p>
+<p>HolidayNames.dbc 节日名字、ID</p>
+<p>Holidays.dbc 节日设定</p>
+<p>Item.dbc 物品总汇</p>
+<p>ItemBagFamily.dbc 物品可放入包裹[按包裹的属性，箭矢、灵魂碎片、附魔材料、矿物……]</p>
+<p>ItemClass.dbc 物品种类[武器、护甲、配方、消耗品……在AH浏览时的那个分类就用的这个]</p>
+<p>ItemCondExtCosts.dbc、ItemExtendedCost.dbc物品的售出与购回价</p>
+<p>ItemDisplayInfo.dbc 物品外观</p>
+<p>ItemGroupSounds.dbc 各类物品的声音</p>
+<p>ItemPetFood.dbc 宠物食物总类别</p>
+<p>ItemRandomProperties.dbc 物品的随机属性[灵猴之、孤狼之、雄鹰之……]</p>
+<p>ItemRandomSuffix.dbc 随机属性的加成方法</p>
+<p>ItemSet.dbc 套装总汇</p>
+<p>ItemSubClass.dbc 物品子类[容器、灵魂袋、法杖、红色、多彩……AH的子类搜索就是用的这个分类]</p>
+<p>ItemVisualEffects.dbc 视觉特效</p>
+<p>Languages.dbc WOW中的语言[达纳苏斯语、侏儒二进制语——这个雷、等]</p>
+<p>LanguageWords.dbc 不同语言的字符映射</p>
+<p>LFGDungeons.dbc 组队功能中的地下城、地下城的等级范围、ID</p>
+<p>LightSkybox.dbc 天空模型</p>
+<p>LiquidMaterial.dbc 流体的材质[猜测是岩浆、普通水、烫水……这种分类]</p>
+<p>LiquidType.dbc 不同类型的流体的贴图</p>
+<p>LoadingScreens.dbc 切换场景时的Loading画面路径</p>
+<p>LoadingScreenTaxiSplines.dbc 乘坐飞艇和船时的航线图</p>
+<p>Lock.dbc 锁的位置（？）</p>
+<p>LockType.dbc 箱子的类型</p>
+<p>MailTemplate.dbc 邮件模板[NPC经常会寄信给你，这个dbc就管的这个信的内容]</p>
+<p>Map.dbc 大地图区域</p>
+<p>Movie.dbc 开场电影怎么放[先来个BLZ的LOGO，再来一段正式CG]</p>
+<p>NameGen.dbc 名字不能包含的字符（提示为已注册？）</p>
+<p>NamesProfanity.dbc 名字禁止包含的字符</p>
+<p>NamesReserved.dbc 名字已存在（？）</p>
+<p>NPCSounds.dbc NPC声音文件</p>
+<p>PageTextMaterial.dbc 信纸</p>
+<p>PaperDollItemFrame.dbc 装备栏贴图</p>
+<p>ParticleColor.dbc 粒子颜色（可能是各个场合的粒子外观）</p>
+<p>PetitionType.dbc 签名表[包括公会、战队]</p>
+<p>QuestInfo.dbc 任务难度[地下城、组队、团队、PVP、团队-10、团队-20，这个在任务名的后面有一个括号会说明]</p>
+<p>QuestSort.dbc 任务归类[季节性、法师、猎人、制皮……等]</p>
+<p>Resistances.dbc 抗性分类</p>
+<p>ServerMessages.dbc 服务器提示消息[还有多少时间关机啦、多少时间重启什么的]</p>
+<p>SkillCostsData.dbc 法术的消耗需求</p>
+<p>SkillLine.dbc 技能面板技能总类别[快键 K]</p>
+<p>SkillLineAbility.dbc 技能面板上的技能熟练度</p>
+<p>SkillLineCategory.dbc 技能大类</p>
+<p>SoundEntries.dbc 声音文件的入口[详细定义了每一个”引用”]</p>
+<p>SoundProviderPreferences.dbc 同类场景的引用[比如,冬泉谷和丹莫罗的音乐都是MOUNTAINS]</p>
+<p>SoundWaterType.dbc 各类”水”的声音</p>
+<p>SpamMessages.dbc “乱码”的转换方法</p>
+<p>Spell.dbc 技能定义[最大的dbc文档！！！]</p>
+<p>SpellCastTimes.dbc 施法时间分类</p>
+<p>SpellDispelType.dbc 法术类型[诅咒、魔法、疾病……]</p>
+<p>SpellFocusObject.dbc 技能施放对象[object，一般是指游戏内的对象]</p>
+<p>SpellIcon.dbc 技能-图标对应</p>
+<p>SpellItemEnchantment.dbc “使用”类物品提供的效果</p>
+<p>SpellMechanic.dbc 技能命中的效果[被魅惑、被缴械、被变形、流血、瘫痪……]</p>
+<p>SpellMissileMotion.dbc 技能算法</p>
+<p>SpellRange.dbc 技能距离、范围</p>
+<p>SpellShapeshiftForm.dbc 各种形态……</p>
+<p>SpellVisualEffectName.dbc 技能外观模型</p>
+<p>Startup_Strings.dbc WOW.exe的提示字符串</p>
+<p>Talent.dbc 天赋总汇</p>
+<p>TalentTab.dbc 天赋系别</p>
+<p>TaxiNodes.dbc 出租车节点</p>
+<p>TaxiPath.dbc 节点对应的行走路径</p>
+<p>TaxiPathNode.dbc 节点坐标</p>
+<p>TerrainType.dbc 地区类型[比如 山、平原、干地等]</p>
+<p>TerrainTypeSounds.dbc 各种地区类型对应的音乐</p>
+<p>TotemCategory.dbc 工具分类[指”需要XX物品”的情况下，被需求的物品。</p>
+<p>WeaponImpactSounds.dbc 武器攻击声效</p>
+<p>WeaponSwingSounds2.dbc 武器挥舞声效</p>
+<p>Weather.dbc 天气配置</p>
+<p>WMOAreaTable.dbc “小地区”表</p>
+<p>WorldMapArea.dbc 地图区域划分</p>
+<p>WorldStateUI.dbc 区域内战斗提示[麦迪文的剩余护盾：X%；部落控制了内城区！]</p>
+<p>WowError_Strings.dbc WOW出错界面及错误报告界面字符</p>
+<p>ZoneIntroMusicTable.dbc 地区介绍音乐[这个音乐作为IntroMusic一般是主题性质的音乐]</p>
+<p>ZoneMusic.dbc 地区音乐</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[中文说明worldserver.conf]]></title>
+        <id>https://52blog.github.io/mg1CMOlSs/</id>
+        <link href="https://52blog.github.io/mg1CMOlSs/">
+        </link>
+        <updated>2021-09-23T15:24:26.000Z</updated>
+        <summary type="html"><![CDATA[<p>中文说明worldserver.conf<br>
+[worldserver]</p>
+<p>mmap.enablePathFinding =1 MMAPS 开启</p>
+<p>CONNECTIONS AND DIRECTORIES</p>
+<p>RealmID<br>
+登陆服务器设置，RealmID必须匹配Realmlist，默认：1<br>
+RealmID = 1</p>
+<p>DataDir<br>
+数据文件目录设置(DBC/Maps/vMaps)<br>
+DataDir = “data”</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>中文说明worldserver.conf<br>
+[worldserver]</p>
+<p>mmap.enablePathFinding =1 MMAPS 开启</p>
+<p>CONNECTIONS AND DIRECTORIES</p>
+<p>RealmID<br>
+登陆服务器设置，RealmID必须匹配Realmlist，默认：1<br>
+RealmID = 1</p>
+<p>DataDir<br>
+数据文件目录设置(DBC/Maps/vMaps)<br>
+DataDir = “data”</p>
+<!-- more -->
+<p>LogsDir<br>
+日志文件目录设置<br>
+LogsDir = “data”</p>
+<p>LoginDatabaseInfo<br>
+WorldDatabaseInfo<br>
+CharacterDatabaseInfo<br>
+数据库链接设置，格式:ip;端口;用户名;密码;数据库名称<br>
+LoginDatabaseInfo = “127.0.0.1;3306;root;root;ZH”<br>
+WorldDatabaseInfo = “127.0.0.1;3306;root;root;SJ”<br>
+CharacterDatabaseInfo = “127.0.0.1;3306;root;root;JS”</p>
+<p>LoginDatabase.WorkerThreads<br>
+WorldDatabase.WorkerThreads<br>
+CharacterDatabase.WorkerThreads<br>
+用几个线程处理Mysql数据异步(即延迟)，默认：1、1、1<br>
+LoginDatabase.WorkerThreads = 1<br>
+WorldDatabase.WorkerThreads = 1<br>
+CharacterDatabase.WorkerThreads = 1</p>
+<p>LoginDatabase.SynchThreads<br>
+WorldDatabase.SynchThreads<br>
+CharacterDatabase.SynchThreads<br>
+用几个线程连接数据库，默认：1、1、2<br>
+LoginDatabase.SynchThreads = 1<br>
+WorldDatabase.SynchThreads = 1<br>
+CharacterDatabase.SynchThreads = 2</p>
+<p>MaxPingTime<br>
+最高ping数据库的时间间隔，默认：30(分钟)<br>
+MaxPingTime = 30</p>
+<p>WorldServerPort<br>
+worldserver.exe使用的系统端口，默认：8085<br>
+WorldServerPort = 8085</p>
+<p>BindIP<br>
+worldserver.exe绑定的IP地址/主机，默认：&quot;0.0.0.0&quot;<br>
+BindIP = “0.0.0.0”</p>
+<p>PERFORMANCE SETTINGS</p>
+<p>UseProcessors<br>
+在多线程系统使用线程MASK(只在Windows系统下使用)，默认：0(自动选择)，数值(设置处理器的线程值)<br>
+UseProcessors = 0</p>
+<p>ProcessPriority<br>
+进程优先权设置(只在Windows系统下使用)，默认: 1 (高优先)，0 (正常优先权)<br>
+ProcessPriority = 1</p>
+<p>Compression<br>
+发送到客户端的数据包的压缩级别(1到9)，默认: 1 (速度快,不压缩)，9 (速度慢，最好的压缩)<br>
+Compression = 1</p>
+<p>PlayerLimit<br>
+除GM之外，游戏最大在线玩家数量，默认: 1000<br>
+PlayerLimit = 100</p>
+<p>SaveRespawnTimeImmediately<br>
+记录生物/游戏对象等再生时间设置，在生物死亡或箱子等被使用/打开情况下。<br>
+默认: 1 (保存生物/游戏对象再生时间，开始于当前格没有卸载)<br>
+0 (保存生物/游戏对象再生时间，开始于当前格卸载后)<br>
+SaveRespawnTimeImmediately = 1</p>
+<p>MaxOverspeedPings<br>
+最大的超速限制，在玩家被踢出之前(最小值是2, 0为取消检测)，默认：2<br>
+MaxOverspeedPings = 0</p>
+<p>GridUnload<br>
+卸载Grids (如果里的内存够大,可以禁用,提高玩家第二次经过新Grids时候的速度)<br>
+P.S: Grids就是地图上刷出来的东西,玩家经过一个地方 就会加载该地方的环境,离开的时候 就卸载该地方的环境<br>
+默认: 1 (卸载)， 0(不卸载)<br>
+GridUnload = 1</p>
+<p>SocketTimeOutTime<br>
+与客户端断开连接当玩家在选择人物界面超过多少时间，默认：900000 (15分钟)<br>
+SocketTimeOutTime = 900000</p>
+<p>SessionAddDelay<br>
+Description: Time (in microseconds) that a network thread will sleep after authentication<br>
+protocol handling before adding a connection to the world session map.<br>
+Default:     10000 - (10 milliseconds, 0.01 second)<br>
+SessionAddDelay = 10000</p>
+<p>GridCleanUpDelay<br>
+默认地图网格清理延迟(单位毫秒)，默认: 300000 (5 分钟)<br>
+GridCleanUpDelay = 300000</p>
+<p>MapUpdateInterval<br>
+默认地图更新间隔(单位毫秒)，默认: 100 (1 秒)<br>
+MapUpdateInterval = 100</p>
+<p>ChangeWeatherInterval<br>
+默认天气更新间隔 (单位毫秒)，默认: 600000 (10 分钟)<br>
+ChangeWeatherInterval = 9000000</p>
+<p>PlayerSaveInterval<br>
+默认玩家数据保存间隔(单位毫秒)，默认:900000 - (15 分钟)<br>
+PlayerSaveInterval = 900000</p>
+<p>PlayerSave.Stats.MinLevel<br>
+最低多少等级将玩家的属性数据保存到数据库<br>
+默认: 0  (不保存玩家的属性属性)<br>
+1+ (保存玩家的数据，玩家的等级 + 1)<br>
+PlayerSave.Stats.MinLevel = 0</p>
+<p>PlayerSave.Stats.SaveOnlyOnLogout<br>
+启用保存玩家数据仅在玩家退出游戏时，默认：1(仅在玩家退出游戏时)，0(使用时间循环保存数据)<br>
+PlayerSave.Stats.SaveOnlyOnLogout = 1</p>
+<p>vmap.enableLOS<br>
+vmap.enableHeight<br>
+开启/关闭VMmap视线和高度计算支持，开启后需要Vmaps文件支持，默认: 0 (关闭) 1 (开启)<br>
+vmap.enableLOS = 1<br>
+vmap.enableHeight = 1</p>
+<p>vmap.ignoreSpellIds<br>
+这些法术将被忽略准线算法，列表的ID以符号分割 ','<br>
+例:     &quot;7720,1337&quot;<br>
+默认:     &quot;7720&quot;<br>
+vmap.ignoreSpellIds = “7720”</p>
+<p>vmap.petLOS<br>
+对宠物开启vmaps，默认：0(不启用，低Cpu占用)，1(启用，高Cpu占用)<br>
+vmap.petLOS = 1</p>
+<p>vmap.enableIndoorCheck<br>
+室内外检查光环 (坐骑等).<br>
+默认:     1 - (启用)<br>
+0 - (禁用，降低一些的CPU使用率)<br>
+vmap.enableIndoorCheck = 1</p>
+<p>DetectPosCollision<br>
+检查最后的移动位置, 召唤位置, 可看见的碰撞以及其他对象或墙壁等位置测试(墙壁测试，只有当副本测试设置vmaps的相关设置启用后生效)<br>
+默认: 1 (启用, 占用更多的CPU资源)，0 (关闭, 不理想的设置, 但可以节省较多的CUP资源，适合服务器档次较差的情况)<br>
+DetectPosCollision = 1</p>
+<p>TargetPosRecalculateRange<br>
+重新计算目标移动后的依次的远近范围, 从移动的目标点 (+移动者的大小) 和被瞄准对象 (+大小)的最大距离<br>
+根据激活瞬间的移动目标点开始重新计算协助半径,最大: 混战攻击范围(5), 最小: 联络范围(0.5)<br>
+更大的距离,会使生物们表现更加完美, 较小的距离, 将会让生物们反应更精确敏感。<br>
+默认: 1.5<br>
+TargetPosRecalculateRange = 1.5</p>
+<p>UpdateUptimeInterval<br>
+系统正常运行更新时间周期以分钟为单位(用于更新 'uptime' 数据表)。必须大于0，默认: 10 分钟<br>
+UpdateUptimeInterval = 100</p>
+<p>LogDB.Opt.ClearInterval<br>
+WUPDATE_CLEANDB 计时器清理log表旧数据的时间间隔。必须大于0，默认: 10 分钟<br>
+LogDB.Opt.ClearInterval = 100</p>
+<p>LogDB.Opt.ClearTime<br>
+清理log表的时间间隔，默认: 1209600 (14 天)，0 - 不清理<br>
+LogDB.Opt.ClearTime = 0</p>
+<p>MaxCoreStuckTime<br>
+周期的检查如果过程已经冻结, 如果发现过程已经冻结将在多少秒之后重启控制器。<br>
+单位:秒, 必须大于0。如果使用此功能建议值大于10秒，默认: 0 (不使用)<br>
+MaxCoreStuckTime = 0</p>
+<p>AddonChannel<br>
+在本服务器允许/禁用使用的插件频道(可以停止一些客户端扩展功能或关闭插件频道)，默认: 1 (允许) 、0 (关闭)<br>
+AddonChannel = 1</p>
+<p>MapUpdate.Threads<br>
+地图线程数量，默认: 1<br>
+MapUpdate.Threads = 1</p>
+<p>CleanCharacterDB<br>
+启用数据自动清理功能，默认：0(不启用)，1(启用)<br>
+CleanCharacterDB = 0</p>
+<p>PersistentCharacterCleanFlags<br>
+Description: Determines the character clean flags that remain set after cleanups.<br>
+This is a bitmask value, check /doc/CharacterDBCleanup.txt for more<br>
+information.<br>
+Example:     14 - (Cleaning up skills, talents and spells will remain enabled after the<br>
+next cleanup)<br>
+Default:     0  - (All cleanup methods will be disabled after the next cleanup)<br>
+PersistentCharacterCleanFlags = 0</p>
+<p>SERVER LOGGING</p>
+<p>PidFile<br>
+是否创建登录控制器TrinityCore系统进程档案记录PID文件<br>
+PidFile = “”</p>
+<p>LogLevel<br>
+服务器控制台记录显示的级别，0 = 最小; 1 = 基础和错误; 2 = 详细; 3 = 完全或侦错<br>
+LogLevel = 0</p>
+<p>LogFile<br>
+日志文件的名字，默认：&quot;Server.log&quot;<br>
+LogFile = “”</p>
+<p>LogTimestamp<br>
+日志文件用服务器时间命名与否，默认: 0 - 没有时间戳在名字、1 - 增加时间戳在名字在形式<br>
+LogTimestamp = 0</p>
+<p>LogFileLevel<br>
+服务器记录文件的记录级别，0 = 最小; 1 = 基础和错误; 2 = 详细; 3 = 完全或侦错<br>
+LogFileLevel = 0</p>
+<p>Debug Log Mask<br>
+描述：位掩码，确定哪些调试日志将被输出 (level 3)<br>
+Possible flags:<br>
+1 - Anything related to units that doesn't fit in other<br>
+categories.<br>
+2 - Anything related to pets.<br>
+4 - Anything related to vehicles.<br>
+8 - Anything related to C++ AI, instance scripts, etc.<br>
+16 - Anything related to DB AI, such as SAI, EAI, CreatureAI<br>
+32 - Anything related to DB map scripts<br>
+64 - Anything related to network input/output,<br>
+such as packet handlers and netcode logs<br>
+128 - Anything related to the spellsystem and aurasystem<br>
+256 - Anything related to the achievement system<br>
+512 - Anything related to the condition system<br>
+1024 - Anything related to the pool system<br>
+2048 - Anything related to the auction house<br>
+4096 - Anything related to arena's and battlegrounds<br>
+8192 - Anything related to outdoor PVP<br>
+16384 - Anything related to the chat system<br>
+32768 - Anything related to the LFG system<br>
+65536 - Anything related to maps, instances (not scripts),<br>
+grids, cells, visibility, etc.<br>
+131072 - Anything related to player loading from DB<br>
+(Player::_LoadXXX functions)<br>
+262144 - Anything related to items<br>
+524288 - Anything related to player skills<br>
+(do not confuse with spells)<br>
+1048576 - Anything related to loot<br>
+2097152 - Anything related to guilds<br>
+4194304 - Anything related to transports</p>
+<pre><code>               Simply add the values together to create a bitmask.
+               For more info see enum DebugLogFilters in Log.h
+
+     Default: 0 (nothing)
+</code></pre>
+<p>DebugLogMask = 0</p>
+<p>WorldLogFile<br>
+世界服务器封包记录日志文件(World.log)空为不记录<br>
+WorldLogFile = “”</p>
+<p>DBErrorLogFile<br>
+服务器运行中数据库错误日志，默认: &quot;DBErrors.log&quot;<br>
+DBErrorLogFile = “”</p>
+<p>CharLogFile<br>
+角色活动日志文件名设置，默认:&quot;Char.log&quot;<br>
+CharLogFile = “”</p>
+<p>CharLogTimestamp<br>
+角色日志文件是否使用服务器时间戳来顺序命名， 默认: 0 - 不使用时间戳名、1 - 使用时间戳命名日志文件<br>
+CharLogTimestamp = 0</p>
+<p>CharLogDump<br>
+角色删除前是否同时清除在日志文件里的记录 Char.log，默认: 0 - 不包含日志文件内的角色记录、1 - 包含日志文件内的记录<br>
+CharLogDump = 0</p>
+<p>CharLogDump.Separate<br>
+将角色删除信息写入一个单独的文件(账号、角色guid，角色名字)<br>
+默认: 0 - 不单独创建一个文件<br>
+1 - 单独创建一个文件<br>
+CharLogDump.Separate = 0</p>
+<p>CharLogDump.SeparateDir<br>
+角色删除信息日志文件目录设置<br>
+CharLogDump.SeparateDir = “”</p>
+<p>GmLogFile<br>
+记录GM命令使用情况的日志文件名，默认：&quot;GM.log&quot;<br>
+GmLogFile = “”</p>
+<p>GmLogTimestamp<br>
+GM日志文件是否使用服务器时间戳来顺序命名，默认: 0 - 不包含日志文件内的角色记录、1 - 包含日志文件内的记录<br>
+GmLogTimestamp = 0</p>
+<p>GmLogPerAccount<br>
+GM日志文件和GM账号ID (注: 如果 GmLogFile 设置不记录的话,此功能无效)<br>
+默认: 0 - 添加GM日志数据到一个唯一的日志文件、1 - 添加GM日志数据到一个以此GM账号名为文件名的日志文件<br>
+GmLogPerAccount = 0</p>
+<p>RaLogFile<br>
+RA控制台命令的日志文件，默认：&quot;Ra.log&quot;<br>
+RaLogFile = “”</p>
+<p>ArenaLogFile<br>
+竞技日志文件名称，默认：&quot;&quot; - 不创建竞技日志<br>
+ArenaLogFile = “”</p>
+<p>ArenaLog.ExtendedInfo<br>
+记录玩家的详细信息，默认：0(不记录)，1(记录)<br>
+ArenaLog.ExtendedInfo = 0</p>
+<p>SQLDriverLogFile<br>
+记录Sql事件的文件名称，默认：&quot;&quot;(不使用)<br>
+SQLDriverLogFile = “”</p>
+<p>SQLDriverQueryLogging<br>
+Description: Log SQL queries to the SQLDriverLogFile and console.<br>
+Default:     0 - (Disabled, Query errors only)<br>
+1 - (Enabled, Full query logging - may have performance impact)<br>
+SQLDriverQueryLogging = 0</p>
+<p>LogColors<br>
+控制台信息的颜色(格式: &quot;正常颜色 详情颜色 Debug颜色 错误颜色).<br>
+Colors:      0  - Black<br>
+1  - Red<br>
+2  - Green<br>
+3  - Brown<br>
+4  - Blue<br>
+5  - Magenta<br>
+6  - Cyan<br>
+7  - Grey<br>
+8  - Yellow<br>
+9  - Lred<br>
+10 - Lgreen<br>
+11 - Lblue<br>
+12 - Lmagenta<br>
+13 - Lcyan<br>
+14 - White<br>
+Example:     &quot;13 11 9 5&quot; - (Enabled)<br>
+Default:     &quot;&quot;          - (Disabled)<br>
+LogColors = “13 11 9 5”</p>
+<p>EnableLogDB<br>
+服务器日志保存在数据库，默认: 0 - 关闭，1 - 开启<br>
+EnableLogDB = 0</p>
+<p>DBLogLevel<br>
+数据库日志的记录级别，0 = 最小; 1 = 基础和错误; 2 = 详细; 3 = 完全或侦错<br>
+DBLogLevel = 0</p>
+<p>LogDB.Char<br>
+将角色日志信息写入数据库，默认：0(不使用)，1(使用)<br>
+LogDB.Char = 0</p>
+<p>LogDB.GM<br>
+将使用的Gm命令信息写入数据库，默认：0(不使用)，1(使用)<br>
+LogDB.GM = 0</p>
+<p>LogDB.RA<br>
+将使用RA控制台命令信息写入数据库，默认：0(不使用)，1(使用)<br>
+LogDB.RA = 0</p>
+<p>LogDB.World<br>
+将世界服务器封包记录信息写入数据库，默认：0(不使用)，1(使用)<br>
+LogDB.World = 0</p>
+<p>LogDB.Chat<br>
+将角色聊天记录信息写入数据库，默认：0(不使用)，1(使用)<br>
+LogDB.Chat = 0</p>
+<p>ChatLogFile<br>
+聊天记录日志文件的名字，默认：&quot;Chat.log&quot;<br>
+ChatLogFile = “”</p>
+<p>ChatLogTimestamp<br>
+聊天日志文件用服务器时间命名与否，默认: 0 - 没有时间戳在名字、1 - 增加时间戳在名字在形式<br>
+ChatLogTimestamp = 0</p>
+<p>ChatLogs.Channel<br>
+启用 记录自主频道聊天信息.<br>
+Default: 0 - off<br>
+1 - on<br>
+ChatLogs.Channel = 0</p>
+<p>ChatLogs.Whisper<br>
+启用 记录玩家之间私聊信息<br>
+Default: 0 - off<br>
+1 - on<br>
+ChatLogs.Whisper = 0</p>
+<p>ChatLogs.SysChan<br>
+Description: Log system channel messages.<br>
+Default:     0 - (Disabled)<br>
+1 - (Enabled)<br>
+ChatLogs.SysChan = 0</p>
+<p>ChatLogs.Party<br>
+启用 记录小队聊天信息.<br>
+Default: 0 - off<br>
+1 - on<br>
+ChatLogs.Party = 0</p>
+<p>ChatLogs.Raid<br>
+启用 记录团队聊天信息.<br>
+Default: 0 - off<br>
+1 - on<br>
+ChatLogs.Raid = 0</p>
+<p>ChatLogs.Guild<br>
+启用 记录公会聊天信息.<br>
+Default: 0 - off<br>
+1 - on<br>
+ChatLogs.Guild = 0</p>
+<p>ChatLogs.Public<br>
+启用 记录公共聊天活动信息 (对话/大喊/表情)..<br>
+Default: 0 - off<br>
+1 - on<br>
+ChatLogs.Public = 0</p>
+<p>ChatLogs.Addon<br>
+启用 记录插件信息.<br>
+Default: 0 - off<br>
+1 - on<br>
+ChatLogs.Addon = 0</p>
+<p>ChatLogs.BattleGround<br>
+启用 记录战场聊天信息.<br>
+Default: 0 - off<br>
+1 - on<br>
+ChatLogs.BattleGround = 0</p>
+<p>SERVER SETTINGS</p>
+<p>GameType<br>
+登录服务器运行方式设置<br>
+0 = NORMAL; 1 = PVP; 4 = NORMAL; 6 = RP; 8 = RPPVP; 16 FFA_PVP(除休息复活地方和禁猎区以外,所有的区域为PVP区)<br>
+GameType = 0</p>
+<p>RealmZone<br>
+服务登录区域设置 (设置服务器支持的区域字符表/服务器名称列表等的正确显示)<br>
+默认         1  - (全地区)<br>
+2  - (United States - extended-Latin)<br>
+3  - (Oceanic       - extended-Latin)<br>
+4  - (Latin America - extended-Latin)<br>
+5  - (Tournament    - basic-Latin at create, any at login)<br>
+6  - (Korea         - East-Asian)<br>
+7  - (Tournament    - basic-Latin at create, any at login)<br>
+8  - (English       - extended-Latin)<br>
+9  - (German        - extended-Latin)<br>
+10 - (French        - extended-Latin)<br>
+11 - (Spanish       - extended-Latin)<br>
+12 - (Russian       - Cyrillic)<br>
+13 - (Tournament    - basic-Latin at create, any at login)<br>
+14 - (Taiwan        - East-Asian)<br>
+15 - (Tournament    - basic-Latin at create, any at login)<br>
+16 - (China         - East-Asian)<br>
+17 - (CN1           - basic-Latin at create, any at login)<br>
+18 - (CN2           - basic-Latin at create, any at login)<br>
+19 - (CN3           - basic-Latin at create, any at login)<br>
+20 - (CN4           - basic-Latin at create, any at login)<br>
+21 - (CN5           - basic-Latin at create, any at login)<br>
+22 - (CN6           - basic-Latin at create, any at login)<br>
+23 - (CN7           - basic-Latin at create, any at login)<br>
+24 - (CN8           - basic-Latin at create, any at login)<br>
+25 - (Tournament    - basic-Latin at create, any at login)<br>
+26 - (Test Server   - any language)<br>
+27 - (Tournament    - basic-Latin at create, any at login)<br>
+28 - (QA Server     - any language)<br>
+29 - (CN9           - basic-Latin at create, any at login)<br>
+RealmZone = 1</p>
+<p>StrictPlayerNames<br>
+玩家角色名称语言文字规定，默认：0(全符号支持)<br>
+StrictPlayerNames = 0</p>
+<p>StrictCharterNames<br>
+公会/竞技团队名称语言文字规定，默认：0(全符号支持)<br>
+StrictCharterNames = 0</p>
+<p>StrictPetNames<br>
+宠物名称语言文字规定，默认：0(全符号支持)<br>
+StrictPetNames = 0</p>
+<p>DBC.Locale<br>
+DBC地区语言类型设置，默认：255(自动检测dbc语言类型)<br>
+Default:     255 - (Auto Detect)<br>
+0   - (English)<br>
+1   - (Korean)<br>
+2   - (French)<br>
+3   - (German)<br>
+4   - (Chinese)<br>
+5   - (Taiwanese)<br>
+6   - (Spanish)<br>
+7   - (Spanish Mexico)<br>
+8   - (Russian)<br>
+DBC.Locale = 255</p>
+<p>DeclinedNames<br>
+允许使用俄语字体创建角色，默认：0(不允许)，1(允许)<br>
+DeclinedNames = 0</p>
+<p>Expansion<br>
+开放内容选择，0(普通)，1(燃烧的远程)，2(巫妖王之怒)<br>
+Expansion = 2</p>
+<p>MinPlayerName<br>
+最短角色名称字符数量，默认：2<br>
+MinPlayerName = 2</p>
+<p>MinCharterName<br>
+最短公会/竞技团队名称字符数量，默认：2<br>
+MinCharterName = 2</p>
+<p>MinPetName<br>
+最短宠物名称字符数量，默认：2<br>
+MinPetName = 2</p>
+<p>MaxWhoListReturns<br>
+客户端列表显示的最大在线玩家数量，默认：49(稳定)<br>
+MaxWhoListReturns = 49</p>
+<p>CharacterCreating.Disabled<br>
+禁止建立新角色<br>
+默认: 0 - 不限制建立新角色，1 - 禁止联盟建立角色，2 - 禁止部落建立角色，3 - 全部禁止建立角色<br>
+CharacterCreating.Disabled = 0</p>
+<p>CharacterCreating.Disabled.RaceMask<br>
+禁止种族新建角色<br>
+默认: 0 - 不限制建立新角色<br>
+1 = 人类<br>
+2 = 兽人<br>
+4 = 矮人<br>
+8 = 暗夜精灵<br>
+16 = 亡灵<br>
+32 = 牛头人<br>
+64 = 侏儒<br>
+128 = 巨魔<br>
+512 = 血精灵<br>
+1024 = 德莱尼</p>
+<pre><code>例如: 1536 = 1024 + 512 - 德莱尼 和 血精灵 禁止建立新角色
+</code></pre>
+<p>CharacterCreating.Disabled.RaceMask = 0</p>
+<p>CharacterCreating.Disabled.ClassMask<br>
+禁止职业建立新角色<br>
+默认: 不限制建立新角色<br>
+1 = 战士<br>
+2 = 圣骑士<br>
+4 = 猎人<br>
+8 = 盗贼<br>
+16 = 牧师<br>
+32 = 死骑<br>
+64 = 萨满<br>
+128 = 法师<br>
+256 = 术士<br>
+1024 = 德鲁伊</p>
+<pre><code>例如: 288 = 32 + 256 - 死骑 和 术士 禁止建立新角色
+</code></pre>
+<p>CharacterCreating.Disabled.ClassMask = 0</p>
+<p>CharactersPerAccount<br>
+每个账号允许创建最大角色数量<br>
+CharactersPerAccount = 50</p>
+<p>CharactersPerRealm<br>
+一个区相同账号最大角色数量<br>
+CharactersPerRealm = 10</p>
+<p>HeroicCharactersPerRealm<br>
+一个区建立英雄职业(死亡骑士)的数量<br>
+HeroicCharactersPerRealm = 1</p>
+<p>CharacterCreating.MinLevelForHeroicCharacter<br>
+创建英雄职业(死亡骑士)需要其它角色的等级，默认：55<br>
+CharacterCreating.MinLevelForHeroicCharacter = 80</p>
+<p>SkipCinematics<br>
+角色第一次登陆播放电影脚本(允许或关闭通常情况下人物开始位置坐标处的剧情介绍)<br>
+默认: 0 - 介绍每个新角色，1 - 仅介绍选中的种族，2 - 禁用介绍<br>
+SkipCinematics = 2</p>
+<p>MaxPlayerLevel<br>
+获取经验的最高等级，默认：80，不推荐超越100级<br>
+MaxPlayerLevel = 80</p>
+<p>MinDualSpecLevel<br>
+学习双天赋技能的最低等级，默认：40<br>
+MinDualSpecLevel = 80</p>
+<p>StartPlayerLevel<br>
+普通角色出生等级，默认：1<br>
+StartPlayerLevel = 1</p>
+<p>StartHeroicPlayerLevel<br>
+英雄职业(死亡骑士)出生等级，默认：55<br>
+StartHeroicPlayerLevel = 55</p>
+<p>StartPlayerMoney<br>
+玩家出生赠送的金钱数量，1金币 = 100银币 = 10000铜币，默认：0金币<br>
+StartPlayerMoney = 0</p>
+<p>MaxHonorPoints<br>
+玩家拥有的最大荣誉点数量，默认：75000<br>
+MaxHonorPoints = 75000</p>
+<p>StartHonorPoints<br>
+玩家出生拥有的荣誉点数量，默认：0<br>
+StartHonorPoints = 0</p>
+<p>MaxArenaPoints<br>
+玩家拥有的最大竞技点数量，默认：10000<br>
+MaxArenaPoints = 10000</p>
+<p>StartArenaPoints<br>
+玩家出生拥有的竞技点数量，默认：0<br>
+StartArenaPoints = 0</p>
+<p>RecruitAFriend.MaxLevel<br>
+Description: Highest level up to which a character can benefit from the Recruit-A-Friend<br>
+experience multiplier.<br>
+Default:     60<br>
+RecruitAFriend.MaxLevel = 60</p>
+<p>RecruitAFriend.MaxDifference<br>
+Description: Highest level difference between linked Recruiter and Friend benefit from<br>
+the Recruit-A-Friend experience multiplier.<br>
+Default:     3<br>
+RecruitAFriend.MaxDifference = 3</p>
+<p>InstantLogout<br>
+开启/关闭玩家退出或小退安全级别 (0..4)之间 (在非战斗/竞技/下降过程中)<br>
+Default:     1  - (Enabled, Mods/GMs/Admins)<br>
+0  - (Enabled, Everyone)<br>
+2  - (Enabled, GMs/Admins)<br>
+3  - (Enabled, Admins)<br>
+4  - (Disabled)<br>
+InstantLogout = 1</p>
+<p>DisableWaterBreath<br>
+关闭/开启水下呼吸会员等级要求 (0..4) 或则更高<br>
+Default:     4  - (Disabled)<br>
+0  - (Enabled, Everyone)<br>
+1  - (Enabled, Mods/GMs/Admins)<br>
+2  - (Enabled, GMs/Admins)<br>
+3  - (Enabled, Admins)<br>
+DisableWaterBreath = 4</p>
+<p>AllFlightPaths<br>
+角色创建后激活所有飞行点 (注:所有飞行点,不只包括角色所在队伍)，默认：1(启用)，0(禁用)<br>
+AllFlightPaths = 1</p>
+<p>InstantFlightPaths<br>
+飞行路线将使玩家立即传送到目的地，而不用进行飞行等待，默认：0(不使用)，1(使用)<br>
+InstantFlightPaths = 0</p>
+<p>AlwaysMaxSkillForLevel<br>
+玩家将登录时自动获取最大的技能等级(武器或防御)对全局生效，默认：1(启用)，0(禁用)<br>
+AlwaysMaxSkillForLevel = 0</p>
+<p>ActivateWeather<br>
+启用天气系统，默认：1(启用)，0(禁用)<br>
+ActivateWeather = 1</p>
+<p>CastUnstuck<br>
+允许在客户端帮助选择使用卡死技能 .start GM命令，默认：1(启用)，0(禁用)<br>
+CastUnstuck = 1</p>
+<p>Instance.IgnoreLevel<br>
+取消进入副本的等级限制，默认：1(取消)，0(不取消)<br>
+Instance.IgnoreLevel = 1</p>
+<p>Instance.IgnoreRaid<br>
+取消进入副本的组队限制，默认：1(取消)，0(不取消)<br>
+Instance.IgnoreRaid = 1</p>
+<p>Instance.ResetTimeHour<br>
+每天副本重置时间(0-23)，默认：4<br>
+Instance.ResetTimeHour = 3</p>
+<p>Instance.UnloadDelay<br>
+当副本没有玩家时，在一定时间内从内存清理副本地图。默认: 1800000 (毫秒, 即30分钟)，0 (副本地图存放在内存中，直到副本重置)<br>
+Instance.UnloadDelay = 600000</p>
+<p>Quests.LowLevelHideDiff<br>
+玩家可以看到NPC头上的感叹号的任务等级比自己高的级数<br>
+Default:     4  - (Enabled, Hide quests that have 4 levels less than the character)<br>
+-1 - (Disabled, Show all available quest marks)<br>
+Quests.LowLevelHideDiff = 15</p>
+<p>Quests.HighLevelHideDiff<br>
+玩家可以看到NPC头上的感叹号的任务等级比自己低的级数<br>
+Default:     7  - (Enabled, Hide quests that have 7 levels more than the character)<br>
+-1 - (Disabled, Show all available quest marks)<br>
+Quests.HighLevelHideDiff = 15</p>
+<p>Quests.IgnoreRaid<br>
+Description: Allow non-raid quests to be completed while in a raid group.<br>
+Default:     0 - (Disabled)<br>
+1 - (Enabled)<br>
+Quests.IgnoreRaid = 0</p>
+<p>Guild.EventLogRecordsCount<br>
+公会事件记录的最大数量，默认：100<br>
+Guild.EventLogRecordsCount = 100</p>
+<p>Guild.BankEventLogRecordsCount<br>
+银行事件记录的最大数量，默认：25<br>
+Guild.BankEventLogRecordsCount = 25</p>
+<p>MaxPrimaryTradeSkill<br>
+玩家最多可以学的商业技能个数，默认：2<br>
+MaxPrimaryTradeSkill = 13</p>
+<p>MinPetitionSigns<br>
+建立公会所需的最少玩家签名个数，默认：9<br>
+MinPetitionSigns = 9</p>
+<p>MaxGroupXPDistance<br>
+组队杀死怪物获得经验的最大距离(距离怪物)，默认：74<br>
+MaxGroupXPDistance = 74</p>
+<p>MaxRecruitAFriendBonusDistance<br>
+Description: Max distance between character and and group to gain the Recruit-A-Friend<br>
+XP multiplier.<br>
+Default:     100<br>
+MaxRecruitAFriendBonusDistance = 100</p>
+<p>MailDeliveryDelay<br>
+邮寄物品延迟时间，默认：3600(1个小时)<br>
+MailDeliveryDelay = 600</p>
+<p>SkillChance.Prospecting<br>
+默认情况下不可能提升预测技能, 但是可以使用配置来启用，默认: 0(不可以提升)，1(可以提升)<br>
+SkillChance.Prospecting = 0</p>
+<p>SkillChance.Milling<br>
+为不可能消减的下隆等级水平, 但可以自定义设置，默认: 0(不消减)，1(可以消减)<br>
+SkillChance.Milling = 0</p>
+<p>OffhandCheckAtSpellUnlearn<br>
+重置天赋时检查副手武器栏，0 - 只在更换地图，登陆时检查并重置， 1 - 在重置天赋的同时检查并重置<br>
+OffhandCheckAtSpellUnlearn = 1</p>
+<p>ClientCacheVersion<br>
+重置客户端缓存，当更新数据库时，默认：0(关闭)，1(开启)<br>
+ClientCacheVersion = 0</p>
+<p>Event.Announce<br>
+游戏活动事件公告，默认：0(关闭)，1(开启)<br>
+Event.Announce = 0</p>
+<p>BeepAtStart<br>
+启动完毕后蜂鸣一声(通常只在Unix/Linux系统下工作)，默认：0(关闭)，1(开启)<br>
+BeepAtStart = 1</p>
+<p>Motd<br>
+每日问候消息被显示在世界注册为每名用户('@' 为换行符)<br>
+Motd = “欢迎来到魔兽世界单机版”</p>
+<p>Server.LoginInfo<br>
+角色登陆后是否显示服务器信息，默认：0(关闭)，1(开启)<br>
+Server.LoginInfo = 0</p>
+<p>Command.LookupMaxResults<br>
+Gm命令.lookup command 最大可显示的行数，默认：0(无限制)<br>
+Default: 0 - unlimited<br>
+Command.LookupMaxResults = 0</p>
+<p>AllowTickets<br>
+Description: Allow/disallow sending new tickets.<br>
+Default:     1 - (Enabled)<br>
+0 - (Disabled)<br>
+AllowTickets = 1</p>
+<p>DungeonFinder.Enable<br>
+启动随机组队功能，默认：1(开启)，0(关闭)</p>
+<p>DungeonFinder.Enable = 0</p>
+<p>DBC.EnforceItemAttributes<br>
+修复物品数据，可选择使用Dbc数据或者数据库数据<br>
+默认: 1 - 开启，使用Dbc数据，0 - 关闭，使用数据库数据</p>
+<p>DBC.EnforceItemAttributes = 1</p>
+<p>AccountInstancesPerHour 爆本<br>
+Description: Controls the max amount of different instances player can enter within hour<br>
+Default: 5</p>
+<p>AccountInstancesPerHour = 5</p>
+<p>PLAYER INTERACTION</p>
+<p>AllowTwoSide.Accounts<br>
+是否运行同1个帐号建立不2个不同阵营的角色。默认：0(不允许)，1(允许)<br>
+AllowTwoSide.Accounts = 1</p>
+<p>AllowTwoSide.Interaction.Chat<br>
+否允许不同阵营间的玩家聊天，默认：0(不允许)，1(允许)<br>
+AllowTwoSide.Interaction.Chat = 1</p>
+<p>AllowTwoSide.Interaction.Channel<br>
+否允许不同阵营间的玩家(频道)，默认：0(不允许)，1(允许)<br>
+AllowTwoSide.Interaction.Channel = 1</p>
+<p>AllowTwoSide.Interaction.Group<br>
+否允许不同阵营间的玩家(组队)，默认：0(不允许)，1(允许)<br>
+AllowTwoSide.Interaction.Group = 1</p>
+<p>AllowTwoSide.Interaction.Guild<br>
+否允许不同阵营间的玩家(工会)，默认：0(不允许)，1(允许)<br>
+AllowTwoSide.Interaction.Guild = 1</p>
+<p>AllowTwoSide.Interaction.Auction<br>
+否允许不同阵营间的玩家(拍卖行)，默认：0(不允许)，1(允许)<br>
+AllowTwoSide.Interaction.Auction = 1</p>
+<p>否允许不同阵营间的玩家(邮件)，默认：0(不允许)，1(允许)<br>
+AllowTwoSide.Interaction.Mail = 1</p>
+<p>AllowTwoSide.WhoList<br>
+是否在在线玩家列表里显示敌对阵营玩家。默认：0(不允许)，1(允许)<br>
+AllowTwoSide.WhoList = 1</p>
+<p>AllowTwoSide.AddFriend<br>
+是否运行不同阵营之间互加好友。默认：0(不允许)，1(允许)<br>
+AllowTwoSide.AddFriend = 1</p>
+<p>AllowTwoSide.Trade<br>
+是否运行不同阵营之间交易。默认：0(不允许)，1(允许)<br>
+AllowTwoSide.Trade = 1</p>
+<p>TalentsInspecting<br>
+是否允许查看其他玩家天赋。默认：0(不允许)，1(允许)<br>
+TalentsInspecting = 1</p>
+<p>CREATURE SETTINGS</p>
+<p>ThreatRadius<br>
+生物脱离战斗的半径，当角色与生物距离大约该距离时，生物脱离战斗<br>
+ThreatRadius = 60</p>
+<p>Rate.Creature.Aggro<br>
+物自动攻击的范围乘以的倍数或者关闭自动攻击，默认：1 怪物视野<br>
+Rate.Creature.Aggro = 1</p>
+<p>CreatureFamilyFleeAssistanceRadius<br>
+怪物进行逃跑时，能在自己多大直径内招来协助伙伴，默认：30，0(关闭)<br>
+CreatureFamilyFleeAssistanceRadius = 30</p>
+<p>CreatureFamilyAssistanceRadius<br>
+同类生物(家族)协助攻击侦测范围，默认：10，0(关闭)<br>
+CreatureFamilyAssistanceRadius = 10</p>
+<p>CreatureFamilyAssistanceDelay<br>
+同类生物(家族)协助攻击侦测时间，默认: 1500(1.5秒)<br>
+CreatureFamilyAssistanceDelay = 1000</p>
+<p>CreatureFamilyFleeDelay<br>
+怪物逃离时找不到协助伙伴多长时间返回，默认，默认：7000 (7秒)<br>
+CreatureFamilyFleeDelay = 7000</p>
+<p>WorldBossLevelDiff<br>
+世界BOSS动态变更与目标的等级差(适合单机或小型服务器调整难度之用)，默认：3<br>
+WorldBossLevelDiff = 1</p>
+<p>Corpse.Decay.NORMAL<br>
+Corpse.Decay.RARE<br>
+Corpse.Decay.ELITE<br>
+Corpse.Decay.RAREELITE<br>
+Corpse.Decay.WORLDBOSS<br>
+普通、精英、稀有精英、BOSS、稀有普通怪等尸体在没有抢劫或剥皮等情况下腐烂消失的时间(单位:秒)<br>
+默认: 60, 300, 300, 300, 3600<br>
+Corpse.Decay.NORMAL = 150<br>
+Corpse.Decay.RARE = 300<br>
+Corpse.Decay.ELITE = 300<br>
+Corpse.Decay.RAREELITE = 300<br>
+Corpse.Decay.WORLDBOSS = 600</p>
+<p>Rate.Corpse.Decay.Looted<br>
+普通、精英、稀有精英、BOSS、稀有普通怪等尸体在倍抢劫或者剥皮情况下腐烂消失时间倍率，配合上面时间设置<br>
+默认：0.5<br>
+Rate.Corpse.Decay.Looted = 0.1</p>
+<p>Rate.Creature.Normal.Damage<br>
+Rate.Creature.Elite.Elite.Damage<br>
+Rate.Creature.Elite.RARE.Damage<br>
+Rate.Creature.Elite.RAREELITE.Damage<br>
+Rate.Creature.Elite.WORLDBOSS.Damage<br>
+普通、精英、稀有精英、BOSS、稀有普通怪的物理攻击强度倍数，默认：1<br>
+Rate.Creature.Normal.Damage = 2<br>
+Rate.Creature.Elite.Elite.Damage = 1<br>
+Rate.Creature.Elite.RARE.Damage = 1.5<br>
+Rate.Creature.Elite.RAREELITE.Damage = 1<br>
+Rate.Creature.Elite.WORLDBOSS.Damage = 0.1</p>
+<p>Rate.Creature.Normal.SpellDamage<br>
+Rate.Creature.Elite.Elite.SpellDamage<br>
+Rate.Creature.Elite.RARE.SpellDamage<br>
+Rate.Creature.Elite.RAREELITE.SpellDamage<br>
+Rate.Creature.Elite.WORLDBOSS.SpellDamage<br>
+普通、精英、稀有精英、BOSS、稀有普通怪魔法攻击强度倍偻，默认：1<br>
+Rate.Creature.Normal.SpellDamage = 2<br>
+Rate.Creature.Elite.Elite.SpellDamage = 1<br>
+Rate.Creature.Elite.RARE.SpellDamage = 1.5<br>
+Rate.Creature.Elite.RAREELITE.SpellDamage = 1<br>
+Rate.Creature.Elite.WORLDBOSS.SpellDamage = 0.5</p>
+<p>Rate.Creature.Normal.HP<br>
+Rate.Creature.Elite.Elite.HP<br>
+Rate.Creature.Elite.RARE.HP<br>
+Rate.Creature.Elite.RAREELITE.HP<br>
+Rate.Creature.Elite.WORLDBOSS.HP<br>
+普通、精英、稀有精英、BOSS、稀有普通怪的血量倍数，默认：1<br>
+Rate.Creature.Normal.HP = 2<br>
+Rate.Creature.Elite.Elite.HP = 1<br>
+Rate.Creature.Elite.RARE.HP = 1.5<br>
+Rate.Creature.Elite.RAREELITE.HP = 1<br>
+Rate.Creature.Elite.WORLDBOSS.HP = 0.5</p>
+<p>ListenRange.Say<br>
+生物(或其它的游戏对象)说话时，玩家能看到文字和听到声音的距离，默认：40<br>
+ListenRange.Say = 40</p>
+<p>ListenRange.TextEmote<br>
+生物(或其它的游戏对象)发出表情信息时，玩家能看到表情内容和听到声音的距离，默认：40<br>
+ListenRange.TextEmote = 40</p>
+<p>ListenRange.Yell<br>
+生物(或其它的游戏对象)叫喊时，玩家能看到文字和听到声音的距离，默认：300<br>
+ListenRange.Yell = 300</p>
+<p>CHAT SETTINGS</p>
+<p>ChatFakeMessagePreventing<br>
+聊天保护功能，防止由于恶意玩家输入了特殊符号造成身边玩家客户端工作异常问题<br>
+默认: 0 - 不保护，1 - 保护<br>
+ChatFakeMessagePreventing = 0</p>
+<p>ChatStrictLinkChecking.Severity<br>
+Description: Check chat messages for ingame links to spells, items, quests, etc.<br>
+Default:     0 - (Disabled)<br>
+1 - (Enabled, Check if only valid pipe commands are used, Prevents posting<br>
+pictures.)<br>
+2 - (Enabled, Verify that pipe commands are used in a correct order)<br>
+3 - (Check if color, entry and name don't contradict each other. For this to<br>
+work correctly, please assure that you have extracted locale DBCs of<br>
+every language specific client playing on this server)<br>
+ChatStrictLinkChecking.Severity = 0</p>
+<p>ChatStrictLinkChecking.Kick<br>
+Description: Defines what should be done if a message is considered to contain invalid<br>
+pipe commands.<br>
+Default:     0 - (Silently ignore message)<br>
+1 - (Disconnect players who sent malformed messages)<br>
+ChatStrictLinkChecking.Kick = 0</p>
+<p>ChatFlood.MessageCount<br>
+Description: Chat flood protection, number of messages before player gets muted.<br>
+Default:     10 - (Enabled)<br>
+0  - (Disabled)<br>
+ChatFlood.MessageCount = 10</p>
+<p>ChatFlood.MessageDelay<br>
+Description: Time (in seconds) between messages to be counted into ChatFlood.MessageCount.<br>
+Default:     1<br>
+ChatFlood.MessageDelay = 1</p>
+<p>ChatFlood.MuteTime<br>
+Description: Time (in seconds) characters get muted for violating ChatFlood.MessageCount.<br>
+Default:     10<br>
+ChatFlood.MuteTime = 10</p>
+<p>Channel.RestrictedLfg<br>
+Description: Restrict LookupForGroup channel to characters registered in the LFG tool.<br>
+Default:     1 - (Enabled, Allow join to channel only if registered in LFG)<br>
+0 - (Disabled, Allow join to channel in any time)<br>
+Channel.RestrictedLfg = 1</p>
+<p>Channel.SilentlyGMJoin<br>
+Description: Silently join GM characters to channels<br>
+Default:     0 - (Disabled, Join with announcement)<br>
+1 - (Enabled, Join without announcement)<br>
+Channel.SilentlyGMJoin = 0</p>
+<p>ChatLevelReq.Channel<br>
+Description: Level requirement for characters to be able to write in chat channels.<br>
+Default:     1<br>
+ChatLevelReq.Channel = 1</p>
+<p>ChatLevelReq.Whisper<br>
+Description: Level requirement for characters to be able to whisper other characters.<br>
+Default:     1<br>
+ChatLevelReq.Whisper = 1</p>
+<p>ChatLevelReq.Say<br>
+Description: Level requirement for characters to be able to use say/yell/emote.<br>
+Default:     1<br>
+ChatLevelReq.Say = 1</p>
+<p>AllowPlayerCommands<br>
+是否允许玩家使用游戏命令，默认：1(允许)，0(不允许)<br>
+AllowPlayerCommands = 1</p>
+<p>PreserveCustomChannels<br>
+Description: Store custom chat channel settings like password, automatic ownership handout<br>
+or ban list in the database. Needs to be enabled to save custom<br>
+world/trade/etc. channels that have automatic ownership handout disabled.<br>
+(.channel set ownership $channel off)<br>
+Default:     0 - (Disabled, Blizzlike, Channel settings are lost if last person left)<br>
+1 - (Enabled)<br>
+PreserveCustomChannels = 1</p>
+<p>PreserveCustomChannelDuration<br>
+Description: Time (in days) that needs to pass before the customs chat channels get<br>
+cleaned up from the database. Only channels with ownership handout enabled<br>
+(default behavior) will be cleaned.<br>
+Default:     14 - (Enabled, Clean channels that haven't been used for 14 days)<br>
+0  - (Disabled, Infinite channel storage)<br>
+PreserveCustomChannelDuration = 14</p>
+<p>GAME MASTER SETTINGS</p>
+<p>GM.LoginState<br>
+登录时GM是否进入管理模式，默认: 2 - 上次离开时状态，0 - 不进入管理默认，1 - 进入管理模式<br>
+GM.LoginState = 2</p>
+<p>GM.Visible<br>
+登录时GM是否隐身，默认: 2 - 上次离开时状态，0 - 不隐身，1 - 隐身<br>
+GM.Visible = 2</p>
+<p>GM.Chat<br>
+登录时GM是否进入Blz聊天默认，默认: 2 - 上次离开时状态，0 - 不使用，1 - 使用<br>
+GM.Chat = 2</p>
+<p>GM.WhisperingTo<br>
+登录时GM是否允许接收玩家的悄悄话，默认: 2 - 上次离开时状态，0 - 不接收，1 - 接收<br>
+GM.WhisperingTo = 2</p>
+<p>GM.InGMList.Level<br>
+是否显示指定等级的GM显示列表(当GM隐身时)或则(.gm off)<br>
+默认: 3(全部)，0(玩家)，1(普通GM)，2(高级GM)<br>
+GM.InGMList.Level = 3</p>
+<p>GM.InWhoList.Level<br>
+Description: Max GM level showed in who list (if visible).<br>
+Default:     3 - (Anyone)<br>
+0 - (Only players)<br>
+1 - (Only moderators)<br>
+2 - (Only gamemasters)<br>
+GM.InWhoList.Level = 3</p>
+<p>GM.LogTrade<br>
+是否记录GM交易信息在GM日志内，默认：1(开启)，0(不开启)<br>
+GM.LogTrade = 0</p>
+<p>GM.StartLevel<br>
+GM新建角色等级，默认：1<br>
+GM.StartLevel = 1</p>
+<p>GM.AllowInvite<br>
+Description: Allow players to invite GM characters.<br>
+Default:     0 - (Disabled)<br>
+1 - (Enabled)<br>
+GM.AllowInvite = 0</p>
+<p>GM.AllowFriend<br>
+Description: Allow players to add GM characters to their friends list.<br>
+Default:     0 - (Disabled)<br>
+1 - (Enabled)<br>
+GM.AllowFriend = 0</p>
+<p>GM.LowerSecurity<br>
+Description: Allow lower security levels to use commands on higher security level<br>
+characters.<br>
+Default:     0 - (Disabled)<br>
+1 - (Enabled)<br>
+GM.LowerSecurity = 0</p>
+<p>GM.AllowAchievementGain<br>
+是否允许GM获得系统成就，默认: 1(允许)，0(不允许)<br>
+GM.AllowAchievementGain = 1</p>
+<p>GM.TicketSystem.ChanceOfGMSurvey<br>
+Description: Chance of sending a GM survey after ticket completion.<br>
+Default:     50 - (Enabled)<br>
+0  - (Disabled)<br>
+GM.TicketSystem.ChanceOfGMSurvey = 50</p>
+<p>VISIBILITY AND DISTANCES</p>
+<p>Visibility.GroupMode<br>
+团队可见模式<br>
+默认: 0 (标准设置：只有同一个团队的队友才可以100%侦测隐形玩家)<br>
+1 (只有同一个小队的队友才可以100%侦测隐形玩家)<br>
+2 (同一阵营的队友可以100%侦测隐形玩家)<br>
+Visibility.GroupMode = 0</p>
+<p>Visibility.Distance.Continents<br>
+Visibility.Distance.Instances<br>
+Visibility.Distance.BGArenas<br>
+在不同的地图可视范围距离.<br>
+在普通大陆的可视距离 ~90 码. 在战场/竞技场  ~180. 在副本的可视范围默认为 ~120.<br>
+最大距离: ~ 333<br>
+最低是最大 aggro 半径 (45) * Rate.Creature.Aggro<br>
+Visibility.Distance.Continents = 90<br>
+Visibility.Distance.Instances = 120<br>
+Visibility.Distance.BGArenas = 180</p>
+<p>Visibility.Notify.Period.OnContinents<br>
+Visibility.Notify.Period.InInstances<br>
+Visibility.Notify.Period.InBGArenas<br>
+Description: Time (in milliseconds) for visibility update period. Lower values may have<br>
+performance impact.<br>
+Default:     1000 - (Visibility.Notify.Period.OnContinents)<br>
+1000 - (Visibility.Notify.Period.InInstances)<br>
+1000 - (Visibility.Notify.Period.InBGArenas)<br>
+Visibility.Notify.Period.OnContinents = 1000<br>
+Visibility.Notify.Period.InInstances = 1000<br>
+Visibility.Notify.Period.InBGArenas = 1000</p>
+<p>SERVER RATES</p>
+<p>Rate.Health<br>
+Rate.Mana<br>
+Rate.Rage.Income<br>
+Rate.Rage.Loss<br>
+Rate.RunicPower.Income<br>
+Rate.RunicPower.Loss<br>
+Rate.Focus<br>
+Rate.Energy<br>
+Rate.Loyalty<br>
+生命、魔法、怒气增长、怒气减少、符文能量增长、符文能量减少、仇恨、忠诚度倍率<br>
+Rate.Health = 1<br>
+Rate.Mana = 1<br>
+Rate.Rage.Income = 1<br>
+Rate.Rage.Loss = 1<br>
+Rate.RunicPower.Income = 1<br>
+Rate.RunicPower.Loss = 1<br>
+Rate.Focus = 1<br>
+Rate.Energy = 1<br>
+Rate.Loyalty = 1</p>
+<p>Rate.Skill.Discovery<br>
+专业技能点数升级倍数<br>
+Rate.Skill.Discovery = 1</p>
+<p>Rate.Drop.Item.Poor<br>
+Rate.Drop.Item.Normal<br>
+Rate.Drop.Item.Uncommon<br>
+Rate.Drop.Item.Rare<br>
+Rate.Drop.Item.Epic<br>
+Rate.Drop.Item.Legendary<br>
+Rate.Drop.Item.Artifact<br>
+Rate.Drop.Item.Referenced<br>
+Rate.Drop.Money<br>
+粗糙、普通、优秀、精良、史诗、橙色、传说、任务、任务物品数量、金币爆率倍率<br>
+Rate.Drop.Item.Poor = 1<br>
+Rate.Drop.Item.Normal = 1<br>
+Rate.Drop.Item.Uncommon = 2<br>
+Rate.Drop.Item.Rare = 2<br>
+Rate.Drop.Item.Epic = 2<br>
+Rate.Drop.Item.Legendary = 2<br>
+Rate.Drop.Item.Artifact = 1<br>
+Rate.Drop.Item.Referenced = 1<br>
+Rate.Drop.Money = 0.01</p>
+<p>Rate.Drop.Item.ReferencedAmount<br>
+Description: Multiplier for referenced loot amount.<br>
+Default:     1<br>
+Rate.Drop.Item.ReferencedAmount = 1</p>
+<p>Rate.XP.Kill<br>
+Rate.XP.Quest<br>
+Rate.XP.Explore<br>
+杀怪、任务、探索地图获得经验倍率<br>
+Rate.XP.Kill = 1<br>
+Rate.XP.Quest = 1<br>
+Rate.XP.Explore = 0.1</p>
+<p>Rate.RepairCost<br>
+修理装备价格倍率<br>
+Rate.RepairCost = 2</p>
+<p>Rate.Rest.InGame<br>
+Rate.Rest.Offline.InTavernOrCity<br>
+Rate.Rest.Offline.InWilderness<br>
+精力条增长倍率 (1 - 正常, 2 - 两倍增长, 0.5 - 半倍增长)<br>
+Rate.Rest.InGame = 1<br>
+Rate.Rest.Offline.InTavernOrCity = 1<br>
+Rate.Rest.Offline.InWilderness = 1</p>
+<p>Rate.Damage.Fall<br>
+空中跌落伤害倍率(1 - 标准, 2 - 两倍伤害, 0.5 - 一半伤害)<br>
+Rate.Damage.Fall = 1</p>
+<p>Rate.Auction.Time<br>
+Rate.Auction.Deposit<br>
+Rate.Auction.Cut<br>
+拍卖倍率(拍卖时间, 开始拍卖时的存款倍率, 在拍卖结束拍卖价格削减比例)<br>
+Rate.Auction.Time = 1<br>
+Rate.Auction.Deposit = 1<br>
+Rate.Auction.Cut = 1</p>
+<p>Rate.Honor<br>
+荣誉增长倍率<br>
+Rate.Honor = 1</p>
+<p>Rate.Mining.Amount<br>
+Rate.Mining.Next<br>
+采矿开采倍率<br>
+Rate.Mining.Amount = 1</p>
+<p>Rate.Mining.Next<br>
+Description: Mining rates.<br>
+Default:     Chance to to mine a deposit again.<br>
+Rate.Mining.Next = 1</p>
+<p>Rate.Talent<br>
+天赋增长倍率<br>
+Rate.Talent = 2</p>
+<p>Rate.Reputation.Gain<br>
+声望增长倍率<br>
+Rate.Reputation.Gain = 1</p>
+<p>Rate.Reputation.LowLevel.Kill<br>
+Rate.Reputation.LowLevel.Quest<br>
+低等级杀人、任务获得荣誉倍率<br>
+Rate.Reputation.LowLevel.Kill = 1</p>
+<p>Rate.Reputation.LowLevel.Quest<br>
+Description: Reputation gain rate.<br>
+Default:     1<br>
+Rate.Reputation.LowLevel.Quest = 1</p>
+<p>Rate.Reputation.RecruitAFriendBonus<br>
+Description: Reputation bonus rate for recruit-a-friend.<br>
+Default:     0.1<br>
+Rate.Reputation.RecruitAFriendBonus = 0.1</p>
+<p>Rate.MoveSpeed<br>
+角色移动速度倍率，默认：1(不提高)，1.4(提高40%移动速度)<br>
+Rate.MoveSpeed = 1</p>
+<p>Rate.InstanceResetTime<br>
+团队副本/英雄副本重置时间倍率<br>
+Rate.InstanceResetTime = 0.01</p>
+<p>SkillGain.Crafting<br>
+SkillGain.Defense<br>
+SkillGain.Gathering<br>
+SkillGain.Weapon<br>
+制造/防御/采集/武器技能增益技能成长倍率<br>
+SkillGain.Crafting = 1<br>
+SkillGain.Defense = 1<br>
+SkillGain.Gathering = 1<br>
+SkillGain.Weapon = 1</p>
+<p>SkillChance.Orange<br>
+SkillChance.Yellow<br>
+SkillChance.Green<br>
+SkillChance.Grey<br>
+技能熟练度提升几率<br>
+SkillChance.Orange = 100<br>
+SkillChance.Yellow = 60<br>
+SkillChance.Green = 30<br>
+SkillChance.Grey = 0</p>
+<p>SkillChance.MiningSteps<br>
+SkillChance.SkinningSteps<br>
+剥皮和采矿机会减少与技能水平，默认: 0  - 不减少<br>
+SkillChance.MiningSteps = 0<br>
+SkillChance.SkinningSteps = 0</p>
+<p>DurabilityLoss.InPvP<br>
+角色Pvp死亡装备是否掉持久度，1(掉落)，0(不掉落)<br>
+DurabilityLoss.InPvP = 0</p>
+<p>DurabilityLoss.OnDeath<br>
+角色正常死亡装备持久度掉落倍率，10(标准)，20(双倍)，5(一半)<br>
+DurabilityLoss.OnDeath = 10</p>
+<p>DurabilityLossChance.Damage<br>
+Description: Chance to lose durability on one equipped item from damage.<br>
+Default:     0.5 - (100/0.5 = 200, Each 200 damage one equipped item will use durability)<br>
+DurabilityLossChance.Damage = 0.5</p>
+<p>DurabilityLossChance.Absorb<br>
+死亡后装备耐久、护甲、招架、格挡的损耗倍率<br>
+DurabilityLossChance.Absorb = 0.5<br>
+DurabilityLossChance.Parry = 0.05<br>
+DurabilityLossChance.Block = 0.05</p>
+<p>Death.SicknessLevel<br>
+灵魂医师复活玩家产生复活虚弱的等级，默认：81(无死亡虚弱时间)<br>
+Death.SicknessLevel = 81</p>
+<p>Death.CorpseReclaimDelay.PvP<br>
+Death.CorpseReclaimDelay.PvE<br>
+允许/禁止在PVP/PVE服务器造成普通死亡时增加复活延迟，默认：1(允许)，0(不允许)<br>
+Death.CorpseReclaimDelay.PvP = 0<br>
+Death.CorpseReclaimDelay.PvE = 0</p>
+<p>Death.Bones.World<br>
+Death.Bones.BattlegroundOrArena<br>
+启用/关闭复活时创建骨头代替尸体(在正常区域或副本,或者战场或者竞技场)，默认：1(开启)，0(关闭)<br>
+Death.Bones.World = 1<br>
+Death.Bones.BattlegroundOrArena = 1</p>
+<p>Die.Command.Mode<br>
+选择GM命令：.die的形式，默认：1(无爆率)，0(有爆率)<br>
+Die.Command.Mode = 0</p>
+<p>自动公告</p>
+<p>AUTO BROADCAST</p>
+<p>AutoBroadcast.On<br>
+是否启用游戏公告系统，默认：1(启用)，0(关闭)<br>
+AutoBroadcast.On = 1</p>
+<p>AutoBroadcast.Center<br>
+公告类型设置，默认：0(聊天窗口)，1(屏幕上方)，2(同时使用上述两种方式)<br>
+AutoBroadcast.Center = 0</p>
+<p>AutoBroadcast.Timer<br>
+公告间隔时间，默认：60000(1分钟)<br>
+AutoBroadcast.Timer = 3000000</p>
+<p>BATTLEGROUND CONFIG</p>
+<p>Battleground.CastDeserter<br>
+玩家强制离开战场是否判断为逃兵，默认：1(开启)，0(关闭)<br>
+Battleground.CastDeserter = 1</p>
+<p>Battleground.QueueAnnouncer.Enable<br>
+启用战场排队广告系统，默认：0(关闭)，1(开启)<br>
+Battleground.QueueAnnouncer.Enable = 0</p>
+<p>Battleground.QueueAnnouncer.PlayerOnly<br>
+战场排队广告系统，0(全部玩家)，1(仅战场玩家)<br>
+Battleground.QueueAnnouncer.PlayerOnly = 0</p>
+<p>Battleground.InvitationType<br>
+战场邀请类型(排队提示进入战场类型)<br>
+默认: 0 (普通 - 邀请所有申请玩家, 不开启动态平衡)<br>
+1 (测试 - 不允许大量单一阵营玩家进入)<br>
+Battleground.InvitationType = 0</p>
+<p>Battleground.PrematureFinishTimer<br>
+如有一方玩家少于最小玩家要求,将开启战场强制关闭时间，默认: 300000 (5分钟)<br>
+BattleGround.PrematureFinishTimer = 300000</p>
+<p>BattleGround.PremadeGroupWaitForMatch<br>
+在进入战场后一方团队等待另一方团队的战场等待时间，默认: 1800000 (30 分钟)<br>
+BattleGround.PremadeGroupWaitForMatch = 1800000</p>
+<p>Battleground.GiveXPForKills<br>
+在战场杀死玩家是否获得经验，默认：0(不给)，1(给)<br>
+Battleground.GiveXPForKills = 0</p>
+<p>Battleground.Random.ResetHour<br>
+随机战场在每日的几时重置，默认：6<br>
+Battleground.Random.ResetHour = 6</p>
+<p>ARENA CONFIG</p>
+<p>Arena.MaxRatingDifference<br>
+竞技场排名设置,最大排名差: 在排名赛中，两队之间最大排名的差值限止<br>
+Arena.MaxRatingDifference = 150</p>
+<p>Arena.RatingDiscardTimer<br>
+排名作废计时: 经过指定的毫秒数以后, 当前选择的比赛队伍时排名信息将作废，也同样可以用这个计时来激活更新<br>
+Arena.RatingDiscardTimer = 600000</p>
+<p>Arena.AutoDistributePoints<br>
+自动分配点数: 设置竞技场点数是否应当每周自动分配, 否则就用GM指令来分配<br>
+默认: 0 (禁止) (推荐): 使用GM指令(.flusharenapoints)或者sql命令行来分配点数<br>
+1 (激活): 竞技场点数被自动分配<br>
+Arena.AutoDistributePoints = 0</p>
+<p>Arena.AutoDistributeInterval<br>
+点数自动分配的间隔时间，如果自动启用单位：天<br>
+Arena.AutoDistributeInterval = 7</p>
+<p>Arena.QueueAnnouncer.Enable<br>
+竞技场:启用排队播音员广播聊天，默认: 0 (不启用)，1 (启用)<br>
+Arena.QueueAnnouncer.Enable = 0</p>
+<p>Arena.ArenaSeason.ID<br>
+本赛季目前的地区编号显示在用户端，默认：1(范围1-8)<br>
+Arena.ArenaSeason.ID = 8</p>
+<p>Arena.ArenaSeason.InProgress<br>
+本赛季目前领域的状态，默认:1 (激活状态)，0 (完成状态)<br>
+Arena.ArenaSeason.InProgress = 1</p>
+<p>Arena.ArenaStartRating<br>
+Description: Start rating for new arena teams.<br>
+Default:     0<br>
+Arena.ArenaStartRating = 0</p>
+<p>Arena.ArenaStartPersonalRating<br>
+Description: Start personal rating when joining a team.<br>
+Default:     0<br>
+Arena.ArenaStartPersonalRating = 0</p>
+<p>Arena.ArenaStartMatchmakerRating<br>
+Description: Start matchmaker rating for players.<br>
+Default:     1500<br>
+Arena.ArenaStartMatchmakerRating = 1500</p>
+<p>NETWORK CONFIG</p>
+<p>Network.Threads<br>
+Description: Number of threads for network.<br>
+Default:    1 - (Recommended 1 thread per 1000 connections)<br>
+Network.Threads = 1</p>
+<p>Network.OutKBuff<br>
+Description: Amount of memory (in bytes) used for the output kernel buffer (see SO_SNDBUF<br>
+socket option, TCP manual).<br>
+Default:     -1 - (Use system default setting)<br>
+Network.OutKBuff = -1</p>
+<p>Network.OutUBuff<br>
+Description: Amount of memory (in bytes) reserved in the user space per connection for<br>
+output buffering.<br>
+Default:    65536<br>
+Network.OutUBuff = 65536</p>
+<p>Network.TcpNoDelay:<br>
+Description: TCP Nagle algorithm setting.<br>
+Default:    0 - (Enabled, Less traffic, More latency)<br>
+1 - (Disabled, More traffic, Less latency, TCP_NO_DELAY)<br>
+Network.TcpNodelay = 1</p>
+<p>CONSOLE AND REMOTE ACCESS</p>
+<p>Console.Enable<br>
+Description: Enable console.<br>
+Default:     1 - (Enabled)<br>
+0 - (Disabled)<br>
+Console.Enable = 1</p>
+<p>Ra.Enable 远程控制台开关<br>
+Description: Enable remote console (telnet).<br>
+Default:     0 - (Disabled)<br>
+1 - (Enabled)<br>
+Ra.Enable = 0</p>
+<p>Ra.IP<br>
+Description: Bind remote access to IP/hostname.<br>
+Default:     &quot;0.0.0.0&quot; - (Bind to all IPs on the system)<br>
+Ra.IP = “0.0.0.0”</p>
+<p>Ra.Port<br>
+Description: TCP port to reach the remote console.<br>
+Default:     3443<br>
+Ra.Port = 3443</p>
+<p>Ra.MinLevel<br>
+Description: Required security level to use the remote console.<br>
+Default:     3<br>
+Ra.MinLevel = 3</p>
+<p>SOAP.Enable<br>
+Description: Enable soap service<br>
+Default:     0 - (Disabled)<br>
+1 - (Enabled)<br>
+SOAP.Enabled = 0</p>
+<p>SOAP.IP<br>
+Description: Bind SOAP service to IP/hostname<br>
+Default:     &quot;127.0.0.1&quot; - (Bind to localhost)<br>
+SOAP.IP = “127.0.0.1”</p>
+<p>SOAP.Port<br>
+Description: TCP port to reach the SOAP service.<br>
+Default:     7878<br>
+SOAP.Port = 7878</p>
+<p>CHARACTER DELETE OPTIONS</p>
+<p>CharDelete.Method<br>
+Description: Character deletion behavior.<br>
+Default:     0 - (Completely remove character from the database)<br>
+1 - (Unlink the character from account and free up the name, Appears as<br>
+deleted ingame)<br>
+CharDelete.Method = 0</p>
+<p>CharDelete.MinLevel<br>
+Description: Required level to use the unlinking method if enabled.<br>
+Default:     0  - (Same method for every level)<br>
+1+ - (Only characters with the specified level will use the unlinking method)<br>
+CharDelete.MinLevel = 0</p>
+<p>CharDelete.KeepDays<br>
+Description: Time (in days) before unlinked characters will be removed from the database.<br>
+Default:     30 - (Enabled)<br>
+0  - (Disabled, Don't delete any characters)<br>
+CharDelete.KeepDays = 30</p>
+<p>CUSTOM SERVER OPTIONS</p>
+<p>PlayerStart.AllReputation<br>
+角色创建后获得全部的声望，默认：1(开启)，0(关闭)<br>
+PlayerStart.AllReputation = 0</p>
+<p>PlayerStart.AllSpells<br>
+角色创建后学习全部技能，配合数据库playercreateinfo_spell_custom，请不要开启此功能<br>
+默认:0 (关闭)，1 (开启)<br>
+PlayerStart.AllSpells = 0</p>
+<p>PlayerStart.MapsExplored<br>
+角色创建后探索成就全满，默认：1(开启)，0(关闭)<br>
+PlayerStart.MapsExplored = 0</p>
+<p>HonorPointsAfterDuel<br>
+决斗后获胜方得到的荣誉，默认：0(关闭)，1(开启)<br>
+HonorPointsAfterDuel = 0</p>
+<p>AlwaysMaxWeaponSkill<br>
+玩家升级将自动获得最大武器熟练度和防御度，默认：1(开启)，0(关闭)<br>
+AlwaysMaxWeaponSkill = 0</p>
+<p>PvPToken.Enable<br>
+开启PVP奖励系统，玩家将通过此系统从其他玩家那里得到经验值，默认：0(关闭)，1(开启)<br>
+PvPToken.Enable = 0</p>
+<p>PvPToken.MapAllowType<br>
+玩家在那些地方会出现PVP奖励<br>
+4 - 所有地图里<br>
+3 - 战场<br>
+2 - 竞技场<br>
+1 - 战场和竞技场<br>
+PvPToken.MapAllowType = 4</p>
+<p>PvPToken.ItemID<br>
+杀死对手后获胜方获得的物品Id，默认：29434<br>
+PvPToken.ItemID = 29434</p>
+<p>PvPToken.ItemCount<br>
+杀死对手后获胜方获得的物品数量，默认：1<br>
+PvPToken.ItemCount = 1</p>
+<p>NoResetTalentsCost<br>
+重置天赋是否免费，默认：0(关闭)，1(开启)<br>
+NoResetTalentsCost = 0</p>
+<p>Guild.AllowMultipleGuildMaster<br>
+Description: Allow more than one guild master. Additional Guild Masters must be set using<br>
+the &quot;.guild rank&quot; command.<br>
+Default:     0 - (Disabled)<br>
+1 - (Enabled)<br>
+Guild.AllowMultipleGuildMaster = 0</p>
+<p>ShowKickInWorld<br>
+踢出玩家是否进行世界公告，0(不公告)，1(公告)</p>
+<p>ShowKickInWorld = 0</p>
+<p>RecordUpdateTimeDiffInterval<br>
+服务端数据更新间隔时间，默认：60000，diff &lt; 300 状态良好，diff &gt; 600 状态较差，可能出现当机</p>
+<p>RecordUpdateTimeDiffInterval = 60000</p>
+<p>MinRecordUpdateTimeDiff<br>
+间隔大于该值(MinRecordUpdateTimeDiff)后记录唯一的更新时间差，默认：100</p>
+<p>MinRecordUpdateTimeDiff = 100</p>
+<p>PlayerStart.String<br>
+自定义角色登陆后显示的信息，默认：””</p>
+<p>PlayerStart.String = “Welcome”</p>
+<p>LevelReq.Trade<br>
+角色使用交易系统的最低等级，默认：1</p>
+<p>LevelReq.Trade = 1</p>
+<p>LevelReq.Ticket<br>
+角色使用拍报告系统的最低等级，默认：1</p>
+<p>LevelReq.Ticket = 1</p>
+<p>LevelReq.Auction<br>
+角色使用拍卖行系统的最低等级，默认：1</p>
+<p>LevelReq.Auction = 1</p>
+<p>LevelReq.Mail<br>
+角色使用邮件系统的最低等级，默认：1</p>
+<p>LevelReq.Mail = 1</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[GM常用测试BOSS时使用的技能]]></title>
         <id>https://52blog.github.io/sQVEeU_d0/</id>
@@ -381,196 +2101,6 @@ DEBUG模式测试FWQ<br>
 .modify speed # 将目标移动速度设定为初始速度的#倍（#=0.1-10） 	.gm fly on 开启内域飞行	<br>
 .modify bwalk # 将目标移后退度设定为初始速度的#倍（#=0.1-10） 	.gm fly off 关闭	<br>
 .modify swim 10 将目标游泳速度设定为初始速度的#倍（#=0.1-10） 	.modify aspeed 10  改变飞行速度 1-10</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[魔兽世界编译---老TC&Sunwell核心&AzerothCore核心]]></title>
-        <id>https://52blog.github.io/MZBHBJ1nc/</id>
-        <link href="https://52blog.github.io/MZBHBJ1nc/">
-        </link>
-        <updated>2021-09-23T14:16:58.000Z</updated>
-        <summary type="html"><![CDATA[<p>http://www.azerothcore.org/       AZ端官网</p>
-<p>https://www.trinitycore.org/        TC端官网</p>
-<p>1：安装GitExtensions(一定要安装，虽然源码我也会提供，cmake需要用到)，确保Git, MySYSGit, and KDiff三个都要选择安装,在git安装过程中选择”Run Git from the Windows Command Prompt“</p>
-<p>2：安装vs2013，VS2015.</p>
-<p>3：安装mysql，要记住自己设置的root的密码，字符集选择utf8，安装中选择加入环境变量。</p>
-<p>4：boost，直接使用我上文提供的编译好的安装文件即可，安装完成后，设置环境变量BOOST_ROOT=你安装的boost的根目录</p>
-<p>我的电脑 右键 属性 高级设置  环境变量 系统变量 新建  如下 ↓<br>
-<img src="https://52blog.github.io/post-images/1632406862231.png" alt="" loading="lazy"><br>
-<img src="https://52blog.github.io/post-images/1632406894967.png" alt="" loading="lazy"><br>
-<img src="https://52blog.github.io/post-images/1632406809039.png" alt="" loading="lazy"></p>
-<p>5：cmake，一路默认安装</p>
-<p>6：openssl，其中有一步需要留意，就是会让选择把openSSL的dll拷贝到哪，要选择The OpenSSL binaries (/bin) directory</p>
-<p>7：zeroMQ，一路默认安装</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>http://www.azerothcore.org/       AZ端官网</p>
-<p>https://www.trinitycore.org/        TC端官网</p>
-<p>1：安装GitExtensions(一定要安装，虽然源码我也会提供，cmake需要用到)，确保Git, MySYSGit, and KDiff三个都要选择安装,在git安装过程中选择”Run Git from the Windows Command Prompt“</p>
-<p>2：安装vs2013，VS2015.</p>
-<p>3：安装mysql，要记住自己设置的root的密码，字符集选择utf8，安装中选择加入环境变量。</p>
-<p>4：boost，直接使用我上文提供的编译好的安装文件即可，安装完成后，设置环境变量BOOST_ROOT=你安装的boost的根目录</p>
-<p>我的电脑 右键 属性 高级设置  环境变量 系统变量 新建  如下 ↓<br>
-<img src="https://52blog.github.io/post-images/1632406862231.png" alt="" loading="lazy"><br>
-<img src="https://52blog.github.io/post-images/1632406894967.png" alt="" loading="lazy"><br>
-<img src="https://52blog.github.io/post-images/1632406809039.png" alt="" loading="lazy"></p>
-<p>5：cmake，一路默认安装</p>
-<p>6：openssl，其中有一步需要留意，就是会让选择把openSSL的dll拷贝到哪，要选择The OpenSSL binaries (/bin) directory</p>
-<p>7：zeroMQ，一路默认安装</p>
-<!-- more -->
-<p>软件全部安装完毕 下面是编译教程</p>
-<p>获取魔兽世界模拟器源代码   github 下载源码并解压出来</p>
-<figure data-type="image" tabindex="1"><img src="https://52blog.github.io/post-images/1632407081616.png" alt="" loading="lazy"></figure>
-<p>利用此工具 cmake 代码  <img src="https://52blog.github.io/post-images/1632407109187.png" alt="" loading="lazy"></p>
-<figure data-type="image" tabindex="2"><img src="https://52blog.github.io/post-images/1632407225859.png" alt="" loading="lazy"></figure>
-<figure data-type="image" tabindex="3"><img src="https://52blog.github.io/post-images/1632407243999.png" alt="" loading="lazy"></figure>
-<figure data-type="image" tabindex="4"><img src="https://52blog.github.io/post-images/1632407483439.png" alt="" loading="lazy"></figure>
-<figure data-type="image" tabindex="5"><img src="https://52blog.github.io/post-images/1632407517914.png" alt="" loading="lazy"></figure>
-<figure data-type="image" tabindex="6"><img src="https://52blog.github.io/post-images/1632407648693.png" alt="" loading="lazy"></figure>
-<figure data-type="image" tabindex="7"><img src="https://52blog.github.io/post-images/1632407806560.png" alt="" loading="lazy"></figure>
-<p>生成的核心文件在这里</p>
-<p>AZ\build\bin\RelWithDebInfo</p>
-<figure data-type="image" tabindex="8"><img src="https://52blog.github.io/post-images/1632407913511.png" alt="" loading="lazy"></figure>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[魔兽世界编译教程 Trinity ]]></title>
-        <id>https://52blog.github.io/ovbTGIV9e/</id>
-        <link href="https://52blog.github.io/ovbTGIV9e/">
-        </link>
-        <updated>2021-09-23T14:04:43.000Z</updated>
-        <summary type="html"><![CDATA[<p>TrinityCore基于C++开发而成，需要通过Microsoft Visual C++ 2010以上版本编译生成。你需要如下的几个步骤来生成自己的服务器程序：<br>
-请注意：虽然编译服务端并不是什么高深的学问，但它并非面向于所有的玩家。环境建立，代码维护，功能开发，数值策划等等制作游戏所必须步骤的操作难度和精力消耗都不是普通玩家所能承受的，所以在决定吸收这些知识之前，请先确认自己到底是有开发兴趣或意向还是想找个新娱乐项目，如果是后者，那么我的建议是不要看下去，因为它将会浪费你不少宝贵的时间和精力，而且不会为你带来任何精神或物质上的收益。</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>TrinityCore基于C++开发而成，需要通过Microsoft Visual C++ 2010以上版本编译生成。你需要如下的几个步骤来生成自己的服务器程序：<br>
-请注意：虽然编译服务端并不是什么高深的学问，但它并非面向于所有的玩家。环境建立，代码维护，功能开发，数值策划等等制作游戏所必须步骤的操作难度和精力消耗都不是普通玩家所能承受的，所以在决定吸收这些知识之前，请先确认自己到底是有开发兴趣或意向还是想找个新娱乐项目，如果是后者，那么我的建议是不要看下去，因为它将会浪费你不少宝贵的时间和精力，而且不会为你带来任何精神或物质上的收益。</p>
-<!-- more -->
-<ol>
-<li>获取源码，并获取最近的更新。</li>
-<li>获取数据库SQL，导入。当然官方提供的是英文版本的，而且更新较为缓慢，你可以使用我在另一个帖子中提供的简体中文数据库。</li>
-<li>生成Visual   Studio解决方案，将源代码通过CMAKE转化为可用VS2010或其他版本可用的解决方案。如果你的机器上没有相应的运行环境，则必须首先配置——至少要安装PERL5和OPENSSL，在某些情况下可能还需要MASM或NASM。这个过程非常容易出错而且对于经验不足的开发者很容易就此卡壳，我会在此介绍我所了解的问题的解决方法，但不承诺为你提供后续的帮助支持。</li>
-<li>调整参数，编译服务端文件。</li>
-<li>搭建服务器环境，导入所需的所有数据库信息。如果需要的话，制作账号管理系统。</li>
-<li>使用编译生成的DBC和地图解析工具解析服务器端所需的DBC和地图文件。要注意的是生成工具是CMAKE时的可选项，这个我会在后面的描述中着重强调。</li>
-<li>将所有的文件按既定格式放在特定位置，调整authserver.conf和worldserver.conf中的链接参数，并在auth数据库的realmlist表中建立服务器信息，即可成功开启服务端，并让朋友加入你的游戏了。</li>
-</ol>
-<pre><code>正文  
-获取源码  
-</code></pre>
-<p>TrinityCore 的源码通过Git提供的命令行工具你可以轻松地获取最新的TC源码，但对于新开发者，甚至是所有的开发者，我推荐使用Git   Extensions这个图形化的工具。你可以在：</p>
-<p>http://code.google.com/p/gitextensions/<br>
-获取最新的Git Extensions。如果你找不到下载链接在哪（这说明你需要做一点点最基础的英文学习了），我在这里为你提供一个链接：</p>
-<p>http://gitextensions.googlecode. ... 43SetupComplete.msi<br>
-如果下载地址过期，或则你看这篇文章已经是很久以后的事情，那么你可以从新搜索一下这个软件，下载最新版本的。</p>
-<p>一路NEXT确实可以安装完成，但为了让你的服务端不至于出现太多毛病，有几个选项需要你调整一下，即使和安装程序上的推荐说明不大一致。<br>
-<img src="https://52blog.github.io/post-images/1632406026531.png" alt="" loading="lazy"><br>
-勾上这两个选项。</p>
-<figure data-type="image" tabindex="1"><img src="https://52blog.github.io/post-images/1632406063970.png" alt="" loading="lazy"></figure>
-<p>确认你选择了所需的集成环境。<br>
-<img src="https://52blog.github.io/post-images/1632406087651.png" alt="" loading="lazy"></p>
-<p>如果你的机器上装的是VS2012,那么就选上Visual Studio 2012 integration 这个选项</p>
-<p>选择OpenSSH，即使说明上说putty的windows集成更加优秀。<br>
-开始安装。在安装的过程中会弹出KDiff3和Git的安装向导，一路NEXT即可。请在Git的安装过程中确认选择了“Run   Git from the Windows Command Prompt”这一选项。<br>
-<img src="https://52blog.github.io/post-images/1632406107419.png" alt="" loading="lazy"></p>
-<pre><code>这就是Git Extension的界面。
-</code></pre>
-<p><img src="https://52blog.github.io/post-images/1632406122891.png" alt="" loading="lazy"><br>
-可以看到我我的GIT上有很多个分支，但这些东西不是上来就有的。下一步就要对其进行配置，令它可以从Git上拉取（pull）源代码，并保存在正确的位置。</p>
-<p>首先，你需要建立一个存放源码的文件夹。</p>
-<p>我在D建立一个文件夹，名为“MSASource”，用以存放源代码。<br>
-<img src="https://52blog.github.io/post-images/1632406142033.png" alt="" loading="lazy"></p>
-<p>如果你正确安装了Git Extensions，则当你右键点击这个文件夹时，会出现一个新的选项“Git   Extensions”，选择子菜单中的“Clone”。<br>
-<img src="https://52blog.github.io/post-images/1632406160515.png" alt="" loading="lazy"></p>
-<p>在弹出窗口中按以下格式填写所需的信息。<br>
-<img src="https://52blog.github.io/post-images/1632406176765.png" alt="" loading="lazy"><br>
-如果你懒得照图打地址这里给你个可以复制的：<br>
-https://github.com/TrinityCore/TrinityCore.git<br>
-注意将Subdirectory to create清空，因为我们并不需要它为我们建立子文件夹。<br>
-点击Clone。这会将TrinityCore于Github的源代码拉取至你的本地文件夹中，时间取决于你的网络连接速度。<br>
-<img src="https://52blog.github.io/post-images/1632406195992.png" alt="" loading="lazy"><br>
-完成之后文件夹下将多出一大堆源代码文件。<br>
-<img src="https://52blog.github.io/post-images/1632406212083.png" alt="" loading="lazy"></p>
-<p>但这时还无法编译，我们必须先将这堆源码通过CMAKE转化为VC++的解决方案。对于某些设备，这一步可能仅需10秒，但对另一些设备，则可能得花上数小时的时间。这个根据你的网络速度决定你的下载时间</p>
-<p>然后补充一下，Trinity-Core的代码地址：https://github.com/TrinityCore</p>
-<pre><code>安装CMAKE  
-</code></pre>
-<p>首先在这里下载你需要的CMAKE版本：</p>
-<p>http://www.cmake.org/cmake/resources/software.html</p>
-<p>如果你用WINDOWS就下这个：</p>
-<p>http://www.cmake.org/files/v2.8/cmake-2.8.10.1-win32-x86.exe</p>
-<p><img src="https://52blog.github.io/post-images/1632406228152.png" alt="" loading="lazy"><br>
-选择将CMAKE添加至环境变量，其他一路下一步。</p>
-<p>在运行CMAKE之前，你要先建立一个文件下用以存放生成的解决方案（SLN）。在这篇教程中我建立了一个名为“MSABuild”的文件夹。</p>
-<figure data-type="image" tabindex="2"><img src="https://52blog.github.io/post-images/1632406243737.png" alt="" loading="lazy"></figure>
-<p>运行CMAKE，在“Where   is the source code”一栏填入源代码的目录位置，在“Where   to build the binaries”一栏填入刚才建立的文件夹地址。</p>
-<p>点击Configure。在弹出的菜单中选择Visual   Studio 10。</p>
-<figure data-type="image" tabindex="3"><img src="https://52blog.github.io/post-images/1632406257952.png" alt="" loading="lazy"></figure>
-<p>如果你的机器原本只用于打游戏而没做过开发，99%的可能性会配置失败并报告这个错误。</p>
-<p><img src="https://52blog.github.io/post-images/1632406280498.png" alt="" loading="lazy"><br>
-这意味着你的机器上没有OpenSSL，需要先安装OpenSSL。</p>
-<p>安装OpenSSL是一些老鸟都不愿搭理的差事，因设备的系统环境不同，安装过程也不尽相同而且还会出现各种各样的错误。但如果不安这东西，你便没有办法轻易地生成SLN，从而无法编译自己的服务端，所以这个坎是必须得想法跨越的。在这里我为你提供一套传统的OpenSSL安装方法，祝你安装顺利。</p>
-<p>首先，这个过程需要你对OpenSSL的源代码进行编译（他们只给源码），所以你需要有一个Visual Studio，我用的是VS2010旗舰，你可以从这个地址来下载试用版。当然在试用期结束后是重装系统，破解还是买正版（很贵），那就不是我的事了。 当然，你最好去搜索一个破解版本什么的。。</p>
-<p>http://download.microsoft.com/do ... 10UltimTrialCHS.iso</p>
-<p>ISO，可以刻录光盘安装，也可以通过虚拟光驱加载安装。</p>
-<p>然后下载OpenSSL的源码，地址在这里：</p>
-<p>http://www.openssl.org/source/</p>
-<p>如果你不知道下哪个，我给你提供个地址：</p>
-<p>http://www.openssl.org/source/openssl-1.0.1c.tar.gz</p>
-<p>然后，你需要安装PERL5，并把它加到环境变量中。</p>
-<p>PERL的安装过程并不简单，不过幸好有个ActivePerl，地址在这里：</p>
-<p>http://www.activestate.com/activeperl/downloads/</p>
-<p>根据你的系统选择32/64位版本，下载装上。如果我没记错的话，应该是一路NEXT。</p>
-<p>不知道下载哪个的，我给你提供两个WINDOWS平台的链接：</p>
-<p>32bit：http://downloads.activestate.com   ... in32-x86-296175.msi<br>
-64bit：http://downloads.activestate.com   ... in32-x64-296175.msi</p>
-<p>在ActivePerl安装完成后会自动生成所需的文件和环境变量，如果没有，请手动把以下内容添加进幻境变量中。我的PERL5路径为C:Perl64，那么内容就是：</p>
-<p>C:Perl64sitebin;C:Perl64bin;</p>
-<p>将下载的OpenSSL解压，放到一个你能记得住的地方，比如我方的位置是：</p>
-<p>C:openssl<br>
-<img src="https://52blog.github.io/post-images/1632406298451.png" alt="" loading="lazy"></p>
-<p>然后是较为容易出错的步骤，但如果你按我的方法来进行编译安装，出错的机会并不高。</p>
-<p>如果你正确安装了VS2010，可以在开始菜单找到含有所需编译配置的Visual Studio命令行工具，点击打开。</p>
-<figure data-type="image" tabindex="4"><img src="https://52blog.github.io/post-images/1632406312844.png" alt="" loading="lazy"></figure>
-<p>工具需要几秒钟的配置时间，等待至可以输入文字时，定位至OpenSSL所在目录。我的是C:openssl，所以我就输入：</p>
-<p>cd C:openssl<br>
-<img src="https://52blog.github.io/post-images/1632406330146.png" alt="" loading="lazy"><br>
-开始配置。首先禁用IPV6来避免出现cl错误，输入下面的文字并回车（后面每句都要加个回车）：</p>
-<p>perl Configure VC-WIN32 -DOPENSSL_USE_IPV6=0</p>
-<p>配置编译环境：</p>
-<p>perl Configure VC-WIN32</p>
-<p>生成配置文件：</p>
-<p>msdo_ms</p>
-<p>开始生成：</p>
-<p>nmake -f ms tdll.mak</p>
-<p>生成大概需要2-5分钟的时间，取决于你的电脑性能。生成成功后可以使用这个命令来检测一下是否安装成功：</p>
-<p>nmake -f ms tdll.mak test</p>
-<p>如果出现的一大段内容最后里有&quot;successful&quot;的字样，则说明安装成功。</p>
-<p>一般来说，搞到这里CMAKE就可以顺利生成C++解决方案了，但若你还是遇到找不到OpenSSL的错误，则需要手动配置环境变量。在环境变量里加上这样一句（我的openssl目录为C:openssl，根据你的安装位置调整内容）：</p>
-<p>C:opensslout32dll;</p>
-<p>至此你应该可以顺利生成SLN了。如果你到现在还没关掉CMAKE，点击Configure按钮。如果你看到如下提示（约需时30秒），则说明配置成功。<br>
-<img src="https://52blog.github.io/post-images/1632406352960.png" alt="" loading="lazy"></p>
-<p>如果你是首次使用，或是没有其他DBC/MAPS/VMAPS的来源，则需要勾选TOOLS的选项，以在编译时生成解析这些文件的工具。</p>
-<p>点击Generate开始生成SLN。</p>
-<p>当出现Generating   Done的提示后，说明SLN已经成功生成。</p>
-<p>打开“MSABuild”文件夹，双击TrinityCore.sln开启解决方案。<br>
-<img src="https://52blog.github.io/post-images/1632406370299.png" alt="" loading="lazy"><br>
-首次使用会加载所需的文件和配置，大概需要3-10分钟的时间。完成之后，如果你没有修改服务端的需求，那么可以直接开始编译。唯一需要改动的一点就是将解决方案配置由“DEBUG”改为“RELEASE”。DEBUG生成将附带大量的调试信息，运行效率极低，所以在编译前务必注意这一选项的设置。<br>
-<img src="https://52blog.github.io/post-images/1632406394586.png" alt="" loading="lazy"><br>
-点击绿色箭头开始编译。首次编译耗时很长，而且有可能出现错误，程序意外关闭，生成失败等结果，但这时再次点击绿色箭头重新生成即可成功。如果你看到了这个窗口，说明大功告成：<br>
-如果你成功地编译出了这些文件，说明你距离最终开启自己的服务器已经完成70%的工作了。剩下的工作一定不会难倒你，但仍然可能消耗大量的时间。</p>
-<pre><code>导入服务端数据库数据+保持更新  
-</code></pre>
-<p>搭建一个网络服务器环境——这个在互联网上有铺天盖地般的教程，我也无意提供这方面的教学。如果你不了解这方面的知识，可以在百度上寻找解决方案，或者使用诸如XAMPP一类的集成开发环境（虽然这东西是教学性质的，不过用起来没问题），你需要拥有的程序必须包括以下这些：</p>
-<p>MySQL 5+<br>
-Apache 2+<br>
-PHP 4.x+（用以构建注册和管理页面）</p>
-<p>然后你还需要一个可以处理SQL的拥有图形界面的集成式程序，如Navicat，来进行SQL的导入工作及后期的数据编辑。</p>
-<p>TrinityCore运行需要3个数据库：auth（账号信息），characters（角色信息），world（游戏数据信息），其中auth和characters的生成SQL将在编译的过程中生成，world需要在git上面下载。</p>
-<p>在你的MySQL数据库中建立三个空数据库：</p>
-<p>auth/characters/world</p>
-<p>并分别导入这三个SQL文件。</p>
-<p>auth/characters 这两个数据库分别对应账号数据库和角色数据库，。Trinity内核代码里面就带有了</p>
-<p>world世界库的SQL文件，你最好到Trinity官方论坛里面去找找。找到最新的数据库。</p>
-<p>补充一下：PERL5   基本上是可以不用安装的。默认情况下，你最好下载的完整的VS2010 或则VS2012版本。 然后openssl 是必须装的</p>
 ]]></content>
     </entry>
 </feed>
