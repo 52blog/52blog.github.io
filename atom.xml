@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://52blog.github.io</id>
     <title>52blog</title>
-    <updated>2021-09-23T16:18:13.754Z</updated>
+    <updated>2021-09-23T16:18:42.321Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://52blog.github.io"/>
     <link rel="self" href="https://52blog.github.io/atom.xml"/>
@@ -16,23 +16,9 @@
         </link>
         <updated>2021-09-23T16:00:43.000Z</updated>
         <summary type="html"><![CDATA[<p>access_requirement表的作用：限制进入副本或区域的条件，各项字段的作用解释如下：</p>
-<p>mapid ：副本或区域的地图编号，可以在 instance_template 或者 areatrigger_teleport 表中查找；<br>
-difficulty：副本难度，其中，<br>
-5人本0代表普通，1代表英雄模式<br>
-10人本0代表普通，2代表英雄模式<br>
-25人本1代表普通，3代表英雄模式<br>
-level_min ： 进入副本的最低等级要求；<br>
-level_max ： 进入副本的最高等级要求；<br>
-item_level ：进入副本所需的装备等级，一般80级英雄本最低要求平均装备等级180以上；<br>
-item ： 进入副本所需的物品，只能在包裹里，放在银行里的无效；<br>
-item2 ：同上，第二件物品；<br>
-quest_done_A ：联盟玩家进入副本所需完成的任务；<br>
-quest_done_H ：部落玩家进入副本所需完成的任务；<br>
-completed_achievement ： 进入副本所需获得的成就；<br>
-quest_failed_text ： 没有完成任务就想进副本时给你的文字提醒；<br>
-comment ： 文字说明，一般是指副本或区域的名字</p>
 ]]></summary>
         <content type="html"><![CDATA[<p>access_requirement表的作用：限制进入副本或区域的条件，各项字段的作用解释如下：</p>
+<!-- more -->
 <p>mapid ：副本或区域的地图编号，可以在 instance_template 或者 areatrigger_teleport 表中查找；<br>
 difficulty：副本难度，其中，<br>
 5人本0代表普通，1代表英雄模式<br>
