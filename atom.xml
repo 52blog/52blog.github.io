@@ -2,13 +2,1218 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://52blog.github.io</id>
     <title>52blog</title>
-    <updated>2021-09-23T15:27:12.414Z</updated>
+    <updated>2021-09-23T15:29:18.762Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://52blog.github.io"/>
     <link rel="self" href="https://52blog.github.io/atom.xml"/>
     <logo>https://52blog.github.io/images/avatar.png</logo>
     <icon>https://52blog.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, 52blog</rights>
+    <entry>
+        <title type="html"><![CDATA[数据库-游戏事件的相关制作]]></title>
+        <id>https://52blog.github.io/sDlEt2f-y/</id>
+        <link href="https://52blog.github.io/sDlEt2f-y/">
+        </link>
+        <updated>2021-09-23T15:28:22.000Z</updated>
+        <summary type="html"><![CDATA[<p>首先我们在数据库-世界库(一般为World)找到表 game_event 这个表是游戏事件时间周期表<br>
+eventEntry-游戏事件的ID(随意指定)<br>
+start_time-游戏事件的起始时间()<br>
+end_time-游戏事件的结束时间()<br>
+occurence-游戏事件重复触发的时间周期(在上面的2个时间范围内 比如2018年12月18日-2019年12月18日 一年内每隔多少时间触发一次 这里是以分钟为单位)<br>
+length-游戏事件触发后持续的时间 这里是以分钟为单位的 比如设定为30 就是持续30分钟<br>
+holiday-游戏事件节日相关 这一般写0<br>
+description-游戏事件的名称<br>
+world_event-游戏事件关系世界事件状态 这里一般写0<br>
+announce-公告类型 一般写2 普通窗口提示</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>首先我们在数据库-世界库(一般为World)找到表 game_event 这个表是游戏事件时间周期表<br>
+eventEntry-游戏事件的ID(随意指定)<br>
+start_time-游戏事件的起始时间()<br>
+end_time-游戏事件的结束时间()<br>
+occurence-游戏事件重复触发的时间周期(在上面的2个时间范围内 比如2018年12月18日-2019年12月18日 一年内每隔多少时间触发一次 这里是以分钟为单位)<br>
+length-游戏事件触发后持续的时间 这里是以分钟为单位的 比如设定为30 就是持续30分钟<br>
+holiday-游戏事件节日相关 这一般写0<br>
+description-游戏事件的名称<br>
+world_event-游戏事件关系世界事件状态 这里一般写0<br>
+announce-公告类型 一般写2 普通窗口提示</p>
+<!-- more -->
+<p>所有表列名在TC/SW/AZ都大同小异</p>
+<p>119        2018-12-15 18:00:00        2019-12-15 19:00:00        60        40        0        海底寻宝        0        2</p>
+<p>如上我制作了一个 [海底寻宝] 的事件 事件ID为119的 18点触发 持续40分钟 如果你不指定好结束时间<br>
+这个事件会一直以60分钟为周期一直循环的直到2019-12-15 19:00:00</p>
+<p>如果我改成这样<br>
+119        2018-12-15 18:00:00        2018-12-15 23:00:00        60        40        0        海底寻宝        0        2<br>
+这个事件就会在2018-12-15 18:00:00 周期到23点结束 期间会每60分钟触发一次</p>
+<p>具体根据你的需求来制作各种不同类型的游戏事件</p>
+<p>上面说了游戏事件的时间周期制作，但这远远不够实现我们想要的效果<br>
+一个事件一个活动 必须要有些内容或者玩法才能算完整，简单的说就是这个事件触发后要做什么，达到什么样的游戏互动玩法</p>
+<p>既然是寻宝...那肯定要有宝藏的 就打算用箱子来作为宝藏<br>
+进入游戏寻找一片海域，然后用命令刷箱子 隔多少码刷在哪 都可以随意</p>
+<p>那么这里为了使玩法更趣味 采用了随机刷新的机制<br>
+game_event_pool 这个表 可以在事件触发后随机跟随事件刷新 生物/物体等等<br>
+eventEntry-事件的ID(可以重复指定多个事件ID)<br>
+pool_entry-这个我暂且叫做 随机编号--这个相关的系列 pool_creature/pool_gameobject/pool_quest/pool_template</p>
+<p>119        110001<br>
+119        110002<br>
+119        110003<br>
+119        110004<br>
+119        110005<br>
+119        110006<br>
+119        110007<br>
+119        110008</p>
+<p>这里制作了 8个随机编号 下面讲解</p>
+<p>pool_template 这个表 用于随机模板数据<br>
+entry-就是上面的随机编号<br>
+max_limit-刷新的最大数量<br>
+description-没用 仅仅作为记录而已</p>
+<p>110001        1<br>
+110002        1<br>
+110003        1<br>
+110004        1<br>
+110005        1<br>
+110006        1<br>
+110007        1<br>
+110008        1</p>
+<p>每次每个编号刷新一个 所以一定会刷出8个</p>
+<p>pool_gameobject 这个表 随机物体/箱子/各种游戏物体的 控制了游戏事件触发后刷新什么东西<br>
+guid-对应箱子的guid 唯一标识 就是在你用命令刷新的时候记录一下就行 当然这个表gameobject也能找到<br>
+建议还是记录好 起码也能知道具体<br>
+pool_entry-随机编号<br>
+chance-几率<br>
+description-没用 仅仅作为记录而已</p>
+<p>4780001        110001        50<br>
+4780002        110001        50<br>
+4780003        110002        50<br>
+4780004        110002        50<br>
+4780005        110003        50<br>
+4780006        110003        50<br>
+4780007        110004        50<br>
+4780008        110004        50<br>
+4780009        110005        50<br>
+4780010        110005        50<br>
+4780011        110006        50<br>
+4780012        110006        50<br>
+4780013        110007        50<br>
+4780014        110007        50<br>
+4780015        110008        50<br>
+4780016        110008        50</p>
+<p>教程就只弄了16个 实际远远不止这几个 这里就是 从2个guid中概率50%刷新出一个 概率也可以写0 比如110001这编号有几百个你可以写0随机<br>
+所以事件触发后 会有8个箱子刷新 具体哪个是宝藏也不确定 因为是指定的guid所以可以随意的制作不同掉落的箱子<br>
+理论上用熟悉后 成千上万个都是可以的</p>
+<p>game_event_creature 事件生物刷新表<br>
+eventEntry-事件ID<br>
+guid-生物guid</p>
+<p>这个就比较简单了 直接就是事件开始后 刷新出来的生物</p>
+<p>可以配合宝藏刷在附近作为寻宝战斗</p>
+<p>这样就基本上实现了一个游戏事件 有宝物 有怪物 玩法就是争夺宝藏 实力运气趣味并存</p>
+<p>以上这些都是预先在游戏里刷新好和确定位置以及不同的生物/箱子 再开启事件<br>
+因为当重载重启后 事件在周期范围 是不会看到这些的 跟正常制作的NPC/箱子等等是不同机制的<br>
+调试可以用 命令<br>
+开启.event start 事件ID<br>
+关闭.event stop 事件ID</p>
+<p>game_event_npc_vendor 事件相关商人售卖 当事件开启后 会出现指定guid的商人售卖指定的东西<br>
+还有一些其他的事件相关的表比较少用到 所以暂时不去说这块</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[SQL语句教程]]></title>
+        <id>https://52blog.github.io/NetP18cQr/</id>
+        <link href="https://52blog.github.io/NetP18cQr/">
+        </link>
+        <updated>2021-09-23T15:27:37.000Z</updated>
+        <summary type="html"><![CDATA[<p>SQL语句教程</p>
+<p>INSERT INTO <code>world</code>.<code>creature_area</code> (<code>guid</code>, <code>zone</code>, <code>area</code>) VALUES ('6', '1', '1');</p>
+<p>这个语句就是一个将物品导入的语句，注意这句前面的INSERT INTO就是‘导入’的意思</p>
+<p>UPDATE <code>world</code>.<code>creature_area</code> SET <code>guid</code>='6', <code>zone</code>='1', <code>area</code>='1' WHERE (<code>guid</code>='6');</p>
+<p>这个语句就是一个将物品导入的语句，注意这句前面的UPDATE就是‘修改’的意思</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>SQL语句教程</p>
+<p>INSERT INTO <code>world</code>.<code>creature_area</code> (<code>guid</code>, <code>zone</code>, <code>area</code>) VALUES ('6', '1', '1');</p>
+<p>这个语句就是一个将物品导入的语句，注意这句前面的INSERT INTO就是‘导入’的意思</p>
+<p>UPDATE <code>world</code>.<code>creature_area</code> SET <code>guid</code>='6', <code>zone</code>='1', <code>area</code>='1' WHERE (<code>guid</code>='6');</p>
+<p>这个语句就是一个将物品导入的语句，注意这句前面的UPDATE就是‘修改’的意思</p>
+<!-- more -->
+<p>这两种语句是我们最最常用的语句，那么我们来一个一个的解释</p>
+<p>导入语句：</p>
+<p>INSERT INTO <code>world</code>.<code>creature_area</code> (<code>guid</code>, <code>zone</code>, <code>area</code>) VALUES ('6', '1', '1');</p>
+<p>INSERT INTO <code>world</code>.<code>creature_area</code>代表，你要导入到哪里，这里就是指的WORLD库里的creature_area表</p>
+<p>(<code>guid</code>, <code>zone</code>, <code>area</code>)代表这个表里面的每一列，通常会有很多咧，会依次用逗号隔开</p>
+<p>VALUES就是指数值的意思，前面要导入的每一列都会填入一个数值</p>
+<p>('6', '1', '1');就是前面每一列填入的数值，对应着(<code>guid</code>, <code>zone</code>, <code>area</code>)的排列顺序。</p>
+<p>修改语句：</p>
+<p>UPDATE <code>world</code>.<code>creature_area</code> SET <code>guid</code>='6', <code>zone</code>='1', <code>area</code>='1' WHERE (<code>guid</code>='6');</p>
+<p>前面已经讲了，UPDATE <code>world</code>.<code>creature_area</code> 就是修改哪个库的哪个表</p>
+<p>SET 字面翻译，就是设置为，和导入语句不同的这是，一定要记住</p>
+<p><code>guid</code>='6', <code>zone</code>='1', <code>area</code>='1' 非常好理解了吧，就是某列设置为某值</p>
+<p>WHERE (<code>guid</code>='6');这个非常重要，这个是判定你要修改那一行，这句的意思就是当guid`='6'的时候，进行前面的修改。</p>
+<p>那么我们来举一反三</p>
+<p>我们要修改item_template表的socketColor_1列为1，应该这么写</p>
+<p>UPDATE item_template set socketColor_1 = 1;</p>
+<p>细心的朋友发现了，这样会把整个表的socketColor_1列都修改为1，但是我只想修改武器的socketColor_1列怎么办？这就要加入判定了，就是前面教的WHERE x='y'</p>
+<p>这样，我们就得出一下这句</p>
+<p>UPDATE item_template set socketColor_1 = 1 where class='2';</p>
+<p>有些同学疑问了，为什么我这里UPDATE item_template之间没有选择什么库，那是应为我直接在WORLD库右键点命令列界面，在这里我就不用判定导入什么库了，就默认为你选择的库。</p>
+<p>好的，这是最基本的语句，下面我们再深入一些。</p>
+<p>二：多重判定.与值的计算</p>
+<p>多重判定：</p>
+<p>有的同学问了，我们要修改的物品，只有一个判定是不够的，比如我们要修改装备等级大于100小于200的装备怎么办？这里存在了2个判定，那么这第二部分的重点就来了。</p>
+<p>例句：UPDATE item_template SET socketColor_1 = 1 where itemlevel&gt;'100' and itemlevel&lt;'200';</p>
+<p>同学们看懂了吗？我们只需要在第一个判定后面加入一个and，这样我们就可以有无限多的判定了，再练习一个，我们不但要等级大于100小于200的装备，还要只能是武器。</p>
+<p>UPDATE item_template SET socketColor_1 = 1 where itemlevel&gt;'100' and itemlevel&lt;'200'and class='2';</p>
+<p>值的计算：</p>
+<p>可爱的同学们又提出问题了，我们这手动输入一个一个输入值好慢，我们要让他自动生成值怎么办？</p>
+<p>OK，这里来个例子，我们要修改装备等级大于300小于500的装备的stat_value1列为原始的2倍</p>
+<p>UPDATE item_template SET stat_value1 = stat_value1*2 where itemlevel&gt;'300' and itemlevel&lt;'500';</p>
+<p>很简单吧？</p>
+<p>有的同学又提出问题了，我们要更自动化！全部放大倍数太简单了！我们要更有变化！</p>
+<p>好的~再看个例子，我们要修改装备等级大于300小于500的装备的stat_value1列来按照装备提高等于装备等级的数值。</p>
+<p>UPDATE item_template SET stat_value1 = stat_value1+itemlevel where itemlevel&gt;'300' and itemlevel&lt;'500';</p>
+<p>给装备加前缀名字</p>
+<p>很多同学喜欢给自己的装备加个个性的前缀名字，那么这个公式大家可以借鉴</p>
+<p>UPDATE item_template set name=concat('超级牛逼的 ',name) where itemlevel&gt;'200';</p>
+<p>concat('超级牛逼的 ',name)就是在原始的名字前面加上引号里的数值，同样适用于数字，至于后面的判定，前面讲过了。</p>
+<p>随机写入数值</p>
+<p>那么，同学们觉得肯定还不够，要更复杂的，好的，我们来更复杂一点</p>
+<p>我们只想让装备等级等于300的装备的stat_value1完全随机在400-2500之间怎么办？</p>
+<p>update item_template set stat_value1 = round(rand() * 2100) + 400 where itemlevel='300';</p>
+<p>这里新出现新的公式： round(rand() * 2100) + 400 ，至于原理，乱七八糟很复杂，恩。。。（就算我死记硬背的，我也不会说出来！）但是有个简单的方式来计算</p>
+<p>round(rand() * X) +Y X=你需要的数值上限减去下限 Y=数值下限</p>
+<p>好的，这些大家一定要学会举一反三，你到这里学会了的话已经可以做做看，你会发现比你用修改器快很多多多啊。。。。</p>
+<p>三：从别的表导入现在的表和一个批量增加掉率的公式</p>
+<p>合并表：</p>
+<p>通过前面学习，大家应该学会了，很多同学想到了把一个表复制好几个，然后执行不同的批量命令来生成好几个等级的装备，那么我们怎么把他们合并在一起呢</p>
+<p>比如我们要把item_template_2合并到item_template</p>
+<p>那么就这样写：</p>
+<p>insert into item_template select * from item_template_2;</p>
+<p>批量增加掉率：</p>
+<p>如果我们制作了很多装备在item_template_2，然后怎么让怪物掉落这些装备呢？那么这样写</p>
+<p>insert into creature_loot_template</p>
+<p>select distinct creature_template.entry, item_template_2.entry,</p>
+<p>0.001, 0, 1, 1, 0, 0, 0</p>
+<p>from item_template_2, creature_template, creature_loot_template</p>
+<p>where</p>
+<p>creature_template.entry = creature_loot_template.entry</p>
+<p>and creature_template.entry = XXXXX;</p>
+<p>粗看很复杂，那么我们来解释一下</p>
+<p>creature_template.entry = XXXXX就是制定那个怪掉落，XXXX是怪物的entry列数值</p>
+<p>0.001, 0, 1, 1, 0, 0, 0对应的是你的creature_loot_template表里从第三列开始的数值，你可以自行设置。（通常是这样的结构，Chance打头的就是掉率，注意，groupid相同的掉率总合不能超100%）</p>
+<p>那么我们再来实践下，比如我们复制出来的表item_template_14里面有很多很多装备，我只想要怪物ID10000掉落装备等级大于200小于300的装备,每件掉率是0.55</p>
+<p>insert into creature_loot_template</p>
+<p>select distinct creature_template.entry, item_template_14.entry,</p>
+<p>0.55, 0, 1, 1, 0, 0, 0</p>
+<p>from item_template_14, creature_template, creature_loot_template</p>
+<p>where</p>
+<p>creature_template.entry = creature_loot_template.entry</p>
+<p>and creature_template.entry = 10000 and item_template_14.itemlevel&gt;'200' and item_template_14.itemlevel&lt;'300';</p>
+<p>四：自动批量写入</p>
+<p>我们好懒，对吧？我们要自动写入一堆就可以开开心心的玩游戏了对吧？那么，这又带来一个死记硬背的公式！</p>
+<p>DELIMITER $$</p>
+<p>DROP PROCEDURE IF EXISTS WhileLoopProc$$</p>
+<p>CREATE PROCEDURE WhileLoopProc()</p>
+<p>BEGIN</p>
+<p>DECLARE x INT;</p>
+<p>SET x = 1;</p>
+<p>WHILE x &lt;= 1034 DO</p>
+<p>INSERT INTO <code>item_enchantment_template</code> (<code>entry</code>, <code>ench</code>, <code>chance</code>, <code>type</code>) VALUES ('10002', (22001+x), 0.016, 1);</p>
+<p>SET x = x + 1;</p>
+<p>END WHILE;</p>
+<p>END$$</p>
+<p>DELIMITER ;</p>
+<p>call WhileLoopProc();</p>
+<p>乱不乱？别问我，我也不懂，但是该改什么我告诉你！</p>
+<p>SET x = 1代表一个基数，通常我喜欢用0</p>
+<p>WHILE x &lt;= 1034 DO 代表你要导入多少条，公式是每行增加的数值乘以你要导入的条数然后减去每行增加的数值.</p>
+<p>(22001+x) 代表值的最小值，比如你要导入值最小为80000，那么就写入(80000+x)</p>
+<p>SET x = x + 1 代表你每个值增加多少，这里是每一行增加1，如果你要增加100，那么就写入SET x = x + 100</p>
+<p>那么我们来个例子，比如我们要导入刚才那个表的ench列从3333开始每值加321！一共911条怎么写？</p>
+<p>DELIMITER $$</p>
+<p>DROP PROCEDURE IF EXISTS WhileLoopProc$$</p>
+<p>CREATE PROCEDURE WhileLoopProc()</p>
+<p>BEGIN</p>
+<p>DECLARE x INT;</p>
+<p>SET x = 0;</p>
+<p>WHILE x &lt;= 292110 DO</p>
+<p>INSERT INTO <code>item_enchantment_template</code> (<code>entry</code>, <code>ench</code>, <code>chance</code>, <code>type</code>) VALUES ('10005', (3333+x), 0.016, 1);</p>
+<p>SET x = x + 321;</p>
+<p>END WHILE;</p>
+<p>END$$</p>
+<p>DELIMITER ;</p>
+<p>call WhileLoopProc();</p>
+<p>/<em>物品需求等级降低10%</em>/</p>
+<p>update item_template set RequiredLevel = RequiredLevel*0.9;</p>
+<p>/<em>技能学习等级需求降低20%</em>/</p>
+<p>update npc_trainer set ReqLevel = ReqLevel*0.8;</p>
+<p>/<em>去除物品使用种族、职业限制</em>/</p>
+<p>update item_template set allowableclass = -1;</p>
+<p>update item_template set AllowableRace=-1;</p>
+<p>/<em>任务获得5倍于经验的竞技场点数</em>/</p>
+<p>update quest_template set RewardArenaPoints=RewardXPID*5;</p>
+<p>/<em>所有物品无限量持有和叠加</em>/</p>
+<p>UPDATE item_template SET Maxcount = 0;</p>
+<p>update item_template set stackable = 9999 where stackable&gt;1;</p>
+<p>/<em>任务物品100%掉落</em>/</p>
+<p>update creature_loot_template set ChanceOrQuestChance = -100 where ChanceOrQuestChance&lt;0;</p>
+<p>/<em>物品售价提高10%</em>/</p>
+<p>update item_template set sellprice=sellprice*1.1;</p>
+<p>/<em>所有物品不绑定</em>/</p>
+<p>update item_template set bonding = 0;</p>
+<p>/<em>怪物移动速度减低10%</em>/</p>
+<p>update creature_template set speed_walk = speed_walk*0.9;</p>
+<p>update creature_template set speed_run = speed_run*0.9;</p>
+<p>批量制作装备其实可以自己导出一件现成的装备出来看懂了就可以自己DIY了，修改属性的话方法也有很多种</p>
+<p>UPDATE item_template SET stat_value1 = stat_value1*3</p>
+<p>UPDATE item_template SET stat_value2 = stat_value2*3;</p>
+<p>UPDATE item_template SET stat_value3 = stat_value3*3;</p>
+<p>UPDATE item_template SET stat_value4 = stat_value4*3;</p>
+<p>UPDATE item_template SET stat_value5 = stat_value5*3;</p>
+<p>这个SQL命令是把装备第一条到第五条属性调高3倍</p>
+<p>当然也可以选单独某一种属性加强</p>
+<p>比如</p>
+<p>update item_template set stat_value1 = stat_value1*2 where stat_type1 = 3;</p>
+<p>update item_template set stat_value2 = stat_value2*2 where stat_type2 = 3;</p>
+<p>update item_template set stat_value3 = stat_value3*2 where stat_type3 = 3;</p>
+<p>update item_template set stat_value4 = stat_value4*2 where stat_type4 = 3;</p>
+<p>update item_template set stat_value5 = stat_value5*2 where stat_type5 = 3;</p>
+<p>意思就是说这装备1到5条属性中如果属性是敏捷（stat_type3=3）的话就乘以2</p>
+<p>3是（敏捷）,4(力量),5(智力),6(精神) 其他的百度一下不太记得了 装备属性几十种吧 还有命中等级 暴击等级这些</p>
+<p>如果还想要制作属性随人物等级变化就是传家宝装备属性需要制作DBC了，还是慢慢摸索去</p>
+<p>0,无</p>
+<p>1,生命值</p>
+<p>2,法力值</p>
+<p>3,敏捷</p>
+<p>4,力量</p>
+<p>5,智力</p>
+<p>6,精神</p>
+<p>7,耐力</p>
+<p>12,防御等级</p>
+<p>13,躲闪等级</p>
+<p>14,招架等级</p>
+<p>15,盾牌格挡</p>
+<p>16,近战命中</p>
+<p>17,远程命中</p>
+<p>18,法术命中</p>
+<p>19,近战暴击</p>
+<p>20,远程暴击</p>
+<p>21,法术暴击</p>
+<p>22,近战躲闪</p>
+<p>23,远程躲闪</p>
+<p>24,法术躲闪</p>
+<p>25,近战暴击躲闪</p>
+<p>26,远程暴击躲闪</p>
+<p>27,法术暴击躲闪</p>
+<p>28,近战攻击速度</p>
+<p>29,远程攻击速度</p>
+<p>30,法术攻击速度</p>
+<p>31,命中等级</p>
+<p>32,暴击等级</p>
+<p>33,命中躲闪</p>
+<p>34,暴击躲闪</p>
+<p>35,韧性</p>
+<p>36,急速攻击速度</p>
+<p>37,精准等级</p>
+<p>38,攻击强度</p>
+<p>39,远程攻击强度</p>
+<p>40,猎豹、熊、巨熊、枭兽形态攻击强度</p>
+<p>41,法术治疗效果</p>
+<p>42,法术伤害效果</p>
+<p>43,5秒回蓝</p>
+<p>44,护甲穿透等级</p>
+<p>45,法术强度</p>
+<p>update item_template set stat_value1 = stat_value1<em>5   where stat_type1 = 45;<br>
+update item_template set stat_value2 = stat_value2</em>5   where stat_type1 = 45;<br>
+update item_template set stat_value3 = stat_value3<em>5   where stat_type1 = 45;<br>
+update item_template set stat_value4 = stat_value4</em>5   where stat_type1 = 45;<br>
+update item_template set stat_value5 = stat_value5<em>5   where stat_type1 = 45;<br>
+update item_template set stat_value6 = stat_value6</em>5   where stat_type1 = 45;<br>
+update item_template set stat_value7 = stat_value7<em>5   where stat_type1 = 45;<br>
+update item_template set stat_value8 = stat_value8</em>5   where stat_type1 = 45;<br>
+update item_template set stat_value9 = stat_value9<em>5   where stat_type1 = 45;<br>
+update item_template set stat_value10 = stat_value10</em>5 where stat_type1 = 45;</p>
+<p>采集量增加及可叠加物品叠加量增加SQL语句</p>
+<p>UPDATE item_template SET stackable = 9999 where stackable &gt; 1 ; /<em>所有堆叠数大于1的改为9999</em>/</p>
+<p>UPDATE item_template SET stackable ='9999' WHERE ( entry ='6265') ; /<em>灵魂碎片堆叠数改为9999</em>/</p>
+<p>UPDATE skinning_loot_template SET maxcount = 20 ; /<em>剥皮最大产量为20单位</em>/</p>
+<p>UPDATE fishing_loot_template SET maxcount = 20 ; /* 钓鱼*/</p>
+<p>UPDATE prospecting_loot_template SET maxcount = 20 ; /<em>采矿附产品（孔雀石、虎眼石、等）最大产量为20单位</em>/</p>
+<p>UPDATE creature_loot_template SET maxcount ='20' WHERE item ='2589' ; /<em>亚麻布最大产量为20</em>/</p>
+<p>UPDATE creature_loot_template SET maxcount ='20' WHERE item ='2592' ; /<em>毛料</em>/</p>
+<p>UPDATE creature_loot_template SET maxcount ='20' WHERE item ='4306' ; /<em>丝绸</em>/</p>
+<p>UPDATE creature_loot_template SET maxcount ='20' WHERE item ='4338' ; /* 魔纹布*/</p>
+<p>UPDATE creature_loot_template SET maxcount ='20' WHERE item ='14047' ; /<em>符文布</em>/</p>
+<p>UPDATE creature_loot_template SET maxcount ='20' WHERE item ='14256' ; /* 恶魔布*/</p>
+<p>UPDATE creature_loot_template SET maxcount ='20' WHERE item ='21877' ; /* 灵纹布*/</p>
+<p>UPDATE gameobject SET spawntimesecs = 5 ; /* 草、矿、宝箱等刷新时间为5秒*/</p>
+<p>UPDATE item_template SET spellcategorycooldown_1 = 5000 where spellcategorycooldown_1 = 120000 and class = 0 ; /* 将药水的冷却时间设为5秒*/</p>
+<p>update item_template set stackble=2*stackable where stackable&gt;1</p>
+<p>这一段命令的意思是，所有stackble这一列的数字大于1的，通通把它们乘以2，你可以乘以5，甚至10，优点是，只要自己记得倍数，随时可以修改回去，缺点是，像弓箭神马的本来叠加数量就大，像这些很容易服务端报错。</p>
+<p>为了稳当，也可以自己多弄几次，如</p>
+<p>update item_template set stackable=200 where stackable=20</p>
+<p>这段意思就是把stackble这一列等于20的数，通通改成200，这样修改的优点是准确，缺点是如果想改的叠加物品数量不同，需要多弄几次</p>
+<p>所有装备宝石开3孔，所有装备宝石镶嵌满奖励全属性+10。</p>
+<p>update item_template set socketColor_1 = 2;</p>
+<p>update item_template set socketColor_2 = 4;</p>
+<p>update item_template set socketColor_3 = 8;</p>
+<p>update item_template set socketContent_1 = 0;</p>
+<p>update item_template set socketContent_2 = 0;</p>
+<p>update item_template set socketContent_3 = 0;</p>
+<p>update item_template set socketBonus = 3879;</p>
+<p>PS：3879是全属性+10的效果，当然你也可以设置成你想要的技能效果。</p>
+<p>去除装备上的唯一属性</p>
+<p>UPDATE item_template SET Maxcount = 0;</p>
+<p>装备等级要求全部改为1，1级可以穿T10了。</p>
+<p>update item_template set requiredlevel=1;</p>
+<p>去除职业限制</p>
+<p>update item_template set allowableclass = -1</p>
+<p>去种族限制</p>
+<p>update item_template set AllowableRace= -1;</p>
+<p>物品堆积数量 UPDATE item_template set stackable = '9999' WHERE stackable &gt; '1';</p>
+<p>免费学技能</p>
+<p>update npc_trainer set <code>spellcost</code> = 0;</p>
+<p>/<em>任务最小接受等级降低3级</em>/</p>
+<p>update quest_template set minlevel=minlevel-3 where minlevel&gt;5;</p>
+<p>/<em>每级获得生命值提高20%</em>/</p>
+<p>update player_classlevelstats set basehp = basehp*1.2;</p>
+<p>/<em>物品需求等级降低10%</em>/</p>
+<p>update item_template set RequiredLevel = RequiredLevel*0.9;</p>
+<p>/<em>技能学习等级需求降低20%</em>/</p>
+<p>update npc_trainer set ReqLevel = ReqLevel*0.8;</p>
+<p>/<em>去除物品使用种族、职业限制</em>/</p>
+<p>update item_template set allowableclass = -1;</p>
+<p>update item_template set AllowableRace=-1;</p>
+<p>/<em>任务获得5倍于经验的竞技场点数</em>/</p>
+<p>update quest_template set RewardArenaPoints=RewardXPID*5;</p>
+<p>/<em>所有物品无限量持有和叠加</em>/</p>
+<p>UPDATE item_template SET Maxcount = 0;</p>
+<p>update item_template set stackable = 9999 where stackable&gt;1;</p>
+<p>/<em>物品售价提高10%</em>/</p>
+<p>update item_template set sellprice=sellprice*1.1;</p>
+<p>/<em>怪物移动速度减低20%</em>/</p>
+<p>update creature_template set speed_walk = speed_walk*0.8;</p>
+<p>update creature_template set speed_run = speed_run*0.8;</p>
+<p>/<em>boss吃控制技能</em>/</p>
+<p>UPDATE creature_template SET mechanic_immune_mask = 0 where rank&gt;=0;</p>
+<p>/<em>任务物品100%掉落</em>/</p>
+<p>update creature_loot_template set ChanceOrQuestChance = -100 where ChanceOrQuestChance&lt;0;</p>
+<p>/<em>清除副本进度信息</em>/</p>
+<p>delete from characters.instance_reset;</p>
+<p>/<em>怪物、物品刷新时间缩短</em>/</p>
+<p>update creature set spawntimesecs = spawntimesecs*0.5 where spawntimesecs&gt;=180 and spawntimesecs&lt;=600;</p>
+<p>update gameobject set spawntimesecs = spawntimesecs*0.5 where spawntimesecs&gt;=180 and spawntimesecs&lt;=600;</p>
+<p>update creature set spawntimesecs = spawntimesecs*0.3 where spawntimesecs&gt;600 and spawntimesecs&lt;=3600;</p>
+<p>update gameobject set spawntimesecs = spawntimesecs*0.3 where spawntimesecs&gt;600 and spawntimesecs&lt;=3600;</p>
+<p>/<em>所有怪吃控制技能</em>/</p>
+<p>update creature_template set mechanic_immune_mask=0;</p>
+<p>修改玩家默认32767伤害属性的限制SQL语句</p>
+<p>ALTER TABLE <code>item_template</code> CHANGE <code>stat_value1</code> <code>stat_value1</code> int(30) default '0';</p>
+<p>ALTER TABLE <code>item_template</code> CHANGE <code>stat_value2</code> <code>stat_value2</code> int(30) default '0';</p>
+<p>ALTER TABLE <code>item_template</code> CHANGE <code>stat_value3</code> <code>stat_value3</code> int(30) default '0';</p>
+<p>ALTER TABLE <code>item_template</code> CHANGE <code>stat_value4</code> <code>stat_value4</code> int(30) default '0';</p>
+<p>ALTER TABLE <code>item_template</code> CHANGE <code>stat_value5</code> <code>stat_value5</code> int(30) default '0';</p>
+<p>ALTER TABLE <code>item_template</code> CHANGE <code>stat_value6</code> <code>stat_value6</code> int(30) default '0';</p>
+<p>ALTER TABLE <code>item_template</code> CHANGE <code>stat_value7</code> <code>stat_value7</code> int(30) default '0';</p>
+<p>ALTER TABLE <code>item_template</code> CHANGE <code>stat_value8</code> <code>stat_value8</code> int(30) default '0';</p>
+<p>ALTER TABLE <code>item_template</code> CHANGE <code>stat_value9</code> <code>stat_value9</code> int(30) default '0';</p>
+<p>ALTER TABLE <code>item_template</code> CHANGE <code>stat_value10</code> <code>stat_value10</code> int(30) default '0';</p>
+<p>ALTER TABLE <code>item_template</code> CHANGE <code>dmg_min1</code> <code>dmg_min1</code> int(30) default '0';</p>
+<p>ALTER TABLE <code>item_template</code> CHANGE <code>dmg_max1</code> <code>dmg_max1</code> int(30) default '0';</p>
+<p>ALTER TABLE <code>item_template</code> CHANGE <code>dmg_min2</code> <code>dmg_min2</code> int(30) default '0';</p>
+<p>ALTER TABLE <code>item_template</code> CHANGE <code>dmg_max2</code> <code>dmg_max2</code> int(30) default '0';</p>
+<p>批量给弓，弩，枪+46699,装备：索利达尔在弓弦张开时会自动制造魔法箭，无须额外配备箭矢</p>
+<p>update item_template set item_template.spellid_5='46699',item_template.spelltrigger_5='1',item_template.spellcooldown_5='-1',item_template.spellcategory_5='0',item_template.spellcategorycooldown_5='-1' where item_template.class='2' and item_template.subclass in (2,3,18);</p>
+<p>去除炉石冷却时间</p>
+<p>update item_template set spellcooldown_1=1 where entry=6948;</p>
+<p>去除装备上的唯一属性</p>
+<p>UPDATE item_template SET Maxcount = 0;</p>
+<p>护甲</p>
+<p>UPDATE item_template SET armor = armor*3;</p>
+<p>最小和最大武器伤害值</p>
+<p>UPDATE item_template SET dmg_min1 = dmg_min1*3;</p>
+<p>UPDATE item_template SET dmg_max1 = dmg_max1*3;</p>
+<p>武器攻击速度延迟 /2是除2的意思</p>
+<p>UPDATE item_template SET delay = delay/2;</p>
+<p>装备的抵抗抗性</p>
+<p>UPDATE creature_classlevelstats SET basehp0 = 10000 and basehp1 = 10000 and basehp2 = 10000 and basemana = 10000 and basearmor = 10000 WHERE level &gt;=84;</p>
+<p>UPDATE item_template SET fire_res = fire_res*5;</p>
+<p>UPDATE item_template SET nature_res = nature_res*5;</p>
+<p>UPDATE item_template SET frost_res = frost_res*5;</p>
+<p>UPDATE item_template SET shadow_res = shadow_res*5;</p>
+<p>UPDATE item_template SET arcane_res = arcane_res*5;</p>
+<p>修改敏捷</p>
+<p>UPDATE item_template SET stat_value1 = stat_value1*5 WHERE stat_type1=3;</p>
+<p>UPDATE item_template SET stat_value2 = stat_value2*5 WHERE stat_type2=3;</p>
+<p>UPDATE item_template SET stat_value3 = stat_value3*5 WHERE stat_type3=3;</p>
+<p>UPDATE item_template SET stat_value4 = stat_value4*5 WHERE stat_type4=3;</p>
+<p>UPDATE item_template SET stat_value5 = stat_value5*5 WHERE stat_type5=3;</p>
+<p>UPDATE item_template SET stat_value6 = stat_value6*5 WHERE stat_type6=3;</p>
+<p>UPDATE item_template SET stat_value7 = stat_value7*5 WHERE stat_type7=3;</p>
+<p>UPDATE item_template SET stat_value8 = stat_value8*5 WHERE stat_type8=3;</p>
+<p>UPDATE item_template SET stat_value9 = stat_value9*5 WHERE stat_type9=3;</p>
+<p>UPDATE item_template SET stat_value10 = stat_value10*5 WHERE stat_type10=3;</p>
+<p>修改力量</p>
+<p>UPDATE item_template SET stat_value1 = stat_value1*5 WHERE stat_type1=4;</p>
+<p>UPDATE item_template SET stat_value2 = stat_value2*5 WHERE stat_type2=4;</p>
+<p>UPDATE item_template SET stat_value3 = stat_value3*5 WHERE stat_type3=4;</p>
+<p>UPDATE item_template SET stat_value4 = stat_value4*5 WHERE stat_type4=4;</p>
+<p>UPDATE item_template SET stat_value5 = stat_value5*5 WHERE stat_type5=4;</p>
+<p>UPDATE item_template SET stat_value6 = stat_value6*5 WHERE stat_type6=4;</p>
+<p>UPDATE item_template SET stat_value7 = stat_value7*5 WHERE stat_type7=4;</p>
+<p>UPDATE item_template SET stat_value8 = stat_value8*5 WHERE stat_type8=4;</p>
+<p>UPDATE item_template SET stat_value9 = stat_value9*5 WHERE stat_type9=4;</p>
+<p>UPDATE item_template SET stat_value10 = stat_value10*5 WHERE stat_type10=4;</p>
+<p>修改智力</p>
+<p>UPDATE item_template SET stat_value1 = stat_value1*5 WHERE stat_type1=5;</p>
+<p>UPDATE item_template SET stat_value2 = stat_value2*5 WHERE stat_type2=5;</p>
+<p>UPDATE item_template SET stat_value3 = stat_value3*5 WHERE stat_type3=5;</p>
+<p>UPDATE item_template SET stat_value4 = stat_value4*5 WHERE stat_type4=5;</p>
+<p>UPDATE item_template SET stat_value5 = stat_value5*5 WHERE stat_type5=5;</p>
+<p>UPDATE item_template SET stat_value6 = stat_value6*5 WHERE stat_type6=5;</p>
+<p>UPDATE item_template SET stat_value7 = stat_value7*5 WHERE stat_type7=5;</p>
+<p>UPDATE item_template SET stat_value8 = stat_value8*5 WHERE stat_type8=5;</p>
+<p>UPDATE item_template SET stat_value9 = stat_value9*5 WHERE stat_type9=5;</p>
+<p>UPDATE item_template SET stat_value10 = stat_value10*5 WHERE stat_type10=5;</p>
+<p>修改精神</p>
+<p>UPDATE item_template SET stat_value1 = stat_value1*5 WHERE stat_type1=6;</p>
+<p>UPDATE item_template SET stat_value2 = stat_value2*5 WHERE stat_type2=6;</p>
+<p>UPDATE item_template SET stat_value3 = stat_value3*5 WHERE stat_type3=6;</p>
+<p>UPDATE item_template SET stat_value4 = stat_value4*5 WHERE stat_type4=6;</p>
+<p>UPDATE item_template SET stat_value5 = stat_value5*5 WHERE stat_type5=6;</p>
+<p>UPDATE item_template SET stat_value6 = stat_value6*5 WHERE stat_type6=6;</p>
+<p>UPDATE item_template SET stat_value7 = stat_value7*5 WHERE stat_type7=6;</p>
+<p>UPDATE item_template SET stat_value8 = stat_value8*5 WHERE stat_type8=6;</p>
+<p>UPDATE item_template SET stat_value9 = stat_value9*5 WHERE stat_type9=6;</p>
+<p>UPDATE item_template SET stat_value10 = stat_value10*5 WHERE stat_type10=6;</p>
+<p>修改耐力</p>
+<p>UPDATE item_template SET stat_value1 = stat_value1*7 WHERE stat_type1=7;</p>
+<p>UPDATE item_template SET stat_value2 = stat_value2*7 WHERE stat_type2=7;</p>
+<p>UPDATE item_template SET stat_value3 = stat_value3*7 WHERE stat_type3=7;</p>
+<p>UPDATE item_template SET stat_value4 = stat_value4*7 WHERE stat_type4=7;</p>
+<p>UPDATE item_template SET stat_value5 = stat_value5*7 WHERE stat_type5=7;</p>
+<p>UPDATE item_template SET stat_value6 = stat_value3*7 WHERE stat_type6=7;</p>
+<p>UPDATE item_template SET stat_value7 = stat_value7*7 WHERE stat_type7=7;</p>
+<p>UPDATE item_template SET stat_value8 = stat_value8*7 WHERE stat_type8=7;</p>
+<p>UPDATE item_template SET stat_value9 = stat_value9*7 WHERE stat_type9=7;</p>
+<p>UPDATE item_template SET stat_value10 = stat_value10*7 WHERE stat_type10=7;</p>
+<p>修改防御等级</p>
+<p>UPDATE item_template SET stat_value1 = stat_value1*2 WHERE stat_type1=12;</p>
+<p>UPDATE item_template SET stat_value2 = stat_value2*2 WHERE stat_type2=12;</p>
+<p>UPDATE item_template SET stat_value3 = stat_value3*2 WHERE stat_type3=12;</p>
+<p>UPDATE item_template SET stat_value4 = stat_value4*2 WHERE stat_type4=12;</p>
+<p>UPDATE item_template SET stat_value5 = stat_value5*2 WHERE stat_type5=12;</p>
+<p>UPDATE item_template SET stat_value6 = stat_value6*2 WHERE stat_type6=12;</p>
+<p>UPDATE item_template SET stat_value7 = stat_value7*2 WHERE stat_type7=12;</p>
+<p>UPDATE item_template SET stat_value8 = stat_value8*2 WHERE stat_type8=12;</p>
+<p>UPDATE item_template SET stat_value9 = stat_value9*2 WHERE stat_type9=12;</p>
+<p>UPDATE item_template SET stat_value10 = stat_value10*2 WHERE stat_type10=12;</p>
+<p>修改躲避等级</p>
+<p>UPDATE item_template SET stat_value1 = stat_value1*2 WHERE stat_type1=13;</p>
+<p>UPDATE item_template SET stat_value2 = stat_value2*2 WHERE stat_type2=13;</p>
+<p>UPDATE item_template SET stat_value3 = stat_value3*2 WHERE stat_type3=13;</p>
+<p>UPDATE item_template SET stat_value4 = stat_value4*2 WHERE stat_type4=13;</p>
+<p>UPDATE item_template SET stat_value5 = stat_value5*2 WHERE stat_type5=13;</p>
+<p>UPDATE item_template SET stat_value6 = stat_value6*2 WHERE stat_type6=13;</p>
+<p>UPDATE item_template SET stat_value7 = stat_value7*2 WHERE stat_type7=13;</p>
+<p>UPDATE item_template SET stat_value8 = stat_value8*2 WHERE stat_type8=13;</p>
+<p>UPDATE item_template SET stat_value9 = stat_value9*2 WHERE stat_type9=13;</p>
+<p>UPDATE item_template SET stat_value10 = stat_value10*2 WHERE stat_type10=13;</p>
+<p>修改招架等级</p>
+<p>UPDATE item_template SET stat_value1 = stat_value1*2 WHERE stat_type1=14;</p>
+<p>UPDATE item_template SET stat_value2 = stat_value2*2 WHERE stat_type2=14;</p>
+<p>UPDATE item_template SET stat_value3 = stat_value3*2 WHERE stat_type3=14;</p>
+<p>UPDATE item_template SET stat_value4 = stat_value4*2 WHERE stat_type4=14;</p>
+<p>UPDATE item_template SET stat_value5 = stat_value5*2 WHERE stat_type5=14;</p>
+<p>UPDATE item_template SET stat_value6 = stat_value6*2 WHERE stat_type6=14;</p>
+<p>UPDATE item_template SET stat_value7 = stat_value7*2 WHERE stat_type7=14;</p>
+<p>UPDATE item_template SET stat_value8 = stat_value8*2 WHERE stat_type8=14;</p>
+<p>UPDATE item_template SET stat_value9 = stat_value9*2 WHERE stat_type9=14;</p>
+<p>UPDATE item_template SET stat_value10 = stat_value10*2 WHERE stat_type10=14;</p>
+<p>修改盾格档等级</p>
+<p>UPDATE item_template SET stat_value1 = stat_value1*2 WHERE stat_type1=15;</p>
+<p>UPDATE item_template SET stat_value2 = stat_value2*2 WHERE stat_type2=15;</p>
+<p>UPDATE item_template SET stat_value3 = stat_value3*2 WHERE stat_type3=15;</p>
+<p>UPDATE item_template SET stat_value4 = stat_value4*2 WHERE stat_type4=15;</p>
+<p>UPDATE item_template SET stat_value5 = stat_value5*2 WHERE stat_type5=15;</p>
+<p>UPDATE item_template SET stat_value6 = stat_value6*2 WHERE stat_type6=15;</p>
+<p>UPDATE item_template SET stat_value7 = stat_value7*2 WHERE stat_type7=15;</p>
+<p>UPDATE item_template SET stat_value8 = stat_value8*2 WHERE stat_type8=15;</p>
+<p>UPDATE item_template SET stat_value9 = stat_value9*2 WHERE stat_type9=15;</p>
+<p>UPDATE item_template SET stat_value10 = stat_value10*2 WHERE stat_type10=15;</p>
+<p>修改近战命中等级</p>
+<p>UPDATE item_template SET stat_value1 = stat_value1*2 WHERE stat_type1=16;</p>
+<p>UPDATE item_template SET stat_value2 = stat_value2*2 WHERE stat_type2=16;</p>
+<p>UPDATE item_template SET stat_value3 = stat_value3*2 WHERE stat_type3=16;</p>
+<p>UPDATE item_template SET stat_value4 = stat_value4*2 WHERE stat_type4=16;</p>
+<p>UPDATE item_template SET stat_value5 = stat_value5*2 WHERE stat_type5=16;</p>
+<p>UPDATE item_template SET stat_value6 = stat_value6*2 WHERE stat_type6=16;</p>
+<p>UPDATE item_template SET stat_value7 = stat_value7*2 WHERE stat_type7=16;</p>
+<p>UPDATE item_template SET stat_value8 = stat_value8*2 WHERE stat_type8=16;</p>
+<p>UPDATE item_template SET stat_value9 = stat_value9*2 WHERE stat_type9=16;</p>
+<p>UPDATE item_template SET stat_value10 = stat_value10*2 WHERE stat_type10=16;</p>
+<p>修改远程命中等级</p>
+<p>UPDATE item_template SET stat_value1 = stat_value1*2 WHERE stat_type1=17;</p>
+<p>UPDATE item_template SET stat_value2 = stat_value2*2 WHERE stat_type2=17;</p>
+<p>UPDATE item_template SET stat_value3 = stat_value3*2 WHERE stat_type3=17;</p>
+<p>UPDATE item_template SET stat_value4 = stat_value4*2 WHERE stat_type4=17;</p>
+<p>UPDATE item_template SET stat_value5 = stat_value5*2 WHERE stat_type5=17;</p>
+<p>UPDATE item_template SET stat_value6 = stat_value6*2 WHERE stat_type6=17;</p>
+<p>UPDATE item_template SET stat_value7 = stat_value7*2 WHERE stat_type7=17;</p>
+<p>UPDATE item_template SET stat_value8 = stat_value8*2 WHERE stat_type8=17;</p>
+<p>UPDATE item_template SET stat_value9 = stat_value9*2 WHERE stat_type9=17;</p>
+<p>UPDATE item_template SET stat_value10 = stat_value10*2 WHERE stat_type10=17;</p>
+<p>修改法术命中等级</p>
+<p>UPDATE item_template SET stat_value1 = stat_value1*2 WHERE stat_type1=18;</p>
+<p>UPDATE item_template SET stat_value2 = stat_value2*2 WHERE stat_type2=18;</p>
+<p>UPDATE item_template SET stat_value3 = stat_value3*2 WHERE stat_type3=18;</p>
+<p>UPDATE item_template SET stat_value4 = stat_value4*2 WHERE stat_type4=18;</p>
+<p>UPDATE item_template SET stat_value5 = stat_value5*2 WHERE stat_type5=18;</p>
+<p>UPDATE item_template SET stat_value6 = stat_value6*2 WHERE stat_type6=18;</p>
+<p>UPDATE item_template SET stat_value7 = stat_value7*2 WHERE stat_type7=18;</p>
+<p>UPDATE item_template SET stat_value8 = stat_value8*2 WHERE stat_type8=18;</p>
+<p>UPDATE item_template SET stat_value9 = stat_value9*2 WHERE stat_type9=18;</p>
+<p>UPDATE item_template SET stat_value10 = stat_value10*2 WHERE stat_type10=18;</p>
+<p>修改近战躲避</p>
+<p>UPDATE item_template SET stat_value1 = stat_value1*2 WHERE stat_type1=22;</p>
+<p>UPDATE item_template SET stat_value2 = stat_value2*2 WHERE stat_type2=22;</p>
+<p>UPDATE item_template SET stat_value3 = stat_value3*2 WHERE stat_type3=22;</p>
+<p>UPDATE item_template SET stat_value4 = stat_value4*2 WHERE stat_type4=22;</p>
+<p>UPDATE item_template SET stat_value5 = stat_value5*2 WHERE stat_type5=22;</p>
+<p>UPDATE item_template SET stat_value6 = stat_value6*2 WHERE stat_type6=22;</p>
+<p>UPDATE item_template SET stat_value7 = stat_value7*2 WHERE stat_type7=22;</p>
+<p>UPDATE item_template SET stat_value8 = stat_value8*2 WHERE stat_type8=22;</p>
+<p>UPDATE item_template SET stat_value9 = stat_value9*2 WHERE stat_type9=22;</p>
+<p>UPDATE item_template SET stat_value10 = stat_value10*2 WHERE stat_type10=22;</p>
+<p>修改远程躲避</p>
+<p>UPDATE item_template SET stat_value1 = stat_value1*2 WHERE stat_type1=23;</p>
+<p>UPDATE item_template SET stat_value2 = stat_value2*2 WHERE stat_type2=23;</p>
+<p>UPDATE item_template SET stat_value3 = stat_value3*2 WHERE stat_type3=23;</p>
+<p>UPDATE item_template SET stat_value4 = stat_value4*2 WHERE stat_type4=23;</p>
+<p>UPDATE item_template SET stat_value5 = stat_value5*2 WHERE stat_type5=23;</p>
+<p>UPDATE item_template SET stat_value6 = stat_value6*2 WHERE stat_type6=23;</p>
+<p>UPDATE item_template SET stat_value7 = stat_value7*2 WHERE stat_type7=23;</p>
+<p>UPDATE item_template SET stat_value8 = stat_value8*2 WHERE stat_type8=23;</p>
+<p>UPDATE item_template SET stat_value9 = stat_value9*2 WHERE stat_type9=23;</p>
+<p>UPDATE item_template SET stat_value10 = stat_value10*2 WHERE stat_type10=23;</p>
+<p>修改法术躲避</p>
+<p>UPDATE item_template SET stat_value1 = stat_value1*2 WHERE stat_type1=24;</p>
+<p>UPDATE item_template SET stat_value2 = stat_value2*2 WHERE stat_type2=24;</p>
+<p>UPDATE item_template SET stat_value3 = stat_value3*2 WHERE stat_type3=24;</p>
+<p>UPDATE item_template SET stat_value4 = stat_value4*2 WHERE stat_type4=24;</p>
+<p>UPDATE item_template SET stat_value5 = stat_value5*2 WHERE stat_type5=24;</p>
+<p>UPDATE item_template SET stat_value6 = stat_value6*2 WHERE stat_type6=24;</p>
+<p>UPDATE item_template SET stat_value7 = stat_value7*2 WHERE stat_type7=24;</p>
+<p>UPDATE item_template SET stat_value8 = stat_value8*2 WHERE stat_type8=24;</p>
+<p>UPDATE item_template SET stat_value9 = stat_value9*2 WHERE stat_type9=24;</p>
+<p>UPDATE item_template SET stat_value10 = stat_value10*2 WHERE stat_type10=24;</p>
+<p>修改近战暴击躲闪</p>
+<p>UPDATE item_template SET stat_value1 = stat_value1*2 WHERE stat_type1=25;</p>
+<p>UPDATE item_template SET stat_value2 = stat_value2*2 WHERE stat_type2=25;</p>
+<p>UPDATE item_template SET stat_value3 = stat_value3*2 WHERE stat_type3=25;</p>
+<p>UPDATE item_template SET stat_value4 = stat_value4*2 WHERE stat_type4=25;</p>
+<p>UPDATE item_template SET stat_value5 = stat_value5*2 WHERE stat_type5=25;</p>
+<p>UPDATE item_template SET stat_value6 = stat_value6*2 WHERE stat_type6=25;</p>
+<p>UPDATE item_template SET stat_value7 = stat_value7*2 WHERE stat_type7=25;</p>
+<p>UPDATE item_template SET stat_value8 = stat_value8*2 WHERE stat_type8=25;</p>
+<p>UPDATE item_template SET stat_value9 = stat_value9*2 WHERE stat_type9=25;</p>
+<p>UPDATE item_template SET stat_value10 = stat_value10*2 WHERE stat_type10=25;</p>
+<p>修改远程暴击躲闪</p>
+<p>UPDATE item_template SET stat_value1 = stat_value1*2 WHERE stat_type1=26;</p>
+<p>UPDATE item_template SET stat_value2 = stat_value2*2 WHERE stat_type2=26;</p>
+<p>UPDATE item_template SET stat_value3 = stat_value3*2 WHERE stat_type3=26;</p>
+<p>UPDATE item_template SET stat_value4 = stat_value4*2 WHERE stat_type4=26;</p>
+<p>UPDATE item_template SET stat_value5 = stat_value5*2 WHERE stat_type5=26;</p>
+<p>UPDATE item_template SET stat_value6 = stat_value6*2 WHERE stat_type6=26;</p>
+<p>UPDATE item_template SET stat_value7 = stat_value7*2 WHERE stat_type7=26;</p>
+<p>UPDATE item_template SET stat_value8 = stat_value8*2 WHERE stat_type8=26;</p>
+<p>UPDATE item_template SET stat_value9 = stat_value9*2 WHERE stat_type9=26;</p>
+<p>UPDATE item_template SET stat_value10 = stat_value10*2 WHERE stat_type10=26;</p>
+<p>修改法术暴击躲闪</p>
+<p>UPDATE item_template SET stat_value1 = stat_value1*2 WHERE stat_type1=27;</p>
+<p>UPDATE item_template SET stat_value2 = stat_value2*2 WHERE stat_type2=27;</p>
+<p>UPDATE item_template SET stat_value3 = stat_value3*2 WHERE stat_type3=27;</p>
+<p>UPDATE item_template SET stat_value4 = stat_value4*2 WHERE stat_type4=27;</p>
+<p>UPDATE item_template SET stat_value5 = stat_value5*2 WHERE stat_type5=27;</p>
+<p>UPDATE item_template SET stat_value6 = stat_value6*2 WHERE stat_type6=27;</p>
+<p>UPDATE item_template SET stat_value7 = stat_value7*2 WHERE stat_type7=27;</p>
+<p>UPDATE item_template SET stat_value8 = stat_value8*2 WHERE stat_type8=27;</p>
+<p>UPDATE item_template SET stat_value9 = stat_value9*2 WHERE stat_type9=27;</p>
+<p>UPDATE item_template SET stat_value10 = stat_value10*2 WHERE stat_type10=27;</p>
+<p>修改近战攻击速度</p>
+<p>UPDATE item_template SET stat_value1 = stat_value1*2 WHERE stat_type1=28;</p>
+<p>UPDATE item_template SET stat_value2 = stat_value2*2 WHERE stat_type2=28;</p>
+<p>UPDATE item_template SET stat_value3 = stat_value3*2 WHERE stat_type3=28;</p>
+<p>UPDATE item_template SET stat_value4 = stat_value4*2 WHERE stat_type4=28;</p>
+<p>UPDATE item_template SET stat_value5 = stat_value5*2 WHERE stat_type5=28;</p>
+<p>UPDATE item_template SET stat_value6 = stat_value6*2 WHERE stat_type6=28;</p>
+<p>UPDATE item_template SET stat_value7 = stat_value7*2 WHERE stat_type7=28;</p>
+<p>UPDATE item_template SET stat_value8 = stat_value8*2 WHERE stat_type8=28;</p>
+<p>UPDATE item_template SET stat_value9 = stat_value9*2 WHERE stat_type9=28;</p>
+<p>UPDATE item_template SET stat_value10 = stat_value10*2 WHERE stat_type10=28;</p>
+<p>修改远程攻击速度</p>
+<p>UPDATE item_template SET stat_value1 = stat_value1*2 WHERE stat_type1=29;</p>
+<p>UPDATE item_template SET stat_value2 = stat_value2*2 WHERE stat_type2=29;</p>
+<p>UPDATE item_template SET stat_value3 = stat_value3*2 WHERE stat_type3=29;</p>
+<p>UPDATE item_template SET stat_value4 = stat_value4*2 WHERE stat_type4=29;</p>
+<p>UPDATE item_template SET stat_value5 = stat_value5*2 WHERE stat_type5=29;</p>
+<p>UPDATE item_template SET stat_value6 = stat_value6*2 WHERE stat_type6=29;</p>
+<p>UPDATE item_template SET stat_value7 = stat_value7*2 WHERE stat_type7=29;</p>
+<p>UPDATE item_template SET stat_value8 = stat_value8*2 WHERE stat_type8=29;</p>
+<p>UPDATE item_template SET stat_value9 = stat_value9*2 WHERE stat_type9=29;</p>
+<p>UPDATE item_template SET stat_value10 = stat_value10*2 WHERE stat_type10=29;</p>
+<p>修改法术攻击速度</p>
+<p>UPDATE item_template SET stat_value1 = stat_value1*2 WHERE stat_type1=30;</p>
+<p>UPDATE item_template SET stat_value2 = stat_value2*2 WHERE stat_type2=30;</p>
+<p>UPDATE item_template SET stat_value3 = stat_value3*2 WHERE stat_type3=30;</p>
+<p>UPDATE item_template SET stat_value4 = stat_value4*2 WHERE stat_type4=30;</p>
+<p>UPDATE item_template SET stat_value5 = stat_value5*2 WHERE stat_type5=30;</p>
+<p>UPDATE item_template SET stat_value6 = stat_value6*2 WHERE stat_type6=30;</p>
+<p>UPDATE item_template SET stat_value7 = stat_value7*2 WHERE stat_type7=30;</p>
+<p>UPDATE item_template SET stat_value8 = stat_value8*2 WHERE stat_type8=30;</p>
+<p>UPDATE item_template SET stat_value9 = stat_value9*2 WHERE stat_type9=30;</p>
+<p>UPDATE item_template SET stat_value10 = stat_value10*2 WHERE stat_type10=30;</p>
+<p>修改命中等级</p>
+<p>UPDATE item_template SET stat_value1 = stat_value1*2 WHERE stat_type1=31;</p>
+<p>UPDATE item_template SET stat_value2 = stat_value2*2 WHERE stat_type2=31;</p>
+<p>UPDATE item_template SET stat_value3 = stat_value3*2 WHERE stat_type3=31;</p>
+<p>UPDATE item_template SET stat_value4 = stat_value4*2 WHERE stat_type4=31;</p>
+<p>UPDATE item_template SET stat_value5 = stat_value5*2 WHERE stat_type5=31;</p>
+<p>UPDATE item_template SET stat_value6 = stat_value6*2 WHERE stat_type6=31;</p>
+<p>UPDATE item_template SET stat_value7 = stat_value7*2 WHERE stat_type7=31;</p>
+<p>UPDATE item_template SET stat_value8 = stat_value8*2 WHERE stat_type8=31;</p>
+<p>UPDATE item_template SET stat_value9 = stat_value9*2 WHERE stat_type9=31;</p>
+<p>UPDATE item_template SET stat_value10 = stat_value10*2 WHERE stat_type10=31;</p>
+<p>修改命中躲闪</p>
+<p>UPDATE item_template SET stat_value1 = stat_value1*2 WHERE stat_type1=33;</p>
+<p>UPDATE item_template SET stat_value2 = stat_value2*2 WHERE stat_type2=33;</p>
+<p>UPDATE item_template SET stat_value3 = stat_value3*2 WHERE stat_type3=33;</p>
+<p>UPDATE item_template SET stat_value4 = stat_value4*2 WHERE stat_type4=33;</p>
+<p>UPDATE item_template SET stat_value5 = stat_value5*2 WHERE stat_type5=33;</p>
+<p>UPDATE item_template SET stat_value6 = stat_value6*2 WHERE stat_type6=33;</p>
+<p>UPDATE item_template SET stat_value7 = stat_value7*2 WHERE stat_type7=33;</p>
+<p>UPDATE item_template SET stat_value8 = stat_value8*2 WHERE stat_type8=33;</p>
+<p>UPDATE item_template SET stat_value9 = stat_value9*2 WHERE stat_type9=33;</p>
+<p>UPDATE item_template SET stat_value10 = stat_value10*2 WHERE stat_type10=33;</p>
+<p>修改暴击躲闪</p>
+<p>UPDATE item_template SET stat_value1 = stat_value1*2 WHERE stat_type1=34;</p>
+<p>UPDATE item_template SET stat_value2 = stat_value2*2 WHERE stat_type2=34;</p>
+<p>UPDATE item_template SET stat_value3 = stat_value3*2 WHERE stat_type3=34;</p>
+<p>UPDATE item_template SET stat_value4 = stat_value4*2 WHERE stat_type4=34;</p>
+<p>UPDATE item_template SET stat_value5 = stat_value5*2 WHERE stat_type5=34;</p>
+<p>UPDATE item_template SET stat_value6 = stat_value6*2 WHERE stat_type6=34;</p>
+<p>UPDATE item_template SET stat_value7 = stat_value7*2 WHERE stat_type7=34;</p>
+<p>UPDATE item_template SET stat_value8 = stat_value8*2 WHERE stat_type8=34;</p>
+<p>UPDATE item_template SET stat_value9 = stat_value9*2 WHERE stat_type9=34;</p>
+<p>UPDATE item_template SET stat_value10 = stat_value10*2 WHERE stat_type10=34;</p>
+<p>修改韧性</p>
+<p>UPDATE item_template SET stat_value1 = stat_value1*5 WHERE stat_type1=35;</p>
+<p>UPDATE item_template SET stat_value2 = stat_value2*5 WHERE stat_type2=35;</p>
+<p>UPDATE item_template SET stat_value3 = stat_value3*5 WHERE stat_type3=35;</p>
+<p>UPDATE item_template SET stat_value4 = stat_value4*5 WHERE stat_type4=35;</p>
+<p>UPDATE item_template SET stat_value5 = stat_value5*5 WHERE stat_type5=35;</p>
+<p>UPDATE item_template SET stat_value6 = stat_value6*5 WHERE stat_type6=35;</p>
+<p>UPDATE item_template SET stat_value7 = stat_value7*5 WHERE stat_type7=35;</p>
+<p>UPDATE item_template SET stat_value8 = stat_value8*5 WHERE stat_type8=35;</p>
+<p>UPDATE item_template SET stat_value9 = stat_value9*5 WHERE stat_type9=35;</p>
+<p>UPDATE item_template SET stat_value10 = stat_value10*5 WHERE stat_type10=35;</p>
+<p>修改急速攻击速度</p>
+<p>UPDATE item_template SET stat_value1 = stat_value1*5 WHERE stat_type1=36;</p>
+<p>UPDATE item_template SET stat_value2 = stat_value2*5 WHERE stat_type2=36;</p>
+<p>UPDATE item_template SET stat_value3 = stat_value3*5 WHERE stat_type3=36;</p>
+<p>UPDATE item_template SET stat_value4 = stat_value4*5 WHERE stat_type4=36;</p>
+<p>UPDATE item_template SET stat_value5 = stat_value5*5 WHERE stat_type5=36;</p>
+<p>UPDATE item_template SET stat_value6 = stat_value6*5 WHERE stat_type6=36;</p>
+<p>UPDATE item_template SET stat_value7 = stat_value7*5 WHERE stat_type7=36;</p>
+<p>UPDATE item_template SET stat_value8 = stat_value8*5 WHERE stat_type8=36;</p>
+<p>UPDATE item_template SET stat_value9 = stat_value9*5 WHERE stat_type9=36;</p>
+<p>UPDATE item_template SET stat_value10 = stat_value10*5 WHERE stat_type10=36;</p>
+<p>修改精准等级</p>
+<p>UPDATE item_template SET stat_value1 = stat_value1*5 WHERE stat_type1=37;</p>
+<p>UPDATE item_template SET stat_value2 = stat_value2*5 WHERE stat_type2=37;</p>
+<p>UPDATE item_template SET stat_value3 = stat_value3*5 WHERE stat_type3=37;</p>
+<p>UPDATE item_template SET stat_value4 = stat_value4*5 WHERE stat_type4=37;</p>
+<p>UPDATE item_template SET stat_value5 = stat_value5*5 WHERE stat_type5=37;</p>
+<p>UPDATE item_template SET stat_value6 = stat_value6*5 WHERE stat_type6=37;</p>
+<p>UPDATE item_template SET stat_value7 = stat_value7*5 WHERE stat_type7=37;</p>
+<p>UPDATE item_template SET stat_value8 = stat_value8*5 WHERE stat_type8=37;</p>
+<p>UPDATE item_template SET stat_value9 = stat_value9*5 WHERE stat_type9=37;</p>
+<p>UPDATE item_template SET stat_value10 = stat_value10*5 WHERE stat_type10=37;</p>
+<p>修改攻击强度</p>
+<p>UPDATE item_template SET stat_value1 = stat_value1*5 WHERE stat_type1=38;</p>
+<p>UPDATE item_template SET stat_value2 = stat_value2*5 WHERE stat_type2=38;</p>
+<p>UPDATE item_template SET stat_value3 = stat_value3*5 WHERE stat_type3=38;</p>
+<p>UPDATE item_template SET stat_value4 = stat_value4*5 WHERE stat_type4=38;</p>
+<p>UPDATE item_template SET stat_value5 = stat_value5*5 WHERE stat_type5=38;</p>
+<p>UPDATE item_template SET stat_value6 = stat_value6*5 WHERE stat_type6=38;</p>
+<p>UPDATE item_template SET stat_value7 = stat_value7*5 WHERE stat_type7=38;</p>
+<p>UPDATE item_template SET stat_value8 = stat_value8*5 WHERE stat_type8=38;</p>
+<p>UPDATE item_template SET stat_value9 = stat_value9*5 WHERE stat_type9=38;</p>
+<p>UPDATE item_template SET stat_value10 = stat_value10*5 WHERE stat_type10=38;</p>
+<p>修改远程攻击强度</p>
+<p>UPDATE item_template SET stat_value1 = stat_value1*5 WHERE stat_type1=39;</p>
+<p>UPDATE item_template SET stat_value2 = stat_value2*5 WHERE stat_type2=39;</p>
+<p>UPDATE item_template SET stat_value3 = stat_value3*5 WHERE stat_type3=39;</p>
+<p>UPDATE item_template SET stat_value4 = stat_value4*5 WHERE stat_type4=39;</p>
+<p>UPDATE item_template SET stat_value5 = stat_value5*5 WHERE stat_type5=39;</p>
+<p>UPDATE item_template SET stat_value6 = stat_value6*5 WHERE stat_type6=39;</p>
+<p>UPDATE item_template SET stat_value7 = stat_value7*5 WHERE stat_type7=39;</p>
+<p>UPDATE item_template SET stat_value8 = stat_value8*5 WHERE stat_type8=39;</p>
+<p>UPDATE item_template SET stat_value9 = stat_value9*5 WHERE stat_type9=39;</p>
+<p>UPDATE item_template SET stat_value10 = stat_value10*5 WHERE stat_type10=39;</p>
+<p>修改猎豹、熊、巨熊、枭兽形态攻击强度</p>
+<p>UPDATE item_template SET stat_value1 = stat_value1*5 WHERE stat_type1=40;</p>
+<p>UPDATE item_template SET stat_value2 = stat_value2*5 WHERE stat_type2=40;</p>
+<p>UPDATE item_template SET stat_value3 = stat_value3*5 WHERE stat_type3=40;</p>
+<p>UPDATE item_template SET stat_value4 = stat_value4*5 WHERE stat_type4=40;</p>
+<p>UPDATE item_template SET stat_value5 = stat_value5*5 WHERE stat_type5=40;</p>
+<p>UPDATE item_template SET stat_value6 = stat_value6*5 WHERE stat_type6=40;</p>
+<p>UPDATE item_template SET stat_value7 = stat_value7*5 WHERE stat_type7=40;</p>
+<p>UPDATE item_template SET stat_value8 = stat_value8*5 WHERE stat_type8=40;</p>
+<p>UPDATE item_template SET stat_value9 = stat_value9*5 WHERE stat_type9=40;</p>
+<p>UPDATE item_template SET stat_value10 = stat_value10*5 WHERE stat_type10=40;</p>
+<p>修改法术治疗效果</p>
+<p>UPDATE item_template SET stat_value1 = stat_value1*5 WHERE stat_type1=41;</p>
+<p>UPDATE item_template SET stat_value2 = stat_value2*5 WHERE stat_type2=41;</p>
+<p>UPDATE item_template SET stat_value3 = stat_value3*5 WHERE stat_type3=41;</p>
+<p>UPDATE item_template SET stat_value4 = stat_value4*5 WHERE stat_type4=41;</p>
+<p>UPDATE item_template SET stat_value5 = stat_value5*5 WHERE stat_type5=41;</p>
+<p>UPDATE item_template SET stat_value6 = stat_value6*5 WHERE stat_type6=41;</p>
+<p>UPDATE item_template SET stat_value7 = stat_value7*5 WHERE stat_type7=41;</p>
+<p>UPDATE item_template SET stat_value8 = stat_value8*5 WHERE stat_type8=41;</p>
+<p>UPDATE item_template SET stat_value9 = stat_value9*5 WHERE stat_type9=41;</p>
+<p>UPDATE item_template SET stat_value10 = stat_value10*5 WHERE stat_type10=41;</p>
+<p>修改法术治疗效果</p>
+<p>UPDATE item_template SET stat_value1 = stat_value1*5 WHERE stat_type1=42;</p>
+<p>UPDATE item_template SET stat_value2 = stat_value2*5 WHERE stat_type2=42;</p>
+<p>UPDATE item_template SET stat_value3 = stat_value3*5 WHERE stat_type3=42;</p>
+<p>UPDATE item_template SET stat_value4 = stat_value4*5 WHERE stat_type4=42;</p>
+<p>UPDATE item_template SET stat_value5 = stat_value5*5 WHERE stat_type5=42;</p>
+<p>UPDATE item_template SET stat_value6 = stat_value6*5 WHERE stat_type6=42;</p>
+<p>UPDATE item_template SET stat_value7 = stat_value7*5 WHERE stat_type7=42;</p>
+<p>UPDATE item_template SET stat_value8 = stat_value8*5 WHERE stat_type8=42;</p>
+<p>UPDATE item_template SET stat_value9 = stat_value9*5 WHERE stat_type9=42;</p>
+<p>UPDATE item_template SET stat_value10 = stat_value10*5 WHERE stat_type10=42;</p>
+<p>修改5秒回蓝</p>
+<p>UPDATE item_template SET stat_value1 = stat_value1*5 WHERE stat_type1=43;</p>
+<p>UPDATE item_template SET stat_value2 = stat_value2*5 WHERE stat_type2=43;</p>
+<p>UPDATE item_template SET stat_value3 = stat_value3*5 WHERE stat_type3=43;</p>
+<p>UPDATE item_template SET stat_value4 = stat_value4*5 WHERE stat_type4=43;</p>
+<p>UPDATE item_template SET stat_value5 = stat_value5*5 WHERE stat_type5=43;</p>
+<p>UPDATE item_template SET stat_value6 = stat_value6*5 WHERE stat_type6=43;</p>
+<p>UPDATE item_template SET stat_value7 = stat_value7*5 WHERE stat_type7=43;</p>
+<p>UPDATE item_template SET stat_value8 = stat_value8*5 WHERE stat_type8=43;</p>
+<p>UPDATE item_template SET stat_value9 = stat_value9*5 WHERE stat_type9=43;</p>
+<p>UPDATE item_template SET stat_value10 = stat_value10*5 WHERE stat_type10=43;</p>
+<p>修改护甲穿透等级</p>
+<p>UPDATE item_template SET stat_value1 = stat_value1*2 WHERE stat_type1=44;</p>
+<p>UPDATE item_template SET stat_value2 = stat_value2*2 WHERE stat_type2=44;</p>
+<p>UPDATE item_template SET stat_value3 = stat_value3*2 WHERE stat_type3=44;</p>
+<p>UPDATE item_template SET stat_value4 = stat_value4*2 WHERE stat_type4=44;</p>
+<p>UPDATE item_template SET stat_value5 = stat_value5*2 WHERE stat_type5=44;</p>
+<p>UPDATE item_template SET stat_value6 = stat_value6*2 WHERE stat_type6=44;</p>
+<p>UPDATE item_template SET stat_value7 = stat_value7*2 WHERE stat_type7=44;</p>
+<p>UPDATE item_template SET stat_value8 = stat_value8*2 WHERE stat_type8=44;</p>
+<p>UPDATE item_template SET stat_value9 = stat_value9*2 WHERE stat_type9=44;</p>
+<p>UPDATE item_template SET stat_value10 = stat_value10*2 WHERE stat_type10=44;</p>
+<p>修改法术强度</p>
+<p>UPDATE item_template SET stat_value1 = stat_value1*5 WHERE stat_type1=45;</p>
+<p>UPDATE item_template SET stat_value2 = stat_value2*5 WHERE stat_type2=45;</p>
+<p>UPDATE item_template SET stat_value3 = stat_value3*5 WHERE stat_type3=45;</p>
+<p>UPDATE item_template SET stat_value4 = stat_value4*5 WHERE stat_type4=45;</p>
+<p>UPDATE item_template SET stat_value5 = stat_value5*5 WHERE stat_type5=45;</p>
+<p>UPDATE item_template SET stat_value6 = stat_value6*5 WHERE stat_type6=45;</p>
+<p>UPDATE item_template SET stat_value7 = stat_value7*5 WHERE stat_type7=45;</p>
+<p>UPDATE item_template SET stat_value8 = stat_value8*5 WHERE stat_type8=45;</p>
+<p>UPDATE item_template SET stat_value9 = stat_value9*5 WHERE stat_type9=45;</p>
+<p>UPDATE item_template SET stat_value10 = stat_value10*5 WHERE stat_type10=45;</p>
+<p>学习所有技能不要钱</p>
+<p>update npc_trainer set spellcost=0;</p>
+<p>宠物血量</p>
+<p>UPDATE pet_levelstats SET hp = hp*10;</p>
+<p>宠物蓝量</p>
+<p>UPDATE pet_levelstats SET mana = mana*10;</p>
+<p>宠物护甲</p>
+<p>UPDATE pet_levelstats SET armor = armor*10;</p>
+<p>宠物力量</p>
+<p>UPDATE pet_levelstats SET str = str*5;</p>
+<p>宠物敏捷</p>
+<p>UPDATE pet_levelstats SET agi = agi*5;</p>
+<p>宠物耐力</p>
+<p>UPDATE pet_levelstats SET sta = sta*10;</p>
+<p>宠物智力</p>
+<p>UPDATE pet_levelstats SET inte = inte*5;</p>
+<p>宠物精神</p>
+<p>UPDATE pet_levelstats SET spi = spi*10;</p>
+<p>UPDATE item_template set spellcooldown_1=1 where entry=6948;</p>
+<p>UPDATE item_template SET Maxcount = 0;</p>
+<p>UPDATE item_template SET armor = armor*3;</p>
+<p>UPDATE item_template SET dmg_min1 = dmg_min1*3;</p>
+<p>UPDATE item_template SET dmg_max1 = dmg_max1*3;</p>
+<p>UPDATE item_template SET delay = delay/2;</p>
+<p>UPDATE item_template SET holy_res = holy_res*5;</p>
+<p>UPDATE item_template SET fire_res = fire_res*5;</p>
+<p>UPDATE item_template SET nature_res = nature_res*5;</p>
+<p>UPDATE item_template SET frost_res = frost_res*5;</p>
+<p>UPDATE item_template SET shadow_res = shadow_res*5;</p>
+<p>UPDATE item_template SET arcane_res = arcane_res*5;</p>
+<p>UPDATE item_template SET stat_value1 = stat_value1*5 WHERE stat_type1=3;</p>
+<p>UPDATE item_template SET stat_value2 = stat_value2*5 WHERE stat_type2=3;</p>
+<p>UPDATE item_template SET stat_value3 = stat_value3*5 WHERE stat_type3=3;</p>
+<p>UPDATE item_template SET stat_value4 = stat_value4*5 WHERE stat_type4=3;</p>
+<p>UPDATE item_template SET stat_value5 = stat_value5*5 WHERE stat_type5=3;</p>
+<p>UPDATE item_template SET stat_value6 = stat_value6*5 WHERE stat_type6=3;</p>
+<p>UPDATE item_template SET stat_value7 = stat_value7*5 WHERE stat_type7=3;</p>
+<p>UPDATE item_template SET stat_value8 = stat_value8*5 WHERE stat_type8=3;</p>
+<p>UPDATE item_template SET stat_value9 = stat_value9*5 WHERE stat_type9=3;</p>
+<p>UPDATE item_template SET stat_value10 = stat_value10*5 WHERE stat_type10=3;</p>
+<p>UPDATE item_template SET stat_value1 = stat_value1*5 WHERE stat_type1=4;</p>
+<p>UPDATE item_template SET stat_value2 = stat_value2*5 WHERE stat_type2=4;</p>
+<p>UPDATE item_template SET stat_value3 = stat_value3*5 WHERE stat_type3=4;</p>
+<p>UPDATE item_template SET stat_value4 = stat_value4*5 WHERE stat_type4=4;</p>
+<p>UPDATE item_template SET stat_value5 = stat_value5*5 WHERE stat_type5=4;</p>
+<p>UPDATE item_template SET stat_value6 = stat_value6*5 WHERE stat_type6=4;</p>
+<p>UPDATE item_template SET stat_value7 = stat_value7*5 WHERE stat_type7=4;</p>
+<p>UPDATE item_template SET stat_value8 = stat_value8*5 WHERE stat_type8=4;</p>
+<p>UPDATE item_template SET stat_value9 = stat_value9*5 WHERE stat_type9=4;</p>
+<p>UPDATE item_template SET stat_value10 = stat_value10*5 WHERE stat_type10=4;</p>
+<p>UPDATE item_template SET stat_value1 = stat_value1*5 WHERE stat_type1=5;</p>
+<p>UPDATE item_template SET stat_value2 = stat_value2*5 WHERE stat_type2=5;</p>
+<p>UPDATE item_template SET stat_value3 = stat_value3*5 WHERE stat_type3=5;</p>
+<p>UPDATE item_template SET stat_value4 = stat_value4*5 WHERE stat_type4=5;</p>
+<p>UPDATE item_template SET stat_value5 = stat_value5*5 WHERE stat_type5=5;</p>
+<p>UPDATE item_template SET stat_value6 = stat_value6*5 WHERE stat_type6=5;</p>
+<p>UPDATE item_template SET stat_value7 = stat_value7*5 WHERE stat_type7=5;</p>
+<p>UPDATE item_template SET stat_value8 = stat_value8*5 WHERE stat_type8=5;</p>
+<p>UPDATE item_template SET stat_value9 = stat_value9*5 WHERE stat_type9=5;</p>
+<p>UPDATE item_template SET stat_value10 = stat_value10*5 WHERE stat_type10=5;</p>
+<p>UPDATE item_template SET stat_value1 = stat_value1*5 WHERE stat_type1=6;</p>
+<p>UPDATE item_template SET stat_value2 = stat_value2*5 WHERE stat_type2=6;</p>
+<p>UPDATE item_template SET stat_value3 = stat_value3*5 WHERE stat_type3=6;</p>
+<p>UPDATE item_template SET stat_value4 = stat_value4*5 WHERE stat_type4=6;</p>
+<p>UPDATE item_template SET stat_value5 = stat_value5*5 WHERE stat_type5=6;</p>
+<p>UPDATE item_template SET stat_value6 = stat_value6*5 WHERE stat_type6=6;</p>
+<p>UPDATE item_template SET stat_value7 = stat_value7*5 WHERE stat_type7=6;</p>
+<p>UPDATE item_template SET stat_value8 = stat_value8*5 WHERE stat_type8=6;</p>
+<p>UPDATE item_template SET stat_value9 = stat_value9*5 WHERE stat_type9=6;</p>
+<p>UPDATE item_template SET stat_value10 = stat_value10*5 WHERE stat_type10=6;</p>
+<p>UPDATE item_template SET stat_value1 = stat_value1*7 WHERE stat_type1=7;</p>
+<p>UPDATE item_template SET stat_value2 = stat_value2*7 WHERE stat_type2=7;</p>
+<p>UPDATE item_template SET stat_value3 = stat_value3*7 WHERE stat_type3=7;</p>
+<p>UPDATE item_template SET stat_value4 = stat_value4*7 WHERE stat_type4=7;</p>
+<p>UPDATE item_template SET stat_value5 = stat_value5*7 WHERE stat_type5=7;</p>
+<p>UPDATE item_template SET stat_value6 = stat_value3*7 WHERE stat_type6=7;</p>
+<p>UPDATE item_template SET stat_value7 = stat_value7*7 WHERE stat_type7=7;</p>
+<p>UPDATE item_template SET stat_value8 = stat_value8*7 WHERE stat_type8=7;</p>
+<p>UPDATE item_template SET stat_value9 = stat_value9*7 WHERE stat_type9=7;</p>
+<p>UPDATE item_template SET stat_value10 = stat_value10*7 WHERE stat_type10=7;</p>
+<p>UPDATE item_template SET stat_value1 = stat_value1*2 WHERE stat_type1=12;</p>
+<p>UPDATE item_template SET stat_value2 = stat_value2*2 WHERE stat_type2=12;</p>
+<p>UPDATE item_template SET stat_value3 = stat_value3*2 WHERE stat_type3=12;</p>
+<p>UPDATE item_template SET stat_value4 = stat_value4*2 WHERE stat_type4=12;</p>
+<p>UPDATE item_template SET stat_value5 = stat_value5*2 WHERE stat_type5=12;</p>
+<p>UPDATE item_template SET stat_value6 = stat_value6*2 WHERE stat_type6=12;</p>
+<p>UPDATE item_template SET stat_value7 = stat_value7*2 WHERE stat_type7=12;</p>
+<p>UPDATE item_template SET stat_value8 = stat_value8*2 WHERE stat_type8=12;</p>
+<p>UPDATE item_template SET stat_value9 = stat_value9*2 WHERE stat_type9=12;</p>
+<p>UPDATE item_template SET stat_value10 = stat_value10*2 WHERE stat_type10=12;</p>
+<p>UPDATE item_template SET stat_value1 = stat_value1*2 WHERE stat_type1=13;</p>
+<p>UPDATE item_template SET stat_value2 = stat_value2*2 WHERE stat_type2=13;</p>
+<p>UPDATE item_template SET stat_value3 = stat_value3*2 WHERE stat_type3=13;</p>
+<p>UPDATE item_template SET stat_value4 = stat_value4*2 WHERE stat_type4=13;</p>
+<p>UPDATE item_template SET stat_value5 = stat_value5*2 WHERE stat_type5=13;</p>
+<p>UPDATE item_template SET stat_value6 = stat_value6*2 WHERE stat_type6=13;</p>
+<p>UPDATE item_template SET stat_value7 = stat_value7*2 WHERE stat_type7=13;</p>
+<p>UPDATE item_template SET stat_value8 = stat_value8*2 WHERE stat_type8=13;</p>
+<p>UPDATE item_template SET stat_value9 = stat_value9*2 WHERE stat_type9=13;</p>
+<p>UPDATE item_template SET stat_value10 = stat_value10*2 WHERE stat_type10=13;</p>
+<p>UPDATE item_template SET stat_value1 = stat_value1*2 WHERE stat_type1=14;</p>
+<p>UPDATE item_template SET stat_value2 = stat_value2*2 WHERE stat_type2=14;</p>
+<p>UPDATE item_template SET stat_value3 = stat_value3*2 WHERE stat_type3=14;</p>
+<p>UPDATE item_template SET stat_value4 = stat_value4*2 WHERE stat_type4=14;</p>
+<p>UPDATE item_template SET stat_value5 = stat_value5*2 WHERE stat_type5=14;</p>
+<p>UPDATE item_template SET stat_value6 = stat_value6*2 WHERE stat_type6=14;</p>
+<p>UPDATE item_template SET stat_value7 = stat_value7*2 WHERE stat_type7=14;</p>
+<p>UPDATE item_template SET stat_value8 = stat_value8*2 WHERE stat_type8=14;</p>
+<p>UPDATE item_template SET stat_value9 = stat_value9*2 WHERE stat_type9=14;</p>
+<p>UPDATE item_template SET stat_value10 = stat_value10*2 WHERE stat_type10=14;</p>
+<p>UPDATE item_template SET stat_value1 = stat_value1*2 WHERE stat_type1=15;</p>
+<p>UPDATE item_template SET stat_value2 = stat_value2*2 WHERE stat_type2=15;</p>
+<p>UPDATE item_template SET stat_value3 = stat_value3*2 WHERE stat_type3=15;</p>
+<p>UPDATE item_template SET stat_value4 = stat_value4*2 WHERE stat_type4=15;</p>
+<p>UPDATE item_template SET stat_value5 = stat_value5*2 WHERE stat_type5=15;</p>
+<p>UPDATE item_template SET stat_value6 = stat_value6*2 WHERE stat_type6=15;</p>
+<p>UPDATE item_template SET stat_value7 = stat_value7*2 WHERE stat_type7=15;</p>
+<p>UPDATE item_template SET stat_value8 = stat_value8*2 WHERE stat_type8=15;</p>
+<p>UPDATE item_template SET stat_value9 = stat_value9*2 WHERE stat_type9=15;</p>
+<p>UPDATE item_template SET stat_value10 = stat_value10*2 WHERE stat_type10=15;</p>
+<p>UPDATE item_template SET stat_value1 = stat_value1*2 WHERE stat_type1=16;</p>
+<p>UPDATE item_template SET stat_value2 = stat_value2*2 WHERE stat_type2=16;</p>
+<p>UPDATE item_template SET stat_value3 = stat_value3*2 WHERE stat_type3=16;</p>
+<p>UPDATE item_template SET stat_value4 = stat_value4*2 WHERE stat_type4=16;</p>
+<p>UPDATE item_template SET stat_value5 = stat_value5*2 WHERE stat_type5=16;</p>
+<p>UPDATE item_template SET stat_value6 = stat_value6*2 WHERE stat_type6=16;</p>
+<p>UPDATE item_template SET stat_value7 = stat_value7*2 WHERE stat_type7=16;</p>
+<p>UPDATE item_template SET stat_value8 = stat_value8*2 WHERE stat_type8=16;</p>
+<p>UPDATE item_template SET stat_value9 = stat_value9*2 WHERE stat_type9=16;</p>
+<p>UPDATE item_template SET stat_value10 = stat_value10*2 WHERE stat_type10=16;</p>
+<p>UPDATE item_template SET stat_value1 = stat_value1*2 WHERE stat_type1=17;</p>
+<p>UPDATE item_template SET stat_value2 = stat_value2*2 WHERE stat_type2=17;</p>
+<p>UPDATE item_template SET stat_value3 = stat_value3*2 WHERE stat_type3=17;</p>
+<p>UPDATE item_template SET stat_value4 = stat_value4*2 WHERE stat_type4=17;</p>
+<p>UPDATE item_template SET stat_value5 = stat_value5*2 WHERE stat_type5=17;</p>
+<p>UPDATE item_template SET stat_value6 = stat_value6*2 WHERE stat_type6=17;</p>
+<p>UPDATE item_template SET stat_value7 = stat_value7*2 WHERE stat_type7=17;</p>
+<p>UPDATE item_template SET stat_value8 = stat_value8*2 WHERE stat_type8=17;</p>
+<p>UPDATE item_template SET stat_value9 = stat_value9*2 WHERE stat_type9=17;</p>
+<p>UPDATE item_template SET stat_value10 = stat_value10*2 WHERE stat_type10=17;</p>
+<p>UPDATE item_template SET stat_value1 = stat_value1*2 WHERE stat_type1=18;</p>
+<p>UPDATE item_template SET stat_value2 = stat_value2*2 WHERE stat_type2=18;</p>
+<p>UPDATE item_template SET stat_value3 = stat_value3*2 WHERE stat_type3=18;</p>
+<p>UPDATE item_template SET stat_value4 = stat_value4*2 WHERE stat_type4=18;</p>
+<p>UPDATE item_template SET stat_value5 = stat_value5*2 WHERE stat_type5=18;</p>
+<p>UPDATE item_template SET stat_value6 = stat_value6*2 WHERE stat_type6=18;</p>
+<p>UPDATE item_template SET stat_value7 = stat_value7*2 WHERE stat_type7=18;</p>
+<p>UPDATE item_template SET stat_value8 = stat_value8*2 WHERE stat_type8=18;</p>
+<p>UPDATE item_template SET stat_value9 = stat_value9*2 WHERE stat_type9=18;</p>
+<p>UPDATE item_template SET stat_value10 = stat_value10*2 WHERE stat_type10=18;</p>
+<p>UPDATE item_template SET stat_value1 = stat_value1*2 WHERE stat_type1=22;</p>
+<p>UPDATE item_template SET stat_value2 = stat_value2*2 WHERE stat_type2=22;</p>
+<p>UPDATE item_template SET stat_value3 = stat_value3*2 WHERE stat_type3=22;</p>
+<p>UPDATE item_template SET stat_value4 = stat_value4*2 WHERE stat_type4=22;</p>
+<p>UPDATE item_template SET stat_value5 = stat_value5*2 WHERE stat_type5=22;</p>
+<p>UPDATE item_template SET stat_value6 = stat_value6*2 WHERE stat_type6=22;</p>
+<p>UPDATE item_template SET stat_value7 = stat_value7*2 WHERE stat_type7=22;</p>
+<p>UPDATE item_template SET stat_value8 = stat_value8*2 WHERE stat_type8=22;</p>
+<p>UPDATE item_template SET stat_value9 = stat_value9*2 WHERE stat_type9=22;</p>
+<p>UPDATE item_template SET stat_value10 = stat_value10*2 WHERE stat_type10=22;</p>
+<p>UPDATE item_template SET stat_value1 = stat_value1*2 WHERE stat_type1=23;</p>
+<p>UPDATE item_template SET stat_value2 = stat_value2*2 WHERE stat_type2=23;</p>
+<p>UPDATE item_template SET stat_value3 = stat_value3*2 WHERE stat_type3=23;</p>
+<p>UPDATE item_template SET stat_value4 = stat_value4*2 WHERE stat_type4=23;</p>
+<p>UPDATE item_template SET stat_value5 = stat_value5*2 WHERE stat_type5=23;</p>
+<p>UPDATE item_template SET stat_value6 = stat_value6*2 WHERE stat_type6=23;</p>
+<p>UPDATE item_template SET stat_value7 = stat_value7*2 WHERE stat_type7=23;</p>
+<p>UPDATE item_template SET stat_value8 = stat_value8*2 WHERE stat_type8=23;</p>
+<p>UPDATE item_template SET stat_value9 = stat_value9*2 WHERE stat_type9=23;</p>
+<p>UPDATE item_template SET stat_value10 = stat_value10*2 WHERE stat_type10=23;</p>
+<p>UPDATE item_template SET stat_value1 = stat_value1*2 WHERE stat_type1=24;</p>
+<p>UPDATE item_template SET stat_value2 = stat_value2*2 WHERE stat_type2=24;</p>
+<p>UPDATE item_template SET stat_value3 = stat_value3*2 WHERE stat_type3=24;</p>
+<p>UPDATE item_template SET stat_value4 = stat_value4*2 WHERE stat_type4=24;</p>
+<p>UPDATE item_template SET stat_value5 = stat_value5*2 WHERE stat_type5=24;</p>
+<p>UPDATE item_template SET stat_value6 = stat_value6*2 WHERE stat_type6=24;</p>
+<p>UPDATE item_template SET stat_value7 = stat_value7*2 WHERE stat_type7=24;</p>
+<p>UPDATE item_template SET stat_value8 = stat_value8*2 WHERE stat_type8=24;</p>
+<p>UPDATE item_template SET stat_value9 = stat_value9*2 WHERE stat_type9=24;</p>
+<p>UPDATE item_template SET stat_value10 = stat_value10*2 WHERE stat_type10=24;</p>
+<p>UPDATE item_template SET stat_value1 = stat_value1*2 WHERE stat_type1=25;</p>
+<p>UPDATE item_template SET stat_value2 = stat_value2*2 WHERE stat_type2=25;</p>
+<p>UPDATE item_template SET stat_value3 = stat_value3*2 WHERE stat_type3=25;</p>
+<p>UPDATE item_template SET stat_value4 = stat_value4*2 WHERE stat_type4=25;</p>
+<p>UPDATE item_template SET stat_value5 = stat_value5*2 WHERE stat_type5=25;</p>
+<p>UPDATE item_template SET stat_value6 = stat_value6*2 WHERE stat_type6=25;</p>
+<p>UPDATE item_template SET stat_value7 = stat_value7*2 WHERE stat_type7=25;</p>
+<p>UPDATE item_template SET stat_value8 = stat_value8*2 WHERE stat_type8=25;</p>
+<p>UPDATE item_template SET stat_value9 = stat_value9*2 WHERE stat_type9=25;</p>
+<p>UPDATE item_template SET stat_value10 = stat_value10*2 WHERE stat_type10=25;</p>
+<p>UPDATE item_template SET stat_value1 = stat_value1*2 WHERE stat_type1=26;</p>
+<p>UPDATE item_template SET stat_value2 = stat_value2*2 WHERE stat_type2=26;</p>
+<p>UPDATE item_template SET stat_value3 = stat_value3*2 WHERE stat_type3=26;</p>
+<p>UPDATE item_template SET stat_value4 = stat_value4*2 WHERE stat_type4=26;</p>
+<p>UPDATE item_template SET stat_value5 = stat_value5*2 WHERE stat_type5=26;</p>
+<p>UPDATE item_template SET stat_value6 = stat_value6*2 WHERE stat_type6=26;</p>
+<p>UPDATE item_template SET stat_value7 = stat_value7*2 WHERE stat_type7=26;</p>
+<p>UPDATE item_template SET stat_value8 = stat_value8*2 WHERE stat_type8=26;</p>
+<p>UPDATE item_template SET stat_value9 = stat_value9*2 WHERE stat_type9=26;</p>
+<p>UPDATE item_template SET stat_value10 = stat_value10*2 WHERE stat_type10=26;</p>
+<p>UPDATE item_template SET stat_value1 = stat_value1*2 WHERE stat_type1=27;</p>
+<p>UPDATE item_template SET stat_value2 = stat_value2*2 WHERE stat_type2=27;</p>
+<p>UPDATE item_template SET stat_value3 = stat_value3*2 WHERE stat_type3=27;</p>
+<p>UPDATE item_template SET stat_value4 = stat_value4*2 WHERE stat_type4=27;</p>
+<p>UPDATE item_template SET stat_value5 = stat_value5*2 WHERE stat_type5=27;</p>
+<p>UPDATE item_template SET stat_value6 = stat_value6*2 WHERE stat_type6=27;</p>
+<p>UPDATE item_template SET stat_value7 = stat_value7*2 WHERE stat_type7=27;</p>
+<p>UPDATE item_template SET stat_value8 = stat_value8*2 WHERE stat_type8=27;</p>
+<p>UPDATE item_template SET stat_value9 = stat_value9*2 WHERE stat_type9=27;</p>
+<p>UPDATE item_template SET stat_value10 = stat_value10*2 WHERE stat_type10=27;</p>
+<p>UPDATE item_template SET stat_value1 = stat_value1*2 WHERE stat_type1=28;</p>
+<p>UPDATE item_template SET stat_value2 = stat_value2*2 WHERE stat_type2=28;</p>
+<p>UPDATE item_template SET stat_value3 = stat_value3*2 WHERE stat_type3=28;</p>
+<p>UPDATE item_template SET stat_value4 = stat_value4*2 WHERE stat_type4=28;</p>
+<p>UPDATE item_template SET stat_value5 = stat_value5*2 WHERE stat_type5=28;</p>
+<p>UPDATE item_template SET stat_value6 = stat_value6*2 WHERE stat_type6=28;</p>
+<p>UPDATE item_template SET stat_value7 = stat_value7*2 WHERE stat_type7=28;</p>
+<p>UPDATE item_template SET stat_value8 = stat_value8*2 WHERE stat_type8=28;</p>
+<p>UPDATE item_template SET stat_value9 = stat_value9*2 WHERE stat_type9=28;</p>
+<p>UPDATE item_template SET stat_value10 = stat_value10*2 WHERE stat_type10=28;</p>
+<p>UPDATE item_template SET stat_value1 = stat_value1*2 WHERE stat_type1=29;</p>
+<p>UPDATE item_template SET stat_value2 = stat_value2*2 WHERE stat_type2=29;</p>
+<p>UPDATE item_template SET stat_value3 = stat_value3*2 WHERE stat_type3=29;</p>
+<p>UPDATE item_template SET stat_value4 = stat_value4*2 WHERE stat_type4=29;</p>
+<p>UPDATE item_template SET stat_value5 = stat_value5*2 WHERE stat_type5=29;</p>
+<p>UPDATE item_template SET stat_value6 = stat_value6*2 WHERE stat_type6=29;</p>
+<p>UPDATE item_template SET stat_value7 = stat_value7*2 WHERE stat_type7=29;</p>
+<p>UPDATE item_template SET stat_value8 = stat_value8*2 WHERE stat_type8=29;</p>
+<p>UPDATE item_template SET stat_value9 = stat_value9*2 WHERE stat_type9=29;</p>
+<p>UPDATE item_template SET stat_value10 = stat_value10*2 WHERE stat_type10=29;</p>
+<p>UPDATE item_template SET stat_value1 = stat_value1*2 WHERE stat_type1=30;</p>
+<p>UPDATE item_template SET stat_value2 = stat_value2*2 WHERE stat_type2=30;</p>
+<p>UPDATE item_template SET stat_value3 = stat_value3*2 WHERE stat_type3=30;</p>
+<p>UPDATE item_template SET stat_value4 = stat_value4*2 WHERE stat_type4=30;</p>
+<p>UPDATE item_template SET stat_value5 = stat_value5*2 WHERE stat_type5=30;</p>
+<p>UPDATE item_template SET stat_value6 = stat_value6*2 WHERE stat_type6=30;</p>
+<p>UPDATE item_template SET stat_value7 = stat_value7*2 WHERE stat_type7=30;</p>
+<p>UPDATE item_template SET stat_value8 = stat_value8*2 WHERE stat_type8=30;</p>
+<p>UPDATE item_template SET stat_value9 = stat_value9*2 WHERE stat_type9=30;</p>
+<p>UPDATE item_template SET stat_value10 = stat_value10*2 WHERE stat_type10=30;</p>
+<p>UPDATE item_template SET stat_value1 = stat_value1*2 WHERE stat_type1=31;</p>
+<p>UPDATE item_template SET stat_value2 = stat_value2*2 WHERE stat_type2=31;</p>
+<p>UPDATE item_template SET stat_value3 = stat_value3*2 WHERE stat_type3=31;</p>
+<p>UPDATE item_template SET stat_value4 = stat_value4*2 WHERE stat_type4=31;</p>
+<p>UPDATE item_template SET stat_value5 = stat_value5*2 WHERE stat_type5=31;</p>
+<p>UPDATE item_template SET stat_value6 = stat_value6*2 WHERE stat_type6=31;</p>
+<p>UPDATE item_template SET stat_value7 = stat_value7*2 WHERE stat_type7=31;</p>
+<p>UPDATE item_template SET stat_value8 = stat_value8*2 WHERE stat_type8=31;</p>
+<p>UPDATE item_template SET stat_value9 = stat_value9*2 WHERE stat_type9=31;</p>
+<p>UPDATE item_template SET stat_value10 = stat_value10*2 WHERE stat_type10=31;</p>
+<p>UPDATE item_template SET stat_value1 = stat_value1*2 WHERE stat_type1=33;</p>
+<p>UPDATE item_template SET stat_value2 = stat_value2*2 WHERE stat_type2=33;</p>
+<p>UPDATE item_template SET stat_value3 = stat_value3*2 WHERE stat_type3=33;</p>
+<p>UPDATE item_template SET stat_value4 = stat_value4*2 WHERE stat_type4=33;</p>
+<p>UPDATE item_template SET stat_value5 = stat_value5*2 WHERE stat_type5=33;</p>
+<p>UPDATE item_template SET stat_value6 = stat_value6*2 WHERE stat_type6=33;</p>
+<p>UPDATE item_template SET stat_value7 = stat_value7*2 WHERE stat_type7=33;</p>
+<p>UPDATE item_template SET stat_value8 = stat_value8*2 WHERE stat_type8=33;</p>
+<p>UPDATE item_template SET stat_value9 = stat_value9*2 WHERE stat_type9=33;</p>
+<p>UPDATE item_template SET stat_value10 = stat_value10*2 WHERE stat_type10=33;</p>
+<p>UPDATE item_template SET stat_value1 = stat_value1*2 WHERE stat_type1=34;</p>
+<p>UPDATE item_template SET stat_value2 = stat_value2*2 WHERE stat_type2=34;</p>
+<p>UPDATE item_template SET stat_value3 = stat_value3*2 WHERE stat_type3=34;</p>
+<p>UPDATE item_template SET stat_value4 = stat_value4*2 WHERE stat_type4=34;</p>
+<p>UPDATE item_template SET stat_value5 = stat_value5*2 WHERE stat_type5=34;</p>
+<p>UPDATE item_template SET stat_value6 = stat_value6*2 WHERE stat_type6=34;</p>
+<p>UPDATE item_template SET stat_value7 = stat_value7*2 WHERE stat_type7=34;</p>
+<p>UPDATE item_template SET stat_value8 = stat_value8*2 WHERE stat_type8=34;</p>
+<p>UPDATE item_template SET stat_value9 = stat_value9*2 WHERE stat_type9=34;</p>
+<p>UPDATE item_template SET stat_value10 = stat_value10*2 WHERE stat_type10=34;</p>
+<p>UPDATE item_template SET stat_value1 = stat_value1*5 WHERE stat_type1=35;</p>
+<p>UPDATE item_template SET stat_value2 = stat_value2*5 WHERE stat_type2=35;</p>
+<p>UPDATE item_template SET stat_value3 = stat_value3*5 WHERE stat_type3=35;</p>
+<p>UPDATE item_template SET stat_value4 = stat_value4*5 WHERE stat_type4=35;</p>
+<p>UPDATE item_template SET stat_value5 = stat_value5*5 WHERE stat_type5=35;</p>
+<p>UPDATE item_template SET stat_value6 = stat_value6*5 WHERE stat_type6=35;</p>
+<p>UPDATE item_template SET stat_value7 = stat_value7*5 WHERE stat_type7=35;</p>
+<p>UPDATE item_template SET stat_value8 = stat_value8*5 WHERE stat_type8=35;</p>
+<p>UPDATE item_template SET stat_value9 = stat_value9*5 WHERE stat_type9=35;</p>
+<p>UPDATE item_template SET stat_value10 = stat_value10*5 WHERE stat_type10=35;</p>
+<p>UPDATE item_template SET stat_value1 = stat_value1*5 WHERE stat_type1=36;</p>
+<p>UPDATE item_template SET stat_value2 = stat_value2*5 WHERE stat_type2=36;</p>
+<p>UPDATE item_template SET stat_value3 = stat_value3*5 WHERE stat_type3=36;</p>
+<p>UPDATE item_template SET stat_value4 = stat_value4*5 WHERE stat_type4=36;</p>
+<p>UPDATE item_template SET stat_value5 = stat_value5*5 WHERE stat_type5=36;</p>
+<p>UPDATE item_template SET stat_value6 = stat_value6*5 WHERE stat_type6=36;</p>
+<p>UPDATE item_template SET stat_value7 = stat_value7*5 WHERE stat_type7=36;</p>
+<p>UPDATE item_template SET stat_value8 = stat_value8*5 WHERE stat_type8=36;</p>
+<p>UPDATE item_template SET stat_value9 = stat_value9*5 WHERE stat_type9=36;</p>
+<p>UPDATE item_template SET stat_value10 = stat_value10*5 WHERE stat_type10=36;</p>
+<p>UPDATE item_template SET stat_value1 = stat_value1*5 WHERE stat_type1=37;</p>
+<p>UPDATE item_template SET stat_value2 = stat_value2*5 WHERE stat_type2=37;</p>
+<p>UPDATE item_template SET stat_value3 = stat_value3*5 WHERE stat_type3=37;</p>
+<p>UPDATE item_template SET stat_value4 = stat_value4*5 WHERE stat_type4=37;</p>
+<p>UPDATE item_template SET stat_value5 = stat_value5*5 WHERE stat_type5=37;</p>
+<p>UPDATE item_template SET stat_value6 = stat_value6*5 WHERE stat_type6=37;</p>
+<p>UPDATE item_template SET stat_value7 = stat_value7*5 WHERE stat_type7=37;</p>
+<p>UPDATE item_template SET stat_value8 = stat_value8*5 WHERE stat_type8=37;</p>
+<p>UPDATE item_template SET stat_value9 = stat_value9*5 WHERE stat_type9=37;</p>
+<p>UPDATE item_template SET stat_value10 = stat_value10*5 WHERE stat_type10=37;</p>
+<p>UPDATE item_template SET stat_value1 = stat_value1*5 WHERE stat_type1=38;</p>
+<p>UPDATE item_template SET stat_value2 = stat_value2*5 WHERE stat_type2=38;</p>
+<p>UPDATE item_template SET stat_value3 = stat_value3*5 WHERE stat_type3=38;</p>
+<p>UPDATE item_template SET stat_value4 = stat_value4*5 WHERE stat_type4=38;</p>
+<p>UPDATE item_template SET stat_value5 = stat_value5*5 WHERE stat_type5=38;</p>
+<p>UPDATE item_template SET stat_value6 = stat_value6*5 WHERE stat_type6=38;</p>
+<p>UPDATE item_template SET stat_value7 = stat_value7*5 WHERE stat_type7=38;</p>
+<p>UPDATE item_template SET stat_value8 = stat_value8*5 WHERE stat_type8=38;</p>
+<p>UPDATE item_template SET stat_value9 = stat_value9*5 WHERE stat_type9=38;</p>
+<p>UPDATE item_template SET stat_value10 = stat_value10*5 WHERE stat_type10=38;</p>
+<p>UPDATE item_template SET stat_value1 = stat_value1*5 WHERE stat_type1=39;</p>
+<p>UPDATE item_template SET stat_value2 = stat_value2*5 WHERE stat_type2=39;</p>
+<p>UPDATE item_template SET stat_value3 = stat_value3*5 WHERE stat_type3=39;</p>
+<p>UPDATE item_template SET stat_value4 = stat_value4*5 WHERE stat_type4=39;</p>
+<p>UPDATE item_template SET stat_value5 = stat_value5*5 WHERE stat_type5=39;</p>
+<p>UPDATE item_template SET stat_value6 = stat_value6*5 WHERE stat_type6=39;</p>
+<p>UPDATE item_template SET stat_value7 = stat_value7*5 WHERE stat_type7=39;</p>
+<p>UPDATE item_template SET stat_value8 = stat_value8*5 WHERE stat_type8=39;</p>
+<p>UPDATE item_template SET stat_value9 = stat_value9*5 WHERE stat_type9=39;</p>
+<p>UPDATE item_template SET stat_value10 = stat_value10*5 WHERE stat_type10=39;</p>
+<p>UPDATE item_template SET stat_value1 = stat_value1*5 WHERE stat_type1=40;</p>
+<p>UPDATE item_template SET stat_value2 = stat_value2*5 WHERE stat_type2=40;</p>
+<p>UPDATE item_template SET stat_value3 = stat_value3*5 WHERE stat_type3=40;</p>
+<p>UPDATE item_template SET stat_value4 = stat_value4*5 WHERE stat_type4=40;</p>
+<p>UPDATE item_template SET stat_value5 = stat_value5*5 WHERE stat_type5=40;</p>
+<p>UPDATE item_template SET stat_value6 = stat_value6*5 WHERE stat_type6=40;</p>
+<p>UPDATE item_template SET stat_value7 = stat_value7*5 WHERE stat_type7=40;</p>
+<p>UPDATE item_template SET stat_value8 = stat_value8*5 WHERE stat_type8=40;</p>
+<p>UPDATE item_template SET stat_value9 = stat_value9*5 WHERE stat_type9=40;</p>
+<p>UPDATE item_template SET stat_value10 = stat_value10*5 WHERE stat_type10=40;</p>
+<p>UPDATE item_template SET stat_value1 = stat_value1*5 WHERE stat_type1=41;</p>
+<p>UPDATE item_template SET stat_value2 = stat_value2*5 WHERE stat_type2=41;</p>
+<p>UPDATE item_template SET stat_value3 = stat_value3*5 WHERE stat_type3=41;</p>
+<p>UPDATE item_template SET stat_value4 = stat_value4*5 WHERE stat_type4=41;</p>
+<p>UPDATE item_template SET stat_value5 = stat_value5*5 WHERE stat_type5=41;</p>
+<p>UPDATE item_template SET stat_value6 = stat_value6*5 WHERE stat_type6=41;</p>
+<p>UPDATE item_template SET stat_value7 = stat_value7*5 WHERE stat_type7=41;</p>
+<p>UPDATE item_template SET stat_value8 = stat_value8*5 WHERE stat_type8=41;</p>
+<p>UPDATE item_template SET stat_value9 = stat_value9*5 WHERE stat_type9=41;</p>
+<p>UPDATE item_template SET stat_value10 = stat_value10*5 WHERE stat_type10=41;</p>
+<p>UPDATE item_template SET stat_value1 = stat_value1*5 WHERE stat_type1=42;</p>
+<p>UPDATE item_template SET stat_value2 = stat_value2*5 WHERE stat_type2=42;</p>
+<p>UPDATE item_template SET stat_value3 = stat_value3*5 WHERE stat_type3=42;</p>
+<p>UPDATE item_template SET stat_value4 = stat_value4*5 WHERE stat_type4=42;</p>
+<p>UPDATE item_template SET stat_value5 = stat_value5*5 WHERE stat_type5=42;</p>
+<p>UPDATE item_template SET stat_value6 = stat_value6*5 WHERE stat_type6=42;</p>
+<p>UPDATE item_template SET stat_value7 = stat_value7*5 WHERE stat_type7=42;</p>
+<p>UPDATE item_template SET stat_value8 = stat_value8*5 WHERE stat_type8=42;</p>
+<p>UPDATE item_template SET stat_value9 = stat_value9*5 WHERE stat_type9=42;</p>
+<p>UPDATE item_template SET stat_value10 = stat_value10*5 WHERE stat_type10=42;</p>
+<p>UPDATE item_template SET stat_value1 = stat_value1*5 WHERE stat_type1=43;</p>
+<p>UPDATE item_template SET stat_value2 = stat_value2*5 WHERE stat_type2=43;</p>
+<p>UPDATE item_template SET stat_value3 = stat_value3*5 WHERE stat_type3=43;</p>
+<p>UPDATE item_template SET stat_value4 = stat_value4*5 WHERE stat_type4=43;</p>
+<p>UPDATE item_template SET stat_value5 = stat_value5*5 WHERE stat_type5=43;</p>
+<p>UPDATE item_template SET stat_value6 = stat_value6*5 WHERE stat_type6=43;</p>
+<p>UPDATE item_template SET stat_value7 = stat_value7*5 WHERE stat_type7=43;</p>
+<p>UPDATE item_template SET stat_value8 = stat_value8*5 WHERE stat_type8=43;</p>
+<p>UPDATE item_template SET stat_value9 = stat_value9*5 WHERE stat_type9=43;</p>
+<p>UPDATE item_template SET stat_value10 = stat_value10*5 WHERE stat_type10=43;</p>
+<p>UPDATE item_template SET stat_value1 = stat_value1*2 WHERE stat_type1=44;</p>
+<p>UPDATE item_template SET stat_value2 = stat_value2*2 WHERE stat_type2=44;</p>
+<p>UPDATE item_template SET stat_value3 = stat_value3*2 WHERE stat_type3=44;</p>
+<p>UPDATE item_template SET stat_value4 = stat_value4*2 WHERE stat_type4=44;</p>
+<p>UPDATE item_template SET stat_value5 = stat_value5*2 WHERE stat_type5=44;</p>
+<p>UPDATE item_template SET stat_value6 = stat_value6*2 WHERE stat_type6=44;</p>
+<p>UPDATE item_template SET stat_value7 = stat_value7*2 WHERE stat_type7=44;</p>
+<p>UPDATE item_template SET stat_value8 = stat_value8*2 WHERE stat_type8=44;</p>
+<p>UPDATE item_template SET stat_value9 = stat_value9*2 WHERE stat_type9=44;</p>
+<p>UPDATE item_template SET stat_value10 = stat_value10*2 WHERE stat_type10=44;</p>
+<p>UPDATE item_template SET stat_value1 = stat_value1*5 WHERE stat_type1=45;</p>
+<p>UPDATE item_template SET stat_value2 = stat_value2*5 WHERE stat_type2=45;</p>
+<p>UPDATE item_template SET stat_value3 = stat_value3*5 WHERE stat_type3=45;</p>
+<p>UPDATE item_template SET stat_value4 = stat_value4*5 WHERE stat_type4=45;</p>
+<p>UPDATE item_template SET stat_value5 = stat_value5*5 WHERE stat_type5=45;</p>
+<p>UPDATE item_template SET stat_value6 = stat_value6*5 WHERE stat_type6=45;</p>
+<p>UPDATE item_template SET stat_value7 = stat_value7*5 WHERE stat_type7=45;</p>
+<p>UPDATE item_template SET stat_value8 = stat_value8*5 WHERE stat_type8=45;</p>
+<p>UPDATE item_template SET stat_value9 = stat_value9*5 WHERE stat_type9=45;</p>
+<p>UPDATE item_template SET stat_value10 = stat_value10*5 WHERE stat_type10=45;</p>
+<p>update npc_trainer set spellcost=0;</p>
+<p>UPDATE pet_levelstats SET hp = hp*10;</p>
+<p>UPDATE pet_levelstats SET mana = mana*10;</p>
+<p>UPDATE pet_levelstats SET armor = armor*10;</p>
+<p>UPDATE pet_levelstats SET str = str*5;</p>
+<p>UPDATE pet_levelstats SET agi = agi*5;</p>
+<p>UPDATE pet_levelstats SET sta = sta*10;</p>
+<p>UPDATE pet_levelstats SET inte = inte*5;</p>
+<p>UPDATE pet_levelstats SET spi = spi*10;</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[SQL数据库表解释]]></title>
         <id>https://52blog.github.io/4nGL3mfVP/</id>
@@ -1727,380 +2932,6 @@ Guild.AllowMultipleGuildMaster = 0</p>
 <p>LevelReq.Mail<br>
 角色使用邮件系统的最低等级，默认：1</p>
 <p>LevelReq.Mail = 1</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[GM常用测试BOSS时使用的技能]]></title>
-        <id>https://52blog.github.io/sQVEeU_d0/</id>
-        <link href="https://52blog.github.io/sQVEeU_d0/">
-        </link>
-        <updated>2021-09-23T15:16:12.000Z</updated>
-        <summary type="html"><![CDATA[<p>直接粘贴到宏命令<br>
-.learn 45078<br>
-.learn 39869<br>
-.learn 42152<br>
-.learn 40810<br>
-.learn 40733</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>直接粘贴到宏命令<br>
-.learn 45078<br>
-.learn 39869<br>
-.learn 42152<br>
-.learn 40810<br>
-.learn 40733</p>
-<!-- more -->
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[GM常用命令]]></title>
-        <id>https://52blog.github.io/7UauMuWv8/</id>
-        <link href="https://52blog.github.io/7UauMuWv8/">
-        </link>
-        <updated>2021-09-23T15:11:39.000Z</updated>
-        <summary type="html"><![CDATA[<p>★★★★★★★★★★角色相关★★★★★★★★★★★</p>
-<p>.levelup 1       让目标增加1级<br>
-.reset level     重置等级为1<br>
-.revive          复活玩家<br>
-.appear          移动到目标位置<br>
-.summon          召唤目标到你的位置</p>
-<p>.quest complete XXX     完成任务<br>
-.quest add xxx          接任务<br>
-.achievement add        加成就<br>
-.modify money 70000000  加金币<br>
-.setskill 762 300 300 骑术大鸟<br>
-.instance unbind all  清理进度<br>
-.kick xxx             强制玩家下线</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>★★★★★★★★★★角色相关★★★★★★★★★★★</p>
-<p>.levelup 1       让目标增加1级<br>
-.reset level     重置等级为1<br>
-.revive          复活玩家<br>
-.appear          移动到目标位置<br>
-.summon          召唤目标到你的位置</p>
-<p>.quest complete XXX     完成任务<br>
-.quest add xxx          接任务<br>
-.achievement add        加成就<br>
-.modify money 70000000  加金币<br>
-.setskill 762 300 300 骑术大鸟<br>
-.instance unbind all  清理进度<br>
-.kick xxx             强制玩家下线</p>
-<!-- more -->
-<p>★★★★★★★★★★服务器相关★★★★★★★★★★</p>
-<p>.server restart 900 15分钟后服务器重启<br>
-.ser inf        服务器心跳<br>
-.respawn        重置boss<br>
-.npc move       移动npc<br>
-.GM VISIBLE off gm隐身<br>
-.lookup spell xxxx  查看技能<br>
-.announce    发布公告<br>
-.announce 为了保证服务器稳定运行，我们将于15分钟后开始对服务器进行例行维护，维护时间1分钟。</p>
-<p>★★★★★★★★★★战场竞技场相关★★★★★★★★<br>
-战场日常<br>
-.Event start 18  奥山<br>
-.Event start 19  战歌<br>
-.Event start 20  阿拉希</p>
-<p>.honor add XXXX   加xxx荣誉<br>
-.reset honor清零荣誉<br>
-.modify arenapoints 100    加100竞技场分数<br>
-.flusharenapoints 竞技场结算</p>
-<p>★★★★★★★★★★传送相关★★★★★★★★★★★</p>
-<p>.go 16222.1 16252.1 12.5872 1  GM岛<br>
-.go 16226.1 16403.1 -64.37 1   监狱</p>
-<p>★★★★★★★★★★NPC相关★★★★★★★★★★★</p>
-<p>.npc set spawntime 608000 设置npc刷新时间（毫秒）<br>
-.npc add item      添加物品到npc<br>
-.npc del item      删除物品从npc<br>
-.npc say      npc说</p>
-<p>★★★★★★★★★★命令相关★★★★★★★★★★★</p>
-<p>.reload npc_vendor                npc贩卖物品和价格<br>
-.reload npc_trainer               技能学习训练师刷新<br>
-.reload gossip_menu_option        npc菜单表刷新<br>
-.reload quest_template            任务表刷新<br>
-.reload command                   GM命令等级表刷新</p>
-<p>.reload config                    系统表刷新（荣誉、声望、经验倍率）<br>
-.reload reference_loot_template   掉率模版表<br>
-.reload gameobject_loot_template  地图物品掉率<br>
-.reload access_requirement        副本开关表刷新<br>
-.reload item_loot_template        背包物品掉率<br>
-.reload creature_loot_template    怪物掉率<br>
-.reload creature_template xxxxx   怪物表xxx指向刷新<br>
-.reload game_graveyard_zone       墓地表刷新</p>
-<p>.gobject add 186859火墙<br>
-.gobject add 194323空气墙</p>
-<p>.instance unbind all 清理CD</p>
-<p>.instance unbind xx     ：清理目标单独FB CD</p>
-<p>xx = 地图ID  地图ID 进入副本搜索.gps  map:xx  会显示</p>
-<p>.instance unbind xx 1      xx = 地图ID    清理目标单独FB CD  英雄模式</p>
-<p>.npc add item XXX  增加物品到NPC身上</p>
-<p>删除NPC</p>
-<p>.npc del</p>
-<p>隐身</p>
-<p>.gm visible on</p>
-<p>.gm visible off</p>
-<p>.npc inf 提取BOSS信息</p>
-<p>.respawn 重置BOSS</p>
-<p>.npc add xxxx 增加NPC</p>
-<p>.npc add item xxx NPC增加物品</p>
-<p>.gm on 开启GM模式</p>
-<p>.gob near 搜索建筑物ID</p>
-<p>.gob add 建筑物 添加</p>
-<p>.gm off 关闭GM模式</p>
-<p>.levelup 69  .level -10 为目标(或自己) 增加89级，数字自己调， (最好不要超过90 容易出错)</p>
-<p>.modify money 5000000  为目标(或自己) 数字是以铜为单位的，要点下自己人物头像</p>
-<p>.additem # 增加物品代码为#的物品到所选玩家背包</p>
-<p>.additem 23162           36格包包</p>
-<p>.honor add 12312323      增加荣誉</p>
-<p>.damage 数字 直接造成伤害 要打10000 就输入 .damage 10000</p>
-<p>.start 脱离卡死（回城）</p>
-<p>………………封号指令     .b p 角色名 99d 脚本刷金</p>
-<p>.unb p 角色名</p>
-<p>.modify命令：</p>
-<p>.modify money 999999999    为目标(或自己) 数字是以铜为单位的，要点下自己人物头像</p>
-<p>.learn 44140 鱼叉冲浪</p>
-<p>.gm on 开启GM模式</p>
-<p>.gm off 关闭GM模式</p>
-<p>.npc add 600006 增加npc</p>
-<p>.npc add item xxxx 增加物品</p>
-<p>.npc del item xxxx 删除物品</p>
-<p>.ser res 200 重启</p>
-<p>.quest complete 秒任务</p>
-<p>.modify speed 30+速度</p>
-<p>.lookup spell  比如.lookup spell 亡灵意志 找到其代码</p>
-<p>然后用.learn命令 学习</p>
-<p>.gob near 提取 物体ID</p>
-<p>.gob del xxx 删除草药或者矿石</p>
-<p>.mute 禁言</p>
-<p>.quest complete 任务</p>
-<p>.quest add 添加任务</p>
-<p>.learn 40733 无限无敌</p>
-<p>.achievement add 获得成就</p>
-<p>http://db.duowan.com/wow/npc-2198.html 查找NPC代码</p>
-<p>复活<br>
-/g .revive</p>
-<p>.go 16222.1 16252.1 12.5872 1     传送自己到GM岛</p>
-<p>.announce 系统消息</p>
-<p>.modify scale 10 变大变小</p>
-<p>ICC 声望 .modify rep 1156 100000</p>
-<p>.damage 数字 直接造成伤害</p>
-<p>.gps 显示角色或生物的坐标(x,y,z) 地图标号和地区</p>
-<p>.go $x $y $z $mapid 转到对应map的指定坐标(x,y,z)处</p>
-<p>搜索物品  .lookup item</p>
-<p>.reset stats 重置目标所有状态</p>
-<p>传送 .appear  xx</p>
-<p>xx = 角色名称</p>
-<p>.summon 拉人</p>
-<p>隐身 .gm visible on/off</p>
-<p>.achievement add 成就</p>
-<p>.learn 44140    鱼叉冲浪</p>
-<p>.modify speed 10</p>
-<p>.ban playeraccount 角色名 99d  违规99天</p>
-<p>.npc info 查找NPC ID</p>
-<p>.account 账号管理</p>
-<p>.account create 创建账号</p>
-<p>.account delete 删除账号</p>
-<p>.account lock 锁定账号</p>
-<p>.account onlinelist 显示在线账号</p>
-<p>.account password 显示账号密码</p>
-<p>.account set addon 设置账号资料片类型</p>
-<p>.account set gmlevel 设置账号GM级别</p>
-<p>.account set password 设置账号密码</p>
-<p>.announce 系统消息</p>
-<p>.aura 为自己添加BUFF</p>
-<p>.ban account 禁封账号</p>
-<p>.ban character 角色</p>
-<p>.ban ip IP地址</p>
-<p>.baninfo account 被封账号信息</p>
-<p>.baninfo character</p>
-<p>.baninfo ip</p>
-<p>.banlist account</p>
-<p>.banlist character</p>
-<p>.banlist ip</p>
-<p>.bank 打开银行</p>
-<p>.cast 施放法术</p>
-<p>.cast back 使目标对你施放法术</p>
-<p>.cast dist 施法距离</p>
-<p>.cast self 对自己施放法术</p>
-<p>.cast target 目标施放法术</p>
-<p>.character customize 使玩家重新设定外观与名字</p>
-<p>.character delete  删除角色</p>
-<p>.character level 角色级别</p>
-<p>.character rename 使玩家重新命名</p>
-<p>.character reputation 角色声望</p>
-<p>.combatstop</p>
-<p>.commands 命令列表</p>
-<p>.cooldown 使法术冷却时间结束</p>
-<p>.damage 造成伤害<br>
-DEBUG模式测试FWQ<br>
-轻易不要尝试</p>
-<p>.debug anim</p>
-<p>.debug arena 调试竞技场</p>
-<p>.debug bg 调试战场可以一个人进入</p>
-<p>.debug getvalue</p>
-<p>.debug Mod32Value</p>
-<p>.debug play cinematic</p>
-<p>.debug play movie</p>
-<p>.debug play sound</p>
-<p>.debug setvalue</p>
-<p>.debug update<br>
-实用功能</p>
-<p>.app 传动到目标玩家身旁</p>
-<p>.gps 显示自己的位置</p>
-<p>.go c xxx xxx代表怪物GUID</p>
-<p>.guid 工会</p>
-<p>.guild create 创建</p>
-<p>.guild delete 删除</p>
-<p>.guild invite 邀请</p>
-<p>.guild rank</p>
-<p>.guild uninvite 踢出</p>
-<p>.lookup area 查找地区</p>
-<p>.lookup creature 生物</p>
-<p>.lookup event 事件</p>
-<p>.lookup faction 阵营</p>
-<p>.lookup item 装备</p>
-<p>.lookup itemset 套装</p>
-<p>.lookup object 物体</p>
-<p>.lookup player account 账号.</p>
-<p>.lookup player email 邮箱</p>
-<p>.lookup player ip</p>
-<p>.lookup quest 任务</p>
-<p>.lookup skill 商业技能</p>
-<p>.lookup spell 法术</p>
-<p>.lookup taxinode</p>
-<p>.lookup tele</p>
-<p>.maxskill 技能熟练度最大</p>
-<p>.modify arena  更改竞技场点数</p>
-<p>.modify speed 调节所有速度</p>
-<p>.modify bit</p>
-<p>.modify bwalk</p>
-<p>.modify drunk</p>
-<p>.modify energy</p>
-<p>.modify faction 阵营</p>
-<p>.modify gender</p>
-<p>.modify honor 荣誉</p>
-<p>.modify hp 血量</p>
-<p>.modify integral</p>
-<p>.modify mana 魔法</p>
-<p>.modify money 金钱</p>
-<p>.modify morph 外观</p>
-<p>.modify mount 坐骑</p>
-<p>.modify phase</p>
-<p>.modify rage 怒气</p>
-<p>.modify rep 声望</p>
-<p>.modify runicpower 符文能量</p>
-<p>.modify scale 大小</p>
-<p>.modify speed 速度</p>
-<p>.modify spell 法术</p>
-<p>.modify standstate</p>
-<p>.modify swim 游泳速度</p>
-<p>.modify titles  头衔</p>
-<p>.modify tp 天赋点</p>
-<p>.npc add 添加NPC</p>
-<p>.npc additem 给NPC添加装备</p>
-<p>.npc addmove</p>
-<p>.npc addweapon</p>
-<p>.npc allowmove</p>
-<p>.npc changelevel</p>
-<p>.npc delete  删除NPC</p>
-<p>.npc delitem  删除NPC 里面的物品</p>
-<p>.npc set factionid  更改NPC 阵营 （红绿名字）</p>
-<p>.npc set  flag 更改NPC 属性</p>
-<p>.npc follow 让NPC跟随你</p>
-<p>.npc info NPC信息</p>
-<p>.npc move 使NPC移动到自己当前位置</p>
-<p>.npc name</p>
-<p>.npc playemote</p>
-<p>.npc setdeathstate</p>
-<p>.npc setmodel 改变NPC外观</p>
-<p>.npc setmovetype</p>
-<p>.npc setphase</p>
-<p>.npc spawndist</p>
-<p>.npc spawntime</p>
-<p>.npc subname</p>
-<p>.npc tame 驯服一只野兽作为宠物</p>
-<p>.npc textemote</p>
-<p>.npc unfollow 让NPC停止跟随你</p>
-<p>.npc whisper 使NPC说话</p>
-<p>.quest add 增加任务</p>
-<p>.quest complete 完成任务</p>
-<p>.quest remove 移除任务</p>
-<p>.reload all 重新载入</p>
-<p>.reload all_area 重载所有地图</p>
-<p>.reload all_locales</p>
-<p>.reload all_loot 重载所有LOOT（BOSS掉落）</p>
-<p>.reload all_quest 重载所有任务</p>
-<p>.reload all_spell 重载所有技能</p>
-<p>.reload config 重载所有设置</p>
-<p>.repairitems 修理装备</p>
-<p>.reset achievements 重置成就</p>
-<p>.reset all 重置所有</p>
-<p>.reset honor 重置荣誉</p>
-<p>.reset level 重置级别</p>
-<p>.reset spells 重置法术</p>
-<p>.reset stats 重置属性</p>
-<p>.reset talents 天赋</p>
-<p>.respawn 重新刷新NPC（复活视野内NPC ) （选中单独复活）</p>
-<p>.revive 复活玩家</p>
-<p>.send items 寄送装备</p>
-<p>.send mail 邮件</p>
-<p>.send message 信息</p>
-<p>.send money 金钱</p>
-<p>.unban account 解封账号</p>
-<p>.unban character 解封角色</p>
-<p>.unban ip 解封IP<br>
-服务器命令</p>
-<p>.server corpses</p>
-<p>.server exit 服务器退出</p>
-<p>.server idlerestart</p>
-<p>.server idlerestart cancel</p>
-<p>.server idleshutdown</p>
-<p>.server idleshutdown cancel</p>
-<p>.server info 服务器信息</p>
-<p>.server motd</p>
-<p>.server plimit</p>
-<p>.server restart 服务器重启</p>
-<p>.server restart cancel 取消服务器重启</p>
-<p>.server set loglevel</p>
-<p>.server set motd</p>
-<p>.server shutdown  关机</p>
-<p>.server shutdown cancel 取消关机<br>
-.gm on 开启GM模式 	.modify fly # 将目标飞行速度设定为初始速度的#倍（#=0.1-10） 	<br>
-.gm off 关闭GM模式 	.modify aspeed 3 将目标所有速度设定为初始速度的#倍（#=0.1-10） 	<br>
-.gm visible on/off 使GM是否对玩家可见 	.modify scale 3 将目标体积设定为初始状态的#倍（#=0.00-3） 	<br>
-.revive 复活 需要输入 /g 空格 后输入此命令  	.modify mount # 为目标召唤一种坐骑（#=1-69） 	<br>
-.appear 移动到目标位置。  	.modify honor # 增加目标的荣誉点数#（#=1=2147483646） 	<br>
-.summon 召唤目标到你的位置。  	.modify arena # 增加目标的竞技场点数#（#=1=2147483646） 	<br>
-.allowmove 禁止生物移动	.modify integral # 修改目标的积分为#（#=0-999999） 	<br>
-.levelup 79升级	.modify drunk # 修改目标的醉酒度为#（#=0-100） 	<br>
-.revive 复活当前目标,或自己 		<br>
-.changelevel 数字 可以改变目标生物的等级 	.npc命令: 	<br>
-.delete 将目标生物从地图里删除 	.npc spawn #dist 添加NPC 	<br>
-.speed 20 移动加速 	.npc delete 删除NPC 	<br>
-.bank # 打开仓库 	.npc say $text 编辑NPC说话 	<br>
-.taxicheat on/off 开启/关闭所有飞行路线 	.npc yell $text 编辑NPC大喊 	<br>
-.explorecheat 1/0 开启/关闭所有探索地图 	.npc faction #factionid 调整NPC阵营 	<br>
-.start 脱离卡死（回城） 	.npc changelevel # 改变所选npc的等级 (#=1-73) 	<br>
-.dismount 下马 	.npc info 列出被选NPC的详细描述 	<br>
-.die 杀死目标 	.npc spawndist #dist 调整所选生物的刷新距离为#dist 	<br>
-.cooldown 重置目标所有技能冷却时间 	.npc spawntime # 调整所选生物的刷新时间为# 	<br>
-.guid 显示当前目标生物的 GUID 		<br>
-.gps 显示角色或生物的坐标(x,y,z) 地图标号和地区 	.reset命令： 	<br>
-.go $x $y $z $mapid 转到对应map的指定坐标(x,y,z)处 	.reset stats 重置目标所有状态 	<br>
-.goname * 传送自己到名为<em>的人物处 	.reset honor 重置目标荣誉点数 	<br>
-.namego * 传送名为</em>的目标到自己所在处 	.reset level 重置目标等级 	<br>
-.commands 显示你的帐号可以使用的命令 	.reset spells 重置目标所有技能 	<br>
-.cooldown 立即使目标的魔法冷却 	.reset talents 重置目标所有天赋 	<br>
-.respawn 立即刷新身边最近的生物或游戏目标 		<br>
-.password $old_password $new_password $new_password 更改你账号的密码 	服务器管理命令： 	<br>
-.saveall 保存在线玩家数据 	<br>
-.modify命令： 	.info 显示服务器状态 	<br>
-.modify money 9999999999 为目标(或自己) 增加#铜 	.kick 从世界中剔出去一个选定的玩家 	<br>
-.modify hp # # 将目标的HP设置为#/# 	.announce * 广播<em>给所有在线玩家 	<br>
-.modify mana # # 将目标的MP设置为#/# 	.loadscripts * 重新加载脚本名字为</em>的脚本 	<br>
-.modify rage # # 将目标的怒气值设置为#/# 	.shutdown # 服务器将在#秒后关闭 	<br>
-.modify energy # # 将目标的能量值设置为#/# 	.shutdown cancel 取消关闭服务器 	<br>
-.modify speed # 将目标移动速度设定为初始速度的#倍（#=0.1-10） 	.gm fly on 开启内域飞行	<br>
-.modify bwalk # 将目标移后退度设定为初始速度的#倍（#=0.1-10） 	.gm fly off 关闭	<br>
-.modify swim 10 将目标游泳速度设定为初始速度的#倍（#=0.1-10） 	.modify aspeed 10  改变飞行速度 1-10</p>
 ]]></content>
     </entry>
 </feed>
