@@ -9,7 +9,7 @@
 <meta name="description" content="">
 <meta name="theme-color" content="#495057">
 <title>52blog</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1632405758277">
+<link rel="shortcut icon" href="/favicon.ico?v=1632406467961">
 <link rel="stylesheet" href="/media/css/gemini.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -178,7 +178,7 @@
     <div class="sidebar-item-box">
       <a href="/archives/">
         
-        <span class="site-item-stat-count">0</span>
+        <span class="site-item-stat-count">1</span>
         <span class="site-item-stat-name language" data-lan="article">文章</span>
       </a>
     </div>
@@ -233,9 +233,27 @@
   <div class="archive-timeline-box">
     <div class="archive-timeline-title">
       
-        <h2 class="language" data-lan="no-archives">您目前还没有记录日志哟~~~</h2>
+        <h2 class="language" data-lan="archives" data-count="1">非常好！目前共计1篇日志，继续努力！</h2>
       
     </div>
+    
+      
+      
+        <div class="node-title">
+          <h2 class="tag-year">2021</h2>
+        </div>    
+        
+      
+      <a href="https://52blog.github.io/ovbTGIV9e/">
+        <div class="motion-warpper tag-archive-node">
+          <div class="tag-node">
+            <h1>
+              09-23
+              <small>魔兽世界编译教程 Trinity </small>
+            </h1>
+          </div>  
+      </div>
+      </a>
     
   </div>
   
@@ -243,6 +261,12 @@
   <ul class="pagination-ul">
     
     
+      
+        <li class="pagination-li pagination-active">
+            <a href="/archives/page/../">
+              1
+            </a>
+        </li>
       
     
     
@@ -461,6 +485,141 @@
       <hr>
     </div>
     <div class="result" id="result">
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://52blog.github.io/ovbTGIV9e/"" data-c="
+          &lt;p&gt;这个过程并不算短，但可以让你对服务器的开发拥有最高等级的控制力。如果你希望开发一个魔兽世界哔哔，掌握这一流程则是不可或缺的能力和前提条件。&lt;br&gt;
+TrinityCore基于C++开发而成，需要通过Microsoft Visual C++ 2010以上版本编译生成。你需要如下的几个步骤来生成自己的服务器程序：&lt;br&gt;
+请注意：虽然编译服务端并不是什么高深的学问，但它并非面向于所有的玩家。环境建立，代码维护，功能开发，数值策划等等制作游戏所必须步骤的操作难度和精力消耗都不是普通玩家所能承受的，所以在决定吸收这些知识之前，请先确认自己到底是有开发兴趣或意向还是想找个新娱乐项目，如果是后者，那么我的建议是不要看下去，因为它将会浪费你不少宝贵的时间和精力，而且不会为你带来任何精神或物质上的收益。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;获取源码，并获取最近的更新。&lt;/li&gt;
+&lt;li&gt;获取数据库SQL，导入。当然官方提供的是英文版本的，而且更新较为缓慢，你可以使用我在另一个帖子中提供的简体中文数据库。&lt;/li&gt;
+&lt;li&gt;生成Visual   Studio解决方案，将源代码通过CMAKE转化为可用VS2010或其他版本可用的解决方案。如果你的机器上没有相应的运行环境，则必须首先配置——至少要安装PERL5和OPENSSL，在某些情况下可能还需要MASM或NASM。这个过程非常容易出错而且对于经验不足的开发者很容易就此卡壳，我会在此介绍我所了解的问题的解决方法，但不承诺为你提供后续的帮助支持。&lt;/li&gt;
+&lt;li&gt;调整参数，编译服务端文件。&lt;/li&gt;
+&lt;li&gt;搭建服务器环境，导入所需的所有数据库信息。如果需要的话，制作账号管理系统。&lt;/li&gt;
+&lt;li&gt;使用编译生成的DBC和地图解析工具解析服务器端所需的DBC和地图文件。要注意的是生成工具是CMAKE时的可选项，这个我会在后面的描述中着重强调。&lt;/li&gt;
+&lt;li&gt;将所有的文件按既定格式放在特定位置，调整authserver.conf和worldserver.conf中的链接参数，并在auth数据库的realmlist表中建立服务器信息，即可成功开启服务端，并让朋友加入你的游戏了。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;正文  
+获取源码  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;TrinityCore 的源码通过Git提供的命令行工具你可以轻松地获取最新的TC源码，但对于新开发者，甚至是所有的开发者，我推荐使用Git   Extensions这个图形化的工具。你可以在：&lt;/p&gt;
+&lt;p&gt;http://code.google.com/p/gitextensions/&lt;br&gt;
+获取最新的Git Extensions。如果你找不到下载链接在哪（这说明你需要做一点点最基础的英文学习了），我在这里为你提供一个链接：&lt;/p&gt;
+&lt;p&gt;http://gitextensions.googlecode. ... 43SetupComplete.msi&lt;br&gt;
+如果下载地址过期，或则你看这篇文章已经是很久以后的事情，那么你可以从新搜索一下这个软件，下载最新版本的。&lt;/p&gt;
+&lt;p&gt;一路NEXT确实可以安装完成，但为了让你的服务端不至于出现太多毛病，有几个选项需要你调整一下，即使和安装程序上的推荐说明不大一致。&lt;br&gt;
+&lt;img src=&#34;https://52blog.github.io/post-images/1632406026531.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+勾上这两个选项。&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://52blog.github.io/post-images/1632406063970.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;确认你选择了所需的集成环境。&lt;br&gt;
+&lt;img src=&#34;https://52blog.github.io/post-images/1632406087651.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;如果你的机器上装的是VS2012,那么就选上Visual Studio 2012 integration 这个选项&lt;/p&gt;
+&lt;p&gt;选择OpenSSH，即使说明上说putty的windows集成更加优秀。&lt;br&gt;
+开始安装。在安装的过程中会弹出KDiff3和Git的安装向导，一路NEXT即可。请在Git的安装过程中确认选择了“Run   Git from the Windows Command Prompt”这一选项。&lt;br&gt;
+&lt;img src=&#34;https://52blog.github.io/post-images/1632406107419.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;这就是Git Extension的界面。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://52blog.github.io/post-images/1632406122891.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+可以看到我我的GIT上有很多个分支，但这些东西不是上来就有的。下一步就要对其进行配置，令它可以从Git上拉取（pull）源代码，并保存在正确的位置。&lt;/p&gt;
+&lt;p&gt;首先，你需要建立一个存放源码的文件夹。&lt;/p&gt;
+&lt;p&gt;我在D建立一个文件夹，名为“MSASource”，用以存放源代码。&lt;br&gt;
+&lt;img src=&#34;https://52blog.github.io/post-images/1632406142033.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;如果你正确安装了Git Extensions，则当你右键点击这个文件夹时，会出现一个新的选项“Git   Extensions”，选择子菜单中的“Clone”。&lt;br&gt;
+&lt;img src=&#34;https://52blog.github.io/post-images/1632406160515.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;在弹出窗口中按以下格式填写所需的信息。&lt;br&gt;
+&lt;img src=&#34;https://52blog.github.io/post-images/1632406176765.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+如果你懒得照图打地址这里给你个可以复制的：&lt;br&gt;
+https://github.com/TrinityCore/TrinityCore.git&lt;br&gt;
+注意将Subdirectory to create清空，因为我们并不需要它为我们建立子文件夹。&lt;br&gt;
+点击Clone。这会将TrinityCore于Github的源代码拉取至你的本地文件夹中，时间取决于你的网络连接速度。&lt;br&gt;
+&lt;img src=&#34;https://52blog.github.io/post-images/1632406195992.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+完成之后文件夹下将多出一大堆源代码文件。&lt;br&gt;
+&lt;img src=&#34;https://52blog.github.io/post-images/1632406212083.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;但这时还无法编译，我们必须先将这堆源码通过CMAKE转化为VC++的解决方案。对于某些设备，这一步可能仅需10秒，但对另一些设备，则可能得花上数小时的时间。这个根据你的网络速度决定你的下载时间&lt;/p&gt;
+&lt;p&gt;然后补充一下，Trinity-Core的代码地址：https://github.com/TrinityCore&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;安装CMAKE  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;首先在这里下载你需要的CMAKE版本：&lt;/p&gt;
+&lt;p&gt;http://www.cmake.org/cmake/resources/software.html&lt;/p&gt;
+&lt;p&gt;如果你用WINDOWS就下这个：&lt;/p&gt;
+&lt;p&gt;http://www.cmake.org/files/v2.8/cmake-2.8.10.1-win32-x86.exe&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://52blog.github.io/post-images/1632406228152.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+选择将CMAKE添加至环境变量，其他一路下一步。&lt;/p&gt;
+&lt;p&gt;在运行CMAKE之前，你要先建立一个文件下用以存放生成的解决方案（SLN）。在这篇教程中我建立了一个名为“MSABuild”的文件夹。&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;2&#34;&gt;&lt;img src=&#34;https://52blog.github.io/post-images/1632406243737.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;运行CMAKE，在“Where   is the source code”一栏填入源代码的目录位置，在“Where   to build the binaries”一栏填入刚才建立的文件夹地址。&lt;/p&gt;
+&lt;p&gt;点击Configure。在弹出的菜单中选择Visual   Studio 10。&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;3&#34;&gt;&lt;img src=&#34;https://52blog.github.io/post-images/1632406257952.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;如果你的机器原本只用于打游戏而没做过开发，99%的可能性会配置失败并报告这个错误。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://52blog.github.io/post-images/1632406280498.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+这意味着你的机器上没有OpenSSL，需要先安装OpenSSL。&lt;/p&gt;
+&lt;p&gt;安装OpenSSL是一些老鸟都不愿搭理的差事，因设备的系统环境不同，安装过程也不尽相同而且还会出现各种各样的错误。但如果不安这东西，你便没有办法轻易地生成SLN，从而无法编译自己的服务端，所以这个坎是必须得想法跨越的。在这里我为你提供一套传统的OpenSSL安装方法，祝你安装顺利。&lt;/p&gt;
+&lt;p&gt;首先，这个过程需要你对OpenSSL的源代码进行编译（他们只给源码），所以你需要有一个Visual Studio，我用的是VS2010旗舰，你可以从这个地址来下载试用版。当然在试用期结束后是重装系统，破解还是买正版（很贵），那就不是我的事了。 当然，你最好去搜索一个破解版本什么的。。&lt;/p&gt;
+&lt;p&gt;http://download.microsoft.com/do ... 10UltimTrialCHS.iso&lt;/p&gt;
+&lt;p&gt;ISO，可以刻录光盘安装，也可以通过虚拟光驱加载安装。&lt;/p&gt;
+&lt;p&gt;然后下载OpenSSL的源码，地址在这里：&lt;/p&gt;
+&lt;p&gt;http://www.openssl.org/source/&lt;/p&gt;
+&lt;p&gt;如果你不知道下哪个，我给你提供个地址：&lt;/p&gt;
+&lt;p&gt;http://www.openssl.org/source/openssl-1.0.1c.tar.gz&lt;/p&gt;
+&lt;p&gt;然后，你需要安装PERL5，并把它加到环境变量中。&lt;/p&gt;
+&lt;p&gt;PERL的安装过程并不简单，不过幸好有个ActivePerl，地址在这里：&lt;/p&gt;
+&lt;p&gt;http://www.activestate.com/activeperl/downloads/&lt;/p&gt;
+&lt;p&gt;根据你的系统选择32/64位版本，下载装上。如果我没记错的话，应该是一路NEXT。&lt;/p&gt;
+&lt;p&gt;不知道下载哪个的，我给你提供两个WINDOWS平台的链接：&lt;/p&gt;
+&lt;p&gt;32bit：http://downloads.activestate.com   ... in32-x86-296175.msi&lt;br&gt;
+64bit：http://downloads.activestate.com   ... in32-x64-296175.msi&lt;/p&gt;
+&lt;p&gt;在ActivePerl安装完成后会自动生成所需的文件和环境变量，如果没有，请手动把以下内容添加进幻境变量中。我的PERL5路径为C:Perl64，那么内容就是：&lt;/p&gt;
+&lt;p&gt;C:Perl64sitebin;C:Perl64bin;&lt;/p&gt;
+&lt;p&gt;将下载的OpenSSL解压，放到一个你能记得住的地方，比如我方的位置是：&lt;/p&gt;
+&lt;p&gt;C:openssl&lt;br&gt;
+&lt;img src=&#34;https://52blog.github.io/post-images/1632406298451.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;然后是较为容易出错的步骤，但如果你按我的方法来进行编译安装，出错的机会并不高。&lt;/p&gt;
+&lt;p&gt;如果你正确安装了VS2010，可以在开始菜单找到含有所需编译配置的Visual Studio命令行工具，点击打开。&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;4&#34;&gt;&lt;img src=&#34;https://52blog.github.io/post-images/1632406312844.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;工具需要几秒钟的配置时间，等待至可以输入文字时，定位至OpenSSL所在目录。我的是C:openssl，所以我就输入：&lt;/p&gt;
+&lt;p&gt;cd C:openssl&lt;br&gt;
+&lt;img src=&#34;https://52blog.github.io/post-images/1632406330146.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+开始配置。首先禁用IPV6来避免出现cl错误，输入下面的文字并回车（后面每句都要加个回车）：&lt;/p&gt;
+&lt;p&gt;perl Configure VC-WIN32 -DOPENSSL_USE_IPV6=0&lt;/p&gt;
+&lt;p&gt;配置编译环境：&lt;/p&gt;
+&lt;p&gt;perl Configure VC-WIN32&lt;/p&gt;
+&lt;p&gt;生成配置文件：&lt;/p&gt;
+&lt;p&gt;msdo_ms&lt;/p&gt;
+&lt;p&gt;开始生成：&lt;/p&gt;
+&lt;p&gt;nmake -f ms tdll.mak&lt;/p&gt;
+&lt;p&gt;生成大概需要2-5分钟的时间，取决于你的电脑性能。生成成功后可以使用这个命令来检测一下是否安装成功：&lt;/p&gt;
+&lt;p&gt;nmake -f ms tdll.mak test&lt;/p&gt;
+&lt;p&gt;如果出现的一大段内容最后里有&amp;quot;successful&amp;quot;的字样，则说明安装成功。&lt;/p&gt;
+&lt;p&gt;一般来说，搞到这里CMAKE就可以顺利生成C++解决方案了，但若你还是遇到找不到OpenSSL的错误，则需要手动配置环境变量。在环境变量里加上这样一句（我的openssl目录为C:openssl，根据你的安装位置调整内容）：&lt;/p&gt;
+&lt;p&gt;C:opensslout32dll;&lt;/p&gt;
+&lt;p&gt;至此你应该可以顺利生成SLN了。如果你到现在还没关掉CMAKE，点击Configure按钮。如果你看到如下提示（约需时30秒），则说明配置成功。&lt;br&gt;
+&lt;img src=&#34;https://52blog.github.io/post-images/1632406352960.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;如果你是首次使用，或是没有其他DBC/MAPS/VMAPS的来源，则需要勾选TOOLS的选项，以在编译时生成解析这些文件的工具。&lt;/p&gt;
+&lt;p&gt;点击Generate开始生成SLN。&lt;/p&gt;
+&lt;p&gt;当出现Generating   Done的提示后，说明SLN已经成功生成。&lt;/p&gt;
+&lt;p&gt;打开“MSABuild”文件夹，双击TrinityCore.sln开启解决方案。&lt;br&gt;
+&lt;img src=&#34;https://52blog.github.io/post-images/1632406370299.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+首次使用会加载所需的文件和配置，大概需要3-10分钟的时间。完成之后，如果你没有修改服务端的需求，那么可以直接开始编译。唯一需要改动的一点就是将解决方案配置由“DEBUG”改为“RELEASE”。DEBUG生成将附带大量的调试信息，运行效率极低，所以在编译前务必注意这一选项的设置。&lt;br&gt;
+&lt;img src=&#34;https://52blog.github.io/post-images/1632406394586.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+点击绿色箭头开始编译。首次编译耗时很长，而且有可能出现错误，程序意外关闭，生成失败等结果，但这时再次点击绿色箭头重新生成即可成功。如果你看到了这个窗口，说明大功告成：&lt;br&gt;
+如果你成功地编译出了这些文件，说明你距离最终开启自己的服务器已经完成70%的工作了。剩下的工作一定不会难倒你，但仍然可能消耗大量的时间。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;导入服务端数据库数据+保持更新  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;搭建一个网络服务器环境——这个在互联网上有铺天盖地般的教程，我也无意提供这方面的教学。如果你不了解这方面的知识，可以在百度上寻找解决方案，或者使用诸如XAMPP一类的集成开发环境（虽然这东西是教学性质的，不过用起来没问题），你需要拥有的程序必须包括以下这些：&lt;/p&gt;
+&lt;p&gt;MySQL 5+&lt;br&gt;
+Apache 2+&lt;br&gt;
+PHP 4.x+（用以构建注册和管理页面）&lt;/p&gt;
+&lt;p&gt;然后你还需要一个可以处理SQL的拥有图形界面的集成式程序，如Navicat，来进行SQL的导入工作及后期的数据编辑。&lt;/p&gt;
+&lt;p&gt;TrinityCore运行需要3个数据库：auth（账号信息），characters（角色信息），world（游戏数据信息），其中auth和characters的生成SQL将在编译的过程中生成，world需要在git上面下载。&lt;/p&gt;
+&lt;p&gt;在你的MySQL数据库中建立三个空数据库：&lt;/p&gt;
+&lt;p&gt;auth/characters/world&lt;/p&gt;
+&lt;p&gt;并分别导入这三个SQL文件。&lt;/p&gt;
+&lt;p&gt;auth/characters 这两个数据库分别对应账号数据库和角色数据库，。Trinity内核代码里面就带有了&lt;/p&gt;
+&lt;p&gt;world世界库的SQL文件，你最好到Trinity官方论坛里面去找找。找到最新的数据库。&lt;/p&gt;
+&lt;p&gt;补充一下：PERL5   基本上是可以不用安装的。默认情况下，你最好下载的完整的VS2010 或则VS2012版本。 然后openssl 是必须装的&lt;/p&gt;
+">魔兽世界编译教程 Trinity </a>
+      </div>
       
     </div>
     <div class="page">
