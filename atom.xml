@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://52wow.github.io</id>
+    <id>https://52blog.github.io</id>
     <title>Whitehat</title>
-    <updated>2020-10-24T08:06:57.132Z</updated>
+    <updated>2021-09-23T07:25:57.494Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://52wow.github.io"/>
-    <link rel="self" href="https://52wow.github.io/atom.xml"/>
-    <logo>https://52wow.github.io/images/avatar.png</logo>
-    <icon>https://52wow.github.io/favicon.ico</icon>
-    <rights>All rights reserved 2020, Whitehat</rights>
+    <link rel="alternate" href="https://52blog.github.io"/>
+    <link rel="self" href="https://52blog.github.io/atom.xml"/>
+    <logo>https://52blog.github.io/images/avatar.png</logo>
+    <icon>https://52blog.github.io/favicon.ico</icon>
+    <rights>All rights reserved 2021, Whitehat</rights>
     <entry>
         <title type="html"><![CDATA[GM常用命令]]></title>
-        <id>https://52wow.github.io/IaV-R3Vv8/</id>
-        <link href="https://52wow.github.io/IaV-R3Vv8/">
+        <id>https://52blog.github.io/IaV-R3Vv8/</id>
+        <link href="https://52blog.github.io/IaV-R3Vv8/">
         </link>
         <updated>2021-06-26T14:37:02.000Z</updated>
         <summary type="html"><![CDATA[<h2 id="常用">常用</h2>
@@ -359,8 +359,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[关于用git工具解压.patch和.diff文件的方法]]></title>
-        <id>https://52wow.github.io/a7epRYWaG/</id>
-        <link href="https://52wow.github.io/a7epRYWaG/">
+        <id>https://52blog.github.io/a7epRYWaG/</id>
+        <link href="https://52blog.github.io/a7epRYWaG/">
         </link>
         <updated>2020-09-17T04:39:31.000Z</updated>
         <content type="html"><![CDATA[<p>1、相信大家都有git工具，没有的请安装一个 https://git-scm.com/<br>
@@ -371,8 +371,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[可以在聊天框查看详情的法术链接（源码）]]></title>
-        <id>https://52wow.github.io/7XbhcZh1_/</id>
-        <link href="https://52wow.github.io/7XbhcZh1_/">
+        <id>https://52blog.github.io/7XbhcZh1_/</id>
+        <link href="https://52blog.github.io/7XbhcZh1_/">
         </link>
         <updated>2020-07-23T01:42:43.000Z</updated>
         <summary type="html"><![CDATA[<p>//法术链接<br>
@@ -406,27 +406,27 @@ return oss.str();
 <p>应用语句:<br>
 //聊天框显示ID为5的技能链接<br>
 ChatHandler(player-&gt;GetSession()).PSendSysMessage(&quot;技能预览：%s&quot;, GetSpellink(5).c_str());</p>
-<figure data-type="image" tabindex="1"><img src="https://52wow.github.io/post-images/1595468694772.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="1"><img src="https://52blog.github.io/post-images/1595468694772.png" alt="" loading="lazy"></figure>
 ]]></content>
     </entry>
     <entry>
         <title type="html"><![CDATA[C++编译教程（随机地下城修改单人可以进）]]></title>
-        <id>https://52wow.github.io/m5WAioLA4/</id>
-        <link href="https://52wow.github.io/m5WAioLA4/">
+        <id>https://52blog.github.io/m5WAioLA4/</id>
+        <link href="https://52blog.github.io/m5WAioLA4/">
         </link>
         <updated>2020-07-06T10:46:40.000Z</updated>
         <summary type="html"><![CDATA[<p>用VS2013（及以上版本）打开TC的源码，右边找到game项，双击后找到Source Files选项，再次双击后找到LFGQueue.cpp文件，搜索uint8 numPlayers，大概在第350行左右的位置可以找到。把它后面的=号右边的0改成4，之后保存即可</p>
 ]]></summary>
         <content type="html"><![CDATA[<p>用VS2013（及以上版本）打开TC的源码，右边找到game项，双击后找到Source Files选项，再次双击后找到LFGQueue.cpp文件，搜索uint8 numPlayers，大概在第350行左右的位置可以找到。把它后面的=号右边的0改成4，之后保存即可</p>
 <!-- more -->
-<p><img src="https://52wow.github.io/post-images/1594032566046.png" alt="" loading="lazy"><br>
-<img src="https://52wow.github.io/post-images/1594032569531.png" alt="" loading="lazy"></p>
+<p><img src="https://52blog.github.io/post-images/1594032566046.png" alt="" loading="lazy"><br>
+<img src="https://52blog.github.io/post-images/1594032569531.png" alt="" loading="lazy"></p>
 ]]></content>
     </entry>
     <entry>
         <title type="html"><![CDATA[关于npc_vendor表的购买条件说明]]></title>
-        <id>https://52wow.github.io/FdCP-fmtw/</id>
-        <link href="https://52wow.github.io/FdCP-fmtw/">
+        <id>https://52blog.github.io/FdCP-fmtw/</id>
+        <link href="https://52blog.github.io/FdCP-fmtw/">
         </link>
         <updated>2020-07-01T03:45:04.000Z</updated>
         <summary type="html"><![CDATA[<p>首先用 Navicat 打开数据库连接。<br>
@@ -1449,8 +1449,8 @@ ItemExtendedCost.dbc去寻找，或者自定义物品。</p>
     </entry>
     <entry>
         <title type="html"><![CDATA[Windows下魔兽世界服务器通用编译环境搭建教程]]></title>
-        <id>https://52wow.github.io/sesX1JqAB/</id>
-        <link href="https://52wow.github.io/sesX1JqAB/">
+        <id>https://52blog.github.io/sesX1JqAB/</id>
+        <link href="https://52blog.github.io/sesX1JqAB/">
         </link>
         <updated>2020-06-26T17:33:09.000Z</updated>
         <summary type="html"><![CDATA[<p>必要的编译环境软件：</p>
@@ -1536,8 +1536,8 @@ MS visual Studio （Community）2017</p>
     </entry>
     <entry>
         <title type="html"><![CDATA[数据库表中文详解（ctrl+f 筛选）]]></title>
-        <id>https://52wow.github.io/5sjexSO9W/</id>
-        <link href="https://52wow.github.io/5sjexSO9W/">
+        <id>https://52blog.github.io/5sjexSO9W/</id>
+        <link href="https://52blog.github.io/5sjexSO9W/">
         </link>
         <updated>2020-06-26T16:18:19.000Z</updated>
         <summary type="html"><![CDATA[<h2 id="access_requirement副本及区域进入条件-表详解">access_requirement副本及区域进入条件 表详解</h2>
@@ -7480,8 +7480,8 @@ type=2 （光环）：
     </entry>
     <entry>
         <title type="html"><![CDATA[DBC表的中文详解（ctrl+f 筛选）]]></title>
-        <id>https://52wow.github.io/d9ksXDLei/</id>
-        <link href="https://52wow.github.io/d9ksXDLei/">
+        <id>https://52blog.github.io/d9ksXDLei/</id>
+        <link href="https://52blog.github.io/d9ksXDLei/">
         </link>
         <updated>2020-06-26T15:48:19.000Z</updated>
         <summary type="html"><![CDATA[<h2 id="achievementdbc">Achievement.dbc</h2>
@@ -7611,7 +7611,7 @@ type=2 （光环）：
 114	接受的召唤	            未使用	1，统计		<br>
 115	达到的成就点数	            未使用（也许仅仅用在诺森德）	未使用		<br>
 119	随机地下城玩家数量	    未使用	玩家数量		<br>
-<img src="https://52wow.github.io/post-images/1593186598400.jpg" alt="" loading="lazy"></p>
+<img src="https://52blog.github.io/post-images/1593186598400.jpg" alt="" loading="lazy"></p>
 <h2 id="animationdatadbc-详解">AnimationData.dbc 详解</h2>
 <p>AnimationData.dbc 详解模型动画定义</p>
 <p>列	字段	         详细说明<br>
@@ -9423,8 +9423,8 @@ effectAura：<br>
     </entry>
     <entry>
         <title type="html"><![CDATA[物品绿色字解释教程]]></title>
-        <id>https://52wow.github.io/ua67La5gr/</id>
-        <link href="https://52wow.github.io/ua67La5gr/">
+        <id>https://52blog.github.io/ua67La5gr/</id>
+        <link href="https://52blog.github.io/ua67La5gr/">
         </link>
         <updated>2020-06-26T15:40:03.000Z</updated>
         <summary type="html"><![CDATA[<p>有的时候新制作的物品 要解释什么功能 不需要必须连接spell.dbc</p>
@@ -9433,14 +9433,14 @@ effectAura：<br>
 ]]></summary>
         <content type="html"><![CDATA[<p>有的时候新制作的物品 要解释什么功能 不需要必须连接spell.dbc</p>
 <p>|cFF33FF00使用;免费修理身上装备！|r<br>
-<img src="https://52wow.github.io/post-images/1593186025033.png" alt="" loading="lazy"></p>
+<img src="https://52blog.github.io/post-images/1593186025033.png" alt="" loading="lazy"></p>
 <!-- more -->
 ]]></content>
     </entry>
     <entry>
         <title type="html"><![CDATA[职业任务技能与材料]]></title>
-        <id>https://52wow.github.io/arChdbiRN/</id>
-        <link href="https://52wow.github.io/arChdbiRN/">
+        <id>https://52blog.github.io/arChdbiRN/</id>
+        <link href="https://52blog.github.io/arChdbiRN/">
         </link>
         <updated>2020-06-26T15:37:02.000Z</updated>
         <summary type="html"><![CDATA[<p>战士：<br>
