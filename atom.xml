@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://52blog.github.io</id>
+    <title>52blog</title>
+    <updated>2021-09-23T06:58:31.434Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://52blog.github.io"/>
+    <link rel="self" href="https://52blog.github.io/atom.xml"/>
+    <subtitle>温故而知新</subtitle>
+    <logo>https://52blog.github.io/images/avatar.png</logo>
+    <icon>https://52blog.github.io/favicon.ico</icon>
+    <rights>All rights reserved 2021, 52blog</rights>
+</feed>
